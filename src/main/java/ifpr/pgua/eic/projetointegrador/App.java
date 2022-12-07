@@ -9,13 +9,11 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.utils.BaseAppNavigator;
 import ifpr.pgua.eic.projetointegrador.utils.ScreenRegistryFXML;
 
-
 public class App extends BaseAppNavigator {
 
     private FabricaConexoes fabricaConexoes = FabricaConexoes.getInstance();
     private MotoristaDAO motoristaDAO;
     private MotoristaRepository motoristaRepository;
-
 
     @Override
     public void init() throws Exception {
@@ -37,8 +35,12 @@ public class App extends BaseAppNavigator {
 
     @Override
     public void registrarTelas() {
-        registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o->new JanelaPrincipal()));
-        registraTela("CADASTRO CARRO", new ScreenRegistryFXML(App.class, "cadastro-carro.fxml", o->new JanelaCadastroCarro(motoristaRepository)));        
+        registraTela("PRINCIPAL",
+                new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o) -> new JanelaPrincipal()));
+
+        registraTela("CADASTRO CARROS", new ScreenRegistryFXML(getClass(), "fxml/cadastro-carro.fxml",
+                (o) -> new JanelaCadastroCarro(motoristaRepository)));
+
     }
 
 }

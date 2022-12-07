@@ -1,0 +1,61 @@
+#main {
+  -fx-background-color: rgb(255, 255, 255);
+}
+
+#topo {
+  -fx-background-color: rgb(121, 31, 141);
+}
+
+#esq {
+  -fx-background-color: rgb(0, 119, 255);
+}
+
+#botaoCarro {
+  -fx-background-image: url("imagens/CARRO.png");
+  -fx-background-size: 23 23;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+#botaoHome {
+  -fx-background-image: url("imagens/HOME.png");
+  -fx-background-size: 23 23;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+#botaoCarona {
+  -fx-background-image: url("imagens/CARONA.png");
+  -fx-background-size: 23 23;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+#botaoUsuario {
+  -fx-background-image: url("imagens/USUARIO.png");
+  -fx-background-size: 23 23;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+#botaoPonto {
+  -fx-background-image: url("imagens/PONTO.png");
+  -fx-background-size: 23 23;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+  -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+#homeTexto {}
+
+#motoristasTexto {}
+
+#caronasTexto {}
+
+#carrosTexto {}
+
+#pontosTexto {}
