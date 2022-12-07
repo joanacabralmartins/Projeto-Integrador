@@ -1,34 +1,38 @@
 package ifpr.pgua.eic.projetointegrador.models.entities;
 
+import java.sql.Date;
+
 public class Usuario {
 
-  private int cpf;
+  private String cpf;
   private String nome;
   private String funcao_IFPR;
   private String senha;
+  private Date data_nascimento;
   private int idade;
   private String curso;
   private int telefone;
   private String endereco;
 
-  public Usuario(int cpf, String nome, String funcao_IFPR, String senha,
+  public Usuario(String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
       int idade, String curso, int telefone, String endereco) {
 
     this.cpf = cpf;
     this.nome = nome;
     this.funcao_IFPR = funcao_IFPR;
     this.senha = senha;
+    this.data_nascimento = data_nascimento;
     this.idade = idade;
     this.curso = curso;
     this.telefone = telefone;
     this.endereco = endereco;
   }
 
-  public int getCpf() {
+  public String getCpf() {
     return cpf;
   }
 
-  public void setCpf(int cpf) {
+  public void setCpf(String cpf) {
     this.cpf = cpf;
   }
 
@@ -54,6 +58,14 @@ public class Usuario {
 
   public void setSenha(String senha) {
     this.senha = senha;
+  }
+
+  public Date getData_nascimento() {
+    return data_nascimento;
+  }
+
+  public void setData_nascimento(Date data_nascimento) {
+    this.data_nascimento = data_nascimento;
   }
 
   public int getIdade() {
