@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS motorista (
     nome TEXT NOT NULL,
     funcao_IFPR TEXT NOT NULL,
     senha TEXT NOT NULL,
-    data_nascimento DATE NOT NULL,
+    data_nascimento TEXT NOT NULL,
     idade INTEGER NOT NULL,
     curso TEXT NULL,
     telefone INTEGER NULL,

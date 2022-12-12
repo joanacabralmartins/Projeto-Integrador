@@ -73,17 +73,15 @@ public class JanelaCadastroMotorista implements Initializable {
         String endereco = taEndereco.getText();
         String funcao = (String) cbFuncao.valueProperty().get();
 
-        //dataNascimento = dpDataNascimento.getValue();
-        //data = Date.valueOf(dataNascimento);
-        Date data = Date.valueOf(LocalDate.now());
+        Date dataNascimento = Date.valueOf(getDate());
 
         int idade = 22;
 
         int tel = Integer.valueOf(telefone);
-        
+
         int carteira = Integer.valueOf(carteiraMotorista);
 
-        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, data, idade, curso, tel, endereco, carteira);
+        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, tel, endereco, carteira);
         
         String msg = resultado.getMsg();
 
@@ -93,6 +91,11 @@ public class JanelaCadastroMotorista implements Initializable {
 
         Alert alert = new Alert(AlertType.INFORMATION,msg);
         alert.showAndWait();
+    }
+
+    private LocalDate getDate() {
+        LocalDate data = dpDataNascimento.getValue();
+        return data;
     }
 
     private void limpar() {
