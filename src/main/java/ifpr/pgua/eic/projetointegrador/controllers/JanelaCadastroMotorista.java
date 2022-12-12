@@ -3,6 +3,7 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
@@ -75,7 +76,7 @@ public class JanelaCadastroMotorista implements Initializable {
 
         Date dataNascimento = Date.valueOf(getDate());
 
-        int idade = 22;
+        int idade = Period.between(getDate(), LocalDate.now()).getYears();
 
         int tel = Integer.valueOf(telefone);
 
