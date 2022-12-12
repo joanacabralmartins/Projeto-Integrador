@@ -28,7 +28,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             pstm.setString(2, motorista.getNome());
             pstm.setString(3, motorista.getFuncao_IFPR());
             pstm.setString(4, motorista.getSenha());
-            pstm.setDate(5, motorista.getData_nascimento());
+            pstm.setString(5, String.valueOf(motorista.getData_nascimento()));
             pstm.setInt(6, motorista.getIdade());
             pstm.setString(7, motorista.getCurso());
             pstm.setInt(8, motorista.getTelefone());
