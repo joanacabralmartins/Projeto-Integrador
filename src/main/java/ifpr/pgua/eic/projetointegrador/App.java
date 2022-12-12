@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador;
 
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
@@ -36,10 +37,13 @@ public class App extends BaseAppNavigator {
     @Override
     public void registrarTelas() {
         registraTela("PRINCIPAL",
-                new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o) -> new JanelaPrincipal()));
+                new ScreenRegistryFXML(getClass(), "fxml/base.fxml", (o) -> new JanelaPrincipal()));
 
         registraTela("CADASTRO CARROS", new ScreenRegistryFXML(getClass(), "fxml/cadastro-carro.fxml",
                 (o) -> new JanelaCadastroCarro(motoristaRepository)));
+
+        registraTela("CADASTRO MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/cadastro-motorista.fxml",
+                (o) -> new JanelaCadastroMotorista(motoristaRepository)));
 
     }
 

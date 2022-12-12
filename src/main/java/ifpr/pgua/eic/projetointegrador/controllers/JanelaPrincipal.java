@@ -12,4 +12,8 @@ public class JanelaPrincipal extends BaseController {
         App.changeScreenRegion("CADASTRO CARROS", BorderPaneRegion.CENTER);
     }
 
+    @FXML
+    private void carregaTelaCadastroMotorista(ActionEvent evento) {
+        App.changeScreenRegion("CADASTRO MOTORISTA", BorderPaneRegion.CENTER);
+    }
 }
