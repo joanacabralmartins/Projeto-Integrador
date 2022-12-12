@@ -44,6 +44,12 @@
     -fx-padding: 25 0 0 0;
 }
 
+#scrollPaneCM{
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
 #imgLogo {
     -fx-image: url("../icons/if-logo.png");
 }
