@@ -74,14 +74,20 @@ public class JanelaCadastroMotorista implements Initializable {
         String endereco = taEndereco.getText();
         String funcao = (String) cbFuncao.valueProperty().get();
 
-        Date dataNascimento = Date.valueOf(getDate());
+        LocalDate data = LocalDate.now();
+        int idade = 0;
+
+        if (dpDataNascimento.getValue() != null) {
+            data = dpDataNascimento.getValue();
+            idade = Period.between(data, LocalDate.now()).getYears();
+        }
+
+        Date dataNascimento = Date.valueOf(data);
         
-        int idade = Period.between(getDate(), LocalDate.now()).getYears();
         int tel = Integer.valueOf(telefone);
         int carteira = Integer.valueOf(carteiraMotorista);
 
         Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, tel, endereco, carteira);
-        
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult){
@@ -90,11 +96,6 @@ public class JanelaCadastroMotorista implements Initializable {
 
         Alert alert = new Alert(AlertType.INFORMATION,msg);
         alert.showAndWait();
-    }
-
-    private LocalDate getDate() {
-        LocalDate data = dpDataNascimento.getValue();
-        return data;
     }
 
     private void limpar() {

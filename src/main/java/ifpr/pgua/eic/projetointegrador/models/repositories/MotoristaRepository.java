@@ -36,6 +36,17 @@ public class MotoristaRepository {
             return Result.fail("Preencha todos os campos não opcionais!");
         }
 
+        if (cpf.length() < 11) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if (!cpf.matches("[0-9]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+
+        if (idade < 18) {
+            return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
+        }
+
         return dao.create(motorista);
     }
 
