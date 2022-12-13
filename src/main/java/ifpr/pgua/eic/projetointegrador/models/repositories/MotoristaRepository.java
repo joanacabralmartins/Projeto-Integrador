@@ -50,4 +50,6 @@ public class MotoristaRepository {
         return dao.create(motorista);
     }
 
+    
+
 }
