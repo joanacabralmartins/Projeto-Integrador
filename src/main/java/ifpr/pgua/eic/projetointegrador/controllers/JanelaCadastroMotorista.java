@@ -75,11 +75,9 @@ public class JanelaCadastroMotorista implements Initializable {
         String funcao = (String) cbFuncao.valueProperty().get();
 
         Date dataNascimento = Date.valueOf(getDate());
-
+        
         int idade = Period.between(getDate(), LocalDate.now()).getYears();
-
         int tel = Integer.valueOf(telefone);
-
         int carteira = Integer.valueOf(carteiraMotorista);
 
         Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, tel, endereco, carteira);
