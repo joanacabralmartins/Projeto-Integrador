@@ -1,12 +1,13 @@
 package ifpr.pgua.eic.projetointegrador.models.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
@@ -94,14 +95,17 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 String nome = resultSet.getString("nome");
                 String funcao = resultSet.getString("funcao_IFPR");
                 String senha = resultSet.getString("senha");
-                Date data = resultSet.getDate("data_nascimento");
+                String date = resultSet.getString("data_nascimento");
                 int idade = resultSet.getInt("idade");
                 String curso = resultSet.getString("curso");
                 String telefone = resultSet.getString("telefone");
                 String endereco = resultSet.getString("endereco");
                 String carteira = resultSet.getString("carteira_motorista");
 
-                Motorista motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, telefone, endereco, carteira);
+                LocalDate dataNascimento = LocalDate.parse(date);
+                Date data = Date.valueOf(dataNascimento);
+
+                Motorista motorista = new Motorista(cpf, nome, funcao, senha, data, idade, curso, telefone, endereco, carteira);
 
                 motoristas.add(motorista);
             }

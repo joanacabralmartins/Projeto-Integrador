@@ -61,6 +61,8 @@ public class JanelaCadastroMotorista implements Initializable {
         String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setItems(list);
+
+        dpDataNascimento.setValue(LocalDate.of(2004, 01, 01));
     }
 
     @FXML
@@ -83,7 +85,6 @@ public class JanelaCadastroMotorista implements Initializable {
         }
 
         Date dataNascimento = Date.valueOf(data);
-        
 
         Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
