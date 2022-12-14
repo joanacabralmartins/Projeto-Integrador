@@ -36,9 +36,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             pstm.setString(5, String.valueOf(motorista.getData_nascimento()));
             pstm.setInt(6, motorista.getIdade());
             pstm.setString(7, motorista.getCurso());
-            pstm.setInt(8, motorista.getTelefone());
+            pstm.setString(8, motorista.getTelefone());
             pstm.setString(9, motorista.getEndereco());
-            pstm.setInt(10, motorista.getCarteira_motorista());
+            pstm.setString(10, motorista.getCarteira_motorista());
 
             pstm.execute();
 
@@ -97,9 +97,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 Date data = resultSet.getDate("data_nascimento");
                 int idade = resultSet.getInt("idade");
                 String curso = resultSet.getString("curso");
-                int telefone = resultSet.getInt("telefone");
+                String telefone = resultSet.getString("telefone");
                 String endereco = resultSet.getString("endereco");
-                int carteira = resultSet.getInt("carteira_motorista");
+                String carteira = resultSet.getString("carteira_motorista");
 
                 Motorista motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, telefone, endereco, carteira);
 

@@ -30,7 +30,7 @@ public class MotoristaRepository {
     }
 
     public Result adicionarMotorista(String cpf, String nome, String funcao, String senha, Date dataNascimento,
-                                    int idade, String curso, int telefone, String endereco, int carteira) {
+                                    int idade, String curso, String telefone, String endereco, String carteira) {
         Motorista motorista = new Motorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
         if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null) {
             return Result.fail("Preencha todos os campos não opcionais!");
@@ -39,7 +39,10 @@ public class MotoristaRepository {
         if (cpf.length() < 11) {
             return Result.fail("Insira um CPF válido!");
         }
-        if (!cpf.matches("[0-9]*")) {
+        if (cpf.matches("[a-z]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if(cpf.matches("[A-Z]*")){
             return Result.fail("Insira um CPF válido!");
         }
 

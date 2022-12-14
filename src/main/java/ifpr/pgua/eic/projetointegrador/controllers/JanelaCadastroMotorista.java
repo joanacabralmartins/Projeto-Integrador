@@ -58,7 +58,7 @@ public class JanelaCadastroMotorista implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        String[] opcoes = {"Aluno(a)", "Professor(a)", "Outros"};
+        String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setItems(list);
     }
@@ -84,10 +84,8 @@ public class JanelaCadastroMotorista implements Initializable {
 
         Date dataNascimento = Date.valueOf(data);
         
-        int tel = Integer.valueOf(telefone);
-        int carteira = Integer.valueOf(carteiraMotorista);
 
-        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, tel, endereco, carteira);
+        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult){
@@ -106,6 +104,8 @@ public class JanelaCadastroMotorista implements Initializable {
         tfTelefone.clear();
         taEndereco.clear();
         pfSenha.clear();
+        dpDataNascimento.setValue(null);
+        cbFuncao.setValue(null);
     }
 
 }
