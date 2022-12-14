@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 public class JanelaCadastroMotorista implements Initializable {
-    
+
     @FXML
     private TextField tfNome;
 
@@ -32,7 +32,7 @@ public class JanelaCadastroMotorista implements Initializable {
     @FXML
     private PasswordField pfSenha;
 
-    @FXML 
+    @FXML
     private ChoiceBox cbFuncao;
 
     @FXML
@@ -58,7 +58,7 @@ public class JanelaCadastroMotorista implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
+        String[] opcoes = { "Aluno(a)", "Professor(a)", "Servidor" };
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setItems(list);
     }
@@ -83,17 +83,18 @@ public class JanelaCadastroMotorista implements Initializable {
         }
 
         Date dataNascimento = Date.valueOf(data);
-        
-        //if (telefone.isBlank())
 
-        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
+        // if (telefone.isBlank())
+
+        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso,
+                telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
 
-        if(resultado instanceof SuccessResult){
+        if (resultado instanceof SuccessResult) {
             limpar();
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION,msg);
+        Alert alert = new Alert(AlertType.INFORMATION, msg);
         alert.showAndWait();
     }
 

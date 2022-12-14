@@ -26,9 +26,10 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
         try {
             Connection con = fabricaConexao.getConnection();
-                                    
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?)");
-            
+
+            PreparedStatement pstm = con.prepareStatement(
+                    "INSERT INTO motorista(cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?)");
+
             pstm.setString(1, motorista.getCpf());
             pstm.setString(2, motorista.getNome());
             pstm.setString(3, motorista.getFuncao_IFPR());
@@ -46,7 +47,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             con.close();
             return Result.success("Motorista cadastrado!");
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
         }
@@ -54,11 +55,12 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
     @Override
     public Result adicionarCarro(Carro carro) {
-        
+
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista) VALUES (?,?,?,?)");
+            PreparedStatement pstm = con
+                    .prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista) VALUES (?,?,?,?)");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
@@ -71,16 +73,15 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             con.close();
 
             return Result.success("Carro cadastrado!");
-            
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             return Result.fail(e.getMessage());
         }
     }
 
     @Override
     public List<Motorista> listAll() {
-        try{
+        try {
             Connection con = fabricaConexao.getConnection();
 
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista");
@@ -101,19 +102,20 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 String endereco = resultSet.getString("endereco");
                 String carteira = resultSet.getString("carteira_motorista");
 
-                Motorista motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, telefone, endereco, carteira);
+                Motorista motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, telefone, endereco,
+                        carteira);
 
                 motoristas.add(motorista);
             }
-            
+
             resultSet.close();
             pstm.close();
             con.close();
             return motoristas;
 
-        }catch(SQLException e ) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return Collections.emptyList();
         }
-    }    
+    }
 }
