@@ -11,11 +11,11 @@ public class Usuario {
   private Date data_nascimento;
   private int idade;
   private String curso;
-  private int telefone;
+  private String telefone;
   private String endereco;
 
   public Usuario(String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
-      int idade, String curso, int telefone, String endereco) {
+      int idade, String curso, String telefone, String endereco) {
 
     this.cpf = cpf;
     this.nome = nome;
@@ -84,11 +84,11 @@ public class Usuario {
     this.curso = curso;
   }
 
-  public int getTelefone() {
+  public String getTelefone() {
     return telefone;
   }
 
-  public void setTelefone(int telefone) {
+  public void setTelefone(String telefone) {
     this.telefone = telefone;
   }
 

@@ -9,45 +9,49 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
+<Pane 
+   stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/19" 
+   xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
 
    <children>
       <VBox spacing="5.0">
       
-          <padding>
-              <Insets left="150.0" top="40.0" />
-          </padding>
+         <padding>
+            <Insets left="150.0" top="40.0" />
+         </padding>
       
-          <Label text="Placa" />
-          <TextField fx:id="tfPlaca" prefWidth="120.0">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
+         <Label text="Placa" />
+         <TextField fx:id="tfPlaca" prefWidth="120.0">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
          </TextField>
       
-          <Label text="Modelo" />
-          <TextField fx:id="tfModelo">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
+         <Label text="Modelo" />
+         <TextField fx:id="tfModelo">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
          </TextField>
       
-          <Label text="Cor" />
-          <TextField fx:id="tfCor">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
+         <Label text="Cor" />
+         <TextField fx:id="tfCor">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
          </TextField>
       
-          <Label text="CPF do motorista" />
-          <TextField fx:id="tfCPFMotorista">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
+         <Label text="CPF do motorista" />
+         <TextField fx:id="tfCPFMotorista">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
          </TextField>
       
-          <HBox>
-              <Button onAction="#cadastrarCarro" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+         <HBox>
+            <Button onAction="#cadastrarCarro" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
                <font>
                   <Font size="10.0" />
                </font>
@@ -55,7 +59,7 @@
                   <Insets top="4.0" />
                </HBox.margin>
             </Button>
-          </HBox>
+         </HBox>
       
       </VBox>
    </children>

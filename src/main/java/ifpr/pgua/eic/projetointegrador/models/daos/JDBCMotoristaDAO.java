@@ -2,7 +2,12 @@ package ifpr.pgua.eic.projetointegrador.models.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
@@ -31,9 +36,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             pstm.setString(5, String.valueOf(motorista.getData_nascimento()));
             pstm.setInt(6, motorista.getIdade());
             pstm.setString(7, motorista.getCurso());
-            pstm.setInt(8, motorista.getTelefone());
+            pstm.setString(8, motorista.getTelefone());
             pstm.setString(9, motorista.getEndereco());
-            pstm.setInt(10, motorista.getCarteira_motorista());
+            pstm.setString(10, motorista.getCarteira_motorista());
 
             pstm.execute();
 
@@ -70,6 +75,45 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
         } catch(SQLException e) {
             return Result.fail(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Motorista> listAll() {
+        try{
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista");
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Motorista> motoristas = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String cpf = resultSet.getString("cpf");
+                String nome = resultSet.getString("nome");
+                String funcao = resultSet.getString("funcao_IFPR");
+                String senha = resultSet.getString("senha");
+                Date data = resultSet.getDate("data_nascimento");
+                int idade = resultSet.getInt("idade");
+                String curso = resultSet.getString("curso");
+                String telefone = resultSet.getString("telefone");
+                String endereco = resultSet.getString("endereco");
+                String carteira = resultSet.getString("carteira_motorista");
+
+                Motorista motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, telefone, endereco, carteira);
+
+                motoristas.add(motorista);
+            }
+            
+            resultSet.close();
+            pstm.close();
+            con.close();
+            return motoristas;
+
+        }catch(SQLException e ) {
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
         }
     }    
 }

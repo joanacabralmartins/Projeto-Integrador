@@ -58,7 +58,7 @@ public class JanelaCadastroMotorista implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        String[] opcoes = {"Aluno(a)", "Professor(a)", "Outros"};
+        String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setItems(list);
     }
@@ -74,16 +74,19 @@ public class JanelaCadastroMotorista implements Initializable {
         String endereco = taEndereco.getText();
         String funcao = (String) cbFuncao.valueProperty().get();
 
-        Date dataNascimento = Date.valueOf(getDate());
+        LocalDate data = LocalDate.now();
+        int idade = 0;
 
-        int idade = Period.between(getDate(), LocalDate.now()).getYears();
+        if (dpDataNascimento.getValue() != null) {
+            data = dpDataNascimento.getValue();
+            idade = Period.between(data, LocalDate.now()).getYears();
+        }
 
-        int tel = Integer.valueOf(telefone);
-
-        int carteira = Integer.valueOf(carteiraMotorista);
-
-        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, tel, endereco, carteira);
+        Date dataNascimento = Date.valueOf(data);
         
+        //if (telefone.isBlank())
+
+        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult){
@@ -94,11 +97,6 @@ public class JanelaCadastroMotorista implements Initializable {
         alert.showAndWait();
     }
 
-    private LocalDate getDate() {
-        LocalDate data = dpDataNascimento.getValue();
-        return data;
-    }
-
     private void limpar() {
         tfNome.clear();
         tfCPF.clear();
@@ -107,6 +105,8 @@ public class JanelaCadastroMotorista implements Initializable {
         tfTelefone.clear();
         taEndereco.clear();
         pfSenha.clear();
+        dpDataNascimento.setValue(null);
+        cbFuncao.setValue(null);
     }
 
 }

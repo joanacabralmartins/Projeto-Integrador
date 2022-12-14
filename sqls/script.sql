@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS motorista (
     data_nascimento TEXT NOT NULL,
     idade INTEGER NOT NULL,
     curso TEXT NULL,
-    telefone INTEGER NULL,
+    telefone TEXT NULL,
     endereco TEXT NULL,
-    carteira_motorista INTEGER NOT NULL 
+    carteira_motorista TEXT NOT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS carro (
