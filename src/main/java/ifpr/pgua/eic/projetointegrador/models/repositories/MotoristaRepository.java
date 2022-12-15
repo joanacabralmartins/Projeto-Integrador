@@ -1,6 +1,8 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
@@ -8,10 +10,13 @@ import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class MotoristaRepository {
+    private List<Motorista> motoristas;
     private MotoristaDAO dao;
 
     public MotoristaRepository(MotoristaDAO dao) {
         this.dao = dao;
+
+        motoristas = dao.listAll();
     }
 
     public Result adicionarCarro(String placa, String modelo, String cor, String cpf_motorista) {
@@ -32,6 +37,12 @@ public class MotoristaRepository {
     public Result adicionarMotorista(String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco, String carteira) {
         Motorista motorista = new Motorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
+        
+        Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpf)).findFirst();
+        if (busca.isPresent()) {
+            return Result.fail("Motorista já cadastrado!");
+        }
+        
         if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null) {
             return Result.fail("Preencha todos os campos não opcionais!");
         }
