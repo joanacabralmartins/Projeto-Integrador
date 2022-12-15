@@ -39,11 +39,11 @@ public class MotoristaRepository {
         Motorista motorista = new Motorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
         
         Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpf)).findFirst();
-        if (busca.isPresent()) {
+        if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
             return Result.fail("Motorista já cadastrado!");
         }
         
-        if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null) {
+        if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null || carteira == null) {
             return Result.fail("Preencha todos os campos não opcionais!");
         }
 
