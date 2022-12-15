@@ -7,6 +7,7 @@ import java.time.Period;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import javafx.collections.FXCollections;
@@ -33,7 +34,7 @@ public class JanelaCadastroMotorista implements Initializable {
     private PasswordField pfSenha;
 
     @FXML 
-    private ChoiceBox cbFuncao;
+    private ChoiceBox<String> cbFuncao;
 
     @FXML
     private DatePicker dpDataNascimento;
@@ -89,12 +90,17 @@ public class JanelaCadastroMotorista implements Initializable {
         Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
 
-        if(resultado instanceof SuccessResult){
+        if(resultado instanceof SuccessResult) {
             limpar();
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION,msg);
-        alert.showAndWait();
+        if(resultado instanceof FailResult) {
+            Alert alert = new Alert(AlertType.ERROR,msg);
+            alert.showAndWait();
+        }
+
     }
 
     private void limpar() {
