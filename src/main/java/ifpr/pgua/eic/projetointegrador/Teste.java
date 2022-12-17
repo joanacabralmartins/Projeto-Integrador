@@ -1,8 +1,6 @@
 package ifpr.pgua.eic.projetointegrador;
 
-import java.lang.reflect.Array;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;

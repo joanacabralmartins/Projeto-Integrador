@@ -70,6 +70,6 @@
     -fx-image: url("../icons/carona.png");
 }
 
-#imgPontos {
-    -fx-image: url("../icons/pontos.png");
+#imgSolicitacoes {
+    -fx-image: url("../icons/solicitacao.png");
 }
