@@ -73,3 +73,15 @@
 #imgSolicitacoes {
     -fx-image: url("../icons/solicitacao.png");
 }
+
+#imgLogin {
+    -fx-image: url("../icons/login.png");
+}
+
+#imgUserLogin {
+    -fx-image: url("../icons/user_login.png");
+}
+
+#imgSenha {
+    -fx-image: url("../icons/lock.png");
+}
