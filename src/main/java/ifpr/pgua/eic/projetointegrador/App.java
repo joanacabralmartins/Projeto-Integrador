@@ -28,7 +28,7 @@ public class App extends BaseAppNavigator {
 
     @Override
     public String getHome() {
-        return "PRINCIPAL";
+        return "LOGIN";
     }
 
     @Override
