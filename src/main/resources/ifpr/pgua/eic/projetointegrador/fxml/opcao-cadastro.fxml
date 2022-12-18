@@ -49,7 +49,7 @@
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                <children>
 
-                  <Button id="btCadastroMotorista" onAction="#carregaTelaCadastroMotorista" contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Motorista" textFill="#265135">
+                  <Button onAction="#carregaTelaCadastroMotorista" contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Motorista" textFill="#265135">
                      <graphic>
                         <ImageView id="imgMotorista" fitHeight="100.0" fitWidth="100.0">
                         </ImageView>

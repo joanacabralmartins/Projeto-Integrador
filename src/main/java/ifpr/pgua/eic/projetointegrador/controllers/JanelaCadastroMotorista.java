@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -91,9 +92,10 @@ public class JanelaCadastroMotorista implements Initializable {
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
-            limpar();
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+
+            carregarHome();
         }
 
         if(resultado instanceof FailResult) {
@@ -101,6 +103,10 @@ public class JanelaCadastroMotorista implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    private void carregarHome() {
+        App.pushScreen("PRINCIPAL");
     }
 
     private void limpar() {

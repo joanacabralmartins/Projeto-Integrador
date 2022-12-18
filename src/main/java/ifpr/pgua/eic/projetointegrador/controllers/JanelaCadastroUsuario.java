@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -87,9 +88,10 @@ public class JanelaCadastroUsuario implements Initializable {
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
-            limpar();
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+
+            carregarHome();
         }
 
         if(resultado instanceof FailResult) {
@@ -99,15 +101,8 @@ public class JanelaCadastroUsuario implements Initializable {
 
     }
 
-    private void limpar() {
-        tfNome.clear();
-        tfCPF.clear();
-        tfCurso.clear();
-        tfTelefone.clear();
-        taEndereco.clear();
-        pfSenha.clear();
-        dpDataNascimento.setValue(null);
-        cbFuncao.setValue(null);
+    private void carregarHome() {
+        App.pushScreen("PRINCIPAL");
     }
 
 }
