@@ -9,5 +9,6 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 public interface MotoristaDAO {
     Result create(Motorista motorista);
     Result adicionarCarro(Carro carro);
+    Result validarLogin(String cpf, String senha);
     List<Motorista> listAll();
 }

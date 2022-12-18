@@ -24,7 +24,6 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
     @Override
     public Result create(Motorista motorista) {
-
         try {
             Connection con = fabricaConexao.getConnection();
                                     
@@ -55,7 +54,6 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
     @Override
     public Result adicionarCarro(Carro carro) {
-        
         try {
             Connection con = fabricaConexao.getConnection();
 
@@ -81,7 +79,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
     @Override
     public List<Motorista> listAll() {
-        try{
+        try {
             Connection con = fabricaConexao.getConnection();
 
             PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista");
@@ -119,5 +117,28 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             System.out.println(e.getMessage());
             return Collections.emptyList();
         }
+    }
+
+    @Override
+    public Result validarLogin(String cpf, String senha) {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista WHERE cpf=? and senha=?"); 
+
+            pstm.setString(1, cpf);
+            pstm.setString(2, senha);
+
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                return Result.success("Seja bem vindo, " + nome + "!");
+            } else {
+                return Result.fail("Usuário sem cadastro");
+            }
+
+        } catch(SQLException e) {
+            return Result.fail(e.getMessage());
+        }   
     }    
 }

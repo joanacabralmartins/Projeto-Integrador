@@ -64,6 +64,8 @@ public class MotoristaRepository {
         return dao.create(motorista);
     }
 
-    
+    public Result validarLogin(String cpf, String senha) {
+        return dao.validarLogin(cpf, senha);
+    }
 
 }

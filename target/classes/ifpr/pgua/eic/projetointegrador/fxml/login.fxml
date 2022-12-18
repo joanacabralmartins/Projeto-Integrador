@@ -67,7 +67,7 @@
                      </HBox.margin>
                   </ImageView>
 
-                  <TextField prefHeight="24.0" prefWidth="182.0" />
+                  <TextField fx:id="tfUsuario" prefHeight="24.0" prefWidth="182.0" />
                </children>
             </HBox>
 
@@ -88,11 +88,11 @@
                      </HBox.margin>
                   </ImageView>
 
-                  <TextField prefHeight="24.0" prefWidth="182.0" />
+                  <TextField fx:id="tfSenha" prefHeight="24.0" prefWidth="182.0" />
                </children>
             </HBox>
 
-            <Button id="btEntrarLogin" prefHeight="22.0" prefWidth="180.0" text="Entrar">
+            <Button onAction="#logar" id="btEntrarLogin" prefHeight="22.0" prefWidth="180.0" text="Entrar">
                <VBox.margin>
                   <Insets left="223.0" top="15.0" />
                </VBox.margin>
