@@ -1,14 +1,49 @@
 package ifpr.pgua.eic.projetointegrador.models.daos;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class JDBCUsuarioDAO implements UsuarioDAO{
 
+    private FabricaConexoes fabricaConexao;
+
+    public JDBCUsuarioDAO(FabricaConexoes fabricaConexao) {
+        this.fabricaConexao = fabricaConexao;
+    }
+
     @Override
     public Result create(Usuario caroneiro) {
-        // TODO Auto-generated method stub
-        return null;
+
+        try {
+            Connection con = fabricaConexao.getConnection();
+                                    
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO usuario(cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco) VALUES (?,?,?,?,?,?,?,?,?)");
+            
+            pstm.setString(1, caroneiro.getCpf());
+            pstm.setString(2, caroneiro.getNome());
+            pstm.setString(3, caroneiro.getFuncao_IFPR());
+            pstm.setString(4, caroneiro.getSenha());
+            pstm.setString(5, String.valueOf(caroneiro.getData_nascimento()));
+            pstm.setInt(6, caroneiro.getIdade());
+            pstm.setString(7, caroneiro.getCurso());
+            pstm.setString(8, caroneiro.getTelefone());
+            pstm.setString(9, caroneiro.getEndereco());
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+            return Result.success("Usuário cadastrado!");
+
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return Result.fail(e.getMessage());
+        }
     }
     
 }
