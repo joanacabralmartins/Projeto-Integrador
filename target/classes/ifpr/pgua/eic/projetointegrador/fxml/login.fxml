@@ -40,7 +40,7 @@
       <VBox id="centroVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 
          <children>
-            <Text text="Bem vindo(a) ao seu aplicativo de caronas do IFPR Paranaguá." wrappingWidth="218.0">
+            <Text text="Bem vindo(a) ao seu aplicativo de caronas do IFPR Paranaguá." textAlignment="CENTER" wrappingWidth="218.0">
                <VBox.margin>
                   <Insets left="200.0" top="10.0" />
                </VBox.margin>
