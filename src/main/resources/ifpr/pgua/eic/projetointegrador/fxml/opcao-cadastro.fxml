@@ -59,7 +59,7 @@
                      </font>
                   </Button>
 
-                  <Button contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Caroneiro" textFill="#265135">
+                  <Button onAction="#carregaTelaCadastroUsuario" contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Caroneiro" textFill="#265135">
                      <graphic>
                         <ImageView id="imgCaroneiro" fitHeight="100.0" fitWidth="100.0">
                         </ImageView>

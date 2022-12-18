@@ -114,7 +114,7 @@
                </TextArea>
             
                <HBox>
-                  <Button onAction="#cadastrarMotorista" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+                  <Button onAction="#cadastrarUsuario" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
                      <font>
                         <Font size="10.0" />
                      </font>
