@@ -13,10 +13,10 @@ import javafx.scene.control.Alert.AlertType;
 
 public class JanelaLogin extends BaseController {
 
-    @FXML 
+    @FXML
     private TextField tfUsuario;
 
-    @FXML 
+    @FXML
     private TextField tfSenha;
 
     private MotoristaRepository repositorioM;
@@ -35,12 +35,13 @@ public class JanelaLogin extends BaseController {
         Result resultado = repositorioM.validarLogin(cpf, senha);
         String msg = resultado.getMsg();
 
-        if(resultado instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION,msg);
+        if (resultado instanceof SuccessResult) {
+            Alert alert = new Alert(AlertType.INFORMATION, msg);
             alert.showAndWait();
+            App.pushScreen("PRINCIPAL");
         }
     }
-    
+
     @FXML
     private void carregaTelaOpcaoCadastro(ActionEvent evento) {
         App.pushScreen("OPCAO CADASTRO");
