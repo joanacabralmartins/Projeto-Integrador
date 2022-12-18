@@ -16,7 +16,7 @@
    stylesheets="@../CSS/styles.css" 
    xmlns="http://javafx.com/javafx/19" 
    xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal">
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin">
 
    <left>
       <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" BorderPane.alignment="CENTER">      
@@ -27,27 +27,6 @@
                   <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
                   </ImageView>
                </graphic>
-            </Button>
-
-            <Button id="btCarro" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#carregaTelaCadastroCarro" prefHeight="24.0" prefWidth="120.0" text="Carros" visible="false">
-               <graphic>
-                  <ImageView id="imgCarro" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
-                  </ImageView>
-               </graphic>
-            </Button>
-
-            <Button id="btCarona" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Caronas" visible="false">
-               <graphic>
-                  <ImageView id="imgCarona" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
-                  </ImageView>
-               </graphic>                  
-            </Button>
-
-            <Button id="btPontos" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Solicitações" visible="false">            
-               <graphic>
-                  <ImageView id="imgSolicitacoes" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
-                  </ImageView>
-               </graphic>                
             </Button>
 
          </children>
@@ -151,7 +130,7 @@
                      </HBox.margin>
                   </Text>
 
-                  <Button prefHeight="22.0" prefWidth="75.0" style="-fx-background-color: f4f4f4;" text="Cadastrar" textFill="#072609">
+                  <Button onAction="#carregaTelaOpcaoCadastro" prefHeight="22.0" prefWidth="75.0" style="-fx-background-color: f4f4f4;" text="Cadastrar" textFill="#072609">
                      <font>
                         <Font name="System Bold" size="10.0" />
                      </font>
@@ -173,7 +152,7 @@
                   <Insets left="245.0" />
                </VBox.margin>
             </Button>
-            
+
          </children>
          <BorderPane.margin>
             <Insets />

@@ -85,3 +85,11 @@
 #imgSenha {
     -fx-image: url("../icons/lock.png");
 }
+
+#imgMotorista {
+    -fx-image: url("../icons/motorista.png");
+}
+
+#imgCaroneiro {
+    -fx-image: url("../icons/caroneiro.png");
+}
