@@ -150,7 +150,7 @@
       <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" BorderPane.alignment="CENTER">
          
          <children>
-            <Button id="btHome" alignment="BASELINE_LEFT" graphicTextGap="7.0" prefHeight="26.0" prefWidth="145.0" text="Home">
+            <Button onAction="#carregarTelaLogin" id="btHome" alignment="BASELINE_LEFT" graphicTextGap="7.0" prefHeight="26.0" prefWidth="145.0" text="Home">
                <graphic>
                   <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0"> 
                   </ImageView>
