@@ -6,7 +6,7 @@
 #btUser,
 #btCarro,
 #btCarona,
-#btPontos {
+#btSolicitacoes {
     -fx-background-color: transparent;
 
     -fx-text-fill: white;
@@ -22,10 +22,19 @@
 #btUser:hover,
 #btCarro:hover,
 #btCarona:hover,
-#btPontos:hover {
+#btSolicitacoes:hover {
     -fx-background-color: #154d1e;
 
     -fx-alignment: CENTER;
+}
+
+#btEntrarLogin {
+    -fx-text-fill: white;
+    -fx-background-color: #072609;
+
+    -fx-font-size: 11px;
+
+    -fx-background-radius: 5;
 }
 
 #menuVBox {
@@ -42,6 +51,11 @@
 
 #centroVBox {
     -fx-padding: 25 0 0 0;
+}
+
+#logo {
+    -fx-font-family: 'Gargi';
+    -fx-font-size: 15px;
 }
 
 #scrollPaneCM{

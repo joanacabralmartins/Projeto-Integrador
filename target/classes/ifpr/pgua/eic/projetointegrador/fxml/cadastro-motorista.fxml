@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -16,11 +17,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista">
+   
    <center>
-      <ScrollPane id="scrollPaneCM" stylesheets="@../CSS/styles.css">
-      
+      <ScrollPane id="scrollPaneCM" stylesheets="@../CSS/styles.css">      
          <content>
       
             <VBox spacing="5.0">
@@ -141,26 +141,19 @@
             </VBox>
       
          </content>
-      
       </ScrollPane>
    </center>
+
    <left>
-      <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" style="-fx-background-color: #2b9f3f;" BorderPane.alignment="CENTER">
+      <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" BorderPane.alignment="CENTER">
+         
          <children>
-            <Button id="btHome" alignment="BASELINE_LEFT" graphicTextGap="7.0" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #2b9f3f;" text="Home" textFill="WHITE">
+            <Button id="btHome" alignment="BASELINE_LEFT" graphicTextGap="7.0" prefHeight="26.0" prefWidth="145.0" text="Home">
                <graphic>
-                  <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../icons/home.png" />
-                     </image>
+                  <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0"> 
                   </ImageView>
                </graphic>
-               <font>
-                  <Font size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+               
                <padding>
                   <Insets left="45.0" />
                </padding>
@@ -168,4 +161,5 @@
          </children>
       </VBox>
    </left>
+   
 </BorderPane>

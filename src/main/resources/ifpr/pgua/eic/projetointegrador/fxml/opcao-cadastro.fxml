@@ -51,7 +51,7 @@
 
                   <Button id="btCadastroMotorista" onAction="#carregaTelaCadastroMotorista" contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Motorista" textFill="#265135">
                      <graphic>
-                        <ImageView id="imgMotorista" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="imgMotorista" fitHeight="100.0" fitWidth="100.0">
                         </ImageView>
                      </graphic>
                      <font>
@@ -61,7 +61,7 @@
 
                   <Button contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Caroneiro" textFill="#265135">
                      <graphic>
-                        <ImageView id="imgCaroneiro" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="imgCaroneiro" fitHeight="100.0" fitWidth="100.0">
                         </ImageView>
                      </graphic>
                      <font>
@@ -79,6 +79,4 @@
 
       </VBox>
    </center>
-   
-
 </BorderPane>

@@ -23,35 +23,35 @@
 
             <Button id="btHome" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Home">   
                <graphic>
-                  <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                  <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>
                </graphic>
             </Button>
                   
             <Button id="btUser" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#carregaTelaCadastroMotorista" prefHeight="24.0" prefWidth="120.0" text="Usuário"> 
                <graphic>
-                  <ImageView id="imgUser" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                  <ImageView id="imgUser" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>
                </graphic>     
             </Button>
 
             <Button id="btCarro" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#carregaTelaCadastroCarro" prefHeight="24.0" prefWidth="120.0" text="Carros">
                <graphic>
-                  <ImageView id="imgCarro" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                  <ImageView id="imgCarro" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>
                </graphic>
             </Button>
 
             <Button id="btCarona" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Caronas">
                <graphic>
-                  <ImageView id="imgCarona" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                  <ImageView id="imgCarona" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>
                </graphic>                  
             </Button>
 
-            <Button id="btPontos" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Solicitações">            
+            <Button id="btSolicitacoes" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="120.0" text="Solicitações">            
                <graphic>
-                  <ImageView id="imgSolicitacoes" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                  <ImageView id="imgSolicitacoes" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>
                </graphic>                
             </Button>
@@ -66,7 +66,7 @@
             
             <Label text="IFCAR">
                <graphic>
-                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true">
+                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0">
                   </ImageView>
                </graphic>
 

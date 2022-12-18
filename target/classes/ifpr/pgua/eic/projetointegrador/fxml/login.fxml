@@ -25,18 +25,11 @@
    <top>
       <HBox id="topoHBox" alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            
-            <Label text="IFCAR">
+            <Label id="logo" text="IFCAR">
                <graphic>
-                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true">
-                  </ImageView>
+                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0"/>
                </graphic>
-
-               <font>
-                  <Font name="Gargi" size="15.0" />
-               </font>
             </Label>
-
          </children>
       </HBox>
    </top>
@@ -99,10 +92,7 @@
                </children>
             </HBox>
 
-            <Button prefHeight="22.0" prefWidth="180.0" style="-fx-background-color: #072609;" text="Entrar" textFill="WHITE">
-               <font>
-                  <Font size="11.0" />
-               </font>
+            <Button id="btEntrarLogin" prefHeight="22.0" prefWidth="180.0" text="Entrar">
                <VBox.margin>
                   <Insets left="223.0" top="15.0" />
                </VBox.margin>
@@ -119,14 +109,15 @@
                      </HBox.margin>
                   </Text>
 
-                  <Button onAction="#carregaTelaOpcaoCadastro" prefHeight="22.0" prefWidth="75.0" style="-fx-background-color: f4f4f4;" text="Cadastrar" textFill="#072609">
+                  <Button onAction="#carregaTelaOpcaoCadastro" prefHeight="22.0" prefWidth="75.0" text="Cadastrar" style="-fx-background-color: f4f4f4;" textFill="#072609">
                      <font>
-                        <Font name="System Bold" size="10.0" />
+                        <Font name="System Bold" size="10.0"/>
                      </font>
                      <HBox.margin>
                         <Insets left="-2.0" />
                      </HBox.margin>
                   </Button>
+
                </children>
                <VBox.margin>
                   <Insets top="30.0" />
@@ -135,7 +126,7 @@
 
             <Button prefHeight="22.0" prefWidth="140.0" style="-fx-background-color: f4f4f4;" text="Esqueceu sua senha?" textFill="#072609">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font name="System Bold" size="10.0"/>
                </font>
                <VBox.margin>
                   <Insets left="245.0" />
@@ -143,10 +134,6 @@
             </Button>
 
          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-
       </VBox>
    </center>
 </BorderPane>
