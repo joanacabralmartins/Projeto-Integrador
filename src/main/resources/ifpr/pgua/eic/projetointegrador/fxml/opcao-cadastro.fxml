@@ -10,15 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro">
+<BorderPane prefHeight="500.0" 
+   prefWidth="800.0" 
+   stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/19" 
+   xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro">
 
    <top>
       <HBox id="topoHBox" alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="IFCAR">
                <graphic>
-                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" />
+                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0"/>
                </graphic>
+
                <font>
                   <Font name="Gargi" size="15.0" />
                </font>
@@ -42,7 +48,8 @@
 
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                <children>
-                  <Button contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Motorista" textFill="#265135">
+
+                  <Button id="btCadastroMotorista" onAction="#carregaTelaCadastroMotorista" contentDisplay="TOP" style="-fx-background-color: #f4f4f4;" text="Motorista" textFill="#265135">
                      <graphic>
                         <ImageView id="imgMotorista" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                         </ImageView>

@@ -9,129 +9,163 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane id="scrollPaneCM" 
-   stylesheets="@../CSS/styles.css" 
-   xmlns="http://javafx.com/javafx/18" 
-   xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista">
 
-   <content>
-
-      <VBox spacing="5.0">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista">
+   <center>
+      <ScrollPane id="scrollPaneCM" stylesheets="@../CSS/styles.css">
       
-         <Label text="Nome">
-            <VBox.margin>
-               <Insets bottom="-2.0" />
-            </VBox.margin></Label>
-         <TextField fx:id="tfNome" prefWidth="120.0">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextField>
+         <content>
       
-         <Label text="CPF">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin>
-         </Label>
-         <TextField fx:id="tfCPF">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextField>
+            <VBox spacing="5.0">
+            
+               <Label text="Nome">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="tfNome" prefWidth="120.0">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextField>
+            
+               <Label text="CPF">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="tfCPF">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextField>
+            
+               <Label text="Senha">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <PasswordField fx:id="pfSenha">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </PasswordField>
+            
+               <Label text="Função no câmpus">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <ChoiceBox fx:id="cbFuncao" prefHeight="24.0" prefWidth="306.0">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </ChoiceBox>
       
-         <Label text="Senha">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <PasswordField fx:id="pfSenha">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </PasswordField>
+               <Label text="Data de nascimento">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <DatePicker fx:id="dpDataNascimento" prefHeight="24.0" prefWidth="306.0">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </DatePicker>
       
-         <Label text="Função no câmpus">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <ChoiceBox fx:id="cbFuncao" prefHeight="24.0" prefWidth="306.0">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </ChoiceBox>
-
-         <Label text="Data de nascimento">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <DatePicker fx:id="dpDataNascimento" prefHeight="24.0" prefWidth="306.0">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </DatePicker>
-
-         <Label text="Carteira de motorista">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin>
-         </Label>
-         <TextField fx:id="tfCarteiraMotorista">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextField>
-
-         <Label text="Curso (opcional)">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <TextField fx:id="tfCurso">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextField>
-
-         <Label text="Telefone (opcional)">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <TextField fx:id="tfTelefone">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextField>
-
-         <Label text="Endereço (opcional)">
-            <VBox.margin>
-               <Insets bottom="-2.0" top="6.0" />
-            </VBox.margin></Label>
-         <TextArea fx:id="taEndereco" prefHeight="38.0" prefWidth="306.0">
-            <VBox.margin>
-               <Insets right="200.0" />
-            </VBox.margin>
-         </TextArea>
+               <Label text="Carteira de motorista">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="tfCarteiraMotorista">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextField>
       
-         <HBox>
-            <Button onAction="#cadastrarMotorista" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+               <Label text="Curso (opcional)">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="tfCurso">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextField>
+      
+               <Label text="Telefone (opcional)">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <TextField fx:id="tfTelefone">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextField>
+      
+               <Label text="Endereço (opcional)">
+                  <VBox.margin>
+                     <Insets bottom="-2.0" top="6.0" />
+                  </VBox.margin>
+               </Label>
+               <TextArea fx:id="taEndereco" prefHeight="38.0" prefWidth="306.0">
+                  <VBox.margin>
+                     <Insets right="200.0" />
+                  </VBox.margin>
+               </TextArea>
+            
+               <HBox>
+                  <Button onAction="#cadastrarMotorista" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Button> 
+               </HBox>
+               <padding>
+                  <Insets left="150.0" top="40.0" />
+               </padding>
+            
+            </VBox>
+      
+         </content>
+      
+      </ScrollPane>
+   </center>
+   <left>
+      <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" style="-fx-background-color: #2b9f3f;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="btHome" alignment="BASELINE_LEFT" graphicTextGap="7.0" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #2b9f3f;" text="Home" textFill="WHITE">
+               <graphic>
+                  <ImageView id="imgHome" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../icons/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <font>
-                  <Font size="10.0" />
+                  <Font size="12.0" />
                </font>
-               <HBox.margin>
-                  <Insets top="4.0" />
-               </HBox.margin>
-            </Button> 
-         </HBox>
-         <padding>
-            <Insets left="150.0" top="40.0" />
-         </padding>
-      
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="45.0" />
+               </padding>
+            </Button>
+         </children>
       </VBox>
-
-   </content>
-
-</ScrollPane>
+   </left>
+</BorderPane>
