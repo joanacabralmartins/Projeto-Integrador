@@ -2,6 +2,7 @@ package ifpr.pgua.eic.projetointegrador.models.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
@@ -44,6 +45,30 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
         }
+    }
+
+    @Override
+    public Result validarLogin(String cpf, String senha) {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=?"); 
+
+            pstm.setString(1, cpf);
+            pstm.setString(2, senha);
+
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                return Result.success("Seja bem vindo, " + nome + "!");
+            } else {
+                return Result.fail("Usuário sem cadastro");
+            }
+
+        } catch(SQLException e) {
+            return Result.fail(e.getMessage());
+        }   
+          
     }
     
 }

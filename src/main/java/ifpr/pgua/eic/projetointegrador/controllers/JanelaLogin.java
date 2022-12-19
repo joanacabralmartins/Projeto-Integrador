@@ -32,13 +32,24 @@ public class JanelaLogin extends BaseController {
         String cpf = tfUsuario.getText();
         String senha = tfSenha.getText();
 
-        Result resultado = repositorioM.validarLogin(cpf, senha);
-        String msg = resultado.getMsg();
+        Result resultadoMotorista = repositorioM.validarLogin(cpf, senha);
+        String msgM = resultadoMotorista.getMsg();
+        Result resultadoUsuario = repositorioU.validarLogin(cpf, senha);
+        String msgU = resultadoUsuario.getMsg();
 
-        if (resultado instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION, msg);
+        if (resultadoMotorista instanceof SuccessResult) {
+            Alert alert = new Alert(AlertType.INFORMATION, msgM);
             alert.showAndWait();
             App.pushScreen("PRINCIPAL");
+        }
+        if (resultadoUsuario instanceof SuccessResult) {
+            Alert alert = new Alert(AlertType.INFORMATION, msgU);
+            alert.showAndWait();
+            App.pushScreen("PRINCIPAL");
+        }
+        else {
+            Alert alert = new Alert(AlertType.ERROR, "Usuário não cadastrado!");
+            alert.showAndWait();
         }
     }
 

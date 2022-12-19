@@ -37,5 +37,9 @@ public class UsuarioRepository {
 
         return dao.create(caroneiro);
     }
+
+    public Result validarLogin(String cpf, String senha) {
+        return dao.validarLogin(cpf, senha);
+    }
     
 }
