@@ -110,22 +110,9 @@ public class JanelaCadastroMotorista implements Initializable {
         App.pushScreen("PRINCIPAL");
     }
 
-
     @FXML
     private void carregarTelaLogin(ActionEvent event) {
         App.pushScreen("LOGIN");
-    }
-
-    private void limpar() {
-        tfNome.clear();
-        tfCPF.clear();
-        tfCarteiraMotorista.clear();
-        tfCurso.clear();
-        tfTelefone.clear();
-        taEndereco.clear();
-        pfSenha.clear();
-        dpDataNascimento.setValue(null);
-        cbFuncao.setValue(null);
     }
 
 }

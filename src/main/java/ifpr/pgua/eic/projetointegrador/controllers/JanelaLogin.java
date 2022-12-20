@@ -29,6 +29,17 @@ public class JanelaLogin extends BaseController {
 
     @FXML
     private void logar(ActionEvent evento) {
+        if (tfUsuario.getText().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR, "Preencha os campos necessários!");
+            alert.showAndWait();
+            return;
+        }
+        if (tfSenha.getText().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR, "Preencha os campos necessários!");
+            alert.showAndWait();
+            return;
+        }
+
         String cpf = tfUsuario.getText();
         String senha = tfSenha.getText();
 
