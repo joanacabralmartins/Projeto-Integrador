@@ -6,6 +6,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipalCaroneiro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
@@ -50,8 +51,12 @@ public class App extends BaseAppNavigator {
 
     @Override
     public void registrarTelas() {
-        registraTela("PRINCIPAL",
+        registraTela("PRINCIPAL MOTORISTA",
                 new ScreenRegistryFXML(getClass(), "fxml/base.fxml", (o) -> new JanelaPrincipal()));
+
+        registraTela("PRINCIPAL CARONEIRO",
+                new ScreenRegistryFXML(getClass(), "fxml/base-caroneiro.fxml", (o) -> new JanelaPrincipalCaroneiro()));
+
 
         registraTela("USUARIO",
                 new ScreenRegistryFXML(getClass(), "fxml/usuario.fxml", (o) -> new JanelaUsuario()));
