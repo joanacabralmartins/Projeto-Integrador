@@ -41,5 +41,9 @@ public class UsuarioRepository {
     public Result validarLogin(String cpf, String senha) {
         return dao.validarLogin(cpf, senha);
     }
+
+    public Usuario getUser() {
+        return dao.getUser();
+    }
     
 }

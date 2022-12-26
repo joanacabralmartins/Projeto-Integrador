@@ -17,6 +17,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class JDBCMotoristaDAO implements MotoristaDAO {
     private FabricaConexoes fabricaConexao;
+    private Motorista motorista;
 
     public JDBCMotoristaDAO(FabricaConexoes fabricaConexao) {
         this.fabricaConexao = fabricaConexao;
@@ -132,7 +133,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 String nome = rs.getString("nome");
-                return Result.success("Seja bem vindo, " + nome + "!");
+                String funcao = rs.getString("funcao_IFPR");
+                motorista = new Motorista(cpf, nome, funcao, senha, null, 0, cpf, senha, nome, funcao);
+                return Result.success("Seja bem vindo(a)!");
             } else {
                 return Result.fail("Usuário sem cadastro");
             }
@@ -140,5 +143,10 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         } catch(SQLException e) {
             return Result.fail(e.getMessage());
         }   
+    }
+
+    @Override
+    public Motorista getUser() {
+        return motorista;
     }    
 }

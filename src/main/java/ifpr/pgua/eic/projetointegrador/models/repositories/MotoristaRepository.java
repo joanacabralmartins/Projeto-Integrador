@@ -68,4 +68,8 @@ public class MotoristaRepository {
         return dao.validarLogin(cpf, senha);
     }
 
+    public Motorista getUser() {
+        return dao.getUser();
+    }
+
 }

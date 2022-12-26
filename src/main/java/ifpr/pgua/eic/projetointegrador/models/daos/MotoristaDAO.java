@@ -11,4 +11,5 @@ public interface MotoristaDAO {
     Result adicionarCarro(Carro carro);
     Result validarLogin(String cpf, String senha);
     List<Motorista> listAll();
+    Motorista getUser();
 }

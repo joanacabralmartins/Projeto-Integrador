@@ -12,6 +12,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 public class JDBCUsuarioDAO implements UsuarioDAO{
 
     private FabricaConexoes fabricaConexao;
+    private Usuario usuario;
 
     public JDBCUsuarioDAO(FabricaConexoes fabricaConexao) {
         this.fabricaConexao = fabricaConexao;
@@ -60,7 +61,9 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
                 String nome = rs.getString("nome");
-                return Result.success("Seja bem vindo, " + nome + "!");
+                String funcao = rs.getString("funcao_IFPR");
+                usuario = new Usuario(cpf, nome, funcao, senha, null, 0, senha, nome, funcao);
+                return Result.success("Seja bem vindo(a)!");
             } else {
                 return Result.fail("Usuário sem cadastro");
             }
@@ -69,6 +72,11 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             return Result.fail(e.getMessage());
         }   
           
+    }
+
+    @Override
+    public Usuario getUser() {
+        return usuario;
     }
     
 }
