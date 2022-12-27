@@ -43,7 +43,7 @@
 
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button text="Editar Dados">
+                  <Button onAction="#carregaTelaEditarUsuario" style="-fx-background-radius: 6;" text="Editar Dados">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -56,7 +56,7 @@
 
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button text="Excluir conta">
+                  <Button style="-fx-background-radius: 6;" text="Excluir conta">
                      <font>
                         <Font size="12.0" />
                      </font>

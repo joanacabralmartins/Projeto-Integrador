@@ -8,6 +8,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -17,7 +18,7 @@ public class JanelaLogin extends BaseController {
     private TextField tfUsuario;
 
     @FXML
-    private TextField tfSenha;
+    private PasswordField pfSenha;
 
     private MotoristaRepository repositorioM;
     private UsuarioRepository repositorioU;
@@ -34,14 +35,14 @@ public class JanelaLogin extends BaseController {
             alert.showAndWait();
             return;
         }
-        if (tfSenha.getText().isEmpty()) {
+        if (pfSenha.getText().isEmpty()) {
             Alert alert = new Alert(AlertType.ERROR, "Preencha os campos necessários!");
             alert.showAndWait();
             return;
         }
 
         String cpf = tfUsuario.getText();
-        String senha = tfSenha.getText();
+        String senha = pfSenha.getText();
 
         Result resultadoMotorista = repositorioM.validarLogin(cpf, senha);
         String msgM = resultadoMotorista.getMsg();

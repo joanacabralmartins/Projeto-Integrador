@@ -3,6 +3,8 @@ package ifpr.pgua.eic.projetointegrador;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
@@ -57,9 +59,14 @@ public class App extends BaseAppNavigator {
         registraTela("PRINCIPAL CARONEIRO",
                 new ScreenRegistryFXML(getClass(), "fxml/base-caroneiro.fxml", (o) -> new JanelaPrincipalCaroneiro()));
 
-
         registraTela("USUARIO",
                 new ScreenRegistryFXML(getClass(), "fxml/usuario.fxml", (o) -> new JanelaUsuario(motoristaRepository, usuarioRepository)));
+
+        registraTela("EDITAR USUARIO",
+                new ScreenRegistryFXML(getClass(), "fxml/editar-usuario.fxml", (o) -> new JanelaEditarUsuario(usuarioRepository)));
+
+        registraTela("EDITAR MOTORISTA",
+                new ScreenRegistryFXML(getClass(), "fxml/editar-motorista.fxml", (o) -> new JanelaEditarMotorista(motoristaRepository)));
 
         registraTela("LOGIN",
                 new ScreenRegistryFXML(getClass(), "fxml/login.fxml", (o) -> new JanelaLogin(motoristaRepository, usuarioRepository)));

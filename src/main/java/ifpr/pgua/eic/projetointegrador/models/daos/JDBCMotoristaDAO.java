@@ -134,7 +134,13 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             if (rs.next()) {
                 String nome = rs.getString("nome");
                 String funcao = rs.getString("funcao_IFPR");
-                motorista = new Motorista(cpf, nome, funcao, senha, null, 0, cpf, senha, nome, funcao);
+                String carteira = rs.getString("carteira_motorista");
+                String curso = rs.getString("curso");
+                String tel = rs.getString("telefone");
+                String endereco = rs.getString("endereco");
+                int idade = rs.getInt("idade");
+                motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, tel, endereco, carteira);
+
                 return Result.success("Seja bem vindo(a)!");
             } else {
                 return Result.fail("Usuário sem cadastro");
