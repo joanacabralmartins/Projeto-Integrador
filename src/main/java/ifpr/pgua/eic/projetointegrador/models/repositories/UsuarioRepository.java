@@ -38,6 +38,10 @@ public class UsuarioRepository {
         return dao.create(caroneiro);
     }
 
+    public Result editarUsuario(String cpf, String cpfNovo, String nome, String senha, String curso, String telefone, String endereco) {
+        return dao.update(cpf, cpfNovo, nome, senha, curso, telefone, endereco);
+    }
+
     public Result validarLogin(String cpf, String senha) {
         return dao.validarLogin(cpf, senha);
     }

@@ -68,20 +68,46 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
                 int idade = rs.getInt("idade");
                 usuario = new Usuario(cpf, nome, funcao, senha, null, idade, curso, tel, endereco);
                 
+                pstm.close();
+                con.close();
                 return Result.success("Seja bem vindo(a)!");
             } else {
                 return Result.fail("Usuário sem cadastro");
             }
-
         } catch(SQLException e) {
             return Result.fail(e.getMessage());
         }   
-          
+    }
+
+    @Override
+    public Result update(String cpf, String cpfNovo, String nome, String senha, String curso, String telefone, String endereco) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE usuario set cpf=?, nome=?, senha=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
+            
+            pstm.setString(1, cpfNovo);
+            pstm.setString(2, nome);
+            pstm.setString(3, senha);
+            pstm.setString(4, curso);
+            pstm.setString(5, telefone);
+            pstm.setString(6, endereco);
+            pstm.setString(7, cpf);
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+
+            return Result.success("Usuário atualizado com sucesso!");
+
+        } catch(SQLException e){
+            return Result.fail(e.getMessage());
+        }
     }
 
     @Override
     public Usuario getUser() {
         return usuario;
-    }
-    
+    }    
 }
