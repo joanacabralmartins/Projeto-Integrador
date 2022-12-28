@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" 
+          xmlns="http://javafx.com/javafx/18" 
+          xmlns:fx="http://javafx.com/fxml/1">
+
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
+  </columnConstraints>
+
+  <rowConstraints>
+    <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints prefHeight="350.0" vgrow="SOMETIMES" />
+      <RowConstraints prefHeight="20.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+
+    <children>
+
+      <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="440.0" 
+      GridPane.columnIndex="1" GridPane.rowIndex="1">
+
+         <children>
+            <Label text="Caronas ofertadas" />
+
+              <TableView prefHeight="345.0" prefWidth="520.0">
+                <columns>
+                  <TableColumn prefWidth="70.0" text="Origem" />
+                  <TableColumn prefWidth="70.0" text="Destino" />
+                    <TableColumn prefWidth="115.0" text="Pontos de Parada" />
+                    <TableColumn prefWidth="75.0" text="Passageiros" />
+                    <TableColumn prefWidth="70.0" text="Carro" />
+                    <TableColumn prefWidth="65.0" text="Data" />
+                    <TableColumn prefWidth="55.0" text="Horário" />
+                </columns>
+              </TableView>
+
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               
+               <children>
+                  <Button text="Criar Carona" />
+                  <Button text="Editar Carona" />
+                  <Button text="Excluir Carona" />
+               </children>
+
+            </HBox>
+
+         </children>
+
+      </VBox>
+
+    </children>
+
+</GridPane>
