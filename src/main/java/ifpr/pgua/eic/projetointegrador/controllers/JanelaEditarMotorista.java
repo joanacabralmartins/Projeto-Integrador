@@ -1,15 +1,23 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -22,6 +30,12 @@ public class JanelaEditarMotorista implements Initializable {
 
     @FXML
     private TextField tfCPF;
+
+    @FXML 
+    private ChoiceBox<String> cbFuncao;
+
+    @FXML
+    private DatePicker dpDataNascimento;
 
     @FXML
     private TextField tfCarteiraMotorista;
@@ -57,6 +71,15 @@ public class JanelaEditarMotorista implements Initializable {
         String curso = repositorio.getUser().getCurso();
         String telefone = repositorio.getUser().getTelefone();
         String endereco = repositorio.getUser().getEndereco();
+        String funcao = repositorio.getUser().getFuncao_IFPR();
+        //Date dataNascimento = repositorio.getUser().getData_nascimento();
+
+        String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
+        ObservableList<String> list = FXCollections.observableArrayList(opcoes);
+        cbFuncao.setValue(funcao);
+        cbFuncao.setItems(list);
+
+        dpDataNascimento.setValue(LocalDate.of(2004, 01, 01));
         
         tfCPF.setText(cpf);
         tfCarteiraMotorista.setText(carteira);
@@ -77,7 +100,17 @@ public class JanelaEditarMotorista implements Initializable {
         String telefone = tfTelefone.getText();
         String endereco = taEndereco.getText();
 
-        Result resultado = repositorio.editarMotorista(cpf, cpfNovo, carteira, nome, senha, curso, telefone, endereco);
+        LocalDate data = LocalDate.now();
+        int idade = 0;
+
+        if (dpDataNascimento.getValue() != null) {
+            data = dpDataNascimento.getValue();
+            idade = Period.between(data, LocalDate.now()).getYears();
+        }
+
+        Date dataNascimento = Date.valueOf(data);
+
+        Result resultado = repositorio.editarMotorista(cpf, cpfNovo, carteira, nome, senha, curso, telefone, endereco);//botar data, idade e funcao
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {

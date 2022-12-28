@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
@@ -8,9 +9,13 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,6 +31,12 @@ public class JanelaEditarUsuario implements Initializable {
 
     @FXML
     private TextField tfIdade;
+
+    @FXML 
+    private ChoiceBox<String> cbFuncao;
+
+    @FXML
+    private DatePicker dpDataNascimento;
 
     @FXML
     private PasswordField pfSenha;
@@ -54,6 +65,15 @@ public class JanelaEditarUsuario implements Initializable {
         String curso = repositorio.getUser().getCurso();
         String telefone = repositorio.getUser().getTelefone();
         String endereco = repositorio.getUser().getEndereco();
+        String funcao = repositorio.getUser().getFuncao_IFPR();
+        //Date dataNascimento = repositorio.getUser().getData_nascimento();
+
+        String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
+        ObservableList<String> list = FXCollections.observableArrayList(opcoes);
+        cbFuncao.setValue(funcao);
+        cbFuncao.setItems(list);
+
+        dpDataNascimento.setValue(LocalDate.of(2004, 01, 01));
         
         tfCPF.setText(cpf);
         tfNome.setText(nome);
@@ -72,7 +92,7 @@ public class JanelaEditarUsuario implements Initializable {
         String telefone = tfTelefone.getText();
         String endereco = taEndereco.getText();
 
-        Result resultado = repositorio.editarUsuario(cpf, cpfNovo, nome, senha, curso, telefone, endereco);
+        Result resultado = repositorio.editarUsuario(cpf, cpfNovo, nome, senha, curso, telefone, endereco);//editar nascimento, idade e funcao
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
