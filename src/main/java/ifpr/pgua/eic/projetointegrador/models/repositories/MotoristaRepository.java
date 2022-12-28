@@ -64,6 +64,10 @@ public class MotoristaRepository {
         return dao.create(motorista);
     }
 
+    public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String senha, String curso, String telefone, String endereco) {
+        return dao.update(cpf, cpfNovo, carteira, nome, senha, curso, telefone, endereco);
+    }
+
     public Result validarLogin(String cpf, String senha) {
         return dao.validarLogin(cpf, senha);
     }

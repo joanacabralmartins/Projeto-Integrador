@@ -141,6 +141,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 int idade = rs.getInt("idade");
                 motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, tel, endereco, carteira);
 
+                pstm.close();
+                con.close();
+                
                 return Result.success("Seja bem vindo(a)!");
             } else {
                 return Result.fail("Usuário sem cadastro");
@@ -149,6 +152,34 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         } catch(SQLException e) {
             return Result.fail(e.getMessage());
         }   
+    }
+
+    @Override
+    public Result update(String cpf, String cpfNovo, String carteira, String nome, String senha, String curso, String telefone, String endereco) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE motorista set cpf=?, carteira_motorista=?, nome=?, senha=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
+            
+            pstm.setString(1, cpfNovo);
+            pstm.setString(2, carteira);
+            pstm.setString(3, nome);
+            pstm.setString(4, senha);
+            pstm.setString(5, curso);
+            pstm.setString(6, telefone);
+            pstm.setString(7, endereco);
+            pstm.setString(8, cpf);
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+
+            return Result.success("Usuário atualizado com sucesso!");
+
+        } catch(SQLException e){
+            return Result.fail(e.getMessage());
+        }
     }
 
     @Override

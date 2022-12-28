@@ -124,7 +124,7 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista
                </TextArea>
             
                <HBox>
-                  <Button prefHeight="22.0" prefWidth="64.0" text="Enviar">
+                  <Button onAction="#editarMotorista" prefHeight="22.0" prefWidth="64.0" text="Enviar">
                      <font>
                         <Font size="11.0" />
                      </font>
