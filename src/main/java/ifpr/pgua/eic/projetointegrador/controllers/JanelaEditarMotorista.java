@@ -4,7 +4,10 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
@@ -72,14 +75,20 @@ public class JanelaEditarMotorista implements Initializable {
         String telefone = repositorio.getUser().getTelefone();
         String endereco = repositorio.getUser().getEndereco();
         String funcao = repositorio.getUser().getFuncao_IFPR();
-        //Date dataNascimento = repositorio.getUser().getData_nascimento();
+        Date dataNascimento = repositorio.getUser().getData_nascimento();
 
         String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setValue(funcao);
         cbFuncao.setItems(list);
 
-        dpDataNascimento.setValue(LocalDate.of(2004, 01, 01));
+        Calendar calend = Calendar.getInstance(TimeZone.getTimeZone("America/Sao_Paulo"));
+        calend.setTime(dataNascimento);
+        int ano = calend.get(Calendar.YEAR);
+        int mes = calend.get(Calendar.MONTH);
+        int dia = calend.get(Calendar.DAY_OF_MONTH);
+
+        dpDataNascimento.setValue(LocalDate.of(ano, mes + 1, dia));
         
         tfCPF.setText(cpf);
         tfCarteiraMotorista.setText(carteira);

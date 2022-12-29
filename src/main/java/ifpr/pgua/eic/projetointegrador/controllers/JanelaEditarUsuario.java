@@ -2,7 +2,10 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
@@ -66,14 +69,20 @@ public class JanelaEditarUsuario implements Initializable {
         String telefone = repositorio.getUser().getTelefone();
         String endereco = repositorio.getUser().getEndereco();
         String funcao = repositorio.getUser().getFuncao_IFPR();
-        //Date dataNascimento = repositorio.getUser().getData_nascimento();
+        Date dataNascimento = repositorio.getUser().getData_nascimento();
 
         String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
         cbFuncao.setValue(funcao);
         cbFuncao.setItems(list);
 
-        dpDataNascimento.setValue(LocalDate.of(2004, 01, 01));
+        Calendar calend = Calendar.getInstance(TimeZone.getTimeZone("America/Sao_Paulo"));
+        calend.setTime(dataNascimento);
+        int ano = calend.get(Calendar.YEAR);
+        int mes = calend.get(Calendar.MONTH);
+        int dia = calend.get(Calendar.DAY_OF_MONTH);
+
+        dpDataNascimento.setValue(LocalDate.of(ano, mes + 1, dia));
         
         tfCPF.setText(cpf);
         tfNome.setText(nome);

@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador.models.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,7 +67,11 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
                 String tel = rs.getString("telefone");
                 String endereco = rs.getString("endereco");
                 int idade = rs.getInt("idade");
-                usuario = new Usuario(cpf, nome, funcao, senha, null, idade, curso, tel, endereco);
+                String dataNascimento = rs.getString("data_nascimento");
+
+                Date dtDataNascimento = Date.valueOf(dataNascimento);
+
+                usuario = new Usuario(cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
                 
                 pstm.close();
                 con.close();

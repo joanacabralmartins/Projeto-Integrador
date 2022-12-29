@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -139,7 +140,11 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 String tel = rs.getString("telefone");
                 String endereco = rs.getString("endereco");
                 int idade = rs.getInt("idade");
-                motorista = new Motorista(cpf, nome, funcao, senha, null, idade, curso, tel, endereco, carteira);
+                String dataNascimento = rs.getString("data_nascimento");
+
+                Date dtDataNascimento = Date.valueOf(dataNascimento);
+
+                motorista = new Motorista(cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
 
                 pstm.close();
                 con.close();
