@@ -85,19 +85,22 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
     }
 
     @Override
-    public Result update(String cpf, String cpfNovo, String nome, String senha, String curso, String telefone, String endereco) {
+    public Result update(String cpf, String cpfNovo, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE usuario set cpf=?, nome=?, senha=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE usuario set cpf=?, nome=?, funcao_IFPR=?, senha=?, data_nascimento=?, idade=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
             
             pstm.setString(1, cpfNovo);
             pstm.setString(2, nome);
-            pstm.setString(3, senha);
-            pstm.setString(4, curso);
-            pstm.setString(5, telefone);
-            pstm.setString(6, endereco);
-            pstm.setString(7, cpf);
+            pstm.setString(3, funcao);
+            pstm.setString(4, senha);
+            pstm.setString(5, String.valueOf(dataNascimento));
+            pstm.setInt(6, idade);
+            pstm.setString(7, curso);
+            pstm.setString(8, telefone);
+            pstm.setString(9, endereco);
+            pstm.setString(10, cpf);
 
             pstm.execute();
 

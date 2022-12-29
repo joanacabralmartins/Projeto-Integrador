@@ -106,18 +106,13 @@ public class JanelaEditarMotorista implements Initializable {
         String curso = tfCurso.getText();
         String telefone = tfTelefone.getText();
         String endereco = taEndereco.getText();
+        String funcao = cbFuncao.valueProperty().get();
 
-        LocalDate data = LocalDate.now();
-        int idade = 0;
-
-        if (dpDataNascimento.getValue() != null) {
-            data = dpDataNascimento.getValue();
-            idade = Period.between(data, LocalDate.now()).getYears();
-        }
-
+        LocalDate data = dpDataNascimento.getValue();
+        int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.editarMotorista(cpf, cpfNovo, carteira, nome, senha, curso, telefone, endereco);//botar data, idade e funcao
+        Result resultado = repositorio.editarMotorista(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {

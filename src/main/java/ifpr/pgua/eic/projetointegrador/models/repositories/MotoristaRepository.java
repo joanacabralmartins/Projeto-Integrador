@@ -60,8 +60,8 @@ public class MotoristaRepository {
         return dao.create(motorista);
     }
 
-    public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String senha, String curso, String telefone, String endereco) {
-        return dao.update(cpf, cpfNovo, carteira, nome, senha, curso, telefone, endereco);
+    public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
+        return dao.update(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
     }
 
     public Result validarLogin(String cpf, String senha) {

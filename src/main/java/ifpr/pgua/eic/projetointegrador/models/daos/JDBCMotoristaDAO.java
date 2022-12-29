@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -160,20 +159,23 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
     }
 
     @Override
-    public Result update(String cpf, String cpfNovo, String carteira, String nome, String senha, String curso, String telefone, String endereco) {
+    public Result update(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE motorista set cpf=?, carteira_motorista=?, nome=?, senha=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE motorista set cpf=?, carteira_motorista=?, nome=?, funcao_IFPR=?, senha=?, data_nascimento=?, idade=?, curso=?, telefone=?, endereco=? WHERE cpf=?");
             
             pstm.setString(1, cpfNovo);
             pstm.setString(2, carteira);
             pstm.setString(3, nome);
-            pstm.setString(4, senha);
-            pstm.setString(5, curso);
-            pstm.setString(6, telefone);
-            pstm.setString(7, endereco);
-            pstm.setString(8, cpf);
+            pstm.setString(4, funcao);
+            pstm.setString(5, senha);
+            pstm.setString(6, String.valueOf(dataNascimento));
+            pstm.setInt(7, idade);
+            pstm.setString(8, curso);
+            pstm.setString(9, telefone);
+            pstm.setString(10, endereco);
+            pstm.setString(11, cpf);
 
             pstm.execute();
 

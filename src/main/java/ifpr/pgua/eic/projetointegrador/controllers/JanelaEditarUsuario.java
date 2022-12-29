@@ -1,9 +1,10 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
@@ -100,8 +101,13 @@ public class JanelaEditarUsuario implements Initializable {
         String curso = tfCurso.getText();
         String telefone = tfTelefone.getText();
         String endereco = taEndereco.getText();
+        String funcao = cbFuncao.valueProperty().get();
 
-        Result resultado = repositorio.editarUsuario(cpf, cpfNovo, nome, senha, curso, telefone, endereco);//editar nascimento, idade e funcao
+        LocalDate data = dpDataNascimento.getValue();
+        int idade = Period.between(data, LocalDate.now()).getYears();
+        Date dataNascimento = Date.valueOf(data);
+
+        Result resultado = repositorio.editarUsuario(cpf, cpfNovo, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
