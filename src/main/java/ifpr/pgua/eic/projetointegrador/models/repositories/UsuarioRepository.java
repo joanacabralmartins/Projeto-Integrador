@@ -17,10 +17,6 @@ public class UsuarioRepository {
                                     int idade, String curso, String telefone, String endereco) {
         Usuario caroneiro = new Usuario(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         
-        if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null) {
-            return Result.fail("Preencha todos os campos não opcionais!");
-        }
-
         if (cpf.length() < 11) {
             return Result.fail("Insira um CPF válido!");
         }

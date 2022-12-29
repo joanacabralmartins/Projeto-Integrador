@@ -70,6 +70,14 @@ public class JanelaCadastroMotorista implements Initializable {
 
     @FXML
     private void cadastrarMotorista() {
+        if(tfCPF.getText().isEmpty() || tfNome.getText().isEmpty() || pfSenha.getText().isEmpty()
+        || tfCarteiraMotorista.getText().isEmpty() || cbFuncao.valueProperty().get() == null) {
+            Alert alert = new Alert(AlertType.ERROR, "Preencha todos os campos necessários!");
+            alert.showAndWait();
+
+            return;
+        }
+
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();
@@ -80,13 +88,8 @@ public class JanelaCadastroMotorista implements Initializable {
         String funcao = (String) cbFuncao.valueProperty().get();
 
         LocalDate data = LocalDate.now();
-        int idade = 0;
-
-        if (dpDataNascimento.getValue() != null) {
-            data = dpDataNascimento.getValue();
-            idade = Period.between(data, LocalDate.now()).getYears();
-        }
-
+        data = dpDataNascimento.getValue();
+        int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
         Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);

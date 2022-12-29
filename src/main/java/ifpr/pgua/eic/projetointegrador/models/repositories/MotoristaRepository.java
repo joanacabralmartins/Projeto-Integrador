@@ -42,10 +42,6 @@ public class MotoristaRepository {
         if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
             return Result.fail("Motorista já cadastrado!");
         }
-        
-        if (cpf == null || nome == null || funcao == null || senha == null || dataNascimento == null || carteira == null) {
-            return Result.fail("Preencha todos os campos não opcionais!");
-        }
 
         if (cpf.length() < 11) {
             return Result.fail("Insira um CPF válido!");

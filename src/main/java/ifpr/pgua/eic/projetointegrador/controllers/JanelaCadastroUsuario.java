@@ -67,6 +67,14 @@ public class JanelaCadastroUsuario implements Initializable {
 
     @FXML
     private void cadastrarUsuario() {
+        if(tfCPF.getText().isEmpty() || tfNome.getText().isEmpty() || pfSenha.getText().isEmpty() 
+        || cbFuncao.valueProperty().get() == null) {
+            Alert alert = new Alert(AlertType.ERROR, "Preencha todos os campos necessários!");
+            alert.showAndWait();
+
+            return;
+        }
+
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();
@@ -76,13 +84,8 @@ public class JanelaCadastroUsuario implements Initializable {
         String funcao = (String) cbFuncao.valueProperty().get();
 
         LocalDate data = LocalDate.now();
-        int idade = 0;
-
-        if (dpDataNascimento.getValue() != null) {
-            data = dpDataNascimento.getValue();
-            idade = Period.between(data, LocalDate.now()).getYears();
-        }
-
+        data = dpDataNascimento.getValue();
+        int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
         Result resultado = repositorio.adicionarUsuario(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
