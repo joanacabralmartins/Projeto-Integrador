@@ -11,8 +11,8 @@ public class Carona {
     private int quantidadeLugares;
     private int lugaresDisponiveis;
     private boolean status;
-    private String origem;
-    private String destino;
+    private int origem;
+    private int destino;
     private Date dataCadastro;
     private Date data;
     private Date dataRemocao;
@@ -20,7 +20,7 @@ public class Carona {
 
 
     public Carona(int id, int id_motorista, String cpfMotorista, int horarioSaida, int quantidadeLugares,
-            int lugaresDisponiveis, boolean status, String origem, String destino, Date dataCadastro, Date data,
+            int lugaresDisponiveis, boolean status, int origem, int destino, Date dataCadastro, Date data,
             Date dataRemocao, Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
@@ -93,16 +93,16 @@ public class Carona {
         this.status = status;
     }
      
-    public String getOrigem() {
+    public int getOrigem() {
         return origem;
     }
-    public void setOrigem(String origem) {
+    public void setOrigem(int origem) {
         this.origem = origem;
     }
-    public String getDestino() {
+    public int getDestino() {
         return destino;
     }
-    public void setDestino(String destino) {
+    public void setDestino(int destino) {
         this.destino = destino;
     }
     public Date getDataCadastro() {
