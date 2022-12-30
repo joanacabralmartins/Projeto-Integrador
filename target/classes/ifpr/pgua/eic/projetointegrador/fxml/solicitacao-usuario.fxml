@@ -30,9 +30,9 @@
 
       <children>
 
-        <Label text="Caronas:" />
+        <Label text="Solicitações" />
 
-        <TableView prefHeight="129.0" prefWidth="520.0">
+        <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="520.0">
 
           <columns>
             <TableColumn prefWidth="80.0" text="Origem" />
@@ -45,66 +45,15 @@
           </columns>
 
         </TableView>
-        
-        <HBox alignment="CENTER" prefHeight="200.0" prefWidth="520.0" spacing="5.0">
+
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 
           <children>
 
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="502.0" spacing="10.0">
-            
-              <children>
-
-                <Label text="Motorista:" />
-
-                <TableView maxWidth="450.0" prefHeight="50.0" prefWidth="450.0">
-
-                  <columns>
-                    <TableColumn prefWidth="120.0" text="Nome" />
-                    <TableColumn prefWidth="75.0" text="Funcao" />
-                      <TableColumn prefWidth="85.0" text="Curso" />
-                      <TableColumn prefWidth="85.0" text="Telefone" />
-                      <TableColumn prefWidth="50.0" text="Idade" />
-                  </columns>
-
-                </TableView>
-
-                <Label text="Carro:" />
-                <TableView maxWidth="260.0" prefHeight="50.0" prefWidth="260.0">
-                
-                  <columns>
-                    <TableColumn prefWidth="105.0" text="Placa" />
-                    <TableColumn prefWidth="85.0" text="Modelo" />
-                    <TableColumn prefWidth="75.0" text="Cor" />
-                  </columns>
-
-                </TableView>
-
-              </children>
-
-            </VBox>
-
-            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-
-              <children>
-
-                <Label text="Pontos de parada:" />
-
-                <TableView prefHeight="118.0" prefWidth="100.0">
-
-                  <columns>
-                    <TableColumn prefWidth="100.0" text="Descricao" />
-                  </columns>
-
-                </TableView>
-
-                <Button text="Cancelar" textAlignment="CENTER" />
-
-              </children>
-
-            </VBox>
+            <Button text="Cancelar" textAlignment="CENTER" />
 
           </children>
-
+          
         </HBox>
 
 
