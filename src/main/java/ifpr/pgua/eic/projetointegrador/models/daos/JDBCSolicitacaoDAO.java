@@ -265,9 +265,9 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         int id_usuario = rs.getInt("id_usuario");
 
         LocalDateTime dataHora_Solicitacao = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"));
-        LocalDateTime dataHora_Resposta = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"));
-        LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"));
-        LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"));
+        LocalDateTime dataHora_Resposta = LocalDateTime.parse(rs.getString("dataHora_Resposta"));
+        LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Remocao"));
+        LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Cancelamento"));
         
         int status = rs.getInt("status");
   
