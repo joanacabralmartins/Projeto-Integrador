@@ -53,11 +53,13 @@ public class JanelaLogin extends BaseController {
             Alert alert = new Alert(AlertType.INFORMATION, msgM);
             alert.showAndWait();
             App.pushScreen("PRINCIPAL MOTORISTA");
+            return;
         }
         if (resultadoUsuario instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION, msgU);
             alert.showAndWait();
             App.pushScreen("PRINCIPAL CARONEIRO");
+            return;
         }
         else {
             Alert alert = new Alert(AlertType.ERROR, "Usuário não cadastrado!");
