@@ -72,10 +72,9 @@ public class JDBCPontoDAO implements PontoDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set status=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set status=1 WHERE id=?");
       
-      pstm.setInt(1, ponto.getStatus());
-      pstm.setInt(2, ponto.getId());
+      pstm.setInt(1, ponto.getId());
 
       pstm.execute();
 
@@ -102,12 +101,7 @@ public class JDBCPontoDAO implements PontoDAO{
       ResultSet rs = pstm.executeQuery();
       if (rs.next()) {
 
-        int id = rs.getInt("id");
-        int id_carona = rs.getInt("id_carona");
-        String descricao = rs.getString("descricao");
-        int status = rs.getInt("status");
-
-        PontoParada ponto = new PontoParada(id, id_carona, descricao, status);
+        PontoParada ponto = buildFrom(rs);
         
         rs.close();
         pstm.close();
@@ -116,6 +110,9 @@ public class JDBCPontoDAO implements PontoDAO{
         return ponto;
 
       } else {
+        rs.close();
+        pstm.close();
+        con.close();
         return null;
       }
 

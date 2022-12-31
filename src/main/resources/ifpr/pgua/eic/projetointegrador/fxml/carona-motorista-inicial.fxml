@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
+  </columnConstraints>
+
+  <rowConstraints>
+    <RowConstraints prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints prefHeight="330.0" vgrow="SOMETIMES" />
+      <RowConstraints prefHeight="20.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+
+    <children>
+
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+      
+          <Button text="Gerenciar Caronas" textAlignment="CENTER" />
+          <Button text="Solicitar Caronas" textAlignment="CENTER" />
+
+         </children>
+      </HBox>
+
+    </children>
+
+</GridPane>
