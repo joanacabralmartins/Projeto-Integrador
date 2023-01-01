@@ -9,7 +9,7 @@ public interface PontoDAO {
 
     Result create(PontoParada Ponto);
     Result update(PontoParada Ponto);
-    Result delete(PontoParada Ponto);
+    Result inativar(PontoParada Ponto);
     List<PontoParada> getByCarona(int id_carona);
     PontoParada getById(int id_ponto);
 

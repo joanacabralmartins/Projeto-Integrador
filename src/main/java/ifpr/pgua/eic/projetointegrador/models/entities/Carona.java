@@ -1,16 +1,17 @@
 package ifpr.pgua.eic.projetointegrador.models.entities;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class Carona {
     
     private int id;
     private int id_motorista;
     private String cpfMotorista;
-    private int horarioSaida;
+    private Time horarioSaida;
     private int quantidadeLugares;
     private int lugaresDisponiveis;
-    private boolean status;
+    private boolean ativo;
     private int origem;
     private int destino;
     private Date dataCadastro;
@@ -19,8 +20,8 @@ public class Carona {
     private Date dataCancelamento;
 
 
-    public Carona(int id, int id_motorista, String cpfMotorista, int horarioSaida, int quantidadeLugares,
-            int lugaresDisponiveis, boolean status, int origem, int destino, Date dataCadastro, Date data,
+    public Carona(int id, int id_motorista, String cpfMotorista, Time horarioSaida, int quantidadeLugares,
+            int lugaresDisponiveis, boolean ativo, int origem, int destino, Date dataCadastro, Date data,
             Date dataRemocao, Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
@@ -28,7 +29,7 @@ public class Carona {
         this.horarioSaida = horarioSaida;
         this.quantidadeLugares = quantidadeLugares;
         this.lugaresDisponiveis = lugaresDisponiveis;
-        this.status = status;
+        this.ativo = ativo;
         this.origem = origem;
         this.destino = destino;
         this.dataCadastro = dataCadastro;
@@ -61,11 +62,11 @@ public class Carona {
         this.cpfMotorista = cpfMotorista;
     }
 
-    public int getHorarioSaida() {
+    public Time getHorarioSaida() {
         return horarioSaida;
     }
 
-    public void setHorarioSaida(int horarioSaida) {
+    public void setHorarioSaida(Time horarioSaida) {
         this.horarioSaida = horarioSaida;
     }
 
@@ -85,12 +86,12 @@ public class Carona {
         this.lugaresDisponiveis = lugaresDisponiveis;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isAtivo() {
+        return ativo;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
      
     public int getOrigem() {

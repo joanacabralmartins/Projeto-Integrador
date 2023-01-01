@@ -13,7 +13,7 @@ import ifpr.pgua.eic.projetointegrador.models.entities.PontoParada;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class JDBCPontoDAO implements PontoDAO{
-
+//verificar se pstm envolvendo booleanos funcionam por conta da conversao para tinyint em mysql
   private FabricaConexoes fabricaConexao;
 
   public JDBCPontoDAO(FabricaConexoes fabricaConexao) {
@@ -26,11 +26,11 @@ public class JDBCPontoDAO implements PontoDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO ponto(id_carona, descricao, status) VALUES (?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO ponto(id_carona, descricao, ativo) VALUES (?,?,?)");
       
       pstm.setInt(1, ponto.getId_carona());
       pstm.setString(2, ponto.getDescricao());
-      pstm.setInt(3, ponto.getStatus());
+      pstm.setBoolean(3, ponto.getAtivo());
 
       pstm.execute();
 
@@ -49,10 +49,10 @@ public class JDBCPontoDAO implements PontoDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set descricao=?, status=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set descricao=?, ativo=? WHERE id=?");
       
       pstm.setString(1, ponto.getDescricao());
-      pstm.setInt(2, ponto.getStatus());
+      pstm.setBoolean(2, ponto.getAtivo());
       pstm.setInt(3, ponto.getId());
 
       pstm.execute();
@@ -68,11 +68,11 @@ public class JDBCPontoDAO implements PontoDAO{
   }
 
   @Override
-  public Result delete(PontoParada ponto) {
+  public Result inativar(PontoParada ponto) {
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set status=1 WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE ponto set ativo=0 WHERE id=?");
       
       pstm.setInt(1, ponto.getId());
 
@@ -158,9 +158,9 @@ public class JDBCPontoDAO implements PontoDAO{
     int id = rs.getInt("id");
     int id_carona = rs.getInt("id_carona");
     String descricao = rs.getString("descricao");
-    int status = rs.getInt("status");
+    boolean ativo = rs.getBoolean("ativo");
 
-    PontoParada ponto = new PontoParada(id, id_carona, descricao, status);
+    PontoParada ponto = new PontoParada(id, id_carona, descricao, ativo);
 
     return ponto;
 

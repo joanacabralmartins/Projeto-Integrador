@@ -22,8 +22,8 @@ public class PontoRepository {
     return dao.update(ponto);
   }
 
-  public Result delete(PontoParada ponto) {
-    return dao.delete(ponto);
+  public Result inativar(PontoParada ponto) {
+    return dao.inativar(ponto);
   }
 
   public PontoParada getById(int id_ponto) {

@@ -27,7 +27,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, Status) VALUES (?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, status) VALUES (?,?,?,?,?)");
             
             pstm.setInt(1, solicitacao.getId_usuario());
             pstm.setInt(2, solicitacao.getId_carona());

@@ -5,12 +5,12 @@ public class PontoParada {
   private int id;
   private int id_carona;
   private String descricao;
-  private int status;//0=inativo 1=ativo 2=origem/destino
+  private boolean ativo;//na listagem em tela, comparar id com getDestino e getOrigem para não listar 
   
-  public PontoParada(int id, int id_carona, String descricao, int status) {
+  public PontoParada(int id, int id_carona, String descricao, boolean ativo) {
     this.id = id;
     this.descricao = descricao;
-    this.status = status;
+    this.ativo = ativo;
   }
 
   public int getId() {
@@ -37,12 +37,12 @@ public class PontoParada {
     this.descricao = descricao;
   }
 
-  public int getStatus() {
-    return status;
+  public boolean getAtivo() {
+    return ativo;
   }
 
-  public void setStatus(int status) {
-    this.status = status;
+  public void setAtivo(boolean ativo) {
+    this.ativo = ativo;
   }
 
 }
