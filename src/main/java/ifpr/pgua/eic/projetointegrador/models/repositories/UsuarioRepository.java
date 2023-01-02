@@ -20,7 +20,7 @@ public class UsuarioRepository {
 
     public Result adicionarUsuario(int ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco) {
-        Usuario caroneiro = new Usuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+        Usuario caroneiro = new Usuario(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         
         Optional<Usuario> busca = usuarios.stream().filter((users)->users.getCpf().equals(cpf)).findFirst();
         if (busca.isPresent()) { //verifica se o caroneiro realmente ainda não tem cadastro
@@ -50,6 +50,10 @@ public class UsuarioRepository {
 
     public Result validarLogin(String cpf, String senha) {
         return dao.validarLogin(cpf, senha);
+    }
+
+    public Result inativar(Usuario usuario){
+        return dao.inativar(usuario);
     }
 
     public Usuario getUser() {

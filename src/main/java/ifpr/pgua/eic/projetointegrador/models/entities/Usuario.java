@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Usuario {
 
+  private int id;
   private int ativo;
   private String cpf;
   private String nome;
@@ -15,9 +16,10 @@ public class Usuario {
   private String telefone;
   private String endereco;
 
-  public Usuario(int ativo, String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
+  public Usuario(int id, int ativo, String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
       int idade, String curso, String telefone, String endereco) {
 
+    this.id = id;
     this.ativo = ativo;
     this.cpf = cpf;
     this.nome = nome;
@@ -28,6 +30,14 @@ public class Usuario {
     this.curso = curso;
     this.telefone = telefone;
     this.endereco = endereco;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public int getAtivo() {

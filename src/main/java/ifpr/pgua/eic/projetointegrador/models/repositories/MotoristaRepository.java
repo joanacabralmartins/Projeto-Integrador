@@ -20,7 +20,7 @@ public class MotoristaRepository {
 
     public Result adicionarMotorista(int ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco, String carteira) {
-        Motorista motorista = new Motorista(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
+        Motorista motorista = new Motorista(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
         
         Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpf)).findFirst();
         if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
@@ -50,6 +50,10 @@ public class MotoristaRepository {
 
     public Result validarLogin(String cpf, String senha) {
         return dao.validarLogin(cpf, senha);
+    }
+
+    public Result inativar(Motorista motorista){
+        return dao.inativar(motorista);
     }
 
     public Motorista getUser() {
