@@ -46,6 +46,54 @@ public class JDBCCarroDAO implements CarroDAO {
     }
 
     @Override
+    public Result update(Carro carro) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, cor=?, cpf_motorista=?, ativo=? WHERE id=?");
+
+            pstm.setString(1, carro.getPlaca());
+            pstm.setString(2, carro.getModelo());
+            pstm.setString(3, carro.getCor());
+            pstm.setString(4, carro.getCpf_motorista());
+            pstm.setBoolean(5, carro.isAtivo());
+
+            pstm.setInt(5, carro.getId());
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+
+            return Result.success("Carro atualizado com sucesso!");
+
+        } catch(SQLException e){
+            return Result.fail(e.getMessage());
+        }
+    }
+
+    @Override
+    public Result inativar(Carro carro) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set ativo=0 WHERE id=?");
+            
+            pstm.setInt(1, carro.getId());
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+
+            return Result.success("Carro inativado com sucesso!");
+
+        } catch(SQLException e){
+            return Result.fail(e.getMessage());
+        }
+    }
+
+    @Override
     public List<Carro> listAll(String cpfMotorista) {
         try {
             Connection con = fabricaConexao.getConnection();
@@ -59,11 +107,15 @@ public class JDBCCarroDAO implements CarroDAO {
             ArrayList<Carro> carros = new ArrayList<>();
 
             while (resultSet.next()) {
+
+                int id = resultSet.getInt("id");
                 String placa = resultSet.getString("placa");
                 String modelo = resultSet.getString("modelo");
                 String cor = resultSet.getString("cor");
+                String cpf_motorista = resultSet.getString("cpf_motorista");
+                Boolean ativo = resultSet.getBoolean("ativo");
 
-                Carro carro = new Carro(placa, modelo, cor, null);
+                Carro carro = new Carro(id, placa, modelo, cor, cpf_motorista, ativo);
 
                 carros.add(carro);
             }

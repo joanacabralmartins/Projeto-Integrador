@@ -7,5 +7,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public interface CarroDAO {
     Result create(Carro carro);
+    Result update(Carro carro);
+    Result inativar(Carro carro);
     List<Carro> listAll(String cpfMotorista);
 }

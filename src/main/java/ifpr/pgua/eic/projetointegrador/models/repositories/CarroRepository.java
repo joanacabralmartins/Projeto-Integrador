@@ -29,6 +29,14 @@ public class CarroRepository {
         return dao.create(carro);
     }
 
+    public Result update(Carro carro) {
+        return dao.update(carro);
+    }
+
+    public Result inativar(Carro carro){
+        return dao.inativar(carro);
+    }
+
     public List<Carro> listar(String cpfMotorista) {
         return dao.listAll(cpfMotorista);
     }
