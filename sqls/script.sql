@@ -37,14 +37,6 @@ CREATE TABLE IF NOT EXISTS carro (
     CONSTRAINT carro_FK_motorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf)
 );
 
-CREATE TABLE IF NOT EXISTS ponto (
-    id INTEGER PRIMARY KEY, 
-    id_carona INTEGER NOT NULL, 
-    descricao TEXT NOT NULL,
-    ativo TINYINT NOT NULL,
-    CONSTRAINT ponto_FK_id_carona FOREIGN KEY(id_carona) REFERENCES carona(id)
-);
-
 CREATE TABLE IF NOT EXISTS solicitacao (
     id INTEGER PRIMARY KEY, 
     id_usuario INTEGER NOT NULL, 
@@ -78,4 +70,12 @@ CREATE TABLE IF NOT EXISTS carona (
     CONSTRAINT carona_FK_cpfMotorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf),
     CONSTRAINT carona_FK_origem FOREIGN KEY(origem) REFERENCES ponto(id),
     CONSTRAINT carona_FK_destino FOREIGN KEY(destino) REFERENCES ponto(id)
+);
+
+CREATE TABLE IF NOT EXISTS ponto (
+    id INTEGER PRIMARY KEY, 
+    id_carona INTEGER NOT NULL, 
+    descricao TEXT NOT NULL,
+    ativo TINYINT NOT NULL,
+    CONSTRAINT ponto_FK_id_carona FOREIGN KEY(id_carona) REFERENCES carona(id)
 );
