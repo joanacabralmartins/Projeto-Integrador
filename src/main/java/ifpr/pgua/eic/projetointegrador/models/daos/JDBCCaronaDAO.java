@@ -216,15 +216,10 @@ public class JDBCCaronaDAO implements CaronaDAO{
     int origem = rs.getInt("origem");
     int destino = rs.getInt("destino");
 
-    String sdataCadastro = rs.getString("dataCadastro");
-    String sdata = rs.getString("data");
-    String sdataRemocao = rs.getString("dataRemocao");
-    String sdataCancelamento = rs.getString("dataCancelamento");
-
-    Date dataCadastro = Date.valueOf(sdataCadastro);
-    Date data = Date.valueOf(sdata);
-    Date dataRemocao = Date.valueOf(sdataRemocao);
-    Date dataCancelamento = Date.valueOf(sdataCancelamento);
+    Date dataCadastro = rs.getDate("dataCadastro");
+    Date data = rs.getDate("data");
+    Date dataRemocao = rs.getDate("dataRemocao");
+    Date dataCancelamento = rs.getDate("dataCancelamento");
 
     Carona carona = new Carona(id, id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
 

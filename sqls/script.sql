@@ -37,11 +37,45 @@ CREATE TABLE IF NOT EXISTS carro (
     CONSTRAINT carro_FK_motorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf)
 );
 
+CREATE TABLE IF NOT EXISTS ponto (
+    id INTEGER PRIMARY KEY, 
+    id_carona INTEGER NOT NULL, 
+    descricao TEXT NOT NULL,
+    ativo TINYINT NOT NULL,
+    CONSTRAINT ponto_FK_id_carona FOREIGN KEY(id_carona) REFERENCES carona(id)
+);
+
+CREATE TABLE IF NOT EXISTS solicitacao (
+    id INTEGER PRIMARY KEY, 
+    id_usuario INTEGER NOT NULL, 
+    id_motorista INTEGER NOT NULL, 
+    id_carona INTEGER NOT NULL, 
+    dataHora_Solicitacao TEXT NOT NULL, 
+    dataHora_Resposta TEXT NULL, 
+    dataHora_Remocao TEXT NULL, 
+    dataHora_Cancelamento TEXT NULL, 
+    status INTEGER NOT NULL,
+    CONSTRAINT solicitacao_FK_id_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id),
+    CONSTRAINT solicitacao_FK_id_motorista FOREIGN KEY(id_motorista) REFERENCES motorista(cpf),
+    CONSTRAINT solicitacao_FK_id_carona FOREIGN KEY(id_carona) REFERENCES carona(id)
+);
+
 CREATE TABLE IF NOT EXISTS carona (
     id INTEGER PRIMARY KEY, 
-    placa TEXT NOT NULL,
-    modelo TEXT NOT NULL, 
-    cor TEXT NOT NULL, 
-    cpf_motorista TEXT NOT NULL,
-    CONSTRAINT carona_FK_motorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf)
+    id_motorista INTEGER NOT NULL, 
+    cpfMotorista TEXT NOT NULL,
+    horarioSaida TIME NOT NULL, 
+    quantidadeLugares INTEGER NOT NULL, 
+    lugaresDisponiveis INTEGER NOT NULL, 
+    ativo TINYINT NOT NULL,
+    origem INTEGER NOT NULL, 
+    destino INTEGER NOT NULL, 
+    dataCadastro DATE NOT NULL, 
+    data DATE NOT NULL, 
+    dataRemocao DATE NULL, 
+    dataCancelamento DATE NULL, 
+    CONSTRAINT carona_FK_idMotorista FOREIGN KEY(id_motorista) REFERENCES motorista(id),
+    CONSTRAINT carona_FK_cpfMotorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf),
+    CONSTRAINT carona_FK_origem FOREIGN KEY(origem) REFERENCES ponto(id),
+    CONSTRAINT carona_FK_destino FOREIGN KEY(destino) REFERENCES ponto(id)
 );
