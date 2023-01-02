@@ -29,17 +29,18 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO usuario(cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco) VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO usuario(ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco) VALUES (?,?,?,?,?,?,?,?,?,?)");
             
-            pstm.setString(1, caroneiro.getCpf());
-            pstm.setString(2, caroneiro.getNome());
-            pstm.setString(3, caroneiro.getFuncao_IFPR());
-            pstm.setString(4, caroneiro.getSenha());
-            pstm.setString(5, String.valueOf(caroneiro.getData_nascimento()));
-            pstm.setInt(6, caroneiro.getIdade());
-            pstm.setString(7, caroneiro.getCurso());
-            pstm.setString(8, caroneiro.getTelefone());
-            pstm.setString(9, caroneiro.getEndereco());
+            pstm.setInt(1, caroneiro.getAtivo());
+            pstm.setString(2, caroneiro.getCpf());
+            pstm.setString(3, caroneiro.getNome());
+            pstm.setString(4, caroneiro.getFuncao_IFPR());
+            pstm.setString(5, caroneiro.getSenha());
+            pstm.setString(6, String.valueOf(caroneiro.getData_nascimento()));
+            pstm.setInt(7, caroneiro.getIdade());
+            pstm.setString(8, caroneiro.getCurso());
+            pstm.setString(9, caroneiro.getTelefone());
+            pstm.setString(10, caroneiro.getEndereco());
 
             pstm.execute();
 
@@ -65,6 +66,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             ArrayList<Usuario> usuarios = new ArrayList<>();
 
             while (resultSet.next()) {
+                int ativo = resultSet.getInt("ativo");
                 String cpf = resultSet.getString("cpf");
                 String nome = resultSet.getString("nome");
                 String funcao = resultSet.getString("funcao_IFPR");
@@ -78,7 +80,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
                 LocalDate dataNascimento = LocalDate.parse(date);
                 Date data = Date.valueOf(dataNascimento);
 
-                Usuario usuario = new Usuario(cpf, nome, funcao, senha, data, idade, curso, telefone, endereco);
+                Usuario usuario = new Usuario(ativo, cpf, nome, funcao, senha, data, idade, curso, telefone, endereco);
 
                 usuarios.add(usuario);
             }
@@ -106,6 +108,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
+                int ativo = rs.getInt("ativo");
                 String nome = rs.getString("nome");
                 String funcao = rs.getString("funcao_IFPR");
                 String curso = rs.getString("curso");
@@ -116,7 +119,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
-                usuario = new Usuario(cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
+                usuario = new Usuario(ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
                 
                 pstm.close();
                 con.close();

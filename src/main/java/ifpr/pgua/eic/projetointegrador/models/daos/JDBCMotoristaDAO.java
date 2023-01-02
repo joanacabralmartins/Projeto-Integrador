@@ -27,18 +27,19 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             
-            pstm.setString(1, motorista.getCpf());
-            pstm.setString(2, motorista.getNome());
-            pstm.setString(3, motorista.getFuncao_IFPR());
-            pstm.setString(4, motorista.getSenha());
-            pstm.setString(5, String.valueOf(motorista.getData_nascimento()));
-            pstm.setInt(6, motorista.getIdade());
-            pstm.setString(7, motorista.getCurso());
-            pstm.setString(8, motorista.getTelefone());
-            pstm.setString(9, motorista.getEndereco());
-            pstm.setString(10, motorista.getCarteira_motorista());
+            pstm.setInt(1, motorista.getAtivo());
+            pstm.setString(2, motorista.getCpf());
+            pstm.setString(3, motorista.getNome());
+            pstm.setString(4, motorista.getFuncao_IFPR());
+            pstm.setString(5, motorista.getSenha());
+            pstm.setString(6, String.valueOf(motorista.getData_nascimento()));
+            pstm.setInt(7, motorista.getIdade());
+            pstm.setString(8, motorista.getCurso());
+            pstm.setString(9, motorista.getTelefone());
+            pstm.setString(10, motorista.getEndereco());
+            pstm.setString(11, motorista.getCarteira_motorista());
 
             pstm.execute();
 
@@ -64,6 +65,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             ArrayList<Motorista> motoristas = new ArrayList<>();
 
             while (resultSet.next()) {
+                int ativo = resultSet.getInt("ativo");
                 String cpf = resultSet.getString("cpf");
                 String nome = resultSet.getString("nome");
                 String funcao = resultSet.getString("funcao_IFPR");
@@ -78,7 +80,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 LocalDate dataNascimento = LocalDate.parse(date);
                 Date data = Date.valueOf(dataNascimento);
 
-                Motorista motorista = new Motorista(cpf, nome, funcao, senha, data, idade, curso, telefone, endereco, carteira);
+                Motorista motorista = new Motorista(ativo, cpf, nome, funcao, senha, data, idade, curso, telefone, endereco, carteira);
 
                 motoristas.add(motorista);
             }
@@ -106,6 +108,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
             ResultSet rs = pstm.executeQuery();
             if (rs.next()) {
+                int ativo = rs.getInt("ativo");
                 String nome = rs.getString("nome");
                 String funcao = rs.getString("funcao_IFPR");
                 String carteira = rs.getString("carteira_motorista");
@@ -117,7 +120,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
-                motorista = new Motorista(cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
+                motorista = new Motorista(ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
 
                 pstm.close();
                 con.close();

@@ -22,7 +22,7 @@ public class Teste {
 
         String data = "1978-03-10";
 
-        Motorista motorista = new Motorista("87595", "Roberto", "professor", "cerveja", Date.valueOf(data), 42, "tads", "444555", "av123", "454546");
+        Motorista motorista = new Motorista(1, "87595", "Roberto", "professor", "cerveja", Date.valueOf(data), 42, "tads", "444555", "av123", "454546");
 
         dao.create(motorista);
 

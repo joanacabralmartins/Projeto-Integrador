@@ -75,6 +75,7 @@ public class JanelaCadastroUsuario implements Initializable {
             return;
         }
 
+        int ativo = 1;
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();
@@ -88,7 +89,7 @@ public class JanelaCadastroUsuario implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.adicionarUsuario(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+        Result resultado = repositorio.adicionarUsuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {

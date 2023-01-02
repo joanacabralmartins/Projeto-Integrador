@@ -78,6 +78,7 @@ public class JanelaCadastroMotorista implements Initializable {
             return;
         }
 
+        int ativo = 1;
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();
@@ -92,7 +93,7 @@ public class JanelaCadastroMotorista implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.adicionarMotorista(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
+        Result resultado = repositorio.adicionarMotorista(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {

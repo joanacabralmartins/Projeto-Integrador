@@ -18,9 +18,9 @@ public class UsuarioRepository {
         usuarios = dao.listAll();
     }
 
-    public Result adicionarUsuario(String cpf, String nome, String funcao, String senha, Date dataNascimento,
+    public Result adicionarUsuario(int ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco) {
-        Usuario caroneiro = new Usuario(cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+        Usuario caroneiro = new Usuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         
         Optional<Usuario> busca = usuarios.stream().filter((users)->users.getCpf().equals(cpf)).findFirst();
         if (busca.isPresent()) { //verifica se o caroneiro realmente ainda não tem cadastro
