@@ -35,7 +35,7 @@
 
          <HBox layoutX="160.0" layoutY="50.0">
             <children>
-               <Button prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Adicionar Carro">
+               <Button onAction="#carregaTelaCadastrarCarro" prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Adicionar Carro">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>

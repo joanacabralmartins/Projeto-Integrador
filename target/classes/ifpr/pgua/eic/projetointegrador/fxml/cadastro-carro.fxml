@@ -19,7 +19,7 @@
       <VBox spacing="5.0">
       
          <padding>
-            <Insets left="150.0" top="40.0" />
+            <Insets left="150.0" top="60.0" />
          </padding>
       
          <Label text="Placa" />
