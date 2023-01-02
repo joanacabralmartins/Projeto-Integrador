@@ -12,8 +12,10 @@ public class Carona {
     private int quantidadeLugares;
     private int lugaresDisponiveis;
     private boolean ativo;
-    private int origem;
-    private int destino;
+    private int id_origem;
+    private int id_destino;
+    private String origem;
+    private String destino;
     private Date dataCadastro;
     private Date data;
     private Date dataRemocao;
@@ -21,7 +23,7 @@ public class Carona {
 
 
     public Carona(int id, int id_motorista, String cpfMotorista, Time horarioSaida, int quantidadeLugares,
-            int lugaresDisponiveis, boolean ativo, int origem, int destino, Date dataCadastro, Date data,
+            int lugaresDisponiveis, boolean ativo, int id_origem, int id_destino, String origem, String destino, Date dataCadastro, Date data,
             Date dataRemocao, Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
@@ -30,6 +32,8 @@ public class Carona {
         this.quantidadeLugares = quantidadeLugares;
         this.lugaresDisponiveis = lugaresDisponiveis;
         this.ativo = ativo;
+        this.id_origem = id_origem;
+        this.id_destino = id_destino;
         this.origem = origem;
         this.destino = destino;
         this.dataCadastro = dataCadastro;
@@ -94,16 +98,28 @@ public class Carona {
         this.ativo = ativo;
     }
      
-    public int getOrigem() {
+    public int getId_Origem() {
+        return id_origem;
+    }
+    public void setId_Origem(int id_origem) {
+        this.id_origem = id_origem;
+    }
+    public int getId_Destino() {
+        return id_destino;
+    }
+    public void setId_Destino(int id_destino) {
+        this.id_destino = id_destino;
+    }
+    public String getOrigem() {
         return origem;
     }
-    public void setOrigem(int origem) {
+    public void setOrigem(String origem) {
         this.origem = origem;
     }
-    public int getDestino() {
+    public String getDestino() {
         return destino;
     }
-    public void setDestino(int destino) {
+    public void setDestino(String destino) {
         this.destino = destino;
     }
     public Date getDataCadastro() {

@@ -28,7 +28,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setString(2, carona.getCpfMotorista());
@@ -36,12 +36,14 @@ public class JDBCCaronaDAO implements CaronaDAO{
       pstm.setInt(4, carona.getQuantidadeLugares());
       pstm.setInt(5, carona.getLugaresDisponiveis());
       pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getOrigem());
-      pstm.setInt(8, carona.getDestino());
-      pstm.setDate(9, carona.getDataCadastro());
-      pstm.setDate(10, carona.getData());
-      pstm.setDate(11, carona.getDataRemocao());
-      pstm.setDate(12, carona.getDataCancelamento());
+      pstm.setInt(7, carona.getId_Origem());
+      pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(9, carona.getOrigem());
+      pstm.setString(10, carona.getDestino());
+      pstm.setDate(11, carona.getDataCadastro());
+      pstm.setDate(12, carona.getData());
+      pstm.setDate(13, carona.getDataRemocao());
+      pstm.setDate(14, carona.getDataCancelamento());
 
       pstm.execute();
 
@@ -60,7 +62,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, cpfMotorista=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, origem=?, destino=?, dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, cpfMotorista=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setString(2, carona.getCpfMotorista());
@@ -68,12 +70,14 @@ public class JDBCCaronaDAO implements CaronaDAO{
       pstm.setInt(4, carona.getQuantidadeLugares());
       pstm.setInt(5, carona.getLugaresDisponiveis());
       pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getOrigem());
-      pstm.setInt(8, carona.getDestino());
-      pstm.setDate(9, carona.getDataCadastro());
-      pstm.setDate(10, carona.getData());
-      pstm.setDate(11, carona.getDataRemocao());
-      pstm.setDate(12, carona.getDataCancelamento());
+      pstm.setInt(7, carona.getId_Origem());
+      pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(9, carona.getOrigem());
+      pstm.setString(10, carona.getDestino());
+      pstm.setDate(11, carona.getDataCadastro());
+      pstm.setDate(12, carona.getData());
+      pstm.setDate(13, carona.getDataRemocao());
+      pstm.setDate(14, carona.getDataCancelamento());
 
       pstm.setInt(13, carona.getId());
 
@@ -213,15 +217,17 @@ public class JDBCCaronaDAO implements CaronaDAO{
     int quantidadeLugares = rs.getInt("quantidadeLugares");
     int lugaresDisponiveis = rs.getInt("lugaresDisponiveis");
     boolean ativo = rs.getBoolean("ativo");
-    int origem = rs.getInt("origem");
-    int destino = rs.getInt("destino");
+    int id_origem = rs.getInt("id_origem");
+    int id_destino = rs.getInt("id_destino");
+    String origem = rs.getString("origem");
+    String destino = rs.getString("destino");
 
     Date dataCadastro = rs.getDate("dataCadastro");
     Date data = rs.getDate("data");
     Date dataRemocao = rs.getDate("dataRemocao");
     Date dataCancelamento = rs.getDate("dataCancelamento");
 
-    Carona carona = new Carona(id, id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
+    Carona carona = new Carona(id, id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
 
     return carona;
 
