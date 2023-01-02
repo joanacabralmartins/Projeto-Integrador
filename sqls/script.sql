@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS carro (
     modelo TEXT NOT NULL,
     cor TEXT NOT NULL,
     cpf_motorista TEXT NOT NULL,
+    ativo TINYINT NOT NULL,
     CONSTRAINT carro_FK_motorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf)
 );
 

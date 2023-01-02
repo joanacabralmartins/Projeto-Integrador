@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
+import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
@@ -31,12 +32,10 @@ public class JanelaCadastroCarro {
 
     @FXML
     private void cadastrarCarro() {
-        String placa = tfPlaca.getText();
-        String modelo = tfModelo.getText();
-        String cor = tfCor.getText();
-        String cpf_motorista = repositorioM.getUser().getCpf();
+
+        Carro carro = new Carro(0, tfPlaca.getText(), tfModelo.getText(), tfCor.getText(), repositorioM.getUser().getCpf(), true);
         
-        Result resultado = repositorioC.adicionarCarro(placa, modelo, cor, cpf_motorista);
+        Result resultado = repositorioC.adicionarCarro(carro);
         
         String msg = resultado.getMsg();
 

@@ -25,12 +25,13 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista) VALUES (?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista,ativo) VALUES (?,?,?,?)");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
             pstm.setString(3, carro.getCor());
             pstm.setString(4, carro.getCpf_motorista());
+            pstm.setBoolean(5, carro.isAtivo());
 
             pstm.executeUpdate();
 
