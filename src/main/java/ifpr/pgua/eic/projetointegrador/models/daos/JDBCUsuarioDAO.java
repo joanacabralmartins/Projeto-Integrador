@@ -5,6 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
@@ -46,6 +50,47 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             return Result.fail(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Usuario> listAll() {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario");
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Usuario> usuarios = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String cpf = resultSet.getString("cpf");
+                String nome = resultSet.getString("nome");
+                String funcao = resultSet.getString("funcao_IFPR");
+                String senha = resultSet.getString("senha");
+                String date = resultSet.getString("data_nascimento");
+                int idade = resultSet.getInt("idade");
+                String curso = resultSet.getString("curso");
+                String telefone = resultSet.getString("telefone");
+                String endereco = resultSet.getString("endereco");
+
+                LocalDate dataNascimento = LocalDate.parse(date);
+                Date data = Date.valueOf(dataNascimento);
+
+                Usuario usuario = new Usuario(cpf, nome, funcao, senha, data, idade, curso, telefone, endereco);
+
+                usuarios.add(usuario);
+            }
+            
+            resultSet.close();
+            pstm.close();
+            con.close();
+            return usuarios;
+
+        }catch(SQLException e ) {
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
         }
     }
 
