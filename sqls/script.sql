@@ -55,7 +55,6 @@ CREATE TABLE IF NOT EXISTS solicitacao (
 CREATE TABLE IF NOT EXISTS carona (
     id INTEGER PRIMARY KEY, 
     id_motorista INTEGER NOT NULL, 
-    cpfMotorista TEXT NOT NULL,
     horarioSaida TIME NOT NULL, 
     quantidadeLugares INTEGER NOT NULL, 
     lugaresDisponiveis INTEGER NOT NULL, 
@@ -69,9 +68,8 @@ CREATE TABLE IF NOT EXISTS carona (
     dataRemocao DATE NULL, 
     dataCancelamento DATE NULL, 
     CONSTRAINT carona_FK_idMotorista FOREIGN KEY(id_motorista) REFERENCES motorista(id),
-    CONSTRAINT carona_FK_cpfMotorista FOREIGN KEY(cpf_motorista) REFERENCES motorista(cpf),
-    CONSTRAINT carona_FK_origem FOREIGN KEY(origem) REFERENCES ponto(id),
-    CONSTRAINT carona_FK_destino FOREIGN KEY(destino) REFERENCES ponto(id)
+    CONSTRAINT carona_FK_id_origem FOREIGN KEY(id_origem) REFERENCES ponto(id),
+    CONSTRAINT carona_FK_id_destino FOREIGN KEY(id_destino) REFERENCES ponto(id)
 );
 
 CREATE TABLE IF NOT EXISTS ponto (

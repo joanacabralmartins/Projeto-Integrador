@@ -28,22 +28,21 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
       
       pstm.setInt(1, carona.getId_motorista());
-      pstm.setString(2, carona.getCpfMotorista());
-      pstm.setTime(3, carona.getHorarioSaida());
-      pstm.setInt(4, carona.getQuantidadeLugares());
-      pstm.setInt(5, carona.getLugaresDisponiveis());
-      pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getId_Origem());
-      pstm.setInt(8, carona.getId_Destino());
-      pstm.setString(9, carona.getOrigem());
-      pstm.setString(10, carona.getDestino());
-      pstm.setDate(11, carona.getDataCadastro());
-      pstm.setDate(12, carona.getData());
-      pstm.setDate(13, carona.getDataRemocao());
-      pstm.setDate(14, carona.getDataCancelamento());
+      pstm.setTime(2, carona.getHorarioSaida());
+      pstm.setInt(3, carona.getQuantidadeLugares());
+      pstm.setInt(4, carona.getLugaresDisponiveis());
+      pstm.setBoolean(5, carona.isAtivo());
+      pstm.setInt(6, carona.getId_Origem());
+      pstm.setInt(7, carona.getId_Destino());
+      pstm.setString(8, carona.getOrigem());
+      pstm.setString(9, carona.getDestino());
+      pstm.setDate(10, carona.getDataCadastro());
+      pstm.setDate(11, carona.getData());
+      pstm.setDate(12, carona.getDataRemocao());
+      pstm.setDate(13, carona.getDataCancelamento());
 
       pstm.execute();
 
@@ -62,22 +61,21 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, cpfMotorista=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
       
       pstm.setInt(1, carona.getId_motorista());
-      pstm.setString(2, carona.getCpfMotorista());
-      pstm.setTime(3, carona.getHorarioSaida());
-      pstm.setInt(4, carona.getQuantidadeLugares());
-      pstm.setInt(5, carona.getLugaresDisponiveis());
-      pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getId_Origem());
-      pstm.setInt(8, carona.getId_Destino());
-      pstm.setString(9, carona.getOrigem());
-      pstm.setString(10, carona.getDestino());
-      pstm.setDate(11, carona.getDataCadastro());
-      pstm.setDate(12, carona.getData());
-      pstm.setDate(13, carona.getDataRemocao());
-      pstm.setDate(14, carona.getDataCancelamento());
+      pstm.setTime(2, carona.getHorarioSaida());
+      pstm.setInt(3, carona.getQuantidadeLugares());
+      pstm.setInt(4, carona.getLugaresDisponiveis());
+      pstm.setBoolean(5, carona.isAtivo());
+      pstm.setInt(6, carona.getId_Origem());
+      pstm.setInt(7, carona.getId_Destino());
+      pstm.setString(8, carona.getOrigem());
+      pstm.setString(9, carona.getDestino());
+      pstm.setDate(10, carona.getDataCadastro());
+      pstm.setDate(11, carona.getData());
+      pstm.setDate(12, carona.getDataRemocao());
+      pstm.setDate(13, carona.getDataCancelamento());
 
       pstm.setInt(13, carona.getId());
 
@@ -212,7 +210,6 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
     int id = rs.getInt("id");
     int id_motorista = rs.getInt("id_motorista");
-    String cpfMotorista = rs.getString("cpfMotorista");
     Time horarioSaida = rs.getTime("horarioSaida");
     int quantidadeLugares = rs.getInt("quantidadeLugares");
     int lugaresDisponiveis = rs.getInt("lugaresDisponiveis");
@@ -221,13 +218,12 @@ public class JDBCCaronaDAO implements CaronaDAO{
     int id_destino = rs.getInt("id_destino");
     String origem = rs.getString("origem");
     String destino = rs.getString("destino");
-
     Date dataCadastro = rs.getDate("dataCadastro");
     Date data = rs.getDate("data");
     Date dataRemocao = rs.getDate("dataRemocao");
     Date dataCancelamento = rs.getDate("dataCancelamento");
 
-    Carona carona = new Carona(id, id_motorista, cpfMotorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
+    Carona carona = new Carona(id, id_motorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
 
     return carona;
 
