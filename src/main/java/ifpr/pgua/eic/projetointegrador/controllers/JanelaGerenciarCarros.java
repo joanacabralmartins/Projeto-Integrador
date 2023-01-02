@@ -55,7 +55,7 @@ public class JanelaGerenciarCarros implements Initializable {
 
     private void updateList() {
         listaCarros.clear();
-        List<Carro> carros = new ArrayList<>(repositorioC.listAll(repositorioM.getUser().getCpf()));
+        List<Carro> carros = new ArrayList<>(repositorioC.listar(repositorioM.getUser().getCpf()));
         
         for(Carro c : carros) {
             Carro carro = new Carro(c.getPlaca(), c.getModelo(), c.getCor(), c.getCpf_motorista());

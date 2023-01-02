@@ -10,6 +10,7 @@ import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
+import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class JDBCCarroDAO implements CarroDAO {
 
@@ -17,6 +18,31 @@ public class JDBCCarroDAO implements CarroDAO {
 
     public JDBCCarroDAO(FabricaConexoes fabricaConexao) {
         this.fabricaConexao = fabricaConexao;
+    }
+
+    @Override
+    public Result create(Carro carro) {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista) VALUES (?,?,?,?)");
+
+            pstm.setString(1, carro.getPlaca());
+            pstm.setString(2, carro.getModelo());
+            pstm.setString(3, carro.getCor());
+            pstm.setString(4, carro.getCpf_motorista());
+
+            pstm.executeUpdate();
+
+            pstm.close();
+            con.close();
+
+            return Result.success("Carro cadastrado!");
+            
+
+        } catch(SQLException e) {
+            return Result.fail(e.getMessage());
+        }
     }
 
     @Override
