@@ -99,7 +99,7 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro where cpf_motorista=?");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro where cpf_motorista=? and ativo=1");
 
             pstm.setString(1, cpfMotorista);
 
