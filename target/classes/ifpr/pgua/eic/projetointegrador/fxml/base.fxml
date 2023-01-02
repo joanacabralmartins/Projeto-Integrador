@@ -28,7 +28,7 @@
                </graphic>     
             </Button>
 
-            <Button id="btCarro" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#carregaTelaCadastroCarro" prefHeight="24.0" prefWidth="149.0" text="Carros">
+            <Button id="btCarro" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#carregaTelaCarro" prefHeight="24.0" prefWidth="149.0" text="Carros">
                <graphic>
                   <ImageView id="imgCarro" fitHeight="18.0" fitWidth="18.0">
                   </ImageView>

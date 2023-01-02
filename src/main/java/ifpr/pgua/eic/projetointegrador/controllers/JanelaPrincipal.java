@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 public class JanelaPrincipal extends BaseController {
 
     @FXML
-    private void carregaTelaCadastroCarro(ActionEvent evento) {
-        App.changeScreenRegion("CADASTRO CARROS", BorderPaneRegion.CENTER);
+    private void carregaTelaCarro(ActionEvent evento) {
+        App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
     }
 
     @FXML
