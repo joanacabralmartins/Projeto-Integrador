@@ -43,13 +43,6 @@
          </VBox.margin>
          </TextField>
       
-         <Label text="CPF do motorista" />
-         <TextField fx:id="tfCPFMotorista">
-         <VBox.margin>
-            <Insets right="200.0" />
-         </VBox.margin>
-         </TextField>
-      
          <HBox>
             <Button onAction="#cadastrarCarro" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
                <font>

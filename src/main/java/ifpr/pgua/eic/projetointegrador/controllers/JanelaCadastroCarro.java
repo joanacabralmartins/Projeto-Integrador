@@ -19,9 +19,6 @@ public class JanelaCadastroCarro {
     @FXML
     private TextField tfCor;
 
-    @FXML
-    private TextField tfCPFMotorista;
-
     private MotoristaRepository repositorio;
 
     
@@ -34,7 +31,7 @@ public class JanelaCadastroCarro {
         String placa = tfPlaca.getText();
         String modelo = tfModelo.getText();
         String cor = tfCor.getText();
-        String cpf_motorista = tfCPFMotorista.getText();
+        String cpf_motorista = repositorio.getUser().getCpf();
         
         Result resultado = repositorio.adicionarCarro(placa, modelo, cor, cpf_motorista);
         
@@ -52,7 +49,6 @@ public class JanelaCadastroCarro {
         tfPlaca.clear();
         tfModelo.clear();
         tfCor.clear();
-        tfCPFMotorista.clear();
     }
 
 }
