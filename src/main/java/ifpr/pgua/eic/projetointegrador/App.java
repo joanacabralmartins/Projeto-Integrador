@@ -6,6 +6,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
@@ -14,8 +15,11 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.UsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCCarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCMotoristaDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCUsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.utils.BaseAppNavigator;
@@ -31,6 +35,9 @@ public class App extends BaseAppNavigator {
     private UsuarioDAO usuarioDAO;
     private UsuarioRepository usuarioRepository;
 
+    private CarroDAO carroDAO;
+    private CarroRepository carroRepository;
+
     @Override
     public void init() throws Exception {
         super.init();
@@ -40,6 +47,9 @@ public class App extends BaseAppNavigator {
 
         usuarioDAO = new JDBCUsuarioDAO(fabricaConexoes);
         usuarioRepository = new UsuarioRepository(usuarioDAO);
+
+        carroDAO = new JDBCCarroDAO(fabricaConexoes);
+        carroRepository = new CarroRepository(carroDAO);
     }
 
     @Override
@@ -77,6 +87,9 @@ public class App extends BaseAppNavigator {
 
         registraTela("CARROS", new ScreenRegistryFXML(getClass(), "fxml/carro.fxml",
                 (o) -> new JanelaCarro()));
+
+        registraTela("GERENCIAR CARROS", new ScreenRegistryFXML(getClass(), "fxml/gerenciar-carros.fxml",
+                (o) -> new JanelaGerenciarCarros(motoristaRepository, carroRepository)));  
 
         registraTela("CADASTRO CARROS", new ScreenRegistryFXML(getClass(), "fxml/cadastro-carro.fxml",
                 (o) -> new JanelaCadastroCarro(motoristaRepository)));

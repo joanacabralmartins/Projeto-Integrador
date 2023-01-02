@@ -20,7 +20,7 @@
          </padding>
       
          <HBox>
-            <Button prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Visualizar Carros">
+            <Button onAction="#carregaTelaGerenciarCarros" prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Visualizar Carros">
                <HBox.margin>
                   <Insets top="4.0" />
                </HBox.margin>

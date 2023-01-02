@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
+   
+   <children>
+      <TableView fx:id="tbCarros" layoutX="100.0" layoutY="87.0" prefHeight="200.0" prefWidth="390.0">
+        <columns>
+          <TableColumn fx:id="colPlaca" prefWidth="130.0" style="-fx-alignment: center;" text="Placa" />
+
+          <TableColumn fx:id="colModelo" prefWidth="130.0" style="-fx-alignment: center;" text="Modelo" />
+
+          <TableColumn fx:id="colCor" prefWidth="130.0" style="-fx-alignment: center;" text="Cor" />
+        </columns>
+      </TableView>
+   </children>
+
+</Pane>

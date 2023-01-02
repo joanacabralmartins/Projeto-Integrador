@@ -5,8 +5,12 @@ import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCCarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCMotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 
 public class Teste {
     
@@ -25,6 +29,13 @@ public class Teste {
         List<Motorista> motoristas = dao.listAll();
         for (Motorista m : motoristas) {
             System.out.println(m.getNome());
+        }
+
+        CarroDAO carroDAO = new JDBCCarroDAO(fabrica);
+        CarroRepository repository = new CarroRepository(carroDAO);
+        List<Carro> carros = repository.listAll("43948039948");
+        for(Carro c : carros) {
+            System.out.println(c.getCor());
         }
     }
 }
