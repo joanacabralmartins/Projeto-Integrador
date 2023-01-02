@@ -103,7 +103,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=?"); 
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=? and ativo=1"); 
 
             pstm.setString(1, cpf);
             pstm.setString(2, senha);
