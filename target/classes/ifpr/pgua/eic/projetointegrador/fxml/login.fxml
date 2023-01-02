@@ -12,27 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="650.0" minWidth="1000.0" prefHeight="650.0" prefWidth="1000.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin">
-
-   <left>
-      <VBox id="menuVBox" prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #468C2F;" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="logo" text="IFCAR">
-               <graphic>
-                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0" />
-               </graphic>
-               <VBox.margin>
-                  <Insets left="150.0" top="450.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin></VBox>      
-   </left>
+<BorderPane minHeight="650.0" minWidth="1000.0" prefHeight="650.0" prefWidth="1000.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin">
 
    <center>
       <VBox id="centroVBox" prefHeight="650.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -135,4 +115,24 @@
          </children>
       </VBox>
    </center>
+   <right>
+      <VBox id="menuVBox" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="192.0" style="-fx-background-color: #468C2F;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin></VBox>
+   </right>
+   <left>
+      <VBox id="menuVBox" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="192.0" style="-fx-background-color: #468C2F;" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="logo" layoutX="160.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="90.0" text="IFCAR">
+               <graphic>
+                  <ImageView id="imgLogo" fitHeight="26.0" fitWidth="26.0" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

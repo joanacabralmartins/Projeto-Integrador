@@ -15,12 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" 
+<BorderPane stylesheets="@../CSS/styles.css"
+   xmlns="http://javafx.com/javafx/19" 
    xmlns:fx="http://javafx.com/fxml/1" 
    fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario">
    
    <center>
-      <ScrollPane id="scrollPaneCM" stylesheets="@../CSS/styles.css">      
+      <ScrollPane id="scrollPaneCM">      
          <content>
       
             <VBox spacing="5.0">

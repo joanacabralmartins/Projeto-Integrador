@@ -14,9 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" 
-xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarUsuario">
+<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarUsuario">
    
    <center>
       <ScrollPane id="scrollPaneCM" stylesheets="@../CSS/styles.css">      
@@ -131,9 +129,5 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarUsuario">
          </content>
       </ScrollPane>
    </center>
-
-   <left>
-      <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" BorderPane.alignment="CENTER" />
-   </left>
    
 </BorderPane>
