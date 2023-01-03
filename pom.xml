@@ -12,6 +12,13 @@
     <dependencies>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
             <version>5.2.2</version>
@@ -58,7 +65,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ifpr.pgua.eic.listatelefonica.App</mainClass>
+                            <mainClass>ifpr.pgua.eic.projetointegrador.App</mainClass>
                         </configuration>
                     </execution>
                 </executions>

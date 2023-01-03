@@ -25,12 +25,12 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,cpf_motorista,ativo) VALUES (?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,id_motorista,ativo) VALUES (?,?,?,?,?)");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
             pstm.setString(3, carro.getCor());
-            pstm.setString(4, carro.getCpf_motorista());
+            pstm.setInt(4, carro.getId__motorista());
             pstm.setBoolean(5, carro.isAtivo());
 
             pstm.executeUpdate();
@@ -51,12 +51,12 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, cor=?, cpf_motorista=?, ativo=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, cor=?, id_motorista=?, ativo=? WHERE id=?");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
             pstm.setString(3, carro.getCor());
-            pstm.setString(4, carro.getCpf_motorista());
+            pstm.setInt(4, carro.getId__motorista());
             pstm.setBoolean(5, carro.isAtivo());
 
             pstm.setInt(5, carro.getId());
@@ -95,13 +95,13 @@ public class JDBCCarroDAO implements CarroDAO {
     }
 
     @Override
-    public List<Carro> listAll(String cpfMotorista) {
+    public List<Carro> listAll(int id_motorista) {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro where cpf_motorista=? and ativo=1");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro where id_motorista=? and ativo=1");
 
-            pstm.setString(1, cpfMotorista);
+            pstm.setInt(1, id_motorista);
 
             ResultSet resultSet = pstm.executeQuery();
 
@@ -113,10 +113,10 @@ public class JDBCCarroDAO implements CarroDAO {
                 String placa = resultSet.getString("placa");
                 String modelo = resultSet.getString("modelo");
                 String cor = resultSet.getString("cor");
-                String cpf_motorista = resultSet.getString("cpf_motorista");
+                int idmotorista = resultSet.getInt("id_motorista");
                 Boolean ativo = resultSet.getBoolean("ativo");
 
-                Carro carro = new Carro(id, placa, modelo, cor, cpf_motorista, ativo);
+                Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
 
                 carros.add(carro);
             }

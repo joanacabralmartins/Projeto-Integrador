@@ -33,7 +33,7 @@ public class Teste {
 
         CarroDAO carroDAO = new JDBCCarroDAO(fabrica);
         CarroRepository repository = new CarroRepository(carroDAO);
-        List<Carro> carros = repository.listar("43948039948");
+        List<Carro> carros = repository.listar(1);
         for(Carro c : carros) {
             System.out.println(c.getCor());
         }

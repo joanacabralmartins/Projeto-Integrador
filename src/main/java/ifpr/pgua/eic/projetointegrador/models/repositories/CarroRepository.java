@@ -36,7 +36,7 @@ public class CarroRepository {
         return dao.inativar(carro);
     }
 
-    public List<Carro> listar(String cpfMotorista) {
-        return dao.listAll(cpfMotorista);
+    public List<Carro> listar(int id_motorista) {
+        return dao.listAll(id_motorista);
     }
 }

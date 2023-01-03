@@ -9,5 +9,5 @@ public interface CarroDAO {
     Result create(Carro carro);
     Result update(Carro carro);
     Result inativar(Carro carro);
-    List<Carro> listAll(String cpfMotorista);
+    List<Carro> listAll(int id_motorista);
 }

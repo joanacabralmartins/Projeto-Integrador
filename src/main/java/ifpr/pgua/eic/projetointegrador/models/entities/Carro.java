@@ -6,20 +6,20 @@ public class Carro {
   private String placa;
   private String modelo;
   private String cor;
-  private String cpf_motorista;
+  private int id_motorista;
   private boolean ativo;
 
-  public Carro(int id, String placa, String modelo, String cor, String cpf_motorista, boolean ativo) {
+  public Carro(int id, String placa, String modelo, String cor, int id_motorista, boolean ativo) {
     this.id = id;
     this.placa = placa;
     this.modelo = modelo;
     this.cor = cor;
-    this.cpf_motorista = cpf_motorista;
+    this.id_motorista = id_motorista;
     this.ativo = ativo;
   }
 
-  public Carro(String placa, String modelo, String cor, String cpf_motorista) {
-    this(-1, placa, modelo, cor, cpf_motorista, true);
+  public Carro(String placa, String modelo, String cor, int id_motorista) {
+    this(-1, placa, modelo, cor, id_motorista, true);
 }
 
   public int getId() {
@@ -54,12 +54,12 @@ public class Carro {
     this.cor = cor;
   }
 
-  public String getCpf_motorista() {
-    return cpf_motorista;
+  public int getId__motorista() {
+    return id_motorista;
   }
 
-  public void setCpf_motorista(String cpf_motorista) {
-    this.cpf_motorista = cpf_motorista;
+  public void setId_motorista(int id_motorista) {
+    this.id_motorista = id_motorista;
   }
 
   public boolean isAtivo() {
