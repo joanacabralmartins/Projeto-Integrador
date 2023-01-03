@@ -6,7 +6,8 @@
 #btUser,
 #btCarro,
 #btCarona,
-#btSolicitacoes {
+#btSolicitacoes,
+#btSair {
     -fx-background-color: transparent;
 
     -fx-text-fill: white;
@@ -22,7 +23,8 @@
 #btUser:hover,
 #btCarro:hover,
 #btCarona:hover,
-#btSolicitacoes:hover {
+#btSolicitacoes:hover,
+#btSair:hover {
     -fx-background-color: #154d1e;
 
     -fx-alignment: CENTER;
@@ -40,7 +42,7 @@
 #menuVBox {
     -fx-background-color: #2b9f3f;
 
-    -fx-padding: 15 0 0 0;
+    -fx-padding: 15 0 15 0;
 }
 
 #topoHBox {
@@ -106,4 +108,8 @@
 
 #imgCaroneiro {
     -fx-image: url("../icons/caroneiro.png");
+}
+
+#imgLogOff {
+    -fx-image: url("../icons/LogOff.png");
 }
