@@ -103,6 +103,8 @@ public class JanelaCadastroMotorista implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
+            limpar();
+
             carregarHome();
         }
 
@@ -114,12 +116,24 @@ public class JanelaCadastroMotorista implements Initializable {
     }
 
     private void carregarHome() {
-        App.pushScreen("PRINCIPAL MOTORISTA");
+        App.pushScreen("PRINCIPAL");
     }
 
     @FXML
     private void carregarTelaLogin(ActionEvent event) {
         App.pushScreen("LOGIN");
+    }
+
+    private void limpar(){
+        tfCPF.clear();
+        tfNome.clear();
+        pfSenha.clear();
+        tfCarteiraMotorista.clear();
+        tfCurso.clear();
+        tfTelefone.clear();
+        taEndereco.clear();
+        cbFuncao.setValue(null);
+        dpDataNascimento.setValue(null);
     }
 
 }

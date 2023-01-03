@@ -1,5 +1,6 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
+import java.lang.ref.Cleaner;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -96,6 +97,8 @@ public class JanelaCadastroUsuario implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
+            limpar();
+
             carregarHome();
         }
 
@@ -113,6 +116,17 @@ public class JanelaCadastroUsuario implements Initializable {
     @FXML
     private void carregarTelaLogin(ActionEvent event) {
         App.pushScreen("LOGIN");
+    }
+
+    private void limpar(){
+        tfCPF.clear();
+        tfNome.clear();
+        pfSenha.clear();
+        tfCurso.clear();
+        tfTelefone.clear();
+        taEndereco.clear();
+        cbFuncao.setValue(null);
+        dpDataNascimento.setValue(null);
     }
 
 }

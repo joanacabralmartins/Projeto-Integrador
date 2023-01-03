@@ -34,7 +34,9 @@ public class MotoristaRepository {
         if(motorista.getCpf().matches("[A-Z]*")){
             return Result.fail("Insira um CPF válido!");
         }
-
+        if(motorista.getCarteira_motorista().length() < 11){
+            return Result.fail("Carteira de motorista incorreta");
+        }
         if (motorista.getIdade() < 18) {
             return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
         }

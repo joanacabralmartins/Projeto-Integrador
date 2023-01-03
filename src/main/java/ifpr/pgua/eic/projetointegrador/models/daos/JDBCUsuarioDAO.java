@@ -185,6 +185,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         } catch(SQLException e){
             return Result.fail(e.getMessage());
         }
+       
     }
 
     @Override

@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <BorderPane stylesheets="@../CSS/styles.css"
    xmlns="http://javafx.com/javafx/19" 
    xmlns:fx="http://javafx.com/fxml/1" 
@@ -147,7 +148,7 @@
       </ScrollPane>
    </center>
 
-   <left>
+   <!-- <left>
       <VBox id="menuVBox" prefHeight="448.0" prefWidth="144.0" BorderPane.alignment="CENTER">
          
          <children>
@@ -163,6 +164,6 @@
             </Button>
          </children>
       </VBox>
-   </left>
+   </left> -->
    
 </BorderPane>

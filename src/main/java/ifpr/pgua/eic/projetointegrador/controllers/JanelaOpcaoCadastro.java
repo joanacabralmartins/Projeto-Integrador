@@ -16,4 +16,10 @@ public class JanelaOpcaoCadastro {
     private void carregaTelaCadastroMotorista(ActionEvent evento) {
         App.changeScreenRegion("CADASTRO MOTORISTA", BorderPaneRegion.CENTER);
     }
+
+    @FXML
+    private void carregarTelaLogin(ActionEvent event) {
+        App.pushScreen("LOGIN");
+    }
+
 }
