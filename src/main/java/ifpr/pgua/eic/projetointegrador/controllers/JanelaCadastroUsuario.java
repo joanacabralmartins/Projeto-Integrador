@@ -75,7 +75,7 @@ public class JanelaCadastroUsuario implements Initializable {
             return;
         }
 
-        int ativo = 1;
+        boolean ativo = true;
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();

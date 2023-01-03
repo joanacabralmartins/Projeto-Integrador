@@ -18,7 +18,7 @@ public class UsuarioRepository {
         usuarios = dao.listAll();
     }
 
-    public Result adicionarUsuario(int ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
+    public Result adicionarUsuario(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco) {
         Usuario caroneiro = new Usuario(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         

@@ -29,7 +29,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                                     
             PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             
-            pstm.setInt(1, motorista.getAtivo());
+            pstm.setBoolean(1, motorista.isAtivo());
             pstm.setString(2, motorista.getCpf());
             pstm.setString(3, motorista.getNome());
             pstm.setString(4, motorista.getFuncao_IFPR());
@@ -67,7 +67,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             while (resultSet.next()) {
 
                 int id = resultSet.getInt("id");
-                int ativo = resultSet.getInt("ativo");
+                boolean ativo = resultSet.getBoolean("ativo");
                 String cpf = resultSet.getString("cpf");
                 String nome = resultSet.getString("nome");
                 String funcao = resultSet.getString("funcao_IFPR");
@@ -112,7 +112,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
             if (rs.next()) {
 
                 int id = rs.getInt("id");
-                int ativo = rs.getInt("ativo");
+                boolean ativo = rs.getBoolean("ativo");
                 String nome = rs.getString("nome");
                 String funcao = rs.getString("funcao_IFPR");
                 String carteira = rs.getString("carteira_motorista");

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS usuario (
     id INTEGER PRIMARY KEY, 
-    ativo INTEGER NOT NULL,
+    ativo TINYINT NOT NULL,
     cpf TEXT NOT NULL,
     nome TEXT NOT NULL,
     funcao_IFPR TEXT NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 
 CREATE TABLE IF NOT EXISTS motorista (
     id INTEGER PRIMARY KEY, 
-    ativo INTEGER NOT NULL,
+    ativo TINYINT NOT NULL,
     cpf TEXT NOT NULL,
     nome TEXT NOT NULL,
     funcao_IFPR TEXT NOT NULL,

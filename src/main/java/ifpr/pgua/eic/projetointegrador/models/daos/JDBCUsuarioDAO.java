@@ -31,7 +31,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
                                     
             PreparedStatement pstm = con.prepareStatement("INSERT INTO usuario(ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco) VALUES (?,?,?,?,?,?,?,?,?,?)");
             
-            pstm.setInt(1, caroneiro.getAtivo());
+            pstm.setBoolean(1, caroneiro.isAtivo());
             pstm.setString(2, caroneiro.getCpf());
             pstm.setString(3, caroneiro.getNome());
             pstm.setString(4, caroneiro.getFuncao_IFPR());
@@ -68,7 +68,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             while (resultSet.next()) {
 
                 int id = resultSet.getInt("id");
-                int ativo = resultSet.getInt("ativo");
+                Boolean ativo = resultSet.getBoolean("ativo");
                 String cpf = resultSet.getString("cpf");
                 String nome = resultSet.getString("nome");
                 String funcao = resultSet.getString("funcao_IFPR");
@@ -112,7 +112,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
             if (rs.next()) {
 
                 int id = rs.getInt("id");
-                int ativo = rs.getInt("ativo");
+                boolean ativo = rs.getBoolean("ativo");
                 String nome = rs.getString("nome");
                 String funcao = rs.getString("funcao_IFPR");
                 String curso = rs.getString("curso");

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Usuario {
 
   private int id;
-  private int ativo;
+  private boolean ativo;
   private String cpf;
   private String nome;
   private String funcao_IFPR;
@@ -16,7 +16,7 @@ public class Usuario {
   private String telefone;
   private String endereco;
 
-  public Usuario(int id, int ativo, String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
+  public Usuario(int id, boolean ativo, String cpf, String nome, String funcao_IFPR, String senha, Date data_nascimento,
       int idade, String curso, String telefone, String endereco) {
 
     this.id = id;
@@ -40,11 +40,11 @@ public class Usuario {
     this.id = id;
   }
 
-  public int getAtivo() {
+  public boolean isAtivo() {
     return ativo;
   }
 
-  public void setAtivo(int ativo) {
+  public void setAtivo(boolean ativo) {
     this.ativo = ativo;
   }
 

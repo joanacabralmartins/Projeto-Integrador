@@ -18,26 +18,24 @@ public class MotoristaRepository {
         motoristas = dao.listAll();
     }
 
-    public Result adicionarMotorista(int ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
-                                    int idade, String curso, String telefone, String endereco, String carteira) {
-        Motorista motorista = new Motorista(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira);
+    public Result adicionarMotorista(Motorista motorista) {
         
-        Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpf)).findFirst();
-        if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
-            return Result.fail("Motorista já cadastrado!");
+        Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(motorista.getCpf())).findFirst();
+        // if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
+        //     return Result.fail("Motorista já cadastrado!");
+        // }
+
+        if (motorista.getCpf().length() < 11) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if (motorista.getCpf().matches("[a-z]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if(motorista.getCpf().matches("[A-Z]*")){
+            return Result.fail("Insira um CPF válido!");
         }
 
-        if (cpf.length() < 11) {
-            return Result.fail("Insira um CPF válido!");
-        }
-        if (cpf.matches("[a-z]*")) {
-            return Result.fail("Insira um CPF válido!");
-        }
-        if(cpf.matches("[A-Z]*")){
-            return Result.fail("Insira um CPF válido!");
-        }
-
-        if (idade < 18) {
+        if (motorista.getIdade() < 18) {
             return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
         }
 

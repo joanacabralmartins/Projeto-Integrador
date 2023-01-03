@@ -33,7 +33,7 @@ public class JanelaCadastroCarro {
     @FXML
     private void cadastrarCarro() {
 
-        Carro carro = new Carro(0, tfPlaca.getText(), tfModelo.getText(), tfCor.getText(), repositorioM.getUser().getCpf(), true);
+        Carro carro = new Carro(1, tfPlaca.getText(), tfModelo.getText(), tfCor.getText(), repositorioM.getUser().getCpf(), true);
         
         Result resultado = repositorioC.adicionarCarro(carro);
         

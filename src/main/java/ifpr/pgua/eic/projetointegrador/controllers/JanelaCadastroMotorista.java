@@ -7,6 +7,7 @@ import java.time.Period;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
+import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -78,7 +79,7 @@ public class JanelaCadastroMotorista implements Initializable {
             return;
         }
 
-        int ativo = 1;
+        boolean ativo = true;
         String cpf = tfCPF.getText();
         String nome = tfNome.getText();
         String senha = pfSenha.getText();
@@ -93,7 +94,9 @@ public class JanelaCadastroMotorista implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.adicionarMotorista(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
+        Motorista motorista = new Motorista(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
+
+        Result resultado = repositorio.adicionarMotorista(motorista);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
@@ -111,7 +114,7 @@ public class JanelaCadastroMotorista implements Initializable {
     }
 
     private void carregarHome() {
-        App.pushScreen("PRINCIPAL");
+        App.pushScreen("PRINCIPAL MOTORISTA");
     }
 
     @FXML
