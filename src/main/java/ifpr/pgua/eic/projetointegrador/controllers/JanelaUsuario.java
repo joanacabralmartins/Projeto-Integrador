@@ -1,16 +1,25 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
+import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
+import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
+import ifpr.pgua.eic.projetointegrador.models.results.Result;
+import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class JanelaUsuario implements Initializable {
     
@@ -22,6 +31,9 @@ public class JanelaUsuario implements Initializable {
 
     private MotoristaRepository repositorioM;
     private UsuarioRepository repositorioU;
+
+    private Usuario usuario;
+    private Motorista motorista;
 
     public JanelaUsuario(MotoristaRepository repositorioMotorista, UsuarioRepository repositorioUsuario) {
         repositorioM = repositorioMotorista;
@@ -35,10 +47,14 @@ public class JanelaUsuario implements Initializable {
         if(repositorioU.getUser() != null) {
             nome = repositorioU.getUser().getNome();
             funcao = repositorioU.getUser().getFuncao_IFPR();
+
+            usuario = repositorioU.getUser();
         } 
         if (repositorioM.getUser() != null) {
             nome = repositorioM.getUser().getNome();
             funcao = repositorioM.getUser().getFuncao_IFPR();
+
+            motorista = repositorioM.getUser();
         }
         
         tfNome.setText(nome);
@@ -52,5 +68,42 @@ public class JanelaUsuario implements Initializable {
         } else {
             App.changeScreenRegion("EDITAR MOTORISTA", BorderPaneRegion.CENTER);
         }
+    }
+
+    @FXML
+    private void excluirConta(ActionEvent evento) {
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Tem certeza que deseja remover sua conta?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        Result resultado = null;
+        String msg = null;
+
+        if (result.get() == ButtonType.OK) {
+            if (usuario != null) {
+                resultado = repositorioU.inativar(usuario);
+                msg = resultado.getMsg();
+            }
+            if(motorista != null) {
+                resultado = repositorioM.inativar(motorista);
+                msg = resultado.getMsg();
+            }
+        } else {
+            return;
+        }
+
+        if(resultado instanceof SuccessResult){
+            Alert alerta = new Alert(AlertType.INFORMATION,msg);
+            alerta.showAndWait();
+            carregarTelaLogin();
+        }
+
+        if(resultado instanceof FailResult) {
+            Alert alerta = new Alert(AlertType.ERROR,msg);
+            alerta.showAndWait();
+        }
+    }
+
+    private void carregarTelaLogin() {
+        App.pushScreen("LOGIN");
     }
 }

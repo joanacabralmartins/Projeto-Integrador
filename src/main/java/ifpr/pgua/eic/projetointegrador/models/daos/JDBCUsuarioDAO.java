@@ -171,7 +171,7 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE usuarios set ativo=0 WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE usuario set ativo=0 WHERE id=?");
             
             pstm.setInt(1, usuario.getId());
 
