@@ -13,4 +13,5 @@ public interface MotoristaDAO {
     Result inativar(Motorista motorista);
     List<Motorista> listAll();
     Motorista getUser();
+    void logOff();
 }

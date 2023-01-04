@@ -60,4 +60,8 @@ public class MotoristaRepository {
         return dao.getUser();
     }
 
+    public void logOff() {
+        dao.logOff();
+    }
+
 }

@@ -195,4 +195,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
     public Motorista getUser() {
         return motorista;
     }    
+
+    @Override
+    public void logOff() {
+        motorista.reset();
+    }
 }
