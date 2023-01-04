@@ -116,7 +116,7 @@ public class JanelaCadastroMotorista implements Initializable {
     }
 
     private void carregarHome() {
-        App.pushScreen("PRINCIPAL");
+        App.pushScreen("PRINCIPAL MOTORISTA");
     }
 
     @FXML
