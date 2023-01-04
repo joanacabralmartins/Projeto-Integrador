@@ -96,9 +96,8 @@ public class JanelaCadastroUsuario implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
-            repositorio.validarLogin(cpf, senha);
-
-            carregarHome();
+            App.popScreen();
+            
         }
 
         if(resultado instanceof FailResult) {
@@ -106,15 +105,6 @@ public class JanelaCadastroUsuario implements Initializable {
             alert.showAndWait();
         }
 
-    }
-
-    private void carregarHome() {
-        App.pushScreen("PRINCIPAL CARONEIRO");
-    }
-
-    @FXML
-    private void carregarTelaLogin(ActionEvent event) {
-        App.pushScreen("LOGIN");
     }
 
     private void limpar(){

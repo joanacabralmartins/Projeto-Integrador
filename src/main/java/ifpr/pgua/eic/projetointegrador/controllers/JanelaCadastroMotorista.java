@@ -103,9 +103,8 @@ public class JanelaCadastroMotorista implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
-            repositorio.validarLogin(cpf, senha);
+            App.popScreen();
 
-            carregarHome();
         }
 
         if(resultado instanceof FailResult) {
