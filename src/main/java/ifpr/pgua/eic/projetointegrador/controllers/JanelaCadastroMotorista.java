@@ -114,15 +114,6 @@ public class JanelaCadastroMotorista implements Initializable {
 
     }
 
-    private void carregarHome() {
-        App.pushScreen("PRINCIPAL MOTORISTA");
-    }
-
-    @FXML
-    private void carregarTelaLogin(ActionEvent event) {
-        App.pushScreen("LOGIN");
-    }
-
     private void limpar(){
         tfCPF.clear();
         tfNome.clear();
