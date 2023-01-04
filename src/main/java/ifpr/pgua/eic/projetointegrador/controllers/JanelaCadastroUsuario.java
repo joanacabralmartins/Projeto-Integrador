@@ -96,7 +96,7 @@ public class JanelaCadastroUsuario implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
-            limpar();
+            repositorio.validarLogin(cpf, senha);
 
             carregarHome();
         }
