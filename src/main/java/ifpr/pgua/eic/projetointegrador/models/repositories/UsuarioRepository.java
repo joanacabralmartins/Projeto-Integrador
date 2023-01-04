@@ -59,5 +59,9 @@ public class UsuarioRepository {
     public Usuario getUser() {
         return dao.getUser();
     }
+
+    public void logOff() {
+        dao.logOff();
+    }
     
 }

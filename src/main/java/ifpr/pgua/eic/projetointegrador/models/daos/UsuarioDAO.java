@@ -13,4 +13,5 @@ public interface UsuarioDAO {
     Result inativar(Usuario caroneiro);
     List<Usuario> listAll();
     Usuario getUser();
+    void logOff();
 }

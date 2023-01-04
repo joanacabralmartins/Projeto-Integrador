@@ -192,4 +192,9 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
     public Usuario getUser() {
         return usuario;
     }    
+
+    @Override
+    public void logOff() {
+        usuario.reset();
+    } 
 }
