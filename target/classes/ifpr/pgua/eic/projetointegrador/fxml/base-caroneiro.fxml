@@ -46,7 +46,7 @@
 
                <children>
 
-                  <Button id="btSair" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="149.0" text="Sair">
+                  <Button onAction="#deslogar" id="btSair" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="24.0" prefWidth="149.0" text="Sair">
                      <graphic>
                         <ImageView id="imgLogOff" fitHeight="18.0" fitWidth="18.0" />
                      </graphic>
