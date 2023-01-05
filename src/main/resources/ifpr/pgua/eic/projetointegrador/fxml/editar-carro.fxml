@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
+
+   <children>
+      <VBox spacing="5.0">
+      
+         <padding>
+            <Insets left="150.0" top="60.0" />
+         </padding>
+      
+         <Label text="Placa" />
+         <TextField fx:id="tfPlaca" prefWidth="120.0">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
+         </TextField>
+      
+         <Label text="Modelo" />
+         <TextField fx:id="tfModelo">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
+         </TextField>
+      
+         <Label text="Cor" />
+         <TextField fx:id="tfCor">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
+         </TextField>
+      
+         <HBox>
+            <Button onAction="#editarCarro" prefHeight="22.0" prefWidth="64.0" text="Editar">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="4.0" />
+               </HBox.margin>
+            </Button>
+         </HBox>
+      
+      </VBox>
+   </children>
+</Pane>
