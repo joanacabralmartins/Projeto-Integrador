@@ -13,6 +13,11 @@ import javafx.scene.control.ButtonType;
 public class JanelaPrincipal extends BaseController {
 
     @FXML
+    private void carregaTelaHome(ActionEvent evento) {
+        App.pushScreen("PRINCIPAL MOTORISTA");
+    }
+
+    @FXML
     private void carregaTelaCarro(ActionEvent evento) {
         App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
     }

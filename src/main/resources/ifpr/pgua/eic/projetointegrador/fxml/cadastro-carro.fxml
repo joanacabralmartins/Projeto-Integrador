@@ -9,17 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane 
-   stylesheets="@../CSS/styles.css" 
-   xmlns="http://javafx.com/javafx/19" 
-   xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
 
    <children>
       <VBox spacing="5.0">
       
          <padding>
-            <Insets left="150.0" top="60.0" />
+            <Insets left="300.0" top="150.0" />
          </padding>
       
          <Label text="Placa" />

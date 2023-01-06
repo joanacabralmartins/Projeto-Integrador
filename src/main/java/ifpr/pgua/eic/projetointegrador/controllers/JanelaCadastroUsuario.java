@@ -13,7 +13,6 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -105,17 +104,6 @@ public class JanelaCadastroUsuario implements Initializable {
             alert.showAndWait();
         }
 
-    }
-
-    private void limpar(){
-        tfCPF.clear();
-        tfNome.clear();
-        pfSenha.clear();
-        tfCurso.clear();
-        tfTelefone.clear();
-        taEndereco.clear();
-        cbFuncao.setValue(null);
-        dpDataNascimento.setValue(null);
     }
 
 }

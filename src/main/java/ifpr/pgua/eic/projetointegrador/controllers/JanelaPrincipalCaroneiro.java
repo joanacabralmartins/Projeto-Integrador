@@ -13,6 +13,11 @@ import javafx.scene.control.ButtonType;
 public class JanelaPrincipalCaroneiro extends BaseController {
 
     @FXML
+    private void carregaTelaHome(ActionEvent evento) {
+        App.pushScreen("PRINCIPAL CARONEIRO");
+    }
+
+    @FXML
     private void carregaTelaUsuario(ActionEvent evento) {
         App.changeScreenRegion("USUARIO", BorderPaneRegion.CENTER);
     }
