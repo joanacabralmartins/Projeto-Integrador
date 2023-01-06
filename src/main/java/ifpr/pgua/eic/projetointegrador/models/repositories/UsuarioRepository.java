@@ -21,10 +21,6 @@ public class UsuarioRepository {
     public Result adicionarUsuario(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
                                     int idade, String curso, String telefone, String endereco) {
         Usuario caroneiro = new Usuario(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
-        
-        if (getByCpf(cpf) != null) {
-            return Result.fail("Usuário já cadastrado!");
-        }
 
         if (cpf.length() < 11) {
             return Result.fail("Insira um CPF válido!");
@@ -38,6 +34,10 @@ public class UsuarioRepository {
 
         if (idade < 18) {
             return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
+        }
+
+        if (getByCpf(cpf) != null) {
+            return Result.fail("Usuário já cadastrado!");
         }
 
         return dao.create(caroneiro);
