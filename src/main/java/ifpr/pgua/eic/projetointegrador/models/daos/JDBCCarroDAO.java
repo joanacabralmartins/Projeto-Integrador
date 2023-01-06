@@ -15,6 +15,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 public class JDBCCarroDAO implements CarroDAO {
 
     private FabricaConexoes fabricaConexao;
+    private Carro carro;
 
     public JDBCCarroDAO(FabricaConexoes fabricaConexao) {
         this.fabricaConexao = fabricaConexao;
@@ -59,7 +60,7 @@ public class JDBCCarroDAO implements CarroDAO {
             pstm.setInt(4, carro.getId__motorista());
             pstm.setBoolean(5, carro.isAtivo());
 
-            pstm.setInt(5, carro.getId());
+            pstm.setInt(6, carro.getId());
 
             pstm.execute();
 
@@ -72,6 +73,46 @@ public class JDBCCarroDAO implements CarroDAO {
             return Result.fail(e.getMessage());
         }
     }
+
+    @Override
+  public Carro getById(int id) {
+
+    try {
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro WHERE id=?"); 
+
+      pstm.setInt(1, id);
+
+      ResultSet rs = pstm.executeQuery();
+      if (rs.next()) {
+
+        String placa = rs.getString("placa");
+        String modelo = rs.getString("modelo");
+        String cor = rs.getString("cor");
+        int idmotorista = rs.getInt("id_motorista");
+        Boolean ativo = rs.getBoolean("ativo");
+
+        Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
+        
+        rs.close();
+        pstm.close();
+        con.close();
+
+        return carro;
+
+      } else {
+        rs.close();
+        pstm.close();
+        con.close();
+        return null;
+      }
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return null;
+    }   
+  }
 
     @Override
     public Result inativar(Carro carro) {
@@ -93,6 +134,11 @@ public class JDBCCarroDAO implements CarroDAO {
             return Result.fail(e.getMessage());
         }
     }
+
+    @Override
+    public void selecionarCarro(Carro carro) {
+        this.carro = new Carro(carro.getId(), carro.getPlaca(), carro.getModelo(), carro.getCor(), carro.getId__motorista(), carro.isAtivo());
+    }  
 
     @Override
     public List<Carro> listAll(int id_motorista) {
@@ -131,5 +177,10 @@ public class JDBCCarroDAO implements CarroDAO {
             return Collections.emptyList();
         }
     }
+
+    @Override
+    public Carro getCarro() {
+        return carro;
+    }   
     
 }

@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -64,6 +66,12 @@ public class JanelaGerenciarCarros implements Initializable {
     private void inativarCarro() {
 
         Carro carro = tbCarros.getSelectionModel().getSelectedItem();
+
+        if(carro == null){
+            Alert alert = new Alert(AlertType.INFORMATION, "Selecione um carro");
+            alert.showAndWait(); 
+            return;
+        }
         
         Result resultado = repositorioC.inativar(carro);
         
@@ -73,9 +81,32 @@ public class JanelaGerenciarCarros implements Initializable {
         alert.showAndWait();
 
         updateList();
+
     }
 
+    @FXML
+    private void carregaTelaEditarCarro() {
+
+        Carro carro = tbCarros.getSelectionModel().getSelectedItem();
+
+        if(carro == null){
+            Alert alert = new Alert(AlertType.INFORMATION, "Selecione um carro");
+            alert.showAndWait(); 
+            return;
+        }
+
+        repositorioC.selecionarCarro(carro);
+        
+        App.changeScreenRegion("EDITAR CARRO", BorderPaneRegion.CENTER);
+
+    }
+
+
+
+
+
     private void updateList() {
+
         listaCarros.clear();
         List<Carro> carros = new ArrayList<>(repositorioC.listar(repositorioM.getUser().getId()));
         
@@ -85,6 +116,7 @@ public class JanelaGerenciarCarros implements Initializable {
         }
         
         tbCarros.setItems(listaCarros);
+
     }
-    
+
 }

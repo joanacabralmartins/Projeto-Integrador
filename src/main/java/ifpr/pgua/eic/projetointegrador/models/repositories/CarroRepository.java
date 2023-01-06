@@ -36,7 +36,19 @@ public class CarroRepository {
         return dao.inativar(carro);
     }
 
+    public void selecionarCarro(Carro carro){
+        dao.selecionarCarro(carro);
+    }
+
     public List<Carro> listar(int id_motorista) {
         return dao.listAll(id_motorista);
+    }
+
+    public Carro getById(int id){
+        return dao.getById(id);
+    }
+
+    public Carro getCarro(){
+        return dao.getCarro();
     }
 }

@@ -10,4 +10,7 @@ public interface CarroDAO {
     Result update(Carro carro);
     Result inativar(Carro carro);
     List<Carro> listAll(int id_motorista);
+    Carro getById(int id);
+    void selecionarCarro(Carro carro);
+    Carro getCarro();
 }
