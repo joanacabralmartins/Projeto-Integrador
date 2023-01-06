@@ -196,8 +196,4 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         return motorista;
     }    
 
-    @Override
-    public void logOff() {
-        motorista.reset();
-    }
 }

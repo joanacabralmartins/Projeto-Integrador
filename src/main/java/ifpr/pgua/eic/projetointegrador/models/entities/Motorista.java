@@ -21,19 +21,4 @@ public class Motorista extends Usuario {
     this.carteira_motorista = carteira_motorista;
   }
   
-  @Override
-  public void reset(){
-    this.setAtivo(false);
-    this.setCarteira_motorista(null);
-    this.setCpf(null);
-    this.setCurso(null);
-    this.setData_nascimento(null);
-    this.setEndereco(null);
-    this.setFuncao_IFPR(null);
-    this.setId(0);
-    this.setIdade(0);
-    this.setNome(null);
-    this.setSenha(null);
-    this.setTelefone(null);
-  }
 }
