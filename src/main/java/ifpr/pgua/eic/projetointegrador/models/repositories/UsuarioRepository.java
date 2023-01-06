@@ -22,8 +22,7 @@ public class UsuarioRepository {
                                     int idade, String curso, String telefone, String endereco) {
         Usuario caroneiro = new Usuario(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         
-        Optional<Usuario> busca = usuarios.stream().filter((users)->users.getCpf().equals(cpf)).findFirst();
-        if (busca.isPresent()) { //verifica se o caroneiro realmente ainda não tem cadastro
+        if (getByCpf(cpf) != null) {
             return Result.fail("Usuário já cadastrado!");
         }
 
