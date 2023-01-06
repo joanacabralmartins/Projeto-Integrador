@@ -47,19 +47,20 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="0.0" prefWidth="104.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="74.0" />
               <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="0.0" prefWidth="5.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="260.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="257.0" />
           </columnConstraints>
 
           <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           </rowConstraints>
 
           <children>
           
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="1" />
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="3" />
+            <TextField fx:id="tfOrigem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="1" />
+            <TextField fx:id="tfDestino" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="3" />
+            <Button text="Filtrar" GridPane.columnIndex="4" onAction="#filtrar"/>
 
           </children>
 
@@ -76,12 +77,12 @@
         <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="310.0">
 
           <columns>
-                  <TableColumn prefWidth="40.0" text="Id" visible="false" />
-            <TableColumn prefWidth="75.0" text="Origem" />
-            <TableColumn prefWidth="75.0" text="Destino" />
-              <TableColumn prefWidth="55.0" text="Data" />
-              <TableColumn prefWidth="55.0" text="Horário" />
-              <TableColumn prefWidth="55.0" text="Vagas" />
+              <TableColumn fx:id="caronaId" prefWidth="40.0" text="Id" visible="false" />
+              <TableColumn fx:id="caronaOrigem" prefWidth="75.0" text="Origem" />
+              <TableColumn fx:id="caronaDestino" prefWidth="75.0" text="Destino" />
+              <TableColumn fx:id="caronaData" prefWidth="55.0" text="Data" />
+              <TableColumn fx:id="caronaHorario" prefWidth="55.0" text="Horário" />
+              <TableColumn fx:id="caronaVagas" prefWidth="55.0" text="Vagas" />
           </columns>
 
         </TableView>
@@ -99,7 +100,7 @@
                 <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="100.0">
 
                   <columns>
-                    <TableColumn prefWidth="100.0" text="Descricao" />
+                    <TableColumn fx:id="pontosDescricao" prefWidth="100.0" text="Descricao" />
                   </columns>
 
                 </TableView>
@@ -118,11 +119,11 @@
 
                   <columns>
 
-                    <TableColumn text="Nome" />
-                    <TableColumn prefWidth="65.0" text="Funcao" />
-                    <TableColumn prefWidth="60.0" text="Curso" />
-                    <TableColumn prefWidth="65.0" text="Telefone" />
-                    <TableColumn prefWidth="45.0" text="Idade" />
+                    <TableColumn fx:id="pasNome" text="Nome" />
+                    <TableColumn fx:id="pasFuncao" prefWidth="65.0" text="Funcao" />
+                    <TableColumn fx:id="pasCurso" prefWidth="60.0" text="Curso" />
+                    <TableColumn fx:id="pasTelefone" prefWidth="65.0" text="Telefone" />
+                    <TableColumn fx:id="pasIdade" prefWidth="45.0" text="Idade" />
 
                   </columns>
 
@@ -149,9 +150,9 @@
                 <TableView prefHeight="52.0" prefWidth="187.0">
 
                   <columns>
-                    <TableColumn prefWidth="65.0" text="Placa" />
-                    <TableColumn prefWidth="60.0" text="Cor" />
-                      <TableColumn prefWidth="60.0" text="Modelo" />
+                    <TableColumn fx:id="carPlaca" prefWidth="65.0" text="Placa" />
+                    <TableColumn fx:id="carCor" prefWidth="60.0" text="Cor" />
+                    <TableColumn fx:id="CarModelo" prefWidth="60.0" text="Modelo" />
                   </columns>
 
                 </TableView>
@@ -169,12 +170,12 @@
                 <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="316.0">
 
                   <columns>
-                              <TableColumn prefWidth="40.0" text="Id" visible="false" />
-                    <TableColumn prefWidth="105.0" text="Nome" />
-                    <TableColumn prefWidth="55.0" text="Funcao" />
-                      <TableColumn prefWidth="50.0" text="Curso" />
-                      <TableColumn prefWidth="65.0" text="Telefone" />
-                      <TableColumn prefWidth="40.0" text="Idade" />
+                    <TableColumn fx:id="motoristaId" prefWidth="40.0" text="Id" visible="false" />
+                    <TableColumn fx:id="motoristaNome" prefWidth="105.0" text="Nome" />
+                    <TableColumn fx:id="motoristaFuncao" prefWidth="55.0" text="Funcao" />
+                    <TableColumn fx:id="motoristaCurso" prefWidth="50.0" text="Curso" />
+                    <TableColumn fx:id="motoristaTelefone" prefWidth="65.0" text="Telefone" />
+                    <TableColumn fx:id="motoristaIdade" prefWidth="40.0" text="Idade" />
                   </columns>
 
                 </TableView>
@@ -199,7 +200,7 @@
 
           <children>
 
-            <Button text="Solicitar" textAlignment="CENTER" GridPane.columnIndex="1" />
+            <Button onAction="#solicitar" text="Solicitar" textAlignment="CENTER" GridPane.columnIndex="1" />
 
           </children>
 
