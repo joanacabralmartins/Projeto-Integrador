@@ -7,6 +7,7 @@ public class Carona {
     
     private int id;
     private int id_motorista;
+    private int id_carro;
     private Time horarioSaida;
     private int quantidadeLugares;
     private int lugaresDisponiveis;
@@ -21,11 +22,12 @@ public class Carona {
     private Date dataCancelamento;
 
 
-    public Carona(int id, int id_motorista, Time horarioSaida, int quantidadeLugares,
+    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int quantidadeLugares,
             int lugaresDisponiveis, boolean ativo, int id_origem, int id_destino, String origem, String destino, Date dataCadastro, Date data,
             Date dataRemocao, Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
+        this.id_carro = id_carro;
         this.horarioSaida = horarioSaida;
         this.quantidadeLugares = quantidadeLugares;
         this.lugaresDisponiveis = lugaresDisponiveis;
@@ -54,6 +56,14 @@ public class Carona {
 
     public void setId_motorista(int id_motorista) {
         this.id_motorista = id_motorista;
+    }
+
+    public int getId_carro() {
+        return id_carro;
+    }
+
+    public void setId_carro(int id_carro) {
+        this.id_carro = id_carro;
     }
 
     public Time getHorarioSaida() {

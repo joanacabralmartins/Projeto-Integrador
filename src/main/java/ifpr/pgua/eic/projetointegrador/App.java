@@ -3,6 +3,7 @@ package ifpr.pgua.eic.projetointegrador;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista;
@@ -15,13 +16,22 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipalCaroneiro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.PontoDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.SolicitacaoDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.UsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.CaronaDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCCaronaDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCCarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCMotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCPontoDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCSolicitacaoDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCUsuarioDAO;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.utils.BaseAppNavigator;
 import ifpr.pgua.eic.projetointegrador.utils.ScreenRegistryFXML;
@@ -39,6 +49,15 @@ public class App extends BaseAppNavigator {
     private CarroDAO carroDAO;
     private CarroRepository carroRepository;
 
+    private CaronaDAO caronaDAO;
+    private CaronaRepository caronaRepository;
+
+    private PontoDAO pontoDAO;
+    private PontoRepository pontoRepository;
+
+    private SolicitacaoDAO solicitacaoDAO;
+    private SolicitacaoRepository solicitacaoRepository;
+
     @Override
     public void init() throws Exception {
         super.init();
@@ -51,6 +70,15 @@ public class App extends BaseAppNavigator {
 
         carroDAO = new JDBCCarroDAO(fabricaConexoes);
         carroRepository = new CarroRepository(carroDAO);
+
+        caronaDAO = new JDBCCaronaDAO(fabricaConexoes);
+        caronaRepository = new CaronaRepository(caronaDAO);
+
+        pontoDAO = new JDBCPontoDAO(fabricaConexoes);
+        pontoRepository = new PontoRepository(pontoDAO);
+
+        solicitacaoDAO = new JDBCSolicitacaoDAO(fabricaConexoes);
+        solicitacaoRepository = new SolicitacaoRepository(solicitacaoDAO);
     }
 
     @Override
@@ -104,10 +132,9 @@ public class App extends BaseAppNavigator {
         registraTela("CADASTRO MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/cadastro-motorista.fxml",
                 (o) -> new JanelaCadastroMotorista(motoristaRepository)));
 
-/*
         registraTela("CARONA USUARIO", new ScreenRegistryFXML(getClass(), "fxml/carona-usuario.fxml", 
                 (o) -> new JanelaCaronaUsuario(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
-*/
+                
 /*
         registraTela("CARONA MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista.fxml", 
                 (o) -> new JanelaCaronaMotorista(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository)));

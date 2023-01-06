@@ -52,6 +52,11 @@ public class MotoristaRepository {
         return dao.validarLogin(cpf, senha);
     }
 
+    public Motorista getById(int id) {
+        return dao.getById(id);
+    }
+
+
     public Result inativar(Motorista motorista){
         return dao.inativar(motorista);
     }

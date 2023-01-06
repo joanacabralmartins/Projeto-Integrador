@@ -15,8 +15,9 @@ import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class JDBCCaronaDAO implements CaronaDAO{
-//verificar se pstm envolvendo booleanos funcionam por conta da conversao para tinyint em mysql
+
   private FabricaConexoes fabricaConexao;
+  private Carona carona;
 
   public JDBCCaronaDAO(FabricaConexoes fabricaConexao) {
     this.fabricaConexao = fabricaConexao;
@@ -28,21 +29,22 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, id_carro, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
       
       pstm.setInt(1, carona.getId_motorista());
-      pstm.setTime(2, carona.getHorarioSaida());
-      pstm.setInt(3, carona.getQuantidadeLugares());
-      pstm.setInt(4, carona.getLugaresDisponiveis());
-      pstm.setBoolean(5, carona.isAtivo());
-      pstm.setInt(6, carona.getId_Origem());
-      pstm.setInt(7, carona.getId_Destino());
-      pstm.setString(8, carona.getOrigem());
-      pstm.setString(9, carona.getDestino());
-      pstm.setDate(10, carona.getDataCadastro());
-      pstm.setDate(11, carona.getData());
-      pstm.setDate(12, carona.getDataRemocao());
-      pstm.setDate(13, carona.getDataCancelamento());
+      pstm.setInt(2, carona.getId_carro());
+      pstm.setTime(3, carona.getHorarioSaida());
+      pstm.setInt(4, carona.getQuantidadeLugares());
+      pstm.setInt(5, carona.getLugaresDisponiveis());
+      pstm.setBoolean(6, carona.isAtivo());
+      pstm.setInt(7, carona.getId_Origem());
+      pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(9, carona.getOrigem());
+      pstm.setString(10, carona.getDestino());
+      pstm.setDate(11, carona.getDataCadastro());
+      pstm.setDate(12, carona.getData());
+      pstm.setDate(13, carona.getDataRemocao());
+      pstm.setDate(14, carona.getDataCancelamento());
 
       pstm.execute();
 
@@ -61,23 +63,24 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
       
       pstm.setInt(1, carona.getId_motorista());
-      pstm.setTime(2, carona.getHorarioSaida());
-      pstm.setInt(3, carona.getQuantidadeLugares());
-      pstm.setInt(4, carona.getLugaresDisponiveis());
-      pstm.setBoolean(5, carona.isAtivo());
-      pstm.setInt(6, carona.getId_Origem());
-      pstm.setInt(7, carona.getId_Destino());
-      pstm.setString(8, carona.getOrigem());
-      pstm.setString(9, carona.getDestino());
-      pstm.setDate(10, carona.getDataCadastro());
-      pstm.setDate(11, carona.getData());
-      pstm.setDate(12, carona.getDataRemocao());
-      pstm.setDate(13, carona.getDataCancelamento());
+      pstm.setInt(2, carona.getId_carro());
+      pstm.setTime(3, carona.getHorarioSaida());
+      pstm.setInt(4, carona.getQuantidadeLugares());
+      pstm.setInt(5, carona.getLugaresDisponiveis());
+      pstm.setBoolean(6, carona.isAtivo());
+      pstm.setInt(7, carona.getId_Origem());
+      pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(9, carona.getOrigem());
+      pstm.setString(10, carona.getDestino());
+      pstm.setDate(11, carona.getDataCadastro());
+      pstm.setDate(12, carona.getData());
+      pstm.setDate(13, carona.getDataRemocao());
+      pstm.setDate(14, carona.getDataCancelamento());
 
-      pstm.setInt(13, carona.getId());
+      pstm.setInt(15, carona.getId());
 
       pstm.execute();
 
@@ -178,13 +181,114 @@ public class JDBCCaronaDAO implements CaronaDAO{
   }
 
   @Override
+  public void selecionarCarona(Carona caronaa) {
+
+    carona = new Carona(caronaa.getId(), caronaa.getId_motorista(), caronaa.getId_carro(), caronaa.getHorarioSaida(), caronaa.getQuantidadeLugares(), caronaa.getLugaresDisponiveis(), caronaa.isAtivo(), caronaa.getId_Origem(), caronaa.getId_Destino(), caronaa.getOrigem(), caronaa.getDestino(), caronaa.getDataCadastro(), caronaa.getData(), caronaa.getDataRemocao(), caronaa.getDataCancelamento());
+      
+  }
+
+  @Override
+  public List<Carona> getByOrigemAndDestino(String origem, String destino) {
+
+    try {
+
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and destino=? and ativo=1"); 
+
+      pstm.setString(1, origem);
+      pstm.setString(2, destino);
+
+      ResultSet rs = pstm.executeQuery();
+
+      ArrayList <Carona> caronas = new ArrayList<Carona>();
+
+      while (rs.next()) {
+        caronas.add(buildFrom(rs));
+      } 
+
+      rs.close();
+      pstm.close();
+      con.close();
+
+      return caronas;
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return Collections.emptyList();
+    }   
+  }
+
+  @Override
+  public List<Carona> getByDestino(String destino) {
+
+    try {
+
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where destino=? and ativo=1"); 
+
+      pstm.setString(1, destino);
+
+      ResultSet rs = pstm.executeQuery();
+
+      ArrayList <Carona> caronas = new ArrayList<Carona>();
+
+      while (rs.next()) {
+        caronas.add(buildFrom(rs));
+      } 
+
+      rs.close();
+      pstm.close();
+      con.close();
+
+      return caronas;
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return Collections.emptyList();
+    }   
+  }
+
+  @Override
+  public List<Carona> getByOrigem(String origem) {
+
+    try {
+
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and ativo=1"); 
+
+      pstm.setString(1, origem);
+
+      ResultSet rs = pstm.executeQuery();
+
+      ArrayList <Carona> caronas = new ArrayList<Carona>();
+
+      while (rs.next()) {
+        caronas.add(buildFrom(rs));
+      } 
+
+      rs.close();
+      pstm.close();
+      con.close();
+
+      return caronas;
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return Collections.emptyList();
+    }   
+  }
+
+  @Override
   public List<Carona> listAll() {
 
     try {
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where ativo=1"); 
 
       ResultSet rs = pstm.executeQuery();
 
@@ -210,6 +314,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
     int id = rs.getInt("id");
     int id_motorista = rs.getInt("id_motorista");
+    int id_carro = rs.getInt("id_carro");
     Time horarioSaida = rs.getTime("horarioSaida");
     int quantidadeLugares = rs.getInt("quantidadeLugares");
     int lugaresDisponiveis = rs.getInt("lugaresDisponiveis");
@@ -223,7 +328,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     Date dataRemocao = rs.getDate("dataRemocao");
     Date dataCancelamento = rs.getDate("dataCancelamento");
 
-    Carona carona = new Carona(id, id_motorista, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
+    Carona carona = new Carona(id, id_motorista, id_carro, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
 
     return carona;
 

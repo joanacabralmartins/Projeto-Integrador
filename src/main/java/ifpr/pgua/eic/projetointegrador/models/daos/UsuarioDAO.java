@@ -13,5 +13,6 @@ public interface UsuarioDAO {
     Result inativar(Usuario caroneiro);
     List<Usuario> listAll();
     Usuario getByCpf(String cpf);
+    Usuario getById(int id);
     Usuario getUser();
 }

@@ -32,15 +32,15 @@
 
             <Label text="Caronas ofertadas:" />
 
-              <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="121.0" prefWidth="520.0">
+              <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="121.0" prefWidth="450.0">
 
                 <columns>
-                  <TableColumn prefWidth="70.0" text="Origem" />
-                  <TableColumn prefWidth="70.0" text="Destino" />
-                    <TableColumn prefWidth="115.0" text="Pontos de Parada" />
+                  <TableColumn prefWidth="40.0" text="Id" visible="false" />
+                  <TableColumn text="Origem" />
+                  <TableColumn text="Destino" />
+                    <TableColumn prefWidth="105.0" text="Pontos de Parada" />
                     <TableColumn prefWidth="75.0" text="Passageiros" />
-                    <TableColumn prefWidth="70.0" text="Carro" />
-                    <TableColumn prefWidth="65.0" text="Data" />
+                    <TableColumn prefWidth="55.0" text="Data" />
                     <TableColumn prefWidth="55.0" text="Horário" />
                 </columns>
 

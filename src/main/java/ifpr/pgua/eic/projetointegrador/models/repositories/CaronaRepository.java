@@ -26,8 +26,20 @@ public class CaronaRepository {
     return dao.inativar(carona);
   }
 
-  public List<Carona> getByMotorista(int id_motorista){
-    return dao.getByMotorista(id_motorista);
+  public void selecionarCarona(Carona carona) {
+    dao.selecionarCarona(carona);
+  }
+
+  public List<Carona> getByDestino(String destino){
+    return dao.getByDestino(destino);
+  }
+
+  public List<Carona> getByOrigem(String origem){
+    return dao.getByOrigem(origem);
+  }
+
+  public List<Carona> getByOrigemAndDestino(String origem, String destino){
+    return dao.getByOrigemAndDestino(origem, destino);
   }
 
   public List<Carona> listAll() {

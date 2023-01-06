@@ -55,6 +55,10 @@ public class UsuarioRepository {
         return dao.getByCpf(cpf);
     }
 
+    public Usuario getById(int id){
+        return dao.getById(id);
+    }
+
     public Result inativar(Usuario usuario){
         return dao.inativar(usuario);
     }

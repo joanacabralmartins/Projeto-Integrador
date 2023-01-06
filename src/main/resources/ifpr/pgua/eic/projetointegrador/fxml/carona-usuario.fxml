@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -44,10 +44,11 @@
         <GridPane prefHeight="25.0" prefWidth="516.0" GridPane.rowIndex="1">
 
           <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="73.0" prefWidth="79.0" />
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="19.0" minWidth="1.0" prefWidth="13.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="60.0" prefWidth="65.0" />
-              <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="363.0" prefWidth="363.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="0.0" prefWidth="104.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="74.0" />
+              <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="0.0" prefWidth="5.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="260.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.0" minWidth="10.0" prefWidth="100.0" />
           </columnConstraints>
 
           <rowConstraints>
@@ -57,8 +58,8 @@
 
           <children>
           
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" />
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="2" />
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="1" />
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="3" />
 
           </children>
 
@@ -72,14 +73,13 @@
 
       <children>
 
-        <TableView prefHeight="140.0" prefWidth="520.0">
+        <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="310.0">
 
           <columns>
-            <TableColumn prefWidth="85.0" text="Origem" />
-            <TableColumn prefWidth="85.0" text="Destino" />
-              <TableColumn prefWidth="85.0" text="Motorista" />
-              <TableColumn prefWidth="85.0" text="Carro" />
-              <TableColumn prefWidth="75.0" text="Data" />
+                  <TableColumn prefWidth="40.0" text="Id" visible="false" />
+            <TableColumn prefWidth="75.0" text="Origem" />
+            <TableColumn prefWidth="75.0" text="Destino" />
+              <TableColumn prefWidth="55.0" text="Data" />
               <TableColumn prefWidth="55.0" text="Horário" />
               <TableColumn prefWidth="55.0" text="Vagas" />
           </columns>
@@ -169,11 +169,12 @@
                 <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="316.0">
 
                   <columns>
-                    <TableColumn text="Nome" />
-                    <TableColumn prefWidth="65.0" text="Funcao" />
-                      <TableColumn prefWidth="60.0" text="Curso" />
+                              <TableColumn prefWidth="40.0" text="Id" visible="false" />
+                    <TableColumn prefWidth="105.0" text="Nome" />
+                    <TableColumn prefWidth="55.0" text="Funcao" />
+                      <TableColumn prefWidth="50.0" text="Curso" />
                       <TableColumn prefWidth="65.0" text="Telefone" />
-                      <TableColumn prefWidth="45.0" text="Idade" />
+                      <TableColumn prefWidth="40.0" text="Idade" />
                   </columns>
 
                 </TableView>
