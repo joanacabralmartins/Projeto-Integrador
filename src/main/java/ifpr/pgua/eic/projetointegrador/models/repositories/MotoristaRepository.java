@@ -21,9 +21,9 @@ public class MotoristaRepository {
     public Result adicionarMotorista(Motorista motorista) {
         
         Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(motorista.getCpf())).findFirst();
-        // if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
-        //     return Result.fail("Motorista já cadastrado!");
-        // }
+        if (busca.isPresent()) { //verifica se o motorista realmente ainda não tem cadastro
+            return Result.fail("Motorista já cadastrado!");
+        }
 
         if (motorista.getCpf().length() < 11) {
             return Result.fail("Insira um CPF válido!");

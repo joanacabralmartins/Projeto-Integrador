@@ -137,6 +137,44 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
     }
 
     @Override
+    public Usuario getByCpf(String cpf) {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario WHERE cpf=? and ativo=1"); 
+
+            pstm.setString(1, cpf);
+
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+
+                int id = rs.getInt("id");
+                boolean ativo = rs.getBoolean("ativo");
+                String nome = rs.getString("nome");
+                String funcao = rs.getString("funcao_IFPR");
+                String curso = rs.getString("curso");
+                String tel = rs.getString("telefone");
+                String endereco = rs.getString("endereco");
+                String senha = rs.getString("senha");
+                int idade = rs.getInt("idade");
+                String dataNascimento = rs.getString("data_nascimento");
+
+                Date dtDataNascimento = Date.valueOf(dataNascimento);
+
+                usuario = new Usuario(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
+                
+                pstm.close();
+                con.close();
+                return usuario;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            return null;
+        }   
+    }
+
+    @Override
     public Result update(String cpf, String cpfNovo, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
         try {
             Connection con = fabricaConexao.getConnection(); 

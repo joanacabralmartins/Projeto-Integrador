@@ -52,6 +52,10 @@ public class UsuarioRepository {
         return dao.validarLogin(cpf, senha);
     }
 
+    public Usuario getByCpf(String cpf){
+        return dao.getByCpf(cpf);
+    }
+
     public Result inativar(Usuario usuario){
         return dao.inativar(usuario);
     }

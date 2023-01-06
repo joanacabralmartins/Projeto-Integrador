@@ -12,5 +12,6 @@ public interface UsuarioDAO {
     Result validarLogin(String cpf, String senha);
     Result inativar(Usuario caroneiro);
     List<Usuario> listAll();
+    Usuario getByCpf(String cpf);
     Usuario getUser();
 }
