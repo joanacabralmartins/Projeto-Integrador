@@ -58,7 +58,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista where ativo=1");
 
             ResultSet resultSet = pstm.executeQuery();
 
