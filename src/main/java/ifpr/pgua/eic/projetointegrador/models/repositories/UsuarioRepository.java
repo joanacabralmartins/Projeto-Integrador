@@ -23,7 +23,7 @@ public class UsuarioRepository {
         Usuario caroneiro = new Usuario(0, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
 
         if (cpf.length() != 11) {
-            return Result.fail("o CPF inserido não possui 11 caracteres!");
+            return Result.fail("Um CPF deve conter 11 caracteres!");
         }
         if (cpf.matches("[a-z]*")) {
             return Result.fail("Insira um CPF válido!");
