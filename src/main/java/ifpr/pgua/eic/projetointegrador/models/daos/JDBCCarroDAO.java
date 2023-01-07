@@ -141,7 +141,43 @@ public class JDBCCarroDAO implements CarroDAO {
     }  
 
     @Override
-    public List<Carro> listAll(int id_motorista) {
+    public List<Carro> listAll() {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro where ativo=1");
+
+            ResultSet resultSet = pstm.executeQuery();
+
+            ArrayList<Carro> carros = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("id");
+                String placa = resultSet.getString("placa");
+                String modelo = resultSet.getString("modelo");
+                String cor = resultSet.getString("cor");
+                int idmotorista = resultSet.getInt("id_motorista");
+                Boolean ativo = resultSet.getBoolean("ativo");
+
+                Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
+
+                carros.add(carro);
+            }
+            
+            resultSet.close();
+            pstm.close();
+            con.close();
+            return carros;
+
+        }catch(SQLException e ) {
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public List<Carro> listById(int id_motorista) {
         try {
             Connection con = fabricaConexao.getConnection();
 

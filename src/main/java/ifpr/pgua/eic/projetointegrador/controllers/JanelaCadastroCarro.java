@@ -3,6 +3,7 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import javafx.fxml.FXML;
@@ -43,8 +44,10 @@ public class JanelaCadastroCarro {
             limpar();
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION,msg);
-        alert.showAndWait();
+        if(resultado instanceof FailResult) {
+            Alert alert = new Alert(AlertType.ERROR,msg);
+            alert.showAndWait();
+        }
     }
 
     private void limpar() {

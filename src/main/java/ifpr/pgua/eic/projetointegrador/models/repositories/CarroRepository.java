@@ -1,6 +1,7 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
@@ -8,13 +9,22 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class CarroRepository {
 
+    private List<Carro> carros;
     private CarroDAO dao;
     
     public CarroRepository(CarroDAO dao) {
         this.dao = dao;
+
+        carros = dao.listAll();
     }
 
     public Result adicionarCarro(Carro carro) {
+        Optional<Carro> busca = carros.stream().filter((cars)->cars.getPlaca().equals(carro.getPlaca())).findFirst();
+
+        if(busca.isPresent()){
+            return Result.fail("Placa já cadastrada!");
+        }
+        
         if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*")) { //verifica se os 3 primeiros caracteres são letras
             return Result.fail("Insira uma placa válida!");
         }
@@ -41,7 +51,7 @@ public class CarroRepository {
     }
 
     public List<Carro> listar(int id_motorista) {
-        return dao.listAll(id_motorista);
+        return dao.listById(id_motorista);
     }
 
     public Carro getById(int id){
