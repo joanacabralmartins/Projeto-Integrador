@@ -1,16 +1,21 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class MotoristaRepository {
+    private List<Motorista> motoristas;
     private MotoristaDAO dao;
 
     public MotoristaRepository(MotoristaDAO dao) {
         this.dao = dao;
+
+        motoristas = dao.listAll();
     }
 
     public Result adicionarMotorista(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
@@ -40,6 +45,12 @@ public class MotoristaRepository {
     }
 
     public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
+        Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpfNovo)).findFirst();
+        
+        if(busca.isPresent()){
+            return Result.fail("O CPF digitado já foi cadastrado!");
+        }
+        
         return dao.update(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
     }
 
@@ -54,7 +65,6 @@ public class MotoristaRepository {
     public Motorista getById(int id) {
         return dao.getById(id);
     }
-
 
     public Result inativar(Motorista motorista){
         return dao.inativar(motorista);

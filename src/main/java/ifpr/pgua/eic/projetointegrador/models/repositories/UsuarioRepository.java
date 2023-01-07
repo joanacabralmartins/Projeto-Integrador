@@ -1,16 +1,21 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.UsuarioDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class UsuarioRepository {
+    private List<Usuario> usuarios;
     private UsuarioDAO dao;
 
     public UsuarioRepository(UsuarioDAO dao) {
         this.dao = dao;
+
+        usuarios = dao.listAll();
     }
 
     public Result adicionarUsuario(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
@@ -37,6 +42,12 @@ public class UsuarioRepository {
     }
 
     public Result editarUsuario(String cpf, String cpfNovo, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
+        Optional<Usuario> busca = usuarios.stream().filter((users)->users.getCpf().equals(cpfNovo)).findFirst();
+        
+        if(busca.isPresent()){
+            return Result.fail("O CPF digitado já foi cadastrado!");
+        }
+
         return dao.update(cpf, cpfNovo, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
     }
 
