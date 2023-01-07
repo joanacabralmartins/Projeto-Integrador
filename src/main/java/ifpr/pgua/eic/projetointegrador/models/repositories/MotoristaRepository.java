@@ -25,18 +25,27 @@ public class MotoristaRepository {
         if (cpf.length() != 11) {
             return Result.fail("o CPF inserido não possui 11 caracteres!");
         }
-        if(carteira_motorista.length() < 11){
-            return Result.fail("Carteira de motorista incorreta");
-        }
         if (cpf.matches("[a-z]*")) {
             return Result.fail("Insira um CPF válido!");
         }
         if(cpf.matches("[A-Z]*")){
             return Result.fail("Insira um CPF válido!");
         }
+
+        if(carteira_motorista.length() != 11){
+            return Result.fail("O número da carteira de motorista inserida não possui 11 caracteres!");
+        }
+        if (carteira_motorista.matches("[a-z]*")) {
+            return Result.fail("Insira um número de CNH válido! [*Apenas Números*]");
+        }
+        if(carteira_motorista.matches("[A-Z]*")){
+            return Result.fail("Insira um número de CNH válido! [*Apenas Números*]");
+        }
+
         if (idade < 18) {
             return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
         }
+
         if (getByCpf(cpf) != null) {
             return Result.fail("Usuário já cadastrado!");
         }
