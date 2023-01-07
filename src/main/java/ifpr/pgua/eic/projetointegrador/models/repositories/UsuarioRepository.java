@@ -1,21 +1,16 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.UsuarioDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class UsuarioRepository {
-    private List<Usuario> usuarios;
     private UsuarioDAO dao;
 
     public UsuarioRepository(UsuarioDAO dao) {
         this.dao = dao;
-
-        usuarios = dao.listAll();
     }
 
     public Result adicionarUsuario(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
@@ -31,11 +26,9 @@ public class UsuarioRepository {
         if(cpf.matches("[A-Z]*")){
             return Result.fail("Insira um CPF válido!");
         }
-
         if (idade < 18) {
             return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
         }
-
         if (getByCpf(cpf) != null) {
             return Result.fail("Usuário já cadastrado!");
         }

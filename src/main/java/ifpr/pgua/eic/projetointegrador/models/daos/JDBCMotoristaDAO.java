@@ -99,6 +99,45 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
     }
 
     @Override
+    public Motorista getByCpf(String cpf) {
+        try {
+            Connection con = fabricaConexao.getConnection();
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista WHERE cpf=? and ativo=1"); 
+
+            pstm.setString(1, cpf);
+
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
+
+                int id = rs.getInt("id");
+                boolean ativo = rs.getBoolean("ativo");
+                String nome = rs.getString("nome");
+                String funcao = rs.getString("funcao_IFPR");
+                String curso = rs.getString("curso");
+                String tel = rs.getString("telefone");
+                String endereco = rs.getString("endereco");
+                String senha = rs.getString("senha");
+                String carteira = rs.getString("carteira_motorista");
+                int idade = rs.getInt("idade");
+                String dataNascimento = rs.getString("data_nascimento");
+
+                Date dtDataNascimento = Date.valueOf(dataNascimento);
+
+                Motorista motorista = new Motorista(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
+                
+                pstm.close();
+                con.close();
+                return motorista;
+            } else {
+                return null;
+            }
+        } catch(SQLException e) {
+            return null;
+        }   
+    }
+
+    @Override
     public Motorista getById(int id) {
         try {
             Connection con = fabricaConexao.getConnection();

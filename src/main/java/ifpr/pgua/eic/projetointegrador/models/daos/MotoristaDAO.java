@@ -11,6 +11,7 @@ public interface MotoristaDAO {
     Result update(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco);
     Result validarLogin(String cpf, String senha);
     Result inativar(Motorista motorista);
+    Motorista getByCpf(String cpf);
     Motorista getById(int id);
     List<Motorista> listAll();
     Motorista getUser();
