@@ -64,6 +64,11 @@ public class JanelaEditarCarro implements Initializable {
 
     }
 
+    @FXML
+    private void voltar() {
+      App.changeScreenRegion("GERENCIAR CARROS", BorderPaneRegion.CENTER);
+    }
+
     private void limpar() {
         tfPlaca.clear();
         tfModelo.clear();

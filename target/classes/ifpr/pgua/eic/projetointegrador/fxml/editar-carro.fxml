@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
 
    <children>
       <VBox spacing="5.0">
@@ -19,7 +19,7 @@
          </padding>
       
          <Label text="Placa" />
-         <TextField fx:id="tfPlaca" prefWidth="120.0">
+         <TextField fx:id="tfPlaca" prefHeight="24.0" prefWidth="227.0">
          <VBox.margin>
             <Insets right="200.0" />
          </VBox.margin>
@@ -39,15 +39,27 @@
          </VBox.margin>
          </TextField>
       
-         <HBox>
-            <Button onAction="#editarCarro" prefHeight="22.0" prefWidth="64.0" text="Editar">
+         <HBox prefHeight="39.0" prefWidth="211.0" spacing="67.0">
+            <Button onAction="#editarCarro" prefHeight="24.0" prefWidth="228.0" text="Editar">
                <font>
-                  <Font size="10.0" />
+                  <Font size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets top="4.0" />
+                  <Insets top="15.0" />
                </HBox.margin>
             </Button>
+         </HBox>
+         <HBox layoutX="160.0" layoutY="220.0" spacing="67.0">
+            <children>
+               <Button onAction="#voltar" prefHeight="24.0" prefWidth="228.0" text="Voltar">
+                  <font>
+                     <Font size="12.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="8.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
          </HBox>
       
       </VBox>

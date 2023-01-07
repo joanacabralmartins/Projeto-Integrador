@@ -6,21 +6,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane 
-   stylesheets="@../CSS/styles.css" 
-   xmlns="http://javafx.com/javafx/19" 
-   xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro">
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro">
 
    <children>
       <VBox spacing="5.0">
       
          <padding>
-            <Insets left="370.0" top="40.0" />
+            <Insets left="280.0" top="80.0" />
          </padding>
       
          <HBox>
-            <Button onAction="#carregaTelaGerenciarCarros" prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Visualizar Carros">
+            <Button onAction="#carregaTelaGerenciarCarros" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Visualizar Carros" textFill="WHITE">
                <HBox.margin>
                   <Insets top="4.0" />
                </HBox.margin>
@@ -35,14 +31,14 @@
 
          <HBox layoutX="160.0" layoutY="50.0">
             <children>
-               <Button onAction="#carregaTelaCadastrarCarro" prefHeight="22.0" prefWidth="130.0" style="-fx-background-radius: 6;" text="Adicionar Carro">
+               <Button onAction="#carregaTelaCadastrarCarro" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Adicionar Carro" textFill="WHITE">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
                </Button>
             </children>
             <VBox.margin>
-               <Insets top="20.0" />
+               <Insets top="25.0" />
             </VBox.margin>
          </HBox>
       
