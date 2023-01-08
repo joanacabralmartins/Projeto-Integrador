@@ -21,6 +21,10 @@ public class CarroRepository {
     public Result adicionarCarro(Carro carro) {
         Optional<Carro> busca = carros.stream().filter((cars)->cars.getPlaca().equals(carro.getPlaca())).findFirst();
 
+        if(carro.getPlaca().length() != 7 ) {
+            return Result.fail("Uma placa deve conter 7 caracteres!");
+        }
+
         if(busca.isPresent()){
             return Result.fail("Placa já cadastrada!");
         }
@@ -30,9 +34,6 @@ public class CarroRepository {
         }
         if(!carro.getPlaca().substring(3).matches("[0-9]*")) { //verifica se os 4 ultimos caracteres sao numeros
             return Result.fail("Insira uma placa válida!"); 
-        }
-        if(carro.getPlaca().length() != 7 ) {
-            return Result.fail("Uma placa deve conter 7 caracteres!");
         }
         
         return dao.create(carro);
