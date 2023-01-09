@@ -29,11 +29,11 @@ public class CarroRepository {
             return Result.fail("Placa já cadastrada!");
         }
         
-        if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*")) { //verifica se os 3 primeiros caracteres são letras
-            return Result.fail("Insira uma placa válida!");
+        if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*") && !carro.getPlaca().substring(0, 4).matches("[A-Z]*")) { //verifica se os 3 ou 4 primeiros caracteres são letras
+            return Result.fail("Uma placa deve conter 3 ou 4 letras!");
         }
-        if(!carro.getPlaca().substring(3).matches("[0-9]*")) { //verifica se os 4 ultimos caracteres sao numeros
-            return Result.fail("Insira uma placa válida!"); 
+        if(!carro.getPlaca().substring(3).matches("[0-9]*") && !carro.getPlaca().substring(4).matches("[0-9]*")) { //verifica se os 3 ou 4 ultimos caracteres sao numeros
+            return Result.fail("Uma placa deve conter 3 ou 4 numeros!"); 
         }
         
         return dao.create(carro);
