@@ -41,6 +41,8 @@ public class JanelaCadastroCarro {
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult){
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
             limpar();
         }
 
