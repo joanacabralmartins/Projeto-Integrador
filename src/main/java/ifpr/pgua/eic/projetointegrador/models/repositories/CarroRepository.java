@@ -47,9 +47,9 @@ public class CarroRepository {
             return Result.fail("Uma placa deve conter 7 caracteres!");
         }
 
-        if(busca.isPresent()){
-            return Result.fail("Placa já cadastrada!");
-        }
+        // if(busca.isPresent()){
+        //     return Result.fail("Placa já cadastrada!");
+        // }
         
         if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*") && !carro.getPlaca().substring(0, 4).matches("[A-Z]*")) {
             return Result.fail("Uma placa deve conter 3 ou 4 letras!");

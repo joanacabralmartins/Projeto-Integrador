@@ -5,21 +5,27 @@ public class Carro {
   private int id;
   private String placa;
   private String modelo;
+  private int quantidadeLugares;
+
+ 
+
   private String cor;
   private int id_motorista;
   private boolean ativo;
 
-  public Carro(int id, String placa, String modelo, String cor, int id_motorista, boolean ativo) {
+  public Carro(int id, String placa, String modelo, int quantidadeLugares, String cor, int id_motorista,
+      boolean ativo) {
     this.id = id;
     this.placa = placa;
     this.modelo = modelo;
+    this.quantidadeLugares = quantidadeLugares;
     this.cor = cor;
     this.id_motorista = id_motorista;
     this.ativo = ativo;
   }
 
-  public Carro(String placa, String modelo, String cor, int id_motorista) {
-    this(-1, placa, modelo, cor, id_motorista, true);
+  public Carro(String placa, String modelo, int quantidadeLugares, String cor, int id_motorista) {
+    this(-1, placa, modelo, quantidadeLugares, cor, id_motorista, true);
 }
 
   public int getId() {
@@ -68,6 +74,14 @@ public class Carro {
 
   public void setAtivo(boolean ativo) {
     this.ativo = ativo;
+  }
+
+  public int getQuantidadeLugares() {
+    return quantidadeLugares;
+  }
+
+  public void setQuantidadeLugares(int quantidadeLugares) {
+    this.quantidadeLugares = quantidadeLugares;
   }
 
 }

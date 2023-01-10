@@ -21,6 +21,8 @@
                 <TableColumn fx:id="colPlaca" prefWidth="130.0" style="-fx-alignment: center;" text="Placa" />
       
                 <TableColumn fx:id="colModelo" prefWidth="130.0" style="-fx-alignment: center;" text="Modelo" />
+
+                <TableColumn fx:id="colLugares" prefWidth="130.0" style="-fx-alignment: center;" text="Lugares" />
       
                 <TableColumn fx:id="colCor" prefWidth="130.0" style="-fx-alignment: center;" text="Cor" />
               </columns>

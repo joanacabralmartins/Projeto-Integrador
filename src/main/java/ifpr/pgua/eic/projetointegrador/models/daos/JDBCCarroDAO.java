@@ -26,13 +26,14 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,cor,id_motorista,ativo) VALUES (?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO carro(placa,modelo,	quantidadeLugares,cor,id_motorista,ativo) VALUES (?,?,?,?,?,?)");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
-            pstm.setString(3, carro.getCor());
-            pstm.setInt(4, carro.getId__motorista());
-            pstm.setBoolean(5, carro.isAtivo());
+            pstm.setInt(3,carro.getQuantidadeLugares());
+            pstm.setString(4, carro.getCor());
+            pstm.setInt(5, carro.getId__motorista());
+            pstm.setBoolean(6, carro.isAtivo());
 
             pstm.executeUpdate();
 
@@ -52,15 +53,16 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, cor=?, id_motorista=?, ativo=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, quantidadeLugares=? cor=?, id_motorista=?, ativo=? WHERE id=?");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
-            pstm.setString(3, carro.getCor());
-            pstm.setInt(4, carro.getId__motorista());
-            pstm.setBoolean(5, carro.isAtivo());
+            pstm.setInt(3,carro.getQuantidadeLugares());
+            pstm.setString(4, carro.getCor());
+            pstm.setInt(5, carro.getId__motorista());
+            pstm.setBoolean(6, carro.isAtivo());
 
-            pstm.setInt(6, carro.getId());
+            pstm.setInt(7, carro.getId());
 
             pstm.execute();
 
@@ -89,11 +91,12 @@ public class JDBCCarroDAO implements CarroDAO {
 
         String placa = rs.getString("placa");
         String modelo = rs.getString("modelo");
+        int lugares = rs.getInt("quantidadeLugares");
         String cor = rs.getString("cor");
         int idmotorista = rs.getInt("id_motorista");
         Boolean ativo = rs.getBoolean("ativo");
 
-        Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
+        Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
         
         rs.close();
         pstm.close();
@@ -137,7 +140,7 @@ public class JDBCCarroDAO implements CarroDAO {
 
     @Override
     public void selecionarCarro(Carro carro) {
-        this.carro = new Carro(carro.getId(), carro.getPlaca(), carro.getModelo(), carro.getCor(), carro.getId__motorista(), carro.isAtivo());
+        this.carro = new Carro(carro.getId(), carro.getPlaca(), carro.getModelo(), carro.getQuantidadeLugares(), carro.getCor(), carro.getId__motorista(), carro.isAtivo());
     }  
 
     @Override
@@ -156,11 +159,12 @@ public class JDBCCarroDAO implements CarroDAO {
                 int id = resultSet.getInt("id");
                 String placa = resultSet.getString("placa");
                 String modelo = resultSet.getString("modelo");
+                int lugares = resultSet.getInt("quantidadeLugares");
                 String cor = resultSet.getString("cor");
                 int idmotorista = resultSet.getInt("id_motorista");
                 Boolean ativo = resultSet.getBoolean("ativo");
 
-                Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
+                Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
 
                 carros.add(carro);
             }
@@ -194,11 +198,12 @@ public class JDBCCarroDAO implements CarroDAO {
                 int id = resultSet.getInt("id");
                 String placa = resultSet.getString("placa");
                 String modelo = resultSet.getString("modelo");
+                int lugares = resultSet.getInt("quantidadeLugares");
                 String cor = resultSet.getString("cor");
                 int idmotorista = resultSet.getInt("id_motorista");
                 Boolean ativo = resultSet.getBoolean("ativo");
 
-                Carro carro = new Carro(id, placa, modelo, cor, idmotorista, ativo);
+                Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
 
                 carros.add(carro);
             }

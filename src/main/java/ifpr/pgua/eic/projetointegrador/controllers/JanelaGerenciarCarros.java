@@ -36,6 +36,9 @@ public class JanelaGerenciarCarros implements Initializable {
     private TableColumn<Carro, String> colModelo;
 
     @FXML
+    private TableColumn<Carro, Integer> colLugares;
+
+    @FXML
     private TableColumn<Carro, String> colCor;
 
     private ObservableList<Carro> listaCarros = FXCollections.observableArrayList();
@@ -57,6 +60,7 @@ public class JanelaGerenciarCarros implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
         colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        colLugares.setCellValueFactory(new PropertyValueFactory<>("quantidadeLugares"));
         colCor.setCellValueFactory(new PropertyValueFactory<>("cor"));
 
         updateList();
@@ -111,7 +115,7 @@ public class JanelaGerenciarCarros implements Initializable {
         List<Carro> carros = new ArrayList<>(repositorioC.listar(repositorioM.getUser().getId()));
         
         for(Carro c : carros) {
-            Carro carro = new Carro(c.getId(), c.getPlaca(), c.getModelo(), c.getCor(), c.getId__motorista(), c.isAtivo());
+            Carro carro = new Carro(c.getId(), c.getPlaca(), c.getModelo(), c.getQuantidadeLugares(), c.getCor(), c.getId__motorista(), c.isAtivo());
             listaCarros.add(carro);
         }
         

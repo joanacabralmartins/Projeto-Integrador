@@ -17,6 +17,9 @@ public class JanelaCadastroCarro {
     private TextField tfPlaca;
 
     @FXML
+    private TextField tfQuantidadeLugares;
+
+    @FXML
     private TextField tfModelo;
 
     @FXML
@@ -34,7 +37,9 @@ public class JanelaCadastroCarro {
     @FXML
     private void cadastrarCarro() {
 
-        Carro carro = new Carro(1, tfPlaca.getText(), tfModelo.getText(), tfCor.getText(), repositorioM.getUser().getId(), true);
+        int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
+
+        Carro carro = new Carro(1, tfPlaca.getText(), tfModelo.getText(), lugares, tfCor.getText(), repositorioM.getUser().getId(), true);
         
         Result resultado = repositorioC.adicionarCarro(carro);
         
@@ -55,6 +60,7 @@ public class JanelaCadastroCarro {
     private void limpar() {
         tfPlaca.clear();
         tfModelo.clear();
+        tfQuantidadeLugares.clear();
         tfCor.clear();
     }
 

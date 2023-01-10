@@ -31,6 +31,13 @@
             <Insets right="200.0" />
          </VBox.margin>
          </TextField>
+
+         <Label text="Quanidade de acentos do carro" />
+         <TextField fx:id="tfQuantidadeLugares">
+         <VBox.margin>
+            <Insets right="200.0" />
+         </VBox.margin>
+         </TextField>
       
          <Label text="Cor" />
          <TextField fx:id="tfCor">
