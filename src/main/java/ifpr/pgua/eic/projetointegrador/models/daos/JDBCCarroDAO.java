@@ -130,7 +130,7 @@ public class JDBCCarroDAO implements CarroDAO {
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
 
-            int id = rs.getInt("placa");
+            int id = rs.getInt("id");
             String modelo = rs.getString("modelo");
             int lugares = rs.getInt("quantidadeLugares");
             String cor = rs.getString("cor");
