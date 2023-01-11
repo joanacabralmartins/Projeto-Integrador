@@ -1,8 +1,10 @@
 package ifpr.pgua.eic.projetointegrador;
 
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarona;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro;
@@ -139,10 +141,10 @@ public class App extends BaseAppNavigator {
         registraTela("CARONA MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista.fxml", 
                 (o) -> new JanelaCaronaMotorista(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository)));
 */
-/*
+
         registraTela("CADASTRO CARONA", new ScreenRegistryFXML(getClass(), "fxml/cadastro-carona.fxml", 
-                (o) -> new JanelaCadastroCarona(caronaRepository, carroRepository, motoristaRepository, pontoRepository)));
-*/
+                (o) -> new JanelaCadastroCarona(caronaRepository, carroRepository, motoristaRepository)));
+
 /*
         registraTela("GERENCIAR PASSAGEIROS", new ScreenRegistryFXML(getClass(), "fxml/gerenciar-passageiros.fxml", 
                 (o) -> new JanelaGerenciarPassageiros(caronaRepository, usuarioRepository, solicitacaoRepository)));
@@ -165,10 +167,10 @@ public class App extends BaseAppNavigator {
         registraTela("SOLICITACAO USUARIO", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-usuario.fxml", 
                 (o) -> new JanelaSolicitacaoUsuario(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
 */
-/*
+
         registraTela("CARONA MOTORISTA INICIAL", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista-inicial.fxml", 
                 (o) -> new JanelaCaronaMotoristaInicial()));
-*/
+
         
 
     }

@@ -28,6 +28,11 @@ public class JanelaPrincipal extends BaseController {
     }
 
     @FXML
+    private void carregaTelaCaronaInicial(ActionEvent evento) {
+        App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
     private void deslogar(ActionEvent evento) {
         Alert alert = new Alert(AlertType.CONFIRMATION, "Tem certeza que deseja sair?");
         Optional<ButtonType> result = alert.showAndWait();

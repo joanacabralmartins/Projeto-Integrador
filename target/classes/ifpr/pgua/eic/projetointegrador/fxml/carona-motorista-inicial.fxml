@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -26,7 +26,7 @@
          <children>
       
           <Button text="Gerenciar Caronas" textAlignment="CENTER" />
-          <Button text="Solicitar Caronas" textAlignment="CENTER" />
+          <Button text="Criar Caronas" textAlignment="CENTER"  onAction="#carregaTelaCadastrarCarona"/>
 
          </children>
       </HBox>

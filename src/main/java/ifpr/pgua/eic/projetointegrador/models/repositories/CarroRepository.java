@@ -30,10 +30,10 @@ public class CarroRepository {
         }
         
         if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*") && !carro.getPlaca().substring(0, 4).matches("[A-Z]*")) { //verifica se os 3 ou 4 primeiros caracteres são letras
-            return Result.fail("Uma placa deve conter 3 ou 4 letras entre seus primeiros caracteres!");
+            return Result.fail("Uma placa deve conter 3 ou 4 letras!");
         }
         if(!carro.getPlaca().substring(3).matches("[0-9]*") && !carro.getPlaca().substring(4).matches("[0-9]*")) { //verifica se os 3 ou 4 ultimos caracteres sao numeros
-            return Result.fail("Uma placa deve conter 3 ou 4 numeros entre seus ultimos caracteres!"); 
+            return Result.fail("Uma placa deve conter 3 ou 4 numeros!"); 
         }
         
         return dao.create(carro);
@@ -47,15 +47,15 @@ public class CarroRepository {
             return Result.fail("Uma placa deve conter 7 caracteres!");
         }
 
-        if(getByPlaca(carro.getPlaca()) != null){
-            return Result.fail("Placa já cadastrada!");
-        }
+        // if(busca.isPresent()){
+        //     return Result.fail("Placa já cadastrada!");
+        // }
         
         if(!carro.getPlaca().substring(0, 3).matches("[A-Z]*") && !carro.getPlaca().substring(0, 4).matches("[A-Z]*")) {
-            return Result.fail("Uma placa deve conter 3 ou 4 letras entre seus primeiros caracteres!");
+            return Result.fail("Uma placa deve conter 3 ou 4 letras!");
         }
         if(!carro.getPlaca().substring(3).matches("[0-9]*") && !carro.getPlaca().substring(4).matches("[0-9]*")) {
-            return Result.fail("Uma placa deve conter 3 ou 4 numeros entre seus ultimos caracteres!"); 
+            return Result.fail("Uma placa deve conter 3 ou 4 numeros!"); 
         }
 
         return dao.update(carro);

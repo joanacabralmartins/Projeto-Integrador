@@ -180,7 +180,7 @@ public class JanelaCaronaUsuario implements Initializable {
       }
 
       for(Carona c : caronaList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getQuantidadeLugares(), c.getLugaresDisponiveis(), c.isAtivo(), c.getId_Origem(), c.getId_Destino(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataRemocao(), c.getDataCancelamento());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataRemocao(), c.getDataCancelamento());
         listaCaronas.add(carona);
       }
       
@@ -252,7 +252,7 @@ public class JanelaCaronaUsuario implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.listAll());
         
       for(Carona c : caronasList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getQuantidadeLugares(), c.getLugaresDisponiveis(), c.isAtivo(), c.getId_Origem(), c.getId_Destino(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataRemocao(), c.getDataCancelamento());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataRemocao(), c.getDataCancelamento());
         listaCaronas.add(carona);
       }
       

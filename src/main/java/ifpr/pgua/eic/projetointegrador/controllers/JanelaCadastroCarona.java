@@ -9,10 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
-import ifpr.pgua.eic.projetointegrador.models.entities.PontoParada;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
@@ -24,18 +22,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class JanelaCadastroCarona implements Initializable {
 
     @FXML
     private TextField tfDescricao;
-    
+
     @FXML
     private TextField tfHorarioSaida;
 
@@ -68,7 +64,6 @@ public class JanelaCadastroCarona implements Initializable {
 
     private MotoristaRepository motoristaRepository;
 
-
     public JanelaCadastroCarona(CaronaRepository caronaRepository, CarroRepository carroRepository,
             MotoristaRepository motoristaRepository) {
 
@@ -83,17 +78,17 @@ public class JanelaCadastroCarona implements Initializable {
 
         listaCarros.clear();
 
-
-        for(Carro c : carros) {
-            Carro carro = new Carro(c.getId(), c.getPlaca(), c.getModelo(), c.getQuantidadeLugares(), c.getCor(), c.getId__motorista(), c.isAtivo());
+        for (Carro c : carros) {
+            Carro carro = new Carro(c.getId(), c.getPlaca(), c.getModelo(), c.getQuantidadeLugares(), c.getCor(),
+                    c.getId__motorista(), c.isAtivo());
             listaCarros.add(carro.getPlaca());
-        }        
+        }
 
         cbCarros.setItems(listaCarros);
     }
 
     @FXML
-    private void cadastrarCarona() throws ParseException{
+    private void cadastrarCarona() throws ParseException {
 
         boolean ativo = true;
         int id_motorista = motoristaRepository.getUser().getId();
@@ -112,21 +107,21 @@ public class JanelaCadastroCarona implements Initializable {
         data = dpData.getValue();
         Date diaCarona = Date.valueOf(data);
 
+        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino,
+                dataCadastro, diaCarona, dataRemocao, dataCacelamento);
 
-        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, diaCarona, dataRemocao, dataCacelamento);
-
-        Result resultado  = caronaRepository.create(carona);
+        Result resultado = caronaRepository.create(carona);
 
         String msg = resultado.getMsg();
 
-        if(resultado instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION,msg);
+        if (resultado instanceof SuccessResult) {
+            Alert alert = new Alert(AlertType.INFORMATION, msg);
             alert.showAndWait();
 
         }
 
-        if(resultado instanceof FailResult) {
-            Alert alert = new Alert(AlertType.ERROR,msg);
+        if (resultado instanceof FailResult) {
+            Alert alert = new Alert(AlertType.ERROR, msg);
             alert.showAndWait();
         }
 
