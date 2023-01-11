@@ -151,7 +151,7 @@ public class JDBCPontoDAO implements PontoDAO{
       System.out.println(e.getMessage());
       return Collections.emptyList();
     }   
-  }
+  } 
 
   private PontoParada buildFrom(ResultSet rs) throws SQLException {
 

@@ -29,22 +29,22 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, id_carro, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());
-      pstm.setInt(4, carona.getQuantidadeLugares());
-      pstm.setInt(5, carona.getLugaresDisponiveis());
-      pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getId_Origem());
-      pstm.setInt(8, carona.getId_Destino());
-      pstm.setString(9, carona.getOrigem());
-      pstm.setString(10, carona.getDestino());
-      pstm.setDate(11, carona.getDataCadastro());
-      pstm.setDate(12, carona.getData());
-      pstm.setDate(13, carona.getDataRemocao());
-      pstm.setDate(14, carona.getDataCancelamento());
+      // pstm.setInt(4, carona.getQuantidadeLugares());
+      pstm.setInt(4, carona.getLugaresDisponiveis());
+      pstm.setBoolean(5, carona.isAtivo());
+      // pstm.setInt(7, carona.getId_Origem());
+      // pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(6, carona.getOrigem());
+      pstm.setString(7, carona.getDestino());
+      pstm.setDate(8, carona.getDataCadastro());
+      pstm.setDate(9, carona.getData());
+      pstm.setDate(10, carona.getDataRemocao());
+      pstm.setDate(11, carona.getDataCancelamento());
 
       pstm.execute();
 
@@ -63,24 +63,24 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, quantidadeLugares=?, lugaresDisponiveis=?, ativo=?, id_origem=?, id_destino=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, ativo=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());
-      pstm.setInt(4, carona.getQuantidadeLugares());
-      pstm.setInt(5, carona.getLugaresDisponiveis());
+      // pstm.setInt(4, carona.getQuantidadeLugares());
+      pstm.setInt(4, carona.getLugaresDisponiveis());
       pstm.setBoolean(6, carona.isAtivo());
-      pstm.setInt(7, carona.getId_Origem());
-      pstm.setInt(8, carona.getId_Destino());
-      pstm.setString(9, carona.getOrigem());
-      pstm.setString(10, carona.getDestino());
-      pstm.setDate(11, carona.getDataCadastro());
-      pstm.setDate(12, carona.getData());
-      pstm.setDate(13, carona.getDataRemocao());
-      pstm.setDate(14, carona.getDataCancelamento());
+      // pstm.setInt(7, carona.getId_Origem());
+      // pstm.setInt(8, carona.getId_Destino());
+      pstm.setString(5, carona.getOrigem());
+      pstm.setString(6, carona.getDestino());
+      pstm.setDate(7, carona.getDataCadastro());
+      pstm.setDate(8, carona.getData());
+      pstm.setDate(9, carona.getDataRemocao());
+      pstm.setDate(10, carona.getDataCancelamento());
 
-      pstm.setInt(15, carona.getId());
+      pstm.setInt(11, carona.getId());
 
       pstm.execute();
 
@@ -183,7 +183,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
   @Override
   public void selecionarCarona(Carona caronaa) {
 
-    carona = new Carona(caronaa.getId(), caronaa.getId_motorista(), caronaa.getId_carro(), caronaa.getHorarioSaida(), caronaa.getQuantidadeLugares(), caronaa.getLugaresDisponiveis(), caronaa.isAtivo(), caronaa.getId_Origem(), caronaa.getId_Destino(), caronaa.getOrigem(), caronaa.getDestino(), caronaa.getDataCadastro(), caronaa.getData(), caronaa.getDataRemocao(), caronaa.getDataCancelamento());
+    carona = new Carona(caronaa.getId(), caronaa.getId_motorista(), caronaa.getId_carro(), caronaa.getHorarioSaida(), caronaa.getLugaresDisponiveis(), caronaa.isAtivo(), caronaa.getOrigem(), caronaa.getDestino(), caronaa.getDataCadastro(), caronaa.getData(), caronaa.getDataRemocao(), caronaa.getDataCancelamento());
       
   }
 
@@ -316,11 +316,11 @@ public class JDBCCaronaDAO implements CaronaDAO{
     int id_motorista = rs.getInt("id_motorista");
     int id_carro = rs.getInt("id_carro");
     Time horarioSaida = rs.getTime("horarioSaida");
-    int quantidadeLugares = rs.getInt("quantidadeLugares");
+    // int quantidadeLugares = rs.getInt("quantidadeLugares");
     int lugaresDisponiveis = rs.getInt("lugaresDisponiveis");
     boolean ativo = rs.getBoolean("ativo");
-    int id_origem = rs.getInt("id_origem");
-    int id_destino = rs.getInt("id_destino");
+    // int id_origem = rs.getInt("id_origem");
+    // int id_destino = rs.getInt("id_destino");
     String origem = rs.getString("origem");
     String destino = rs.getString("destino");
     Date dataCadastro = rs.getDate("dataCadastro");
@@ -328,7 +328,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     Date dataRemocao = rs.getDate("dataRemocao");
     Date dataCancelamento = rs.getDate("dataCancelamento");
 
-    Carona carona = new Carona(id, id_motorista, id_carro, horarioSaida, quantidadeLugares, lugaresDisponiveis, ativo, id_origem, id_destino, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
+    Carona carona = new Carona(id, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data, dataRemocao, dataCancelamento);
 
     return carona;
 

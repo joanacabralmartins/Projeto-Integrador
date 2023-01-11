@@ -9,11 +9,11 @@ public class Carona {
     private int id_motorista;
     private int id_carro;
     private Time horarioSaida;
-    private int quantidadeLugares;
+    // private int quantidadeLugares;
     private int lugaresDisponiveis;
     private boolean ativo;
-    private int id_origem;
-    private int id_destino;
+    // private int id_origem;
+    // private int id_destino;
     private String origem;
     private String destino;
     private Date dataCadastro;
@@ -22,18 +22,37 @@ public class Carona {
     private Date dataCancelamento;
 
 
-    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int quantidadeLugares,
-            int lugaresDisponiveis, boolean ativo, int id_origem, int id_destino, String origem, String destino, Date dataCadastro, Date data,
-            Date dataRemocao, Date dataCancelamento) {
+    // public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int quantidadeLugares,
+    //         int lugaresDisponiveis, boolean ativo, int id_origem, int id_destino, String origem, String destino, Date dataCadastro, Date data,
+    //         Date dataRemocao, Date dataCancelamento) {
+    //     this.id = id;
+    //     this.id_motorista = id_motorista;
+    //     this.id_carro = id_carro;
+    //     this.horarioSaida = horarioSaida;
+    //     this.quantidadeLugares = quantidadeLugares;
+    //     this.lugaresDisponiveis = lugaresDisponiveis;
+    //     this.ativo = ativo;
+    //     this.id_origem = id_origem;
+    //     this.id_destino = id_destino;
+    //     this.origem = origem;
+    //     this.destino = destino;
+    //     this.dataCadastro = dataCadastro;
+    //     this.data = data;
+    //     this.dataRemocao = dataRemocao;
+    //     this.dataCancelamento = dataCancelamento;
+    // }
+
+ 
+
+    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int lugaresDisponiveis, boolean ativo,
+            String origem, String destino, Date dataCadastro, Date data, Date dataRemocao,
+            Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
         this.id_carro = id_carro;
         this.horarioSaida = horarioSaida;
-        this.quantidadeLugares = quantidadeLugares;
         this.lugaresDisponiveis = lugaresDisponiveis;
         this.ativo = ativo;
-        this.id_origem = id_origem;
-        this.id_destino = id_destino;
         this.origem = origem;
         this.destino = destino;
         this.dataCadastro = dataCadastro;
@@ -74,13 +93,13 @@ public class Carona {
         this.horarioSaida = horarioSaida;
     }
 
-    public int getQuantidadeLugares() {
-        return quantidadeLugares;
-    }
+    // public int getQuantidadeLugares() {
+    //     return quantidadeLugares;
+    // }
 
-    public void setQuantidadeLugares(int quantidadeLugares) {
-        this.quantidadeLugares = quantidadeLugares;
-    }
+    // public void setQuantidadeLugares(int quantidadeLugares) {
+    //     this.quantidadeLugares = quantidadeLugares;
+    // }
 
     public int getLugaresDisponiveis() {
         return lugaresDisponiveis;
@@ -98,53 +117,63 @@ public class Carona {
         this.ativo = ativo;
     }
      
-    public int getId_Origem() {
-        return id_origem;
-    }
-    public void setId_Origem(int id_origem) {
-        this.id_origem = id_origem;
-    }
-    public int getId_Destino() {
-        return id_destino;
-    }
-    public void setId_Destino(int id_destino) {
-        this.id_destino = id_destino;
-    }
+    // public int getId_Origem() {
+    //     return id_origem;
+    // }
+    // public void setId_Origem(int id_origem) {
+    //     this.id_origem = id_origem;
+    // }
+    // public int getId_Destino() {
+    //     return id_destino;
+    // }
+    // public void setId_Destino(int id_destino) {
+    //     this.id_destino = id_destino;
+    // }
     public String getOrigem() {
         return origem;
     }
+    
     public void setOrigem(String origem) {
         this.origem = origem;
     }
+
     public String getDestino() {
         return destino;
     }
+
     public void setDestino(String destino) {
         this.destino = destino;
     }
+
     public Date getDataCadastro() {
         return dataCadastro;
     }
+
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
+
     public Date getData() {
         return data;
     }
+
     public void setData(Date data) {
         this.data = data;
     }
+
     public Date getDataRemocao() {
         return dataRemocao;
     }
+
     public void setDataRemocao(Date dataRemocao) {
         this.dataRemocao = dataRemocao;
     }
+
     public Date getDataCancelamento() {
         return dataCancelamento;
     }
+
     public void setDataCancelamento(Date dataCancelamento) {
         this.dataCancelamento = dataCancelamento;
     }
-
 }

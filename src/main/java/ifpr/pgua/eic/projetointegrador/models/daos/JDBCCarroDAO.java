@@ -53,7 +53,7 @@ public class JDBCCarroDAO implements CarroDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, quantidadeLugares=? cor=?, id_motorista=?, ativo=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set placa=?, modelo=?, quantidadeLugares=?, cor=?, id_motorista=?, ativo=? WHERE id=?");
 
             pstm.setString(1, carro.getPlaca());
             pstm.setString(2, carro.getModelo());
@@ -77,45 +77,86 @@ public class JDBCCarroDAO implements CarroDAO {
     }
 
     @Override
-  public Carro getById(int id) {
+    public Carro getById(int id) {
 
-    try {
-      Connection con = fabricaConexao.getConnection();
+        try {
+        Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro WHERE id=?"); 
+        PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro WHERE id=?"); 
 
-      pstm.setInt(1, id);
+        pstm.setInt(1, id);
 
-      ResultSet rs = pstm.executeQuery();
-      if (rs.next()) {
+        ResultSet rs = pstm.executeQuery();
+        if (rs.next()) {
 
-        String placa = rs.getString("placa");
-        String modelo = rs.getString("modelo");
-        int lugares = rs.getInt("quantidadeLugares");
-        String cor = rs.getString("cor");
-        int idmotorista = rs.getInt("id_motorista");
-        Boolean ativo = rs.getBoolean("ativo");
+            String placa = rs.getString("placa");
+            String modelo = rs.getString("modelo");
+            int lugares = rs.getInt("quantidadeLugares");
+            String cor = rs.getString("cor");
+            int idmotorista = rs.getInt("id_motorista");
+            Boolean ativo = rs.getBoolean("ativo");
 
-        Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
-        
-        rs.close();
-        pstm.close();
-        con.close();
+            Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
+            
+            rs.close();
+            pstm.close();
+            con.close();
 
-        return carro;
+            return carro;
 
-      } else {
-        rs.close();
-        pstm.close();
-        con.close();
+        } else {
+            rs.close();
+            pstm.close();
+            con.close();
+            return null;
+        }
+
+        } catch(SQLException e) {
+        System.out.println(e.getMessage());
         return null;
-      }
+        }   
+    }
 
-    } catch(SQLException e) {
-      System.out.println(e.getMessage());
-      return null;
-    }   
-  }
+    @Override
+    public Carro getByPlaca(String placa) {
+
+        try {
+        Connection con = fabricaConexao.getConnection();
+
+        PreparedStatement pstm = con.prepareStatement("SELECT * FROM carro WHERE placa=?"); 
+
+        pstm.setString(1, placa);
+
+        ResultSet rs = pstm.executeQuery();
+        if (rs.next()) {
+
+            int id = rs.getInt("id");
+            String modelo = rs.getString("modelo");
+            int lugares = rs.getInt("quantidadeLugares");
+            String cor = rs.getString("cor");
+            int idmotorista = rs.getInt("id_motorista");
+            Boolean ativo = rs.getBoolean("ativo");
+
+            Carro carro = new Carro(id, placa, modelo, lugares, cor, idmotorista, ativo);
+            
+            rs.close();
+            pstm.close();
+            con.close();
+
+            return carro;
+
+        } else {
+            rs.close();
+            pstm.close();
+            con.close();
+            return null;
+        }
+
+        } catch(SQLException e) {
+        System.out.println(e.getMessage());
+        return null;
+        }   
+    }
 
     @Override
     public Result inativar(Carro carro) {
