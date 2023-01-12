@@ -42,10 +42,23 @@ public class UsuarioRepository {
     }
 
     public Result editarUsuario(String cpf, String cpfNovo, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
-        Optional<Usuario> busca = usuarios.stream().filter((users)->users.getCpf().equals(cpfNovo)).findFirst();
+
+        if (cpf.length() != 11) {
+            return Result.fail("Um CPF deve conter 11 caracteres!");
+        }
+        if (cpf.matches("[a-z]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if(cpf.matches("[A-Z]*")){
+            return Result.fail("Insira um CPF válido!");
+        }
+
+        if (idade < 18) {
+            return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
+        }
         
-        if(busca.isPresent()){
-            return Result.fail("O CPF digitado já foi cadastrado!");
+        if (getByCpf(cpfNovo) != null && !cpfNovo.matches(cpf)) {
+            return Result.fail("Usuário já cadastrado!");
         }
 
         return dao.update(cpf, cpfNovo, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);

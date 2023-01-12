@@ -80,7 +80,7 @@ public class MotoristaRepository {
         }
         
         if (getByCpf(cpfNovo) != null && !cpfNovo.matches(cpf)) {
-            return Result.fail("Usuário já cadastrado!");
+            return Result.fail("Motorista já cadastrado!");
         }
         
         return dao.update(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);

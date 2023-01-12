@@ -125,6 +125,6 @@ public class JanelaEditarUsuario implements Initializable {
     }
 
     private void carregarHome() {
-        App.pushScreen("PRINCIPAL");
+        App.pushScreen("PRINCIPAL CARONEIRO");
     }
 }
