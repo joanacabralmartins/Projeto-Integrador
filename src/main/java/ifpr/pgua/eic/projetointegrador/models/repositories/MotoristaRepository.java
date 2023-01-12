@@ -55,7 +55,31 @@ public class MotoristaRepository {
 
     public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
         
-        if (getByCpf(cpfNovo) != null) {
+        if (cpf.length() != 11) {
+            return Result.fail("Um CPF deve conter 11 caracteres!");
+        }
+        if (cpf.matches("[a-z]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if(cpf.matches("[A-Z]*")){
+            return Result.fail("Insira um CPF válido!");
+        }
+
+        if(carteira.length() != 11){
+            return Result.fail("O número da carteira de motorista inserida não possui 11 caracteres!");
+        }
+        if (carteira.matches("[a-z]*")) {
+            return Result.fail("Insira um número de CNH válido! [*Apenas Números*]");
+        }
+        if(carteira.matches("[A-Z]*")){
+            return Result.fail("Insira um número de CNH válido! [*Apenas Números*]");
+        }
+
+        if (idade < 18) {
+            return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
+        }
+        
+        if (getByCpf(cpfNovo) != null && !cpfNovo.matches(cpf)) {
             return Result.fail("Usuário já cadastrado!");
         }
         
