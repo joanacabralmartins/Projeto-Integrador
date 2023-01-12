@@ -54,10 +54,9 @@ public class MotoristaRepository {
     }
 
     public Result editarMotorista(String cpf, String cpfNovo, String carteira, String nome, String funcao, String senha, Date dataNascimento, int idade, String curso, String telefone, String endereco) {
-        Optional<Motorista> busca = motoristas.stream().filter((moto)->moto.getCpf().equals(cpfNovo)).findFirst();
         
-        if(busca.isPresent()){
-            return Result.fail("O CPF digitado já foi cadastrado!");
+        if (getByCpf(cpfNovo) != null) {
+            return Result.fail("Usuário já cadastrado!");
         }
         
         return dao.update(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
