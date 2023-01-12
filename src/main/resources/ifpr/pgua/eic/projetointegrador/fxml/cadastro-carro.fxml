@@ -11,7 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
+<Pane stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/19" 
+   xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
 
    <children>
 
@@ -60,15 +63,12 @@
          </HBox>
       
       </VBox>
+
       <HBox alignment="BOTTOM_LEFT" layoutX="190.0" layoutY="40.0" prefHeight="32.0" prefWidth="170.0">
-         
             <children>
             <Button onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
                <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/retornar.png" />
-                     </image>
+                  <ImageView id="imgVoltar" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   </ImageView>
                </graphic>
             </Button>
@@ -77,5 +77,6 @@
             <Insets top="40.0" />
          </padding>
       </HBox>
+      
    </children>
 </Pane>
