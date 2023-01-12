@@ -3,10 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -21,15 +21,13 @@
   </rowConstraints>
 
     <children>
-
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
+          <Button onAction="#carregaTelaCadastrarCarona" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Criar Caronas" textAlignment="CENTER" textFill="WHITE" />
       
-          <Button text="Gerenciar Caronas" textAlignment="CENTER" />
-          <Button text="Criar Caronas" textAlignment="CENTER"  onAction="#carregaTelaCadastrarCarona"/>
-
+                <Button prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Caronas" textAlignment="CENTER" textFill="WHITE" />
          </children>
-      </HBox>
+      </VBox>
 
     </children>
 

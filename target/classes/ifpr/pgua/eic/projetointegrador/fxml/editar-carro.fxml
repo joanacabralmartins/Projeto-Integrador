@@ -32,7 +32,7 @@
          </VBox.margin>
          </TextField>
 
-         <Label text="Quanidade de acentos do carro" />
+         <Label text="Quantidade de assentos do carro" />
          <TextField fx:id="tfQuantidadeLugares">
          <VBox.margin>
             <Insets right="200.0" />

@@ -1,11 +1,13 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -57,11 +59,15 @@ public class JanelaCadastroCarro {
         }
     }
 
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
+    }
+
     private void limpar() {
         tfPlaca.clear();
         tfModelo.clear();
         tfQuantidadeLugares.clear();
         tfCor.clear();
     }
-
 }
