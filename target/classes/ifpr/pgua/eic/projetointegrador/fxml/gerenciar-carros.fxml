@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
    
    <children>
 
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0">
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="800.0" spacing="15.0">
 
          <children>
 
-            <TableView fx:id="tbCarros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="437.0">
+            <TableView fx:id="tbCarros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="550.0">
               <columns>
                   <TableColumn fx:id="colId" prefWidth="45.0" style="-fx-alignment: center;" text="Id" />
                 <TableColumn fx:id="colPlaca" prefWidth="130.0" style="-fx-alignment: center;" text="Placa" />
@@ -31,8 +31,8 @@
             <HBox alignment="TOP_CENTER" prefHeight="55.0" prefWidth="600.0" spacing="15.0">
 
                <children>
-                  <Button text="Editar" onAction="#carregaTelaEditarCarro" />
-                  <Button text="Remover" onAction="#inativarCarro" />
+                  <Button onAction="#carregaTelaEditarCarro" text="Editar" />
+                  <Button onAction="#inativarCarro" text="Remover" />
                </children>
 
             </HBox>
