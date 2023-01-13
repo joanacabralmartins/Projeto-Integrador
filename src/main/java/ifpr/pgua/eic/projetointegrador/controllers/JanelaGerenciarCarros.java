@@ -105,9 +105,10 @@ public class JanelaGerenciarCarros implements Initializable {
 
     }
 
-
-
-
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
+    }
 
     private void updateList() {
 
