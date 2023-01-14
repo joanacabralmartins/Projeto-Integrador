@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
@@ -21,6 +22,7 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -98,6 +100,12 @@ public class JanelaCaronaUsuario implements Initializable {
     private TableColumn<Carona, Integer> caronaId;
 
     @FXML 
+    private TableColumn<Carona, Integer> caronaIdCarro;
+
+    @FXML 
+    private TableColumn<Carona, Integer> caronaIdMotorista;
+
+    @FXML 
     private TableColumn<Carona, String> caronaOrigem;
 
     @FXML
@@ -147,17 +155,21 @@ public class JanelaCaronaUsuario implements Initializable {
 
     private void carregarCaronas() {
       caronaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+      caronaIdCarro.setCellValueFactory(new PropertyValueFactory<>("id_carro"));
+      caronaIdMotorista.setCellValueFactory(new PropertyValueFactory<>("id_motorista"));
       caronaOrigem.setCellValueFactory(new PropertyValueFactory<>("origem"));
       caronaDestino.setCellValueFactory(new PropertyValueFactory<>("destino"));
       caronaData.setCellValueFactory(new PropertyValueFactory<>("data"));
-      caronaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-      caronaVagas.setCellValueFactory(new PropertyValueFactory<>("vagas"));
+      caronaHorario.setCellValueFactory(new PropertyValueFactory<>("horarioSaida"));
+      caronaVagas.setCellValueFactory(new PropertyValueFactory<>("lugaresDisponiveis"));
 
       updateListaCarona();
     }
 
     @FXML
     private void filtrar() {
+
+      listaCaronas.clear();
 
       List<Carona> caronaList = new ArrayList<>();
 
@@ -217,11 +229,19 @@ public class JanelaCaronaUsuario implements Initializable {
     @FXML
     private void carregarDados(){
 
+      Carona cCarona = caronas.getSelectionModel().getSelectedItem();
+
+      if(cCarona == null){
+        Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma carona");
+        alert.showAndWait(); 
+        return;
+      }
+
       pontosDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
       updateListaPontos();
 
       pasCurso.setCellValueFactory(new PropertyValueFactory<>("curso"));
-      pasFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao"));
+      pasFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao_IFPR"));
       pasIdade.setCellValueFactory(new PropertyValueFactory<>("idade"));
       pasNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
       pasTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
@@ -229,7 +249,7 @@ public class JanelaCaronaUsuario implements Initializable {
       updateListaPassageiros();
 
       motoristaCurso.setCellValueFactory(new PropertyValueFactory<>("curso"));
-      motoristaFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao"));
+      motoristaFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao_IFPR"));
       motoristaIdade.setCellValueFactory(new PropertyValueFactory<>("idade"));
       motoristaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
       motoristaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
@@ -237,7 +257,7 @@ public class JanelaCaronaUsuario implements Initializable {
 
       updateListaMotorista();
 
-      carCor.setCellValueFactory(new PropertyValueFactory<>("id"));
+      carCor.setCellValueFactory(new PropertyValueFactory<>("cor"));
       carModelo.setCellValueFactory(new PropertyValueFactory<>("placa"));
       carPlaca.setCellValueFactory(new PropertyValueFactory<>("modelo"));
 
@@ -252,7 +272,7 @@ public class JanelaCaronaUsuario implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.listAll());
         
       for(Carona c : caronasList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataRemocao(), c.getDataCancelamento());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), true, c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null, null);
         listaCaronas.add(carona);
       }
       
@@ -292,7 +312,7 @@ public class JanelaCaronaUsuario implements Initializable {
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
       listaCarro.clear();
-      listaCarro.add(repositorioCarro.getById(repositorioCarona.getById(carona.getId()).getId_carro()));
+      listaCarro.add(repositorioCarro.getById(carona.getId_carro()));
       
       carro.setItems(listaCarro);
 

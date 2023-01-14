@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import ifpr.pgua.eic.projetointegrador.utils.Env;
 
 public class FabricaConexoes {
-    private static final int MAX_CONEXOES=5;
+    private static final int MAX_CONEXOES=55;
 
     private static FabricaConexoes instance;
 

@@ -142,7 +142,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM usuario WHERE id=? and ativo=1"); 
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM motorista WHERE id=? and ativo=1"); 
 
             pstm.setInt(1, id);
 
@@ -159,7 +159,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 String senha = rs.getString("senha");
                 int idade = rs.getInt("idade");
                 String dataNascimento = rs.getString("data_nascimento");
-                String carteira = rs.getString("carteira");
+                String carteira = rs.getString("carteira_motorista");
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
@@ -172,6 +172,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 return null;
             }
         } catch(SQLException e) {
+            System.out.println(e.getMessage());
             return null;
         }   
     }
