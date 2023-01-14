@@ -61,14 +61,14 @@
       </VBox>
 
          <HBox layoutX="9.0" layoutY="14.0" prefHeight="32.0" prefWidth="700.0">
-         <children>
-            <Button onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
-               <graphic>
-                  <ImageView id="imgVoltar" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
+            <children>
+               <Button onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
+                  <graphic>
+                     <ImageView id="imgVoltar" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     </ImageView>
+                  </graphic>
+               </Button>
+            </children>
          <padding>
             <Insets top="15.0" />
          </padding>

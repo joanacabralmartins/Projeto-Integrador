@@ -63,7 +63,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, status=?, origem=?, destino=? dataCadastro=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, status=?, origem=?, destino=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
@@ -75,12 +75,11 @@ public class JDBCCaronaDAO implements CaronaDAO{
       // pstm.setInt(8, carona.getId_Destino());
       pstm.setString(6, carona.getOrigem());
       pstm.setString(7, carona.getDestino());
-      pstm.setDate(8, carona.getDataCadastro());
-      pstm.setDate(9, carona.getData());
-      pstm.setDate(10, carona.getDataRemocao());
-      pstm.setDate(11, carona.getDataCancelamento());
+      pstm.setDate(8, carona.getData());
+      pstm.setDate(9, carona.getDataRemocao());
+      pstm.setDate(10, carona.getDataCancelamento());
 
-      pstm.setInt(12, carona.getId());
+      pstm.setInt(11, carona.getId());
 
       pstm.execute();
 

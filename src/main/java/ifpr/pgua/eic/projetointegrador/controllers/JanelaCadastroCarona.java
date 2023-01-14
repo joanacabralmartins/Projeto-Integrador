@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
@@ -17,6 +18,7 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -118,6 +120,7 @@ public class JanelaCadastroCarona implements Initializable {
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+            App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
 
         }
 
@@ -127,4 +130,10 @@ public class JanelaCadastroCarona implements Initializable {
         }
 
     }
+
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
+    }
+    
 }

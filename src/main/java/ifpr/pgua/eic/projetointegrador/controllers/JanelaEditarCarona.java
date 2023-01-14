@@ -6,11 +6,11 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.PontoParada;
@@ -21,6 +21,7 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -141,15 +142,16 @@ public class JanelaEditarCarona implements Initializable {
         Date dataCarona = Date.valueOf(data);
 
 
-        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, dataRemocao, dataCancelamento);
+        Carona caronaa = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, dataRemocao, dataCancelamento);
 
-        Result resultado  = caronaRepository.update(carona);
+        Result resultado  = caronaRepository.update(caronaa);
 
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+            App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
 
         }
 
@@ -225,4 +227,10 @@ public class JanelaEditarCarona implements Initializable {
         
         pontos.setItems(listaPontos);
     }
+
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
+    }
+    
 }
