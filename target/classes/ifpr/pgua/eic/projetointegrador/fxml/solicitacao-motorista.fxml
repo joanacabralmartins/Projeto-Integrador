@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -36,17 +36,13 @@
 
             <Label text="Solicitações" />
 
-            <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="520.0">
+            <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="480.0">
 
               <columns>
 
-                <TableColumn prefWidth="80.0" text="Origem" />
-                <TableColumn prefWidth="80.0" text="Destino" />
-                <TableColumn prefWidth="85.0" text="Carro" />
-                <TableColumn prefWidth="90.0" text="Passageiro" />
-                <TableColumn prefWidth="75.0" text="Data" />
-                <TableColumn prefWidth="55.0" text="Horário" />
-                <TableColumn prefWidth="55.0" text="Vagas" />
+                <TableColumn fx:id="colPassageiro" prefWidth="140.0" style="-fx-alignment: center;" text="Id do Passageiro" />
+                <TableColumn fx:id="colDataHora" prefWidth="200.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
+                <TableColumn fx:id="colCarona" prefWidth="140.0" style="-fx-alignment: center;" text="Id da Carona" />
 
               </columns>
 
@@ -56,9 +52,8 @@
 
               <children>
 
-                <Button prefHeight="25.0" prefWidth="60.0" text="Recusar" textAlignment="CENTER" />
-    
-                <Button prefHeight="25.0" prefWidth="60.0" text="Aceitar" textAlignment="CENTER" />
+                <Button prefHeight="25.0" prefWidth="80.0" text="Recusar" textAlignment="CENTER" />
+                <Button prefHeight="25.0" prefWidth="80.0" text="Aceitar" textAlignment="CENTER" />
 
               </children>
 

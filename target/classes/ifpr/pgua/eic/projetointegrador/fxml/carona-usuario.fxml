@@ -11,7 +11,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario">
+<GridPane prefHeight="400.0" prefWidth="600.0" 
+  xmlns="http://javafx.com/javafx/19" 
+  xmlns:fx="http://javafx.com/fxml/1" 
+  fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -60,7 +63,7 @@
           
             <TextField fx:id="tfOrigem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="1" />
             <TextField fx:id="tfDestino" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="Filtrar por" GridPane.columnIndex="3" />
-            <Button text="Filtrar" GridPane.columnIndex="4" onAction="#filtrar"/>
+            <Button onAction="#filtrar" text="Filtrar" GridPane.columnIndex="4" />
 
           </children>
 
@@ -74,15 +77,15 @@
 
       <children>
 
-        <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="310.0">
+        <TableView maxWidth="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="350.0">
 
           <columns>
               <TableColumn fx:id="caronaId" prefWidth="40.0" text="Id" visible="false" />
               <TableColumn fx:id="caronaOrigem" prefWidth="75.0" text="Origem" />
               <TableColumn fx:id="caronaDestino" prefWidth="75.0" text="Destino" />
               <TableColumn fx:id="caronaData" prefWidth="55.0" text="Data" />
-              <TableColumn fx:id="caronaHorario" prefWidth="55.0" text="Horário" />
-              <TableColumn fx:id="caronaVagas" prefWidth="55.0" text="Vagas" />
+              <TableColumn fx:id="caronaHorario" prefWidth="79.0" text="Horário" />
+              <TableColumn fx:id="caronaVagas" prefWidth="64.0" text="Vagas" />
           </columns>
 
         </TableView>

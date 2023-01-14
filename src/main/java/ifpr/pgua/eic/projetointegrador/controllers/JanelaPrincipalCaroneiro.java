@@ -24,7 +24,7 @@ public class JanelaPrincipalCaroneiro extends BaseController {
 
     @FXML
     private void carregaTelaCaronaUsuario(ActionEvent evento) {
-        App.changeScreenRegion("CARONA USUARIO", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("CARONA USUARIO TESTE", BorderPaneRegion.CENTER);
     }
 
     @FXML

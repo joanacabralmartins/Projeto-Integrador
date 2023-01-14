@@ -6,6 +6,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuarioTeste;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista;
@@ -15,6 +16,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaLogin;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipalCaroneiro;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
@@ -136,6 +138,12 @@ public class App extends BaseAppNavigator {
 
         registraTela("CARONA USUARIO", new ScreenRegistryFXML(getClass(), "fxml/carona-usuario.fxml", 
                 (o) -> new JanelaCaronaUsuario(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
+
+        registraTela("CARONA USUARIO TESTE", new ScreenRegistryFXML(getClass(), "fxml/carona-usuario-teste.fxml", 
+                (o) -> new JanelaCaronaUsuarioTeste(caronaRepository, usuarioRepository, solicitacaoRepository)));
+
+        registraTela("SOLICITACOES MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista.fxml", 
+                (o) -> new JanelaSolicitacaoMotorista(solicitacaoRepository, motoristaRepository)));
                 
 /*
         registraTela("CARONA MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista.fxml", 

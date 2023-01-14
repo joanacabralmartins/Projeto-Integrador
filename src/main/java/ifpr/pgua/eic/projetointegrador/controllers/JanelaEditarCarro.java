@@ -3,8 +3,6 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.mysql.cj.CacheAdapter;
-
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
@@ -74,12 +72,6 @@ public class JanelaEditarCarro implements Initializable {
     @FXML
     private void voltar() {
       App.changeScreenRegion("GERENCIAR CARROS", BorderPaneRegion.CENTER);
-    }
-
-    private void limpar() {
-        tfPlaca.clear();
-        tfModelo.clear();
-        tfCor.clear();
     }
 
 }

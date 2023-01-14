@@ -5,11 +5,14 @@ import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.SolicitacaoDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCCarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.daos.JDBCMotoristaDAO;
+import ifpr.pgua.eic.projetointegrador.models.daos.JDBCSolicitacaoDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
+import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 
 public class Teste {
@@ -36,6 +39,12 @@ public class Teste {
         List<Carro> carros = repository.listar(1);
         for(Carro c : carros) {
             System.out.println(c.getCor());
+        }
+
+        SolicitacaoDAO solicitacaoDAO = new JDBCSolicitacaoDAO(fabrica);
+        List<SolicitacaoCarona> solicitacoes = solicitacaoDAO.getPendenteByMotorista(1);
+        for (SolicitacaoCarona s : solicitacoes) {
+            System.out.println(s.getId_carona());
         }
     }
 }

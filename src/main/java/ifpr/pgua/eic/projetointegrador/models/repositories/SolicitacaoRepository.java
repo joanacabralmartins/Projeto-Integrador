@@ -18,6 +18,10 @@ public class SolicitacaoRepository {
     return dao.create(Solicitacao);
   }
 
+  public List<SolicitacaoCarona> listAll() {
+    return dao.listAll();
+  }
+
   public Result aceitar(SolicitacaoCarona Solicitacao) {
     return dao.aceitar(Solicitacao);
   }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +28,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, status) VALUES (?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, ativo) VALUES (?,?,?,?,?)");
             
             pstm.setInt(1, solicitacao.getId_usuario());
             pstm.setInt(2, solicitacao.getId_carona());
@@ -53,7 +54,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=3, dataHora_resposta=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
@@ -75,7 +76,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=1, dataHora_resposta=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=1, dataHora_resposta=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
@@ -97,7 +98,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=2, dataHora_cancelamento=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=2, dataHora_cancelamento=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataCancelamento()));
             pstm.setInt(2, solicitacao.getId());
@@ -119,7 +120,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=4, dataHora_remocao=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=4, dataHora_remocao=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Remocao()));
             pstm.setInt(2, solicitacao.getId());
@@ -175,7 +176,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=? and status=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=? and ativo=0");
 
             pstm.setInt(1, id_motorista);
 
@@ -204,7 +205,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=? and status=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=? and ativo=0");
 
             pstm.setInt(1, id_passageiro);
 
@@ -233,7 +234,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_carona=? and status=3");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_carona=? and ativo=3");
 
             pstm.setInt(1, id_carona);
 
@@ -257,6 +258,35 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         }
     }
 
+    @Override
+    public List<SolicitacaoCarona> listAll() {
+
+    try {
+
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao where ativo=1"); 
+
+      ResultSet rs = pstm.executeQuery();
+
+      ArrayList <SolicitacaoCarona> solicitacoes = new ArrayList<SolicitacaoCarona>();
+
+      while (rs.next()) {
+        solicitacoes.add(buildFrom(rs));
+      } 
+
+      rs.close();
+      pstm.close();
+      con.close();
+
+      return solicitacoes;
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return Collections.emptyList();
+    }   
+  }
+
     private SolicitacaoCarona buildFrom(ResultSet rs) throws SQLException {
 
         int id = rs.getInt("id");
@@ -264,16 +294,18 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         int id_motorista = rs.getInt("id_motorista");
         int id_usuario = rs.getInt("id_usuario");
 
-        LocalDateTime dataHora_Solicitacao = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"));
-        LocalDateTime dataHora_Resposta = LocalDateTime.parse(rs.getString("dataHora_Resposta"));
-        LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Remocao"));
-        LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Cancelamento"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime dataHora_Solicitacao = LocalDateTime.parse(rs.getString("dataHora_Solicitacao"), formatter);
+        //LocalDateTime dataHora_Resposta = LocalDateTime.parse(rs.getString("dataHora_Resposta"), formatter);
+        //LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Remocao"), formatter);
+        //LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Cancelamento"), formatter);
         
-        int status = rs.getInt("status");
+        int status = rs.getInt("ativo");
   
         SolicitacaoCarona solicitacao = new SolicitacaoCarona(id, id_usuario, id_motorista, id_carona, 
-                                        dataHora_Solicitacao, dataHora_Resposta, dataHora_Remocao, 
-                                        dataHora_Cancelamento, status);
+                                        dataHora_Solicitacao, null, null, 
+                                        null, status);
 
         return solicitacao;
   
