@@ -120,7 +120,7 @@ public class JanelaCadastroCarona implements Initializable {
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-            App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
+            App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
 
         }
 
@@ -135,5 +135,5 @@ public class JanelaCadastroCarona implements Initializable {
     private void voltar() {
         App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
     }
-    
+
 }
