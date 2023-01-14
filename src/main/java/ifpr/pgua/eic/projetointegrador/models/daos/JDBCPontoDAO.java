@@ -129,7 +129,7 @@ public class JDBCPontoDAO implements PontoDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM ponto WHERE id_carona=?"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM ponto WHERE id_carona=? and ativo=1"); 
 
       pstm.setInt(1, id_carona);
 

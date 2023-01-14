@@ -156,7 +156,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona WHERE id_motorista=?"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona WHERE id_motorista=? and ativo=1"); 
 
       pstm.setInt(1, id_motorista);
 

@@ -7,10 +7,10 @@ import javafx.fxml.FXML;
 
 public class JanelaCaronaMotoristaInicial {
 
-    // @FXML
-    // private void carregaTelaGerenciarCaronas(ActionEvent evento) {
-    //     App.changeScreenRegion("GERENCIAR CARONAS", BorderPaneRegion.CENTER);
-    // }
+    @FXML
+    private void carregaTelaCarona(ActionEvent evento) {
+        App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
+    }
 
     @FXML
     private void carregaTelaCadastrarCarona(ActionEvent evento) {

@@ -25,7 +25,7 @@
          <children>
           <Button onAction="#carregaTelaCadastrarCarona" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Criar Caronas" textAlignment="CENTER" textFill="WHITE" />
       
-                <Button prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Caronas" textAlignment="CENTER" textFill="WHITE" />
+                <Button onAction="#carregaTelaCarona" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Caronas" textAlignment="CENTER" textFill="WHITE" />
          </children>
       </VBox>
 

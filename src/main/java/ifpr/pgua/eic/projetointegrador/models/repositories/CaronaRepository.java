@@ -30,6 +30,10 @@ public class CaronaRepository {
     dao.selecionarCarona(carona);
   }
 
+  public List<Carona> getByMotorista(int id){
+    return dao.getByMotorista(id);
+  }
+
   public List<Carona> getByDestino(String destino){
     return dao.getByDestino(destino);
   }
