@@ -127,9 +127,9 @@
                   <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="297.0" spacing="10.0">
                      
                      <children>
-                        <Button text="Criar Carona" />
-                        <Button text="Editar Carona" />
-                        <Button text="Excluir Carona" />
+                        <Button onAction="#criarCarona" text="Criar Carona" />
+                        <Button onAction="#editarCarona" text="Editar Carona" />
+                        <Button onAction="#inativarCarona" text="Excluir Carona" />
                      </children>
       
                   </HBox>

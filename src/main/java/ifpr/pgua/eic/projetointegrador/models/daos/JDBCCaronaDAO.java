@@ -180,6 +180,11 @@ public class JDBCCaronaDAO implements CaronaDAO{
     }   
   }
 
+  @Override 
+  public Carona getCarona(){
+    return carona;
+  } 
+
   @Override
   public void selecionarCarona(Carona caronaa) {
 

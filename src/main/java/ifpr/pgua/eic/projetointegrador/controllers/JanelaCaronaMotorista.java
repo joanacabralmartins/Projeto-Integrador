@@ -18,7 +18,6 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
-import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
@@ -155,7 +154,7 @@ public class JanelaCaronaMotorista implements Initializable {
 
       repositorioCarona.selecionarCarona(repositorioCarona.getById(idC));
 
-      //App.changeScreenRegion("EDITAR CARONA", BorderPaneRegion.CENTER);
+      App.changeScreenRegion("EDITAR CARONA", BorderPaneRegion.CENTER);
 
     }
 

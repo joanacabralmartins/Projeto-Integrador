@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -56,7 +56,7 @@
                         <children>
 
                            <Label text="Data" />
-                           <DatePicker maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+                           <DatePicker fx:id="dpData" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
 
                         </children>
 
@@ -67,7 +67,7 @@
                         <children>
 
                            <Label text="Carro" />
-                           <ComboBox maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+                           <ComboBox fx:id="cbCarros" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
 
                         </children>
 
@@ -78,7 +78,7 @@
                         <children>
 
                            <Label text="Origem" />
-                           <TextField maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+                           <TextField fx:id="tfOrigem" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
 
                         </children>
 
@@ -89,7 +89,7 @@
                         <children>
                         
                            <Label text="Destino" />
-                           <TextField maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+                           <TextField fx:id="tfDestino" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
 
                         </children>
                      </VBox>
@@ -99,7 +99,7 @@
                         <children>
 
                            <Label text="Horário de saída" />
-                           <TextField maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
+                           <TextField fx:id="tfHorarioSaida" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
                         
                         </children>
 
@@ -110,7 +110,7 @@
                         <children>
 
                            <Label text="Lugares disponíveis" />
-                           <TextField maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
+                           <TextField fx:id="tfLugaresDisponiveis" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
                         
                         </children>
 
@@ -124,7 +124,7 @@
 
                   <children>
          
-                     <Button text="Salvar" textAlignment="CENTER" />
+                     <Button onAction="#editarCarona" text="Salvar" textAlignment="CENTER" />
                      <Button text="Gerenciar Passageiros" />
 
                   </children>
@@ -141,10 +141,10 @@
 
                <Label text="Pontos de Parada:" />
 
-               <TableView prefHeight="200.0" prefWidth="200.0">
+               <TableView fx:id="pontos" prefHeight="200.0" prefWidth="200.0">
 
                   <columns>
-                     <TableColumn minWidth="150.0" prefWidth="-1.0" text="Descricao" />
+                     <TableColumn fx:id="pontoDescricao" minWidth="150.0" prefWidth="-1.0" text="Descricao" />
                   </columns>
 
                </TableView>
@@ -153,14 +153,14 @@
 
                   <children>
 
-                     <TextField maxHeight="23.0" maxWidth="110.0" minHeight="23.0" minWidth="110.0" prefHeight="23.0" prefWidth="110.0" />
-                     <Button text="+" />
+                     <TextField fx:id="tfDescricao" maxHeight="23.0" maxWidth="110.0" minHeight="23.0" minWidth="110.0" prefHeight="23.0" prefWidth="110.0" />
+                     <Button onAction="#adicionarPonto" text="+" />
 
                   </children>
 
                </HBox>
 
-               <Button text="Excluir" />
+               <Button onAction="#removerPonto" text="Excluir" />
                
             </children>
 

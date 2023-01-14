@@ -26,8 +26,12 @@ public class CaronaRepository {
     return dao.inativar(carona);
   }
 
-  public void selecionarCarona(Carona carona) {
-    dao.selecionarCarona(carona);
+  public Carona getCarona(){
+    return dao.getCarona();
+  }
+
+  public void selecionarCarona(Carona caronaa) {
+    dao.selecionarCarona(caronaa);
   }
 
   public List<Carona> getByMotorista(int id){
