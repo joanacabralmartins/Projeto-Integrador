@@ -28,7 +28,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, ativo) VALUES (?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO solicitacao(id_usuario, id_carona, id_motorista, dataHora_solicitacao, status) VALUES (?,?,?,?,?)");
             
             pstm.setInt(1, solicitacao.getId_usuario());
             pstm.setInt(2, solicitacao.getId_carona());
@@ -54,7 +54,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=3, dataHora_resposta=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
@@ -76,7 +76,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=1, dataHora_resposta=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=1, dataHora_resposta=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
@@ -98,7 +98,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=2, dataHora_cancelamento=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=2, dataHora_cancelamento=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataCancelamento()));
             pstm.setInt(2, solicitacao.getId());
@@ -120,7 +120,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set ativo=4, dataHora_remocao=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=4, dataHora_remocao=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Remocao()));
             pstm.setInt(2, solicitacao.getId());
@@ -176,7 +176,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=? and ativo=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=? and status=0");
 
             pstm.setInt(1, id_motorista);
 
@@ -205,7 +205,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=? and ativo=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=? and status=0");
 
             pstm.setInt(1, id_passageiro);
 
@@ -234,7 +234,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_carona=? and ativo=3");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_carona=? and status=3");
 
             pstm.setInt(1, id_carona);
 
@@ -265,7 +265,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao where ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao where status=1"); 
 
       ResultSet rs = pstm.executeQuery();
 
@@ -301,7 +301,7 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         //LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Remocao"), formatter);
         //LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Cancelamento"), formatter);
         
-        int status = rs.getInt("ativo");
+        int status = rs.getInt("status");
   
         SolicitacaoCarona solicitacao = new SolicitacaoCarona(id, id_usuario, id_motorista, id_carona, 
                                         dataHora_Solicitacao, null, null, 

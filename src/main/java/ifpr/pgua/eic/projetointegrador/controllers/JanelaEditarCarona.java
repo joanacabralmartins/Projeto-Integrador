@@ -177,6 +177,8 @@ public class JanelaEditarCarona implements Initializable {
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+
+            tfDescricao.clear();
             
         }
 

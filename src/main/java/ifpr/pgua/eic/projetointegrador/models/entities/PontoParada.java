@@ -9,6 +9,7 @@ public class PontoParada {
   
   public PontoParada(int id, int id_carona, String descricao, boolean ativo) {
     this.id = id;
+    this.id_carona = id_carona;
     this.descricao = descricao;
     this.ativo = ativo;
   }
