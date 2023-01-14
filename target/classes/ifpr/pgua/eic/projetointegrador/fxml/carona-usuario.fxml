@@ -11,7 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario">
+<GridPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/styles.css"
+          xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" 
+          fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />

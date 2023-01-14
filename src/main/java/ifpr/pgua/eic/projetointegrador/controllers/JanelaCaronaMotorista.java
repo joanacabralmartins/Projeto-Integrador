@@ -268,4 +268,9 @@ public class JanelaCaronaMotorista implements Initializable {
 
     }
 
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
+    }
+
 }
