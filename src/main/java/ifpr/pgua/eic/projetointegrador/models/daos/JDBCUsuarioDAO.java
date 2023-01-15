@@ -123,7 +123,9 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
-                usuario = new Usuario(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
+                Usuario usuario = new Usuario(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
+
+                this.usuario = usuario;
                 
                 pstm.close();
                 con.close();
@@ -199,11 +201,11 @@ public class JDBCUsuarioDAO implements UsuarioDAO{
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
-                Usuario usuari = new Usuario(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
+                Usuario usuario = new Usuario(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco);
                 
                 pstm.close();
                 con.close();
-                return usuari;
+                return usuario;
             } else {
                 return null;
             }

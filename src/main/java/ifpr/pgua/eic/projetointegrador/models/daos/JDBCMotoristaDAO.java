@@ -204,7 +204,9 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
 
                 Date dtDataNascimento = Date.valueOf(dataNascimento);
 
-                motorista = new Motorista(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
+                Motorista motorista = new Motorista(id, ativo, cpf, nome, funcao, senha, dtDataNascimento, idade, curso, tel, endereco, carteira);
+
+                this.motorista = motorista;
 
                 pstm.close();
                 con.close();

@@ -181,7 +181,7 @@ public class JDBCCarroDAO implements CarroDAO {
 
     @Override
     public void selecionarCarro(Carro carro) {
-        this.carro = new Carro(carro.getId(), carro.getPlaca(), carro.getModelo(), carro.getQuantidadeLugares(), carro.getCor(), carro.getId__motorista(), carro.isAtivo());
+        this.carro = carro;
     }  
 
     @Override

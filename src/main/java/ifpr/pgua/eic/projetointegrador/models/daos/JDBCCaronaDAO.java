@@ -185,10 +185,8 @@ public class JDBCCaronaDAO implements CaronaDAO{
   } 
 
   @Override
-  public void selecionarCarona(Carona caronaa) {
-
-    carona = new Carona(caronaa.getId(), caronaa.getId_motorista(), caronaa.getId_carro(), caronaa.getHorarioSaida(), caronaa.getLugaresDisponiveis(), caronaa.getStatus(), caronaa.getOrigem(), caronaa.getDestino(), caronaa.getDataCadastro(), caronaa.getData(), caronaa.getDataRemocao(), caronaa.getDataCancelamento());
-      
+  public void selecionarCarona(Carona carona) {
+    this.carona = carona;
   }
 
   @Override
