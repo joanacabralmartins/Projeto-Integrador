@@ -123,7 +123,10 @@ public class JanelaEditarMotorista implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
             repositorioU.editarUsuario(cpf, cpfNovo, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
-            carregarHome();
+            carregarLogin();
+            msg = "Preencha suas credenciais novamente!";
+            alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
         }
 
         if(resultado instanceof FailResult) {
@@ -133,8 +136,8 @@ public class JanelaEditarMotorista implements Initializable {
 
     }
 
-    private void carregarHome() {
-        App.pushScreen("PRINCIPAL");
+    private void carregarLogin() {
+        App.pushScreen("LOGIN");
     }
 
 }

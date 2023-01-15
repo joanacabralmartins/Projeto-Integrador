@@ -114,7 +114,11 @@ public class JanelaEditarUsuario implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
-            carregarHome();
+            carregarLogin();
+
+            msg = "Preencha suas credenciais novamente!";
+            alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
         }
 
         if(resultado instanceof FailResult) {
@@ -124,7 +128,7 @@ public class JanelaEditarUsuario implements Initializable {
 
     }
 
-    private void carregarHome() {
-        App.pushScreen("PRINCIPAL CARONEIRO");
+    private void carregarLogin() {
+        App.pushScreen("LOGIN");
     }
 }
