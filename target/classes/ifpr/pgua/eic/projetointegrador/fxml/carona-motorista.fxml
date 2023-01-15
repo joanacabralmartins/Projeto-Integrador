@@ -34,7 +34,7 @@
 
             <Label text="Caronas ofertadas:" />
 
-              <TableView fx:id="caronas" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="121.0" prefWidth="395.0">
+              <TableView fx:id="caronas" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="121.0" prefWidth="347.0">
 
                 <columns>
                   <TableColumn fx:id="caronaId" prefWidth="40.0" visible="false" />

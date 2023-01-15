@@ -8,7 +8,9 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
@@ -56,24 +58,26 @@ public class JanelaEditarMotorista implements Initializable {
     @FXML
     private TextArea taEndereco;
 
-    private MotoristaRepository repositorio;
+    private MotoristaRepository repositorioM;
+    private UsuarioRepository repositorioU;
     private String cpf;
 
-    public JanelaEditarMotorista(MotoristaRepository repositorio) {
-        this.repositorio = repositorio;
+    public JanelaEditarMotorista(MotoristaRepository repositorioM, UsuarioRepository repositorioU) {
+        this.repositorioM = repositorioM;
+        this.repositorioU = repositorioU;
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        cpf = repositorio.getUser().getCpf();
-        String carteira = repositorio.getUser().getCarteira_motorista();
-        String nome = repositorio.getUser().getNome();
-        String senha = repositorio.getUser().getSenha();
-        String curso = repositorio.getUser().getCurso();
-        String telefone = repositorio.getUser().getTelefone();
-        String endereco = repositorio.getUser().getEndereco();
-        String funcao = repositorio.getUser().getFuncao_IFPR();
-        Date dataNascimento = repositorio.getUser().getData_nascimento();
+        cpf = repositorioM.getUser().getCpf();
+        String carteira = repositorioM.getUser().getCarteira_motorista();
+        String nome = repositorioM.getUser().getNome();
+        String senha = repositorioM.getUser().getSenha();
+        String curso = repositorioM.getUser().getCurso();
+        String telefone = repositorioM.getUser().getTelefone();
+        String endereco = repositorioM.getUser().getEndereco();
+        String funcao = repositorioM.getUser().getFuncao_IFPR();
+        Date dataNascimento = repositorioM.getUser().getData_nascimento();
 
         String[] opcoes = {"Aluno(a)", "Professor(a)", "Servidor"};
         ObservableList<String> list = FXCollections.observableArrayList(opcoes);
@@ -112,12 +116,14 @@ public class JanelaEditarMotorista implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.editarMotorista(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+        Result resultado = repositorioM.editarMotorista(cpf, cpfNovo, carteira, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
         String msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
+            repositorioU.editarUsuario(cpf, cpfNovo, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+            carregarHome();
         }
 
         if(resultado instanceof FailResult) {
@@ -125,6 +131,10 @@ public class JanelaEditarMotorista implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    private void carregarHome() {
+        App.pushScreen("PRINCIPAL");
     }
 
 }

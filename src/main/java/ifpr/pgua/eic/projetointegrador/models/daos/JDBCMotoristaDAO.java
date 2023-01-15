@@ -27,19 +27,20 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
         try {
             Connection con = fabricaConexao.getConnection();
                                     
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO motorista(id,ativo,cpf,nome,funcao_IFPR,senha,data_nascimento,idade,curso,telefone,endereco,carteira_motorista) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
             
-            pstm.setBoolean(1, motorista.isAtivo());
-            pstm.setString(2, motorista.getCpf());
-            pstm.setString(3, motorista.getNome());
-            pstm.setString(4, motorista.getFuncao_IFPR());
-            pstm.setString(5, motorista.getSenha());
-            pstm.setString(6, String.valueOf(motorista.getData_nascimento()));
-            pstm.setInt(7, motorista.getIdade());
-            pstm.setString(8, motorista.getCurso());
-            pstm.setString(9, motorista.getTelefone());
-            pstm.setString(10, motorista.getEndereco());
-            pstm.setString(11, motorista.getCarteira_motorista());
+            pstm.setInt(1, motorista.getId());
+            pstm.setBoolean(2, motorista.isAtivo());
+            pstm.setString(3, motorista.getCpf());
+            pstm.setString(4, motorista.getNome());
+            pstm.setString(5, motorista.getFuncao_IFPR());
+            pstm.setString(6, motorista.getSenha());
+            pstm.setString(7, String.valueOf(motorista.getData_nascimento()));
+            pstm.setInt(8, motorista.getIdade());
+            pstm.setString(9, motorista.getCurso());
+            pstm.setString(10, motorista.getTelefone());
+            pstm.setString(11, motorista.getEndereco());
+            pstm.setString(12, motorista.getCarteira_motorista());
 
             pstm.execute();
 

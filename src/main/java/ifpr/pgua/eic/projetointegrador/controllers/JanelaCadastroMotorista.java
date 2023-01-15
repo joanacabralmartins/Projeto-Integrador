@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
@@ -52,10 +53,13 @@ public class JanelaCadastroMotorista implements Initializable {
     @FXML
     private TextArea taEndereco;
 
-    private MotoristaRepository repositorio;
+    private MotoristaRepository repositorioM;
 
-    public JanelaCadastroMotorista(MotoristaRepository repositorio) {
-        this.repositorio = repositorio;
+    private UsuarioRepository repositorioU;
+
+    public JanelaCadastroMotorista(MotoristaRepository repositorioM, UsuarioRepository repositorioU) {
+        this.repositorioM = repositorioM;
+        this.repositorioU = repositorioU;
     }
 
     @Override
@@ -92,22 +96,38 @@ public class JanelaCadastroMotorista implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        Result resultado = repositorio.adicionarMotorista(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
-        String msg = resultado.getMsg();
+        String msg = new String();
 
-        if(resultado instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION,msg);
-            alert.showAndWait();
-
-            App.popScreen();
-
+        if(carteiraMotorista.length() != 11){
+            msg = "O número da carteira de motorista inserida não possui 11 caracteres!";
+        } else if(carteiraMotorista.matches("[a-z]*")) {
+            msg = "Insira um número de CNH válido! [*Apenas Números*]";
+        } else if(carteiraMotorista.matches("[A-Z]*")){
+            msg = "Insira um número de CNH válido! [*Apenas Números*]";
         }
 
-        if(resultado instanceof FailResult) {
-            Alert alert = new Alert(AlertType.ERROR,msg);
-            alert.showAndWait();
+        if(msg.isEmpty()){
+            Result resultado = repositorioU.adicionarUsuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+
+            if(resultado instanceof SuccessResult) {
+
+                resultado = repositorioM.adicionarMotorista(repositorioU.getByCpf(cpf).getId(), ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
+                msg = resultado.getMsg();
+    
+                if(resultado instanceof SuccessResult) {
+    
+                    App.popScreen();
+    
+                }
+    
+            }else{
+                msg = resultado.getMsg();
+            }
         }
 
+        Alert alert = new Alert(AlertType.INFORMATION,msg);
+        alert.showAndWait();
+        
     }
 
 }

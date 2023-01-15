@@ -256,8 +256,8 @@ public class JanelaCaronaUsuario implements Initializable {
       updateListaMotorista();
 
       carCor.setCellValueFactory(new PropertyValueFactory<>("cor"));
-      carModelo.setCellValueFactory(new PropertyValueFactory<>("placa"));
-      carPlaca.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+      carModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+      carPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
 
       updateListaCarro();
     }

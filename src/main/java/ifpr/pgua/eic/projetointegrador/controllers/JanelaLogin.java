@@ -54,8 +54,7 @@ public class JanelaLogin extends BaseController {
             alert.showAndWait();
             App.pushScreen("PRINCIPAL MOTORISTA");
             return;
-        }
-        if (resultadoUsuario instanceof SuccessResult) {
+        }else if (resultadoUsuario instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION, msgU);
             alert.showAndWait();
             App.pushScreen("PRINCIPAL CARONEIRO");

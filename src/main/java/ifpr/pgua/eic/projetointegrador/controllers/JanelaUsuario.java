@@ -63,7 +63,7 @@ public class JanelaUsuario implements Initializable {
 
     @FXML
     private void carregaTelaEditarUsuario(ActionEvent evento) {
-        if (repositorioU.getUser() != null) {
+        if (repositorioM.getUser() == null) {
             App.changeScreenRegion("EDITAR USUARIO", BorderPaneRegion.CENTER);
         } else {
             App.changeScreenRegion("EDITAR MOTORISTA", BorderPaneRegion.CENTER);
@@ -79,12 +79,12 @@ public class JanelaUsuario implements Initializable {
         String msg = null;
 
         if (result.get() == ButtonType.OK) {
-            if (usuario != null) {
-                resultado = repositorioU.inativar(usuario);
-                msg = resultado.getMsg();
-            }
             if(motorista != null) {
                 resultado = repositorioM.inativar(motorista);
+                resultado = repositorioU.inativar(usuario);
+                msg = resultado.getMsg();
+            }else if (usuario != null) {
+                resultado = repositorioU.inativar(usuario);
                 msg = resultado.getMsg();
             }
         } else {
