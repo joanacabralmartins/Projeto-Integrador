@@ -15,19 +15,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" 
-   xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
-      <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
   </columnConstraints>
 
   <rowConstraints>
-      <RowConstraints prefHeight="50.0" vgrow="SOMETIMES" />
-      <RowConstraints prefHeight="330.0" vgrow="SOMETIMES" />
+    <RowConstraints prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints prefHeight="330.0" vgrow="SOMETIMES" />
       <RowConstraints prefHeight="20.0" vgrow="SOMETIMES" />
   </rowConstraints>
 
@@ -47,7 +45,6 @@
                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="178.0" />
                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="192.0" />
                   </columnConstraints>
-
                   <rowConstraints>
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -59,8 +56,10 @@
                      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="1">
 
                         <children>
+
                            <Label text="Data" />
                            <DatePicker fx:id="dpData" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+
                         </children>
 
                      </VBox>
@@ -68,8 +67,10 @@
                      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="2">
 
                         <children>
+
                            <Label text="Carro" />
                            <ComboBox fx:id="cbCarros" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+
                         </children>
 
                      </VBox>
@@ -77,26 +78,31 @@
                      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0">
 
                         <children>
+
                            <Label text="Origem" />
                            <TextField fx:id="tfOrigem" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+
                         </children>
 
                      </VBox>
 
                      <VBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1">
 
-                        <children> 
+                        <children>
+                        
                            <Label text="Destino" />
                            <TextField fx:id="tfDestino" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
-                        </children>
 
+                        </children>
                      </VBox>
 
                      <VBox alignment="CENTER" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
                         <children>
+
                            <Label text="Horário de saída" />
                            <TextField fx:id="tfHorarioSaida" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
+                        
                         </children>
 
                      </VBox>
@@ -104,8 +110,10 @@
                      <VBox alignment="CENTER" layoutX="270.0" layoutY="109.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         
                         <children>
+
                            <Label text="Lugares disponíveis" />
-                           <TextField fx:id="tfLugaresDisponiveis" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />                    
+                           <TextField fx:id="tfLugaresDisponiveis" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
+                        
                         </children>
 
                      </VBox>
@@ -116,9 +124,11 @@
 
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
 
-                  <children>      
+                  <children>
+         
                      <Button onAction="#editarCarona" text="Salvar" textAlignment="CENTER" />
                      <Button text="Gerenciar Passageiros" />
+
                   </children>
 
                </HBox>
@@ -144,8 +154,10 @@
                <HBox alignment="TOP_CENTER" maxHeight="23.0" spacing="10.0">
 
                   <children>
+
                      <TextField fx:id="tfDescricao" maxHeight="23.0" maxWidth="110.0" minHeight="23.0" minWidth="110.0" prefHeight="23.0" prefWidth="110.0" />
                      <Button onAction="#adicionarPonto" text="+" />
+
                   </children>
 
                </HBox>

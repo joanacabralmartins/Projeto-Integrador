@@ -96,7 +96,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
       taDetalhes.appendText("Origem: " + origem + "\n");
       taDetalhes.appendText("Destino: " + destino + "\n");
       taDetalhes.appendText("Passageiro [Nome: " + passageiro.getNome() 
-      + ", Idade: " + passageiro.getIdade() + ", FunçãoIFPR: " + passageiro.getFuncao_IFPR() + "]");
+      + ",\n Idade: " + passageiro.getIdade() + ",\n FunçãoIFPR: " + passageiro.getFuncao_IFPR() + "]");
     }
   }
 }
