@@ -9,7 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
+<Pane stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
 
    <children>
       <VBox spacing="5.0">
@@ -56,6 +58,7 @@
                </HBox.margin>
             </Button>
          </HBox>
+         
          <HBox layoutX="160.0" layoutY="220.0" spacing="67.0">
             <children>
                <Button onAction="#voltar" prefHeight="24.0" prefWidth="228.0" text="Voltar">

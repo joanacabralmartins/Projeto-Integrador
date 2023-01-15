@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro">
+<Pane stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro">
 
    <children>
       <VBox spacing="5.0">
