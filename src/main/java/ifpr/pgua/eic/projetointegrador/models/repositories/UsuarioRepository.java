@@ -1,21 +1,16 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.UsuarioDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class UsuarioRepository {
-    private List<Usuario> usuarios;
     private UsuarioDAO dao;
 
     public UsuarioRepository(UsuarioDAO dao) {
         this.dao = dao;
-
-        usuarios = dao.listAll();
     }
 
     public Result adicionarUsuario(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,

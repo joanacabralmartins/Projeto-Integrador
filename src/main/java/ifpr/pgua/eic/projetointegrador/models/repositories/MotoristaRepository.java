@@ -1,21 +1,16 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class MotoristaRepository {
-    private List<Motorista> motoristas;
     private MotoristaDAO dao;
 
     public MotoristaRepository(MotoristaDAO dao) {
         this.dao = dao;
-
-        motoristas = dao.listAll();
     }
 
     public Result adicionarMotorista(boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,

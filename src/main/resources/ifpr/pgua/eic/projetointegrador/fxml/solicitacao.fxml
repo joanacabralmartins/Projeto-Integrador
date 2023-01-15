@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane stylesheets="@../CSS/styles.css" 
+   xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
 
    <children>
       <VBox spacing="5.0">

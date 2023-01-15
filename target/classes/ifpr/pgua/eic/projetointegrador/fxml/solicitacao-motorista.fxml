@@ -40,11 +40,9 @@
             <TableView fx:id="tbSolicitacoes" onMouseClicked="#exibirDetalhes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="300.0">
 
               <columns>
-
                 <TableColumn fx:id="colPassageiro" prefWidth="100.0" style="-fx-alignment: center;" text="Id do Passageiro" />
                 <TableColumn fx:id="colDataHora" prefWidth="100.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
                 <TableColumn fx:id="colCarona" prefWidth="100.0" style="-fx-alignment: center;" text="Id da Carona" />
-
               </columns>
 
             </TableView>
@@ -52,10 +50,8 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
 
               <children>
-
                 <Button prefHeight="25.0" prefWidth="80.0" text="Recusar" textAlignment="CENTER" />
                 <Button prefHeight="25.0" prefWidth="80.0" text="Aceitar" textAlignment="CENTER" />
-
               </children>
 
             </HBox>
@@ -63,6 +59,7 @@
           </children>
 
         </VBox>
+          
             <TextArea fx:id="taDetalhes" prefHeight="200.0" prefWidth="250.0" />
 
       </children>
