@@ -142,7 +142,7 @@ public class JanelaEditarCarona implements Initializable {
         Date dataCarona = Date.valueOf(data);
 
 
-        Carona caronaa = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, dataRemocao, dataCancelamento);
+        Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, dataRemocao, dataCancelamento);
 
         Result resultado  = caronaRepository.update(caronaa);
 

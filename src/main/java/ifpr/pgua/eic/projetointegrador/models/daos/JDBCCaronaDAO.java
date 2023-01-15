@@ -64,7 +64,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
       Connection con = fabricaConexao.getConnection(); 
       
       PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, status=?, origem=?, destino=?, data=?, dataRemocao=?, dataCancelamento=? WHERE id=?");
-      
+      System.out.println(carona.getId());
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());

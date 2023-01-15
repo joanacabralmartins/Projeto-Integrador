@@ -178,6 +178,8 @@ public class JanelaCaronaMotorista implements Initializable {
       Alert alert = new Alert(AlertType.INFORMATION,msg);
       alert.showAndWait();
 
+      updateListaCarona();
+
     }
 
     @FXML
