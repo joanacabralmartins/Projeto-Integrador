@@ -9,16 +9,12 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane stylesheets="@../CSS/styles.css"
-   xmlns="http://javafx.com/javafx/19" 
-   xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario">
+<BorderPane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario">
    
    <center>
       <ScrollPane id="scrollPaneCM">      
@@ -115,14 +111,17 @@
                </TextArea>
             
                <HBox>
-                  <Button onAction="#cadastrarUsuario" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+                  <Button onAction="#cadastrarUsuario" prefHeight="16.0" prefWidth="70.0" text="Cadastrar">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="11.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="4.0" />
+                        <Insets />
                      </HBox.margin>
-                  </Button> 
+                  </Button>
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin> 
                </HBox>
                <padding>
                   <Insets left="150.0" top="40.0" />

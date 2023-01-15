@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" 
-   xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroCarro">
 
    <children>
 
@@ -50,14 +48,17 @@
          </TextField>
       
          <HBox>
-            <Button onAction="#cadastrarCarro" prefHeight="22.0" prefWidth="64.0" text="Cadastrar">
+            <Button onAction="#cadastrarCarro" prefHeight="16.0" prefWidth="70.0" text="Cadastrar">
                <font>
-                  <Font size="10.0" />
+                  <Font size="11.0" />
                </font>
                <HBox.margin>
-                  <Insets top="4.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
          </HBox>
       
       </VBox>

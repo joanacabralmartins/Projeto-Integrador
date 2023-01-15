@@ -9,9 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../CSS/styles.css" 
-   xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-   fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
+<Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
 
    <children>
       <VBox spacing="5.0">
@@ -48,29 +46,21 @@
          </VBox.margin>
          </TextField>
       
-         <HBox prefHeight="39.0" prefWidth="211.0" spacing="67.0">
+         <HBox prefHeight="24.0" prefWidth="427.0">
             <Button onAction="#editarCarro" prefHeight="24.0" prefWidth="228.0" text="Editar">
                <font>
                   <Font size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets top="15.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
+            <VBox.margin>
+               <Insets top="5.0" />
+            </VBox.margin>
          </HBox>
          
-         <HBox layoutX="160.0" layoutY="220.0" spacing="67.0">
-            <children>
-               <Button onAction="#voltar" prefHeight="24.0" prefWidth="228.0" text="Voltar">
-                  <font>
-                     <Font size="12.0" />
-                  </font>
-                  <HBox.margin>
-                     <Insets top="8.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-         </HBox>
+         <HBox layoutX="160.0" layoutY="220.0" spacing="67.0" />
       
       </VBox>
    </children>
