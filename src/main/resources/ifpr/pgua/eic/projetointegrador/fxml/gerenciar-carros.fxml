@@ -12,55 +12,60 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
    
-                           <children>
+   <children>
 
-                                                            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" spacing="15.0">
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" spacing="15.0">
 
-                                                               <padding>
+         <padding>
             <Insets top="15.0" />
          </padding>
 
-                                                               <children>
+         <children>
 
-                                                                  <HBox maxWidth="-Infinity" prefHeight="35.0" prefWidth="800.0">
+            <HBox maxWidth="-Infinity" prefHeight="35.0" prefWidth="800.0">
+
                <children>
+
                   <Button onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
                      <graphic>
                         <ImageView id="imgVoltar" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         </ImageView>
                      </graphic>
                   </Button>
+
                </children>
-               <VBox.margin>
+
+               <HBox.margin>
                   <Insets bottom="50.0" />
-               </VBox.margin>
+               </HBox.margin>
+
             </HBox>
 
-                                                                  <TableView fx:id="tbCarros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="462.0">
-              
-                                                                    <columns>
+            <TableView fx:id="tbCarros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="462.0">
+
+               <columns>
                   <TableColumn fx:id="colId" prefWidth="45.0" style="-fx-alignment: center;" text="Id" visible="false" />
                   <TableColumn fx:id="colPlaca" prefWidth="130.0" style="-fx-alignment: center;" text="Placa" />
                   <TableColumn fx:id="colModelo" prefWidth="130.0" style="-fx-alignment: center;" text="Modelo" />
-                  <TableColumn fx:id="colLugares" prefWidth="90.0" style="-fx-alignment: center;" text="Lugares" />
                   <TableColumn fx:id="colCor" prefWidth="110.0" style="-fx-alignment: center;" text="Cor" />
-              </columns>
+                  <TableColumn fx:id="colLugares" prefWidth="90.0" style="-fx-alignment: center;" text="Lugares" />
+               </columns>
               
-                                                                  </TableView>
+            </TableView>
 
-                                                                  <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="800.0" spacing="15.0">
+            <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="800.0" spacing="15.0">
 
-                                                                     <children>
+               <children>
                   <Button onAction="#carregaTelaEditarCarro" text="Editar" />
                   <Button onAction="#inativarCarro" text="Remover" />
                </children>
 
-                                                                  </HBox>
+            </HBox>
 
-                                                               </children>
+         </children>
 
-                                                            </VBox>
+      </VBox>
 
-                           </children>
+   </children>
 
-                        </Pane>
+</Pane>
