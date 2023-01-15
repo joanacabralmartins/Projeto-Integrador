@@ -270,10 +270,10 @@ public class JanelaCaronaUsuario implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.listAll());
         
       for(Carona c : caronasList) {
-        //if(c.getId_motorista() != repositorioMotorista.getUser().getId()){ descomentar apos retrabalhar cadastro
+        if(c.getId_motorista() != repositorioUsuario.getUser().getId()){
           Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), 1, c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null, null);
           listaCaronas.add(carona);
-        //}
+        }
       }
       
       caronas.setItems(listaCaronas);
