@@ -145,7 +145,7 @@ public class App extends BaseAppNavigator {
                 (o) -> new JanelaCaronaUsuarioTeste(caronaRepository, usuarioRepository, solicitacaoRepository)));
 
         registraTela("SOLICITACOES MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista.fxml", 
-                (o) -> new JanelaSolicitacaoMotorista(solicitacaoRepository, motoristaRepository)));
+                (o) -> new JanelaSolicitacaoMotorista(solicitacaoRepository, caronaRepository, usuarioRepository, motoristaRepository)));
                 
 
         registraTela("CARONA MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista.fxml", 

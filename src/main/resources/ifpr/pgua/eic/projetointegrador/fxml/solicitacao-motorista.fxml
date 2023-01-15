@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,7 +27,7 @@
 
   <children>
 
-    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
       <children>
         
@@ -36,13 +37,13 @@
 
             <Label text="Solicitações" />
 
-            <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="480.0">
+            <TableView fx:id="tbSolicitacoes" onMouseClicked="#exibirDetalhes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="300.0">
 
               <columns>
 
-                <TableColumn fx:id="colPassageiro" prefWidth="140.0" style="-fx-alignment: center;" text="Id do Passageiro" />
-                <TableColumn fx:id="colDataHora" prefWidth="200.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
-                <TableColumn fx:id="colCarona" prefWidth="140.0" style="-fx-alignment: center;" text="Id da Carona" />
+                <TableColumn fx:id="colPassageiro" prefWidth="100.0" style="-fx-alignment: center;" text="Id do Passageiro" />
+                <TableColumn fx:id="colDataHora" prefWidth="100.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
+                <TableColumn fx:id="colCarona" prefWidth="100.0" style="-fx-alignment: center;" text="Id da Carona" />
 
               </columns>
 
@@ -62,6 +63,7 @@
           </children>
 
         </VBox>
+            <TextArea fx:id="taDetalhes" prefHeight="200.0" prefWidth="250.0" />
 
       </children>
 
