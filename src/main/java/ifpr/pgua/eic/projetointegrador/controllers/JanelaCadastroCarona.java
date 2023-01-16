@@ -93,7 +93,7 @@ public class JanelaCadastroCarona implements Initializable {
     @FXML
     private void cadastrarCarona() throws ParseException{
 
-        int status = 1;
+        boolean ativo = true;
         int id_motorista = motoristaRepository.getUser().getId();
         int id_carro = carroRepository.getByPlaca(cbCarros.getValue()).getId();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -103,15 +103,15 @@ public class JanelaCadastroCarona implements Initializable {
         String origem = tfOrigem.getText();
         String destino = tfDestino.getText();
         Date dataCadastro = Date.valueOf(LocalDate.now());
-        Date dataRemocao = null;
-        Date dataCacelamento = null;
+        // Date dataRemocao = null;
+        // Date dataCacelamento = null;
 
         LocalDate data = LocalDate.now();
         data = dpData.getValue();
         Date diaCarona = Date.valueOf(data);
 
 
-        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, diaCarona, dataRemocao, dataCacelamento);
+        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, diaCarona);
 
         Result resultado  = caronaRepository.create(carona);
 
