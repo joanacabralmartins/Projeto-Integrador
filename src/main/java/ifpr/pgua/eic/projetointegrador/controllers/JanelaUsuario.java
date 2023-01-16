@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
@@ -31,13 +33,17 @@ public class JanelaUsuario implements Initializable {
 
     private MotoristaRepository repositorioM;
     private UsuarioRepository repositorioU;
+    private CarroRepository repositorioC;
+    private CaronaRepository repositorioCarona;
 
     private Usuario usuario;
     private Motorista motorista;
 
-    public JanelaUsuario(MotoristaRepository repositorioMotorista, UsuarioRepository repositorioUsuario) {
+    public JanelaUsuario(MotoristaRepository repositorioMotorista, UsuarioRepository repositorioUsuario, CarroRepository repositorioCarro, CaronaRepository repositorioCarona) {
         repositorioM = repositorioMotorista;
         repositorioU = repositorioUsuario;
+        repositorioC = repositorioCarro;
+        this.repositorioCarona = repositorioCarona;
     }
 
     @Override
@@ -82,6 +88,7 @@ public class JanelaUsuario implements Initializable {
             if(motorista != null) {
                 resultado = repositorioM.inativar(motorista);
                 resultado = repositorioU.inativar(usuario);
+                repositorioC.inativarByMotorista(motorista.getId());
                 msg = resultado.getMsg();
             }else if (usuario != null) {
                 resultado = repositorioU.inativar(usuario);

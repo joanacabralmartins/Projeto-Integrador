@@ -11,6 +11,7 @@ public interface CarroDAO {
     Result inativar(Carro carro);
     List<Carro> listAll();
     List<Carro> listById(int id_motorista);
+    void inativarByMotorista(int id_motorista);
     Carro getById(int id);
     Carro getByPlaca(String placa);
     void selecionarCarro(Carro carro);

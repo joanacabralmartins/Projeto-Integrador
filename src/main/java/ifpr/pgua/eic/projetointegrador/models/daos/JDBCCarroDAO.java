@@ -180,6 +180,25 @@ public class JDBCCarroDAO implements CarroDAO {
     }
 
     @Override
+    public void inativarByMotorista(int id_motorista) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE carro set ativo=0 WHERE id_motorista=?");
+            
+            pstm.setInt(1, id_motorista);
+
+            pstm.execute();
+
+            pstm.close();
+            con.close();
+
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
     public void selecionarCarro(Carro carro) {
         this.carro = carro;
     }  

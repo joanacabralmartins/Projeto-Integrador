@@ -70,6 +70,10 @@ public class CarroRepository {
         return dao.listById(id_motorista);
     }
 
+    public void inativarByMotorista(int id_motorista){
+        dao.inativarByMotorista(id_motorista);
+    }
+
     public Carro getById(int id){
         return dao.getById(id);
     }
