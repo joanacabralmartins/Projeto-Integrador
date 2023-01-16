@@ -50,7 +50,7 @@ public class JanelaCadastroCarro {
         if(resultado instanceof SuccessResult){
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-            limpar();
+            voltar();
         }
 
         if(resultado instanceof FailResult) {
@@ -64,10 +64,4 @@ public class JanelaCadastroCarro {
         App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
     }
 
-    private void limpar() {
-        tfPlaca.clear();
-        tfModelo.clear();
-        tfQuantidadeLugares.clear();
-        tfCor.clear();
-    }
 }

@@ -9,27 +9,29 @@
 
 <GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial">
 
-        <columnConstraints>
+  <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
-    <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="520.0" />
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
   </columnConstraints>
 
-        <rowConstraints>
+  <rowConstraints>
     <RowConstraints prefHeight="35.0" vgrow="SOMETIMES" />
     <RowConstraints prefHeight="330.0" vgrow="SOMETIMES" />
-      <RowConstraints prefHeight="35.0" vgrow="SOMETIMES" />
+    <RowConstraints prefHeight="35.0" vgrow="SOMETIMES" />
   </rowConstraints>
 
-          <children>
+    <children>
+
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
          <children>
-          <Button onAction="#carregaTelaCadastrarCarona" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Criar Caronas" textAlignment="CENTER" textFill="WHITE" />
-      
-                                  <Button onAction="#carregaTelaCarona" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Caronas" textAlignment="CENTER" textFill="WHITE" />
+            <Button onAction="#carregaTelaGerenciarCaronas" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Caronas" textAlignment="CENTER" textFill="WHITE" />
+            <Button onAction="#carregaTelaVisualizarCaronas" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Visualizar Caronas" textAlignment="CENTER" textFill="WHITE" />
          </children>
+
       </VBox>
 
-          </children>
+    </children>
 
-      </GridPane>
+</GridPane>
