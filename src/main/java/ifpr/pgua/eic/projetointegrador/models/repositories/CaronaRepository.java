@@ -38,6 +38,10 @@ public class CaronaRepository {
     return dao.getByMotorista(id);
   }
 
+  public void inativarByMotorista(int id_motorista){
+    dao.inativarByMotorista(id_motorista);
+  }
+
   public List<Carona> getByDestino(String destino){
     return dao.getByDestino(destino);
   }

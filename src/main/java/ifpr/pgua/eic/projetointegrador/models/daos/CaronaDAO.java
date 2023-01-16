@@ -13,6 +13,7 @@ public interface CaronaDAO {
     Carona getCarona();
     void selecionarCarona(Carona caronaa);
     List<Carona> getByMotorista(int id_motorista);
+    void inativarByMotorista(int id_motorista);
     List<Carona> getByOrigem(String origem);
     List<Carona> getByDestino(String destino);
     List<Carona> getByOrigemAndDestino(String origem, String destino);

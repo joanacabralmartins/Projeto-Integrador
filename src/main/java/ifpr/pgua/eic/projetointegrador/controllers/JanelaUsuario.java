@@ -89,6 +89,7 @@ public class JanelaUsuario implements Initializable {
                 resultado = repositorioM.inativar(motorista);
                 resultado = repositorioU.inativar(usuario);
                 repositorioC.inativarByMotorista(motorista.getId());
+                repositorioCarona.inativarByMotorista(motorista.getId());
                 msg = resultado.getMsg();
             }else if (usuario != null) {
                 resultado = repositorioU.inativar(usuario);
