@@ -32,22 +32,30 @@
 
          <children>
 
-            <Label text="Caronas ofertadas:" />
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="377.0">
 
-              <TableView fx:id="caronas" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="121.0" prefWidth="347.0">
+               <children>
+      
+                  <Label text="Caronas ofertadas:" />
+      
+                    <TableView fx:id="caronas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="377.0">
+      
+                      <columns>
+                        <TableColumn fx:id="caronaId" prefWidth="40.0" visible="false" />
+                        <TableColumn fx:id="caronaIdMotorista" prefWidth="40.0" visible="false" />
+                        <TableColumn fx:id="caronaIdCarro" prefWidth="40.0" visible="false" />
+                        <TableColumn fx:id="caronaOrigem" minWidth="-Infinity" text="Origem" />
+                        <TableColumn fx:id="caronaDestino" minWidth="-Infinity" text="Destino" />
+                        <TableColumn fx:id="caronaVagas" minWidth="-Infinity" prefWidth="75.0" text="Vagas" />
+                        <TableColumn fx:id="caronaData" minWidth="-Infinity" prefWidth="75.0" text="Data" />
+                        <TableColumn fx:id="caronaHorario" minWidth="-Infinity" prefWidth="75.0" text="Horário" />
+                      </columns>
+      
+                    </TableView>
 
-                <columns>
-                  <TableColumn fx:id="caronaId" prefWidth="40.0" visible="false" />
-                  <TableColumn fx:id="caronaIdMotorista" prefWidth="40.0" visible="false" />
-                  <TableColumn fx:id="caronaIdCarro" prefWidth="40.0" visible="false" />
-                  <TableColumn fx:id="caronaOrigem" text="Origem" />
-                  <TableColumn fx:id="caronaDestino" text="Destino" />
-                  <TableColumn fx:id="caronaVagas" prefWidth="75.0" text="Vagas" />
-                  <TableColumn fx:id="caronaData" prefWidth="75.0" text="Data" />
-                  <TableColumn fx:id="caronaHorario" prefWidth="75.0" text="Horário" />
-                </columns>
-
-              </TableView>
+               </children>
+               
+            </VBox>
 
             <HBox prefHeight="152.0" prefWidth="520.0">
 
