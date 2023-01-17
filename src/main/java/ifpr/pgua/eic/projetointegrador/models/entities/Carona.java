@@ -11,7 +11,7 @@ public class Carona {
     private Time horarioSaida;
     // private int quantidadeLugares;
     private int lugaresDisponiveis;
-    private boolean ativo;//0=inativa 1=ativa 2=removida 3=cancelada
+    private int status;//0=inativa 1=ativa 2=removida 3=cancelada
     // private int id_origem;
     // private int id_destino;
     private String origem;
@@ -61,14 +61,14 @@ public class Carona {
     //     this.dataCancelamento = dataCancelamento;
     // }
 
-    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int lugaresDisponiveis, boolean ativo,
+    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int lugaresDisponiveis, int status,
             String origem, String destino, Date dataCadastro, Date data) {
         this.id = id;
         this.id_motorista = id_motorista;
         this.id_carro = id_carro;
         this.horarioSaida = horarioSaida;
         this.lugaresDisponiveis = lugaresDisponiveis;
-        this.ativo = ativo;
+        this.status = status;
         this.origem = origem;
         this.destino = destino;
         this.dataCadastro = dataCadastro;
@@ -123,12 +123,12 @@ public class Carona {
         this.lugaresDisponiveis = lugaresDisponiveis;
     }
 
-    public boolean isAtivo() {
-        return ativo;
+    public int getStatus() {
+        return status;
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void setStatus(int status) {
+        this.status = status;
     }
      
     // public int getId_Origem() {

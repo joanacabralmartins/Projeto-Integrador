@@ -218,7 +218,7 @@ public class JanelaCaronaMotorista implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.getByMotorista(repositorioMotorista.getUser().getId()));
         
       for(Carona c : caronasList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), true, c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), 1, c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData());
         listaCaronas.add(carona);
       }
       
