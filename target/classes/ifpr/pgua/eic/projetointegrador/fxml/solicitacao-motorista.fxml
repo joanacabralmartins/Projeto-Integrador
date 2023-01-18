@@ -60,7 +60,7 @@
 
         </VBox>
           
-            <TextArea fx:id="taDetalhes" editable="false" prefHeight="200.0" prefWidth="250.0" />
+            <TextArea fx:id="taDetalhes" wrapText="true" editable="false" prefHeight="200.0" prefWidth="250.0" />
 
       </children>
 
