@@ -42,7 +42,7 @@ public class Teste {
         }
 
         SolicitacaoDAO solicitacaoDAO = new JDBCSolicitacaoDAO(fabrica);
-        List<SolicitacaoCarona> solicitacoes = solicitacaoDAO.getPendenteByMotorista(6);
+        List<SolicitacaoCarona> solicitacoes = solicitacaoDAO.getByMotorista(6);
         for (SolicitacaoCarona s : solicitacoes) {
             System.out.println(s.getId_carona());
         }

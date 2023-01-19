@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista">
+<GridPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -39,12 +37,13 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMoto
 
             <Label text="Solicitações" />
 
-            <TableView fx:id="tbSolicitacoes" onMouseClicked="#exibirDetalhes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="300.0">
+            <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exibirDetalhes" prefHeight="270.0" prefWidth="402.0">
 
               <columns>
                 <TableColumn fx:id="colPassageiro" prefWidth="100.0" style="-fx-alignment: center;" text="Id do Passageiro" />
                 <TableColumn fx:id="colDataHora" prefWidth="100.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
                 <TableColumn fx:id="colCarona" prefWidth="100.0" style="-fx-alignment: center;" text="Id da Carona" />
+                <TableColumn fx:id="colStatus" prefWidth="100.0" style="-fx-alignment: center;" text="Status" />
               </columns>
 
             </TableView>
@@ -62,7 +61,7 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMoto
 
         </VBox>
           
-            <TextArea fx:id="taDetalhes" prefHeight="200.0" prefWidth="250.0" wrapText="true" editable="false"/>
+            <TextArea fx:id="taDetalhes" editable="false" maxHeight="-Infinity" prefHeight="293.0" prefWidth="300.0" wrapText="true" />
 
       </children>
 

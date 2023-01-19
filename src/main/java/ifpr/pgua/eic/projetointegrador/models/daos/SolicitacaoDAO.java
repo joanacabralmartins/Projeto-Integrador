@@ -13,8 +13,8 @@ public interface SolicitacaoDAO {
   Result cancelar(SolicitacaoCarona Solicitacao);
   Result remover(SolicitacaoCarona Solicitacao);
   List<SolicitacaoCarona> listAll();
-  List<SolicitacaoCarona> getPendenteByMotorista(int id_motorista);//para tela solicitacao-motorista
-  List<SolicitacaoCarona> getPendenteByPassageiro(int id_passageiro);//para tela solicitacao-usuario
+  List<SolicitacaoCarona> getByMotorista(int id_motorista);//para tela solicitacao-motorista
+  List<SolicitacaoCarona> getByPassageiro(int id_passageiro);//para tela solicitacao-usuario
   List<SolicitacaoCarona> getAceitasByCarona(int id_carona);//para gerenciamento de passageiros
   SolicitacaoCarona getById(int id);
 

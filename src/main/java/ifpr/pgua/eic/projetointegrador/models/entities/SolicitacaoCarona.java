@@ -12,21 +12,21 @@ public class SolicitacaoCarona {
     private LocalDateTime dataHora_Resposta;
     private LocalDateTime dataHora_Remocao;
     private LocalDateTime dataHora_Cancelamento;
-    private int status;//0 = pendente, 1 = recusada, 2 = cancelada, 3 = aceita, 4 = aceitada mas passageiro removido
+    private String status;//0 = pendente, 1 = recusada, 2 = cancelada, 3 = aceita, 4 = aceitada mas passageiro removido 5 = nao identificado
 
     public SolicitacaoCarona(int id, int id_usuario, int id_motorista, int id_carona, 
-                            LocalDateTime dataHora_Solicitacao, int status) {
+                            LocalDateTime dataHora_Solicitacao, String status) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.id_motorista = id_motorista;
         this.id_carona = id_carona;
         this.dataHora_Solicitacao = dataHora_Solicitacao;
-        this.status= status;
+        this.status = status;
     }
 
     public SolicitacaoCarona(int id, int id_usuario, int id_motorista, int id_carona, 
                             LocalDateTime dataHora_Solicitacao, LocalDateTime dataHora_Resposta, LocalDateTime dataHora_Remocao, LocalDateTime dataHora_Cancelamento, 
-                            int status) {
+                            String status) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.id_motorista = id_motorista;
@@ -101,11 +101,11 @@ public class SolicitacaoCarona {
         this.dataHora_Cancelamento = dataHora_Cancelamento;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

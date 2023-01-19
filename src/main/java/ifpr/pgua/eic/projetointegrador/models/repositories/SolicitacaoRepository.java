@@ -3,7 +3,6 @@ package ifpr.pgua.eic.projetointegrador.models.repositories;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.SolicitacaoDAO;
-import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
@@ -40,11 +39,11 @@ public class SolicitacaoRepository {
   }
 
   public List<SolicitacaoCarona> getPendenteByMotorista(int id_motorista) {
-    return dao.getPendenteByMotorista(id_motorista);
+    return dao.getByMotorista(id_motorista);
   }
 
   public List<SolicitacaoCarona> getPendenteByPassageiro(int id_passageiro) {
-    return dao.getPendenteByPassageiro(id_passageiro);
+    return dao.getByPassageiro(id_passageiro);
   }
 
   public List<SolicitacaoCarona> getAceitasByCarona(int id_carona) {

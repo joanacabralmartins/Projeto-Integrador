@@ -211,7 +211,7 @@ public class JanelaCaronaUsuario implements Initializable {
 
       int idM = (Integer) motoristaId.getCellObservableValue(0).getValue();;
 
-      SolicitacaoCarona solicitacao = new SolicitacaoCarona(0, repositorioUsuario.getUser().getId(), idM, cCarona.getId(), LocalDateTime.now(), 0);
+      SolicitacaoCarona solicitacao = new SolicitacaoCarona(0, repositorioUsuario.getUser().getId(), idM, cCarona.getId(), LocalDateTime.now(), "Pendente");
 
       Result resultado = repositorioSolicitacao.create(solicitacao);
 

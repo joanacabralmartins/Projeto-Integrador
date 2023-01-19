@@ -46,6 +46,9 @@ public class JanelaSolicitacaoMotorista implements Initializable {
     @FXML
     private TableColumn<SolicitacaoCarona, String> colCarona;
 
+    @FXML
+    private TableColumn<SolicitacaoCarona, String> colStatus;
+
     private ObservableList<SolicitacaoCarona> listaSolicitacaoCaronas = FXCollections.observableArrayList();
 
     private SolicitacaoRepository repositorioS;
@@ -72,6 +75,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
         colPassageiro.setCellValueFactory(new PropertyValueFactory<>("id_usuario"));
         colDataHora.setCellValueFactory(new PropertyValueFactory<>("dataHora_Solicitacao"));
         colCarona.setCellValueFactory(new PropertyValueFactory<>("id_carona"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         updateList();
     }
@@ -81,7 +85,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
         List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getPendenteByMotorista(motorista.getId()));
         
         for(SolicitacaoCarona s : solicitacoes) {
-            SolicitacaoCarona solicitacao = new SolicitacaoCarona(s.getId(), s.getId_usuario(), s.getId_motorista(), s.getId_carona(), s.getDataHora_Solicitacao(), LocalDateTime.now(), null, null, 0);
+            SolicitacaoCarona solicitacao = new SolicitacaoCarona(s.getId(), s.getId_usuario(), s.getId_motorista(), s.getId_carona(), s.getDataHora_Solicitacao(), LocalDateTime.now(), null, null, s.getStatus());
             listaSolicitacaoCaronas.add(solicitacao);
         }
         

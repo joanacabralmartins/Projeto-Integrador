@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
-import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
@@ -34,7 +33,20 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
             pstm.setInt(2, solicitacao.getId_carona());
             pstm.setInt(3, solicitacao.getId_motorista());
             pstm.setString(4, String.valueOf(solicitacao.getDataHora_Solicitacao()));
-            pstm.setInt(5, solicitacao.getStatus());
+
+            if(solicitacao.getStatus().matches("Pendente")){
+                pstm.setInt(5, 0);
+            }else if(solicitacao.getStatus().matches("Recusada")){
+                pstm.setInt(5, 1);
+            }else if(solicitacao.getStatus().matches("Cancelada")){
+                pstm.setInt(5, 2);
+            }else if(solicitacao.getStatus().matches("Aceita")){
+                pstm.setInt(5, 3);
+            }else if(solicitacao.getStatus().matches("Removido")){
+                pstm.setInt(5, 4);
+            }else{
+                pstm.setInt(5, 5);
+            }
 
             pstm.execute();
 
@@ -170,11 +182,11 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
     }
 
     @Override
-    public List<SolicitacaoCarona> getPendenteByMotorista(int id_motorista) {
+    public List<SolicitacaoCarona> getByMotorista(int id_motorista) {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=? and status=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_motorista=?");
 
             pstm.setInt(1, id_motorista);
 
@@ -199,11 +211,11 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
     }
 
     @Override
-    public List<SolicitacaoCarona> getPendenteByPassageiro(int id_passageiro) {
+    public List<SolicitacaoCarona> getByPassageiro(int id_passageiro) {
         try {
             Connection con = fabricaConexao.getConnection();
 
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=? and status=0");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao WHERE id_usuario=?");
 
             pstm.setInt(1, id_passageiro);
 
@@ -299,7 +311,20 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
         //LocalDateTime dataHora_Remocao = LocalDateTime.parse(rs.getString("dataHora_Remocao"), formatter);
         //LocalDateTime dataHora_Cancelamento = LocalDateTime.parse(rs.getString("dataHora_Cancelamento"), formatter);
         
-        int status = rs.getInt("status");
+        int statusInt = rs.getInt("status");
+        String status;
+
+        if(statusInt == 0){
+            status = "Pendente";
+        }else if(statusInt == 1){
+            status = "Recusada";
+        }else if(statusInt == 2){
+            status = "Cancelada";
+        }else if(statusInt == 3){
+            status = "Aceita";
+        }else{
+            status = "Status não identificado!";
+        }
   
         SolicitacaoCarona solicitacao = new SolicitacaoCarona(id, id_usuario, id_motorista, id_carona, 
                                         dataHora_Solicitacao, null, null, 
