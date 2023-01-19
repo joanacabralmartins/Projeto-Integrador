@@ -23,8 +23,8 @@ public class SolicitacaoRepository {
     return dao.listAll();
   }
 
-  public Result aceitar(SolicitacaoCarona solicitacao, Carona carona) {
-    return dao.aceitar(solicitacao, carona);
+  public Result aceitar(SolicitacaoCarona solicitacao) {
+    return dao.aceitar(solicitacao);
   }
 
   public Result recusar(SolicitacaoCarona Solicitacao) {

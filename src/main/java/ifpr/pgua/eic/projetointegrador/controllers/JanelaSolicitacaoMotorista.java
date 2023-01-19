@@ -45,7 +45,6 @@ public class JanelaSolicitacaoMotorista implements Initializable {
     @FXML
     private TableColumn<SolicitacaoCarona, String> colCarona;
 
-
     private ObservableList<SolicitacaoCarona> listaSolicitacaoCaronas = FXCollections.observableArrayList();
 
     private SolicitacaoRepository repositorioS;
@@ -81,7 +80,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
         List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getPendenteByMotorista(motorista.getId()));
         
         for(SolicitacaoCarona s : solicitacoes) {
-            SolicitacaoCarona solicitacao = new SolicitacaoCarona(0, s.getId_usuario(), s.getId_motorista(), s.getId_carona(), s.getDataHora_Solicitacao(), LocalDateTime.now(), null, null, 0);
+            SolicitacaoCarona solicitacao = new SolicitacaoCarona(s.getId(), s.getId_usuario(), s.getId_motorista(), s.getId_carona(), s.getDataHora_Solicitacao(), LocalDateTime.now(), null, null, 0);
             listaSolicitacaoCaronas.add(solicitacao);
         }
         
@@ -114,9 +113,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
             return;
         }
 
-        Carona carona = repositorioC.getById(solicitacaoCarona.getId_carona());
-
-        Result resultado = repositorioS.aceitar(solicitacaoCarona, carona);
+        Result resultado = repositorioS.aceitar(solicitacaoCarona);
 
         String msg = resultado.getMsg();
         

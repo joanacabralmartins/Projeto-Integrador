@@ -9,7 +9,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 public interface SolicitacaoDAO {
 
   Result create(SolicitacaoCarona Solicitacao);
-  Result aceitar(SolicitacaoCarona Solicitacao, Carona carona);
+  Result aceitar(SolicitacaoCarona Solicitacao);
   Result recusar(SolicitacaoCarona Solicitacao);
   Result cancelar(SolicitacaoCarona Solicitacao);
   Result remover(SolicitacaoCarona Solicitacao);

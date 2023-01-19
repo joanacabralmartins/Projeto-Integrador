@@ -50,28 +50,17 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
     }
 
     @Override
-    public Result aceitar(SolicitacaoCarona solicitacao, Carona carona) {
+    public Result aceitar(SolicitacaoCarona solicitacao) {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? where id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? WHERE id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
 
             pstm.execute();
             pstm.close();
-            
-            pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=? where id=?");
-
-            int lugares = carona.getLugaresDisponiveis() - 1;
-            pstm.setInt(1, lugares);
-            pstm.setInt(2, carona.getId());
-
-            pstm.execute();
-            pstm.close();
-
-            con.close();
 
             return Result.success("Solicitação aceita com sucesso!");
 
