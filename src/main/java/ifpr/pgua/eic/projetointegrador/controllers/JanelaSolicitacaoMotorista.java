@@ -15,6 +15,7 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
+import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -111,9 +112,21 @@ public class JanelaSolicitacaoMotorista implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma solicitação!");
             alert.showAndWait(); 
             return;
+        }else if(repositorioC.getById(solicitacaoCarona.getId_carona()).getLugaresDisponiveis() == 0){
+            Alert alert = new Alert(AlertType.INFORMATION, "Carona não possui lugares disponiveis!");
+            alert.showAndWait(); 
+            return;
         }
 
         Result resultado = repositorioS.aceitar(solicitacaoCarona);
+
+        if(resultado instanceof SuccessResult){
+
+            Carona carona = repositorioC.getById(solicitacaoCarona.getId_carona());
+            carona.setLugaresDisponiveis(carona.getLugaresDisponiveis()-1);
+
+            repositorioC.update(carona);
+        }
 
         String msg = resultado.getMsg();
         
