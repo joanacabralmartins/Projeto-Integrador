@@ -1,7 +1,6 @@
 package ifpr.pgua.eic.projetointegrador.models.repositories;
 
 import java.util.List;
-import java.util.Optional;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.CarroDAO;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
@@ -9,13 +8,10 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public class CarroRepository {
 
-    private List<Carro> carros;
     private CarroDAO dao;
     
     public CarroRepository(CarroDAO dao) {
         this.dao = dao;
-
-        carros = dao.listAll();
     }
 
     public Result adicionarCarro(Carro carro) {

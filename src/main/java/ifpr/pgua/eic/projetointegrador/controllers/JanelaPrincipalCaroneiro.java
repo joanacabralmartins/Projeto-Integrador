@@ -28,6 +28,11 @@ public class JanelaPrincipalCaroneiro extends BaseController {
     }
 
     @FXML
+    private void carregaTelaSolicitacoesUsuario(ActionEvent evento) {
+        App.changeScreenRegion("SOLICITACOES USUARIO", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
     private void deslogar(ActionEvent evento) {
         Alert alert = new Alert(AlertType.CONFIRMATION, "Tem certeza que deseja sair?");
         Optional<ButtonType> result = alert.showAndWait();

@@ -18,6 +18,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaOpcaoCadastro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipalCaroneiro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
@@ -142,6 +143,9 @@ public class App extends BaseAppNavigator {
 
         registraTela("SOLICITACOES MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista.fxml", 
                 (o) -> new JanelaSolicitacaoMotorista(solicitacaoRepository, caronaRepository, usuarioRepository, motoristaRepository)));
+
+        registraTela("SOLICITACOES USUARIO", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-usuario.fxml", 
+                (o) -> new JanelaSolicitacaoUsuario(solicitacaoRepository, caronaRepository, usuarioRepository)));
                 
         registraTela("CARONA MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista.fxml", 
                 (o) -> new JanelaCaronaMotorista(carroRepository, motoristaRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
@@ -159,15 +163,6 @@ public class App extends BaseAppNavigator {
         registraTela("SOLICITACAO", new ScreenRegistryFXML(getClass(), "fxml/solicitacao.fxml", 
                 (o) -> new JanelaSolicitacao()));
 */
-/*
-        registraTela("SOLICITACAO MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista.fxml", 
-                (o) -> new JanelaSolicitacaoMotorista(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
-*/
-/*
-        registraTela("SOLICITACAO USUARIO", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-usuario.fxml", 
-                (o) -> new JanelaSolicitacaoUsuario(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
-*/
-
         registraTela("CARONA MOTORISTA INICIAL", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista-inicial.fxml", 
                 (o) -> new JanelaCaronaMotoristaInicial()));
                 

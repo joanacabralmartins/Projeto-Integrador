@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" 
-  xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -33,16 +32,14 @@
 
         <Label text="Solicitações" />
 
-        <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="520.0">
+        <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="450.0">
 
           <columns>
-            <TableColumn prefWidth="80.0" text="Origem" />
-            <TableColumn prefWidth="80.0" text="Destino" />
-            <TableColumn prefWidth="85.0" text="Carro" />
-            <TableColumn prefWidth="90.0" text="Motorista" />
-            <TableColumn prefWidth="75.0" text="Data" />
-            <TableColumn prefWidth="55.0" text="Horário" />
-            <TableColumn prefWidth="55.0" text="Vagas" />
+            <TableColumn fx:id="colOrigem" prefWidth="80.0" style="-fx-alignment: center;" text="Origem" />
+            <TableColumn fx:id="colDestino" prefWidth="85.0" style="-fx-alignment: center;" text="Destino" />
+            <TableColumn fx:id="colData" prefWidth="100.0" style="-fx-alignment: center;" text="Data" />
+            <TableColumn fx:id="colHr" prefWidth="100.0" style="-fx-alignment: center;" text="Horário" />
+            <TableColumn fx:id="colVagas" prefWidth="86.0" style="-fx-alignment: center;" text="Vagas" />
           </columns>
 
         </TableView>
