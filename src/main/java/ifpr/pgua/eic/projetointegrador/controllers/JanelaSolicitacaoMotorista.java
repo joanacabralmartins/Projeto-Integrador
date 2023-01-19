@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
@@ -13,13 +14,17 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -85,18 +90,39 @@ public class JanelaSolicitacaoMotorista implements Initializable {
 
     @FXML
     private void exibirDetalhes(MouseEvent evento) {
-    SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
-    String origem = repositorioC.getById(solicitacaoCarona.getId_carona()).getOrigem();
-    String destino = repositorioC.getById(solicitacaoCarona.getId_carona()).getDestino();
-    Usuario passageiro = repositorioU.getById(solicitacaoCarona.getId_usuario());
+        SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
+        String origem = repositorioC.getById(solicitacaoCarona.getId_carona()).getOrigem();
+        String destino = repositorioC.getById(solicitacaoCarona.getId_carona()).getDestino();
+        Usuario passageiro = repositorioU.getById(solicitacaoCarona.getId_usuario());
 
-
-    if (solicitacaoCarona != null) {
-      taDetalhes.clear();
-      taDetalhes.appendText("Origem: " + origem + "\n");
-      taDetalhes.appendText("Destino: " + destino + "\n");
-      taDetalhes.appendText("Passageiro [Nome: " + passageiro.getNome() 
-      + ",\nIdade: " + passageiro.getIdade() + ",\nFunçãoIFPR: " + passageiro.getFuncao_IFPR() + "]");
+        if (solicitacaoCarona != null) {
+            taDetalhes.clear();
+            taDetalhes.appendText("Origem: " + origem + "\n");
+            taDetalhes.appendText("Destino: " + destino + "\n");
+            taDetalhes.appendText("Passageiro [Nome: " + passageiro.getNome() 
+            + ",\nIdade: " + passageiro.getIdade() + ",\nFunçãoIFPR: " + passageiro.getFuncao_IFPR() + "]");
+        }
     }
-  }
+
+    @FXML
+    private void aceitarSolicitacao(ActionEvent evento) {
+        SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
+
+        if(solicitacaoCarona == null) {
+            Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma solicitação!");
+            alert.showAndWait(); 
+            return;
+        }
+
+        Carona carona = repositorioC.getById(solicitacaoCarona.getId_carona());
+
+        Result resultado = repositorioS.aceitar(solicitacaoCarona, carona);
+
+        String msg = resultado.getMsg();
+        
+        Alert alert = new Alert(AlertType.INFORMATION,msg);
+        alert.showAndWait();
+
+        updateList();
+    }
 }

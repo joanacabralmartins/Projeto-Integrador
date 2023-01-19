@@ -2,13 +2,14 @@ package ifpr.pgua.eic.projetointegrador.models.daos;
 
 import java.util.List;
 
+import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public interface SolicitacaoDAO {
 
   Result create(SolicitacaoCarona Solicitacao);
-  Result aceitar(SolicitacaoCarona Solicitacao);
+  Result aceitar(SolicitacaoCarona Solicitacao, Carona carona);
   Result recusar(SolicitacaoCarona Solicitacao);
   Result cancelar(SolicitacaoCarona Solicitacao);
   Result remover(SolicitacaoCarona Solicitacao);

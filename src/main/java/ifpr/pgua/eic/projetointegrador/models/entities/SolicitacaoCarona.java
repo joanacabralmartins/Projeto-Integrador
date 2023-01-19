@@ -12,7 +12,7 @@ public class SolicitacaoCarona {
     private LocalDateTime dataHora_Resposta;
     private LocalDateTime dataHora_Remocao;
     private LocalDateTime dataHora_Cancelamento;
-    private int status;//0 = pendente, 1 = recusada, 2 = cancelada, 3 = aceitada, 4 = aceitada mas passageiro removido
+    private int status;//0 = pendente, 1 = recusada, 2 = cancelada, 3 = aceita, 4 = aceitada mas passageiro removido
 
     public SolicitacaoCarona(int id, int id_usuario, int id_motorista, int id_carona, 
                             LocalDateTime dataHora_Solicitacao, int status) {

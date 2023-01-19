@@ -3,6 +3,7 @@ package ifpr.pgua.eic.projetointegrador.models.repositories;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.daos.SolicitacaoDAO;
+import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
@@ -22,8 +23,8 @@ public class SolicitacaoRepository {
     return dao.listAll();
   }
 
-  public Result aceitar(SolicitacaoCarona Solicitacao) {
-    return dao.aceitar(Solicitacao);
+  public Result aceitar(SolicitacaoCarona solicitacao, Carona carona) {
+    return dao.aceitar(solicitacao, carona);
   }
 
   public Result recusar(SolicitacaoCarona Solicitacao) {

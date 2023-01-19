@@ -53,7 +53,7 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMoto
 
               <children>
                 <Button prefHeight="25.0" prefWidth="80.0" text="Recusar" textAlignment="CENTER" />
-                <Button prefHeight="25.0" prefWidth="80.0" text="Aceitar" textAlignment="CENTER" />
+                <Button onAction="#aceitarSolicitacao" prefHeight="25.0" prefWidth="80.0" text="Aceitar" textAlignment="CENTER" />
               </children>
 
             </HBox>

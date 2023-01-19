@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
-
+import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
@@ -50,21 +50,30 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
     }
 
     @Override
-    public Result aceitar(SolicitacaoCarona solicitacao) {
+    public Result aceitar(SolicitacaoCarona solicitacao, Carona carona) {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
-            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? WHERE id=?");
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=3, dataHora_resposta=? where id=?");
             
             pstm.setString(1, String.valueOf(solicitacao.getDataHora_Resposta()));
             pstm.setInt(2, solicitacao.getId());
 
             pstm.execute();
-
             pstm.close();
+            
+            pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=? where id=?");
+
+            int lugares = carona.getLugaresDisponiveis() - 1;
+            pstm.setInt(1, lugares);
+            pstm.setInt(2, carona.getId());
+
+            pstm.execute();
+            pstm.close();
+
             con.close();
 
-            return Result.success("Solicitação Aceita com Sucesso!");
+            return Result.success("Solicitação aceita com sucesso!");
 
         } catch(SQLException e){
             return Result.fail(e.getMessage());
