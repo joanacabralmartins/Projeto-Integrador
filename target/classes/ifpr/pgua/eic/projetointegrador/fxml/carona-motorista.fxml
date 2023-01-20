@@ -109,7 +109,7 @@
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" wrapText="true">
+                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" wrapText="true">
                           
                         <VBox.margin>
                            <Insets left="15.0" right="15.0" />
