@@ -125,11 +125,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
         Result resultado = repositorioS.aceitar(solicitacaoCarona);
 
         if(resultado instanceof SuccessResult){
-
-            Carona carona = repositorioC.getById(solicitacaoCarona.getId_carona());
-            carona.setLugaresDisponiveis(carona.getLugaresDisponiveis()-1);
-
-            repositorioC.update(carona);
+            repositorioC.subtrairLugarDisponivel(solicitacaoCarona.getId_carona());
         }
 
         String msg = resultado.getMsg();

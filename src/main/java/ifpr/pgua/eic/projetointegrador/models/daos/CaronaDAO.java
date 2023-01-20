@@ -11,7 +11,9 @@ public interface CaronaDAO {
     Result update(Carona carona);
     Result inativar(Carona carona);
     Carona getCarona();
-    void selecionarCarona(Carona caronaa);
+    void selecionarCarona(Carona carona);
+    void adicionarLugarDisponivel(int id_carona);
+    void subtrairLugarDisponivel(int id_carona);
     List<Carona> getByMotorista(int id_motorista);
     void inativarByMotorista(int id_motorista);
     List<Carona> getByOrigem(String origem);

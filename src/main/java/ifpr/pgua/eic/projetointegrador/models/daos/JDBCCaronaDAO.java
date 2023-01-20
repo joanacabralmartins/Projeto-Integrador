@@ -64,7 +64,6 @@ public class JDBCCaronaDAO implements CaronaDAO{
       Connection con = fabricaConexao.getConnection(); 
       
       PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, ativo=?, origem=?, destino=?, data=? WHERE id=?");
-      System.out.println(carona.getId());
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());
@@ -206,6 +205,46 @@ public class JDBCCaronaDAO implements CaronaDAO{
   @Override
   public void selecionarCarona(Carona carona) {
     this.carona = carona;
+  }
+
+  @Override
+  public void adicionarLugarDisponivel(int id_carona) {
+    try {
+      Connection con = fabricaConexao.getConnection(); 
+      
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=lugaresDisponiveis+1 WHERE id=?");
+      pstm.setInt(1, id_carona);
+
+      pstm.execute();
+
+      pstm.close();
+      con.close();
+
+      return;
+
+    } catch(SQLException e){
+      System.out.println(e.getMessage());
+    }
+  }
+
+  @Override
+  public void subtrairLugarDisponivel(int id_carona) {
+    try {
+      Connection con = fabricaConexao.getConnection(); 
+      
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=lugaresDisponiveis-1 WHERE id=?");
+      pstm.setInt(1, id_carona);
+
+      pstm.execute();
+
+      pstm.close();
+      con.close();
+
+      return;
+
+    } catch(SQLException e){
+      System.out.println(e.getMessage());
+    }
   }
 
   @Override

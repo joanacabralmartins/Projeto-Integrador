@@ -30,8 +30,16 @@ public class CaronaRepository {
     return dao.getCarona();
   }
 
-  public void selecionarCarona(Carona caronaa) {
-    dao.selecionarCarona(caronaa);
+  public void selecionarCarona(Carona carona) {
+    dao.selecionarCarona(carona);
+  }
+
+  public void adicionarLugarDisponivel(int id_carona) {
+    dao.adicionarLugarDisponivel(id_carona);
+  }
+
+  public void subtrairLugarDisponivel(int id_carona) {
+    dao.subtrairLugarDisponivel(id_carona);
   }
 
   public List<Carona> getByMotorista(int id){
