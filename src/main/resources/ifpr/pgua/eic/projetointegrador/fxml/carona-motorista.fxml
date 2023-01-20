@@ -67,7 +67,13 @@
                      <children>
 
                         <Label alignment="TOP_LEFT" text="Passageiros:" />
-                        <TextArea fx:id="taPassageiros" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="275.0" wrapText="true" />
+                        <TextArea fx:id="taPassageiros" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="275.0" wrapText="true">
+                        
+                        <VBox.margin>
+                           <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                        </VBox.margin>
+                        
+                        </TextArea>
 
                      </children>
 
@@ -78,7 +84,13 @@
                      <children>
 
                         <Label text="Pontos de Parada:" />
-                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="175.0" wrapText="true" />
+                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="175.0" wrapText="true">
+                        
+                        <VBox.margin>
+                           <Insets left="15.0" right="15.0" top="5.0" />
+                        </VBox.margin>
+
+                        </TextArea>
 
                      </children>
 
@@ -97,7 +109,13 @@
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" wrapText="true" />
+                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" wrapText="true">
+                          
+                        <VBox.margin>
+                           <Insets left="15.0" right="15.0" />
+                        </VBox.margin>
+                        
+                        </TextArea>
 
                      </children>
 
