@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
+<GridPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -29,27 +29,27 @@
 
     <children>
 
-      <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="440.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="440.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
          <children>
 
-            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="377.0">
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="377.0">
 
                <children>
       
                   <Label text="Caronas ofertadas:" />
       
-                    <TableView fx:id="caronas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="377.0">
+                    <TableView fx:id="caronas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="400.0">
       
                       <columns>
-                        <TableColumn fx:id="caronaId" prefWidth="40.0" visible="false" />
-                        <TableColumn fx:id="caronaIdMotorista" prefWidth="40.0" visible="false" />
-                        <TableColumn fx:id="caronaIdCarro" prefWidth="40.0" visible="false" />
-                        <TableColumn fx:id="caronaOrigem" minWidth="-Infinity" text="Origem" />
-                        <TableColumn fx:id="caronaDestino" minWidth="-Infinity" text="Destino" />
-                        <TableColumn fx:id="caronaVagas" minWidth="-Infinity" prefWidth="75.0" text="Vagas" />
-                        <TableColumn fx:id="caronaData" minWidth="-Infinity" prefWidth="75.0" text="Data" />
-                        <TableColumn fx:id="caronaHorario" minWidth="-Infinity" prefWidth="75.0" text="Horário" />
+                        <TableColumn fx:id="caronaId" prefWidth="60.0" visible="false" />
+                        <TableColumn fx:id="caronaIdMotorista" prefWidth="60.0" visible="false" />
+                        <TableColumn fx:id="caronaIdCarro" prefWidth="50.0" visible="false" />
+                        <TableColumn fx:id="caronaOrigem" minWidth="-Infinity" prefWidth="75.0" text="Origem" />
+                        <TableColumn fx:id="caronaDestino" minWidth="-Infinity" prefWidth="75.0" text="Destino" />
+                        <TableColumn fx:id="caronaVagas" minWidth="-Infinity" prefWidth="50.0" text="Vagas" />
+                        <TableColumn fx:id="caronaData" minWidth="-Infinity" prefWidth="100.0" text="Data" />
+                        <TableColumn fx:id="caronaHorario" minWidth="-Infinity" prefWidth="100.0" text="Horário" />
                       </columns>
       
                     </TableView>
@@ -58,7 +58,7 @@
                
             </VBox>
 
-            <HBox prefHeight="120.0" prefWidth="520.0">
+            <HBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="520.0">
 
                <children>
 
@@ -67,18 +67,18 @@
                      <children>
 
                         <Label alignment="TOP_LEFT" text="Passageiros:" />
-                        <TextArea id="taPassageiros" wrapText="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="275.0" />
+                        <TextArea fx:id="taPassageiros" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="275.0" wrapText="true" />
 
                      </children>
 
                   </VBox>
 
-                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="195.0">
+                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="230.0">
 
                      <children>
 
                         <Label text="Pontos de Parada:" />
-                        <TextArea id="taPontos" wrapText="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="175.0" />
+                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="175.0" wrapText="true" />
 
                      </children>
 
@@ -88,7 +88,7 @@
 
             </HBox>
             
-            <HBox prefHeight="76.0" prefWidth="520.0" spacing="5.0">
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="520.0" spacing="5.0">
 
                <children>
 
@@ -97,13 +97,13 @@
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea id="taCarro" wrapText="true" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" />
+                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0" wrapText="true" />
 
                      </children>
 
                   </VBox>
       
-                  <HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="297.0" spacing="10.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                      
                      <children>
                         <Button onAction="#criarCarona" text="Criar Carona" />
