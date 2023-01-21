@@ -109,7 +109,7 @@
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" wrapText="true">
+                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="225.0" wrapText="true">
                           
                         <VBox.margin>
                            <Insets left="15.0" right="15.0" />
@@ -124,9 +124,9 @@
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
                      
                      <children>
-                        <Button onAction="#criarCarona" text="Criar Carona" />
-                        <Button onAction="#editarCarona" text="Editar Carona" />
-                        <Button onAction="#inativarCarona" text="Excluir Carona" />
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#criarCarona" prefHeight="27.0" text="Criar Carona" />
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#editarCarona" prefHeight="27.0" text="Editar Carona" />
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#inativarCarona" prefHeight="27.0" text="Excluir Carona" />
                      </children>
       
                   </HBox>

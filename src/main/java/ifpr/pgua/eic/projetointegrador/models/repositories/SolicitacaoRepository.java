@@ -38,11 +38,11 @@ public class SolicitacaoRepository {
     return dao.remover(Solicitacao);
   }
 
-  public List<SolicitacaoCarona> getPendenteByMotorista(int id_motorista) {
+  public List<SolicitacaoCarona> getByMotorista(int id_motorista) {
     return dao.getByMotorista(id_motorista);
   }
 
-  public List<SolicitacaoCarona> getPendenteByPassageiro(int id_passageiro) {
+  public List<SolicitacaoCarona> getByPassageiro(int id_passageiro) {
     return dao.getByPassageiro(id_passageiro);
   }
 

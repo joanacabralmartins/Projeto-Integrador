@@ -82,7 +82,7 @@ public class JanelaSolicitacaoMotorista implements Initializable {
 
     private void updateList() {
         listaSolicitacaoCaronas.clear();
-        List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getPendenteByMotorista(motorista.getId()));
+        List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getByMotorista(motorista.getId()));
         
         for(SolicitacaoCarona s : solicitacoes) {
             SolicitacaoCarona solicitacao = new SolicitacaoCarona(s.getId(), s.getId_usuario(), s.getId_motorista(), s.getId_carona(), s.getDataHora_Solicitacao(), LocalDateTime.now(), null, null, s.getStatus());

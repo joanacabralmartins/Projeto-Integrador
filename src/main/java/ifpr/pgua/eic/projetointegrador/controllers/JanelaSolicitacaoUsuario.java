@@ -11,6 +11,7 @@ import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,7 +72,7 @@ public class JanelaSolicitacaoUsuario implements Initializable {
 
     private void updateList() {
         caronasSolicitadas.clear();
-        List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getPendenteByPassageiro(usuario.getId()));
+        List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getByPassageiro(usuario.getId()));
         
         for(SolicitacaoCarona s : solicitacoes) {
             int idCarona = s.getId_carona();
