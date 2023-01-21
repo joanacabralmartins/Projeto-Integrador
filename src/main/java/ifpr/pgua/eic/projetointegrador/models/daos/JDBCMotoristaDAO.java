@@ -213,6 +213,7 @@ public class JDBCMotoristaDAO implements MotoristaDAO {
                 
                 return Result.success("Seja bem vindo(a)!");
             } else {
+                motorista = null;
                 return Result.fail("Usuário sem cadastro");
             }
 

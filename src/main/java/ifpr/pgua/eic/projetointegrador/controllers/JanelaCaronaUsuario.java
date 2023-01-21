@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
@@ -21,11 +22,13 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,6 +37,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class JanelaCaronaUsuario implements Initializable {
 
+    @FXML
+    private Button btVoltar;
+  
     @FXML
     private TextField tfOrigem;
 
@@ -149,6 +155,13 @@ public class JanelaCaronaUsuario implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
       carregarCaronas();
+      if(repositorioMotorista.getUser() instanceof Motorista){
+        btVoltar.setDisable(false);
+        btVoltar.setVisible(true);
+      }else{
+        btVoltar.setDisable(true);
+        btVoltar.setVisible(false);
+      }
     }
 
     private void carregarCaronas() {
@@ -332,6 +345,11 @@ public class JanelaCaronaUsuario implements Initializable {
       
       passageiros.setItems(listaPassageiros);
 
+    }
+
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("CARONA MOTORISTA INICIAL", BorderPaneRegion.CENTER);
     }
 
 }
