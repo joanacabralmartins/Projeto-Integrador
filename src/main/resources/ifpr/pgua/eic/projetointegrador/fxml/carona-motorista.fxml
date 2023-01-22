@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
+<GridPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -33,23 +34,23 @@
 
          <children>
 
-            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="377.0">
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="520.0">
 
                <children>
       
                   <Label text="Caronas ofertadas:" />
       
-                    <TableView fx:id="caronas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="400.0">
+                    <TableView fx:id="caronas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="520.0">
       
                       <columns>
                         <TableColumn fx:id="caronaId" prefWidth="60.0" visible="false" />
                         <TableColumn fx:id="caronaIdMotorista" prefWidth="60.0" visible="false" />
                         <TableColumn fx:id="caronaIdCarro" prefWidth="50.0" visible="false" />
-                        <TableColumn fx:id="caronaOrigem" minWidth="-Infinity" prefWidth="75.0" text="Origem" />
-                        <TableColumn fx:id="caronaDestino" minWidth="-Infinity" prefWidth="75.0" text="Destino" />
-                        <TableColumn fx:id="caronaVagas" minWidth="-Infinity" prefWidth="50.0" text="Vagas" />
-                        <TableColumn fx:id="caronaData" minWidth="-Infinity" prefWidth="100.0" text="Data" />
-                        <TableColumn fx:id="caronaHorario" minWidth="-Infinity" prefWidth="100.0" text="Horário" />
+                        <TableColumn fx:id="caronaOrigem" minWidth="-Infinity" prefWidth="100.0" style="-fx-alignment: center;" text="Origem" />
+                        <TableColumn fx:id="caronaDestino" minWidth="-Infinity" prefWidth="100.0" style="-fx-alignment: center;" text="Destino" />
+                        <TableColumn fx:id="caronaVagas" minWidth="-Infinity" prefWidth="100.0" style="-fx-alignment: center;" text="Vagas" />
+                        <TableColumn fx:id="caronaData" minWidth="-Infinity" prefWidth="100.0" style="-fx-alignment: center;" text="Data" />
+                        <TableColumn fx:id="caronaHorario" minWidth="-Infinity" prefWidth="118.0" style="-fx-alignment: center;" text="Horário" />
                       </columns>
       
                     </TableView>
@@ -70,7 +71,7 @@
                         <TextArea fx:id="taPassageiros" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="275.0" wrapText="true">
                         
                         <VBox.margin>
-                           <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                           <Insets bottom="5.0" right="15.0" top="5.0" />
                         </VBox.margin>
                         
                         </TextArea>
@@ -84,10 +85,10 @@
                      <children>
 
                         <Label text="Pontos de Parada:" />
-                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="175.0" wrapText="true">
+                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="200.0" wrapText="true">
                         
                         <VBox.margin>
-                           <Insets left="15.0" right="15.0" top="5.0" />
+                           <Insets left="20.0" top="5.0" />
                         </VBox.margin>
 
                         </TextArea>
@@ -100,19 +101,19 @@
 
             </HBox>
             
-            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="520.0" spacing="5.0">
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="520.0" spacing="10.0">
 
                <children>
 
-                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="225.0">
+                  <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="135.0">
 
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="225.0" wrapText="true">
+                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="135.0" wrapText="true">
                           
                         <VBox.margin>
-                           <Insets left="15.0" right="15.0" />
+                           <Insets />
                         </VBox.margin>
                         
                         </TextArea>
@@ -121,17 +122,35 @@
 
                   </VBox>
       
-                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="297.0" spacing="10.0">
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="350.0" spacing="10.0">
                      
-                     <children>
-                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#criarCarona" prefHeight="27.0" text="Criar Carona" />
-                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#editarCarona" prefHeight="27.0" text="Editar Carona" />
-                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#inativarCarona" prefHeight="27.0" text="Excluir Carona" />
+                                 <children>
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#criarCarona" prefHeight="27.0" prefWidth="102.0" text="Criar Carona">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#editarCarona" prefHeight="27.0" prefWidth="114.0" text="Editar Carona">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                        <Button maxHeight="-Infinity" minHeight="-Infinity" onAction="#inativarCarona" prefHeight="27.0" text="Excluir Carona">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
                      </children>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
       
-                  </HBox>
+                              </HBox>
 
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
 
             </HBox>
 
