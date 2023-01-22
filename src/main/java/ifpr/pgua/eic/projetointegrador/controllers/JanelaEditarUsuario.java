@@ -13,6 +13,7 @@ import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -130,5 +131,10 @@ public class JanelaEditarUsuario implements Initializable {
 
     private void carregarLogin() {
         App.pushScreen("LOGIN");
+    }
+
+    @FXML
+    private void voltar() {
+        App.changeScreenRegion("USUARIO", BorderPaneRegion.CENTER);
     }
 }
