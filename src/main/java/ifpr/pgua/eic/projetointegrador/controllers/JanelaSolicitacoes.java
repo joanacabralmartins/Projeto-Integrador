@@ -19,7 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class JanelaSolicitacaoUsuario implements Initializable {
+public class JanelaSolicitacoes implements Initializable {
 
     @FXML
     private TableView<Carona> tbSolicitacoes;
@@ -46,7 +46,7 @@ public class JanelaSolicitacaoUsuario implements Initializable {
     private UsuarioRepository repositorioU;
     private Usuario usuario;
 
-    public JanelaSolicitacaoUsuario(SolicitacaoRepository repositorioS, CaronaRepository repositorioC,
+    public JanelaSolicitacoes(SolicitacaoRepository repositorioS, CaronaRepository repositorioC,
     UsuarioRepository repositorioU) {
         this.repositorioS = repositorioS;
         this.repositorioC = repositorioC;

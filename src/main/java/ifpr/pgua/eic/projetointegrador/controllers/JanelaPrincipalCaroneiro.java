@@ -29,7 +29,7 @@ public class JanelaPrincipalCaroneiro extends BaseController {
 
     @FXML
     private void carregaTelaSolicitacoesUsuario(ActionEvent evento) {
-        App.changeScreenRegion("SOLICITACOES USUARIO", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("SOLICITACOES", BorderPaneRegion.CENTER);
     }
 
     @FXML

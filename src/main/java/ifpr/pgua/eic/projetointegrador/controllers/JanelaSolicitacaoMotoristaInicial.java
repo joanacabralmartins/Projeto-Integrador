@@ -14,7 +14,7 @@ public class JanelaSolicitacaoMotoristaInicial {
 
     @FXML
     private void carregaTelaVisualizarSolicitacoes(ActionEvent evento) {
-        App.changeScreenRegion("SOLICITACOES MOTORISTA", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("SOLICITACOES", BorderPaneRegion.CENTER);
     }
 
 }

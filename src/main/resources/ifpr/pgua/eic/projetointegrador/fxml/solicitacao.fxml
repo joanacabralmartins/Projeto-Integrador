@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista">
+<GridPane prefHeight="400.0" prefWidth="600.0" 
+xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />

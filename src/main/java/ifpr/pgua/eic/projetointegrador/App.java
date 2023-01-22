@@ -19,7 +19,7 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipal;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaPrincipalCaroneiro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotoristaInicial;
-import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoUsuario;
+import ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaUsuario;
 import ifpr.pgua.eic.projetointegrador.models.FabricaConexoes;
 import ifpr.pgua.eic.projetointegrador.models.daos.MotoristaDAO;
@@ -142,14 +142,14 @@ public class App extends BaseAppNavigator {
         registraTela("CARONA USUARIO", new ScreenRegistryFXML(getClass(), "fxml/carona-usuario.fxml", 
                 (o) -> new JanelaCaronaUsuario(carroRepository, motoristaRepository, usuarioRepository, caronaRepository, pontoRepository, solicitacaoRepository)));
 
+        registraTela("SOLICITACOES", new ScreenRegistryFXML(getClass(), "fxml/solicitacao.fxml", 
+                (o) -> new JanelaSolicitacoes(solicitacaoRepository, caronaRepository, usuarioRepository)));
+
         registraTela("SOLICITACOES MOTORISTA INICIAL", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista-inicial.fxml", 
                 (o) -> new JanelaSolicitacaoMotoristaInicial()));
 
         registraTela("SOLICITACOES MOTORISTA", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-motorista.fxml", 
                 (o) -> new JanelaSolicitacaoMotorista(solicitacaoRepository, caronaRepository, usuarioRepository, motoristaRepository)));
-
-        registraTela("SOLICITACOES USUARIO", new ScreenRegistryFXML(getClass(), "fxml/solicitacao-usuario.fxml", 
-                (o) -> new JanelaSolicitacaoUsuario(solicitacaoRepository, caronaRepository, usuarioRepository)));
              
         registraTela("CARONA MOTORISTA INICIAL", new ScreenRegistryFXML(getClass(), "fxml/carona-motorista-inicial.fxml", 
                 (o) -> new JanelaCaronaMotoristaInicial()));
