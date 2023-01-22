@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -37,11 +35,9 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
         <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="450.0">
 
           <columns>
-            <TableColumn fx:id="colOrigem" prefWidth="80.0" style="-fx-alignment: center;" text="Origem" />
-            <TableColumn fx:id="colDestino" prefWidth="85.0" style="-fx-alignment: center;" text="Destino" />
-            <TableColumn fx:id="colData" prefWidth="100.0" style="-fx-alignment: center;" text="Data" />
-            <TableColumn fx:id="colHr" prefWidth="100.0" style="-fx-alignment: center;" text="Horário" />
-            <TableColumn fx:id="colVagas" prefWidth="86.0" style="-fx-alignment: center;" text="Vagas" />
+            <TableColumn fx:id="colDataHora" prefWidth="190.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
+            <TableColumn fx:id="colCarona" prefWidth="120.0" style="-fx-alignment: center;" text="Id da Carona" />
+            <TableColumn fx:id="colStatus" prefWidth="138.0" style="-fx-alignment: center;" text="Status" />
           </columns>
 
         </TableView>
@@ -49,7 +45,7 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
 
           <children>
-            <Button text="Cancelar" textAlignment="CENTER" />
+            <Button onAction="#cancelarSolicitacao" text="Cancelar" textAlignment="CENTER" />
           </children>
           
         </HBox>

@@ -104,17 +104,45 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
     }
 
     @Override
-    public Result cancelar(SolicitacaoCarona solicitacao) {
+    public Result cancelarSolicitacaoPendente(SolicitacaoCarona solicitacao) {
         try {
             Connection con = fabricaConexao.getConnection(); 
             
             PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=2, dataHora_cancelamento=? WHERE id=?");
             
-            pstm.setString(1, String.valueOf(solicitacao.getDataCancelamento()));
+            pstm.setString(1, String.valueOf(LocalDateTime.now()));
             pstm.setInt(2, solicitacao.getId());
 
             pstm.execute();
 
+            pstm.close();
+            con.close();
+
+            return Result.success("Solicitação Cancelada com Sucesso!");
+
+        } catch(SQLException e){
+            return Result.fail(e.getMessage());
+        }
+    }
+
+    @Override
+    public Result cancelarSolicitacaoAceita(SolicitacaoCarona solicitacao) {
+        try {
+            Connection con = fabricaConexao.getConnection(); 
+            
+            PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=2, dataHora_cancelamento=? WHERE id=?");
+            
+            pstm.setString(1, String.valueOf(LocalDateTime.now()));
+            pstm.setInt(2, solicitacao.getId());
+
+            pstm.execute();
+            pstm.close();
+
+            pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=lugaresDisponiveis+1 WHERE id=?");
+
+            pstm.setInt(1, solicitacao.getId_carona());
+
+            pstm.execute();
             pstm.close();
             con.close();
 
@@ -270,32 +298,29 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
 
     @Override
     public List<SolicitacaoCarona> listAll() {
+        try {
+            Connection con = fabricaConexao.getConnection();
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao where status=1"); 
 
-    try {
+            ResultSet rs = pstm.executeQuery();
 
-      Connection con = fabricaConexao.getConnection();
+            ArrayList <SolicitacaoCarona> solicitacoes = new ArrayList<SolicitacaoCarona>();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM solicitacao where status=1"); 
+            while (rs.next()) {
+                solicitacoes.add(buildFrom(rs));
+            } 
 
-      ResultSet rs = pstm.executeQuery();
+            rs.close();
+            pstm.close();
+            con.close();
 
-      ArrayList <SolicitacaoCarona> solicitacoes = new ArrayList<SolicitacaoCarona>();
+            return solicitacoes;
 
-      while (rs.next()) {
-        solicitacoes.add(buildFrom(rs));
-      } 
-
-      rs.close();
-      pstm.close();
-      con.close();
-
-      return solicitacoes;
-
-    } catch(SQLException e) {
-      System.out.println(e.getMessage());
-      return Collections.emptyList();
-    }   
-  }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
+        }   
+    }
 
     private SolicitacaoCarona buildFrom(ResultSet rs) throws SQLException {
 

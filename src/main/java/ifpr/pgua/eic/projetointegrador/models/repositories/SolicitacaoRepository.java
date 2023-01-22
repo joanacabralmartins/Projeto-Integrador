@@ -31,7 +31,19 @@ public class SolicitacaoRepository {
   }
 
   public Result cancelar(SolicitacaoCarona Solicitacao) {
-    return dao.cancelar(Solicitacao);
+    if(Solicitacao.getStatus() == "recusada") {
+      return Result.fail("Essa solicitação já foi recusada!");
+    }
+    if(Solicitacao.getStatus() == "cancelada") {
+      return Result.fail("Essa solicitação já foi cancelada!");
+    }
+
+    if(Solicitacao.getStatus() == "pendente") {
+      return dao.cancelarSolicitacaoPendente(Solicitacao);
+    }
+    
+    return dao.cancelarSolicitacaoAceita(Solicitacao);
+    
   }
 
   public Result remover(SolicitacaoCarona Solicitacao) {

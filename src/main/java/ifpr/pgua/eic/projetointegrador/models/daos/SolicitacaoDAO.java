@@ -10,7 +10,8 @@ public interface SolicitacaoDAO {
   Result create(SolicitacaoCarona Solicitacao);
   Result aceitar(SolicitacaoCarona Solicitacao);
   Result recusar(SolicitacaoCarona Solicitacao);
-  Result cancelar(SolicitacaoCarona Solicitacao);
+  Result cancelarSolicitacaoPendente(SolicitacaoCarona Solicitacao);
+  Result cancelarSolicitacaoAceita(SolicitacaoCarona Solicitacao);
   Result remover(SolicitacaoCarona Solicitacao);
   List<SolicitacaoCarona> listAll();
   List<SolicitacaoCarona> getByMotorista(int id_motorista);//para tela solicitacao-motorista
