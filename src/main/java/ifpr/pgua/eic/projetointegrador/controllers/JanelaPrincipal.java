@@ -33,8 +33,8 @@ public class JanelaPrincipal extends BaseController {
     }
 
     @FXML
-    private void carregaTelaSolicitacoes(ActionEvent evento) {
-        App.changeScreenRegion("SOLICITACOES MOTORISTA", BorderPaneRegion.CENTER);
+    private void carregaTelaSolicitacoesInicial(ActionEvent evento) {
+        App.changeScreenRegion("SOLICITACOES MOTORISTA INICIAL", BorderPaneRegion.CENTER);
     }
 
     @FXML

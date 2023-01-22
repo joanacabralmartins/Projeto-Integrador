@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial">
+<GridPane prefHeight="400.0" prefWidth="600.0" 
+xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacaoMotoristaInicial">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -25,8 +27,8 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
          <children>
-            <Button onAction="#carregaTelaGerenciarCaronas" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Solicitaçoes" textAlignment="CENTER" textFill="WHITE" />
-            <Button onAction="#carregaTelaVisualizarCaronas" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Visualizar Solicitaçoes" textAlignment="CENTER" textFill="WHITE" />
+            <Button onAction="#carregaTelaGerenciarSolicitacoes" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Gerenciar Solicitaçoes" textAlignment="CENTER" textFill="WHITE" />
+            <Button onAction="#carregaTelaVisualizarSolicitacoes" prefHeight="32.0" prefWidth="276.0" style="-fx-background-radius: 6; -fx-background-color: #154d1e;" text="Visualizar Solicitaçoes" textAlignment="CENTER" textFill="WHITE" />
          </children>
 
       </VBox>
