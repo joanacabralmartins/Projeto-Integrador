@@ -273,10 +273,10 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and destino=? and status=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem LIKE ? and destino LIKE ? and status=1"); 
 
-      pstm.setString(1, origem);
-      pstm.setString(2, destino);
+      pstm.setString(1, origem + "%");
+      pstm.setString(2, destino + "%");
 
       ResultSet rs = pstm.executeQuery();
 
@@ -305,9 +305,9 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where destino=? and status=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where destino LIKE ? and status=1"); 
 
-      pstm.setString(1, destino);
+      pstm.setString(1, destino + "%");
 
       ResultSet rs = pstm.executeQuery();
 
@@ -336,9 +336,9 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and status=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem LIKE ? and status=1"); 
 
-      pstm.setString(1, origem);
+      pstm.setString(1, origem + "%");
 
       ResultSet rs = pstm.executeQuery();
 
