@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -42,13 +43,13 @@
 
       <children>
 
-        <GridPane hgap="10.0" prefHeight="20.0" prefWidth="574.0" GridPane.rowIndex="1">
+        <GridPane hgap="10.0" prefHeight="28.0" prefWidth="592.0" GridPane.rowIndex="1">
 
           <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="95.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="75.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="333.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="0.0" prefWidth="104.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="0.0" prefWidth="109.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="344.0" />
           </columnConstraints>
 
           <rowConstraints>
@@ -57,8 +58,8 @@
           </rowConstraints>
 
           <children>         
-            <TextField fx:id="tfOrigem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="85.0" promptText="Filtrar por" GridPane.columnIndex="1" />
-            <TextField fx:id="tfDestino" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="85.0" promptText="Filtrar por" GridPane.columnIndex="2" />
+            <TextField fx:id="tfOrigem" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" promptText="Filtrar por" GridPane.columnIndex="1" />
+            <TextField fx:id="tfDestino" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" promptText="Filtrar por" GridPane.columnIndex="2" />
             <Button onAction="#filtrar" prefHeight="24.0" prefWidth="65.0" text="Filtrar" GridPane.columnIndex="3" />
           </children>
 
@@ -72,7 +73,7 @@
 
       <children>
 
-        <TableView fx:id="caronas" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="600.0">
+        <TableView fx:id="caronas" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#carregarDados" prefHeight="140.0" prefWidth="595.0">
 
           <columns>
               <TableColumn fx:id="caronaId" prefWidth="40.0" visible="false" />
@@ -87,48 +88,30 @@
 
         </TableView>
 
-        <HBox prefHeight="108.0" prefWidth="600.0" spacing="40.0">
+        <HBox prefHeight="108.0" prefWidth="600.0" spacing="20.0">
 
           <children>
 
-            <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="108.0" prefWidth="207.0">
-
-              <children>
-
-                <Label text="Pontos de Parada:" />
-
-                <TableView fx:id="pontos" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="208.0">
-
-                  <columns>
-                    <TableColumn fx:id="pontosDescricao" prefWidth="208.0" text="Descricao" />
-                  </columns>
-
-                </TableView>
-
-              </children>
-
-            </VBox>
-
-            <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="337.0">
+            <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="334.0">
 
               <children>
 
                 <Label text="Passageiros:" />
-
-                <TableView fx:id="passageiros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="372.0">
-
-                  <columns>
-                    <TableColumn fx:id="pasNome" prefWidth="75.0" text="Nome" />
-                    <TableColumn fx:id="pasFuncao" prefWidth="75.0" text="Funcao" />
-                    <TableColumn fx:id="pasCurso" prefWidth="75.0" text="Curso" />
-                    <TableColumn fx:id="pasTelefone" prefWidth="75.0" text="Telefone" />
-                    <TableColumn fx:id="pasIdade" prefWidth="70.0" text="Idade" />
-                  </columns>
-
-                </TableView>
+                <TextArea fx:id="taPassageiros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="325.0" editable="false" wrapText="true" />
 
               </children>
 
+            </VBox>
+      
+            <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="108.0" prefWidth="250.0">
+      
+              <children>
+      
+                <Label text="Pontos de Parada:" />
+                <TextArea fx:id="taPontos" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="240.0" editable="false" wrapText="true" />
+      
+              </children>
+      
             </VBox>
 
           </children>
@@ -139,56 +122,29 @@
 
           <children>
 
-            <VBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="250.0">
-
-              <children>
-
-                <Label text="Carro:" />
-
-                <TableView fx:id="carro" prefHeight="75.0" prefWidth="200.0">
-
-                  <columns>
-                    <TableColumn fx:id="carPlaca" prefWidth="75.0" text="Placa" />
-                    <TableColumn fx:id="carCor" prefWidth="75.0" text="Cor" />
-                    <TableColumn fx:id="carModelo" prefWidth="75.0" text="Modelo" />
-                  </columns>
-
-                </TableView>
-
-              </children>
-
-            </VBox>
-
-            <VBox alignment="CENTER" prefHeight="75.0" prefWidth="371.0">
+            <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="334.0">
 
               <children>
 
                 <Label text="Motorista:" />
-
-                <TableView fx:id="motorista" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="360.0">
-
-                  <columns>
-                    <TableColumn fx:id="motoristaId" prefWidth="40.0" text="Id" visible="false" />
-                    <TableColumn fx:id="motoristaNome" minWidth="-Infinity" prefWidth="75.0" text="Nome" />
-                    <TableColumn fx:id="motoristaFuncao" minWidth="-Infinity" prefWidth="75.0" text="Funcao" />
-                    <TableColumn fx:id="motoristaCurso" minWidth="-Infinity" prefWidth="75.0" text="Curso" />
-                    <TableColumn fx:id="motoristaTelefone" minWidth="-Infinity" prefWidth="75.0" text="Telefone" />
-                    <TableColumn fx:id="motoristaIdade" minWidth="-Infinity" prefWidth="60.0" text="Idade" />
-                  </columns>
-
-                </TableView>
+                <TextArea fx:id="taMotorista" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="325.0" editable="false" wrapText="true" />
 
               </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
+
+            </VBox>
+
+            <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="60.0" prefWidth="250.0">
+
+              <children>
+
+                <Label text="Carro:" />
+                <TextArea fx:id="taCarro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="240.0" editable="false" wrapText="true"/>
+
+              </children>
 
             </VBox>
 
           </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
 
         </HBox>
 
@@ -197,7 +153,7 @@
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="241.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="418.0" minWidth="10.0" prefWidth="346.0" />
-            </columnConstraints>
+          </columnConstraints>
           <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           </rowConstraints>
@@ -205,20 +161,25 @@
           <children>
             <Button onAction="#solicitar" prefHeight="25.0" prefWidth="100.0" text="Solicitar" textAlignment="CENTER" GridPane.columnIndex="1" />
           </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
+
+          <VBox.margin>
+            <Insets top="10.0" />
+          </VBox.margin>
 
         </GridPane>
 
       </children>
 
     </VBox>
+
       <VBox prefHeight="200.0" prefWidth="100.0">
+
          <padding>
             <Insets left="15.0" top="15.0" />
          </padding>
+
          <children>
+
             <Button fx:id="btVoltar" onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
 
                <graphic>
@@ -227,7 +188,9 @@
                </graphic>
 
             </Button>
+
          </children>
+
       </VBox>
 
   </children>

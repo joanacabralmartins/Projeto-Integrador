@@ -31,6 +31,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,7 +40,7 @@ public class JanelaCaronaUsuario implements Initializable {
 
     @FXML
     private Button btVoltar;
-  
+
     @FXML
     private TextField tfOrigem;
 
@@ -47,55 +48,16 @@ public class JanelaCaronaUsuario implements Initializable {
     private TextField tfDestino;
   
     @FXML
-    private TableView<Carro> carro;
-
-    @FXML 
-    private TableColumn<Carro, String> carPlaca;
+    private TextArea taCarro;
+    
+    @FXML
+    private TextArea taPontos;
 
     @FXML
-    private TableColumn<Carro, String> carModelo;
+    private TextArea taPassageiros;
 
     @FXML
-    private TableColumn<Carro, String> carCor;
-
-    @FXML
-    private TableView<Usuario> passageiros;
-
-    @FXML 
-    private TableColumn<Usuario, String> pasNome;
-
-    @FXML
-    private TableColumn<Usuario, String> pasFuncao;
-
-    @FXML
-    private TableColumn<Usuario, String> pasCurso;
-
-    @FXML
-    private TableColumn<Usuario, Integer> pasIdade;
-
-    @FXML
-    private TableColumn<Usuario, String> pasTelefone;
-
-    @FXML
-    private TableView<Motorista> motorista;
-
-    @FXML 
-    private TableColumn<Motorista, Integer> motoristaId;
-
-    @FXML 
-    private TableColumn<Motorista, String> motoristaNome;
-
-    @FXML
-    private TableColumn<Motorista, String> motoristaFuncao;
-
-    @FXML
-    private TableColumn<Motorista, String> motoristaCurso;
-
-    @FXML
-    private TableColumn<Motorista, Integer> motoristaIdade;
-
-    @FXML
-    private TableColumn<Motorista, String> motoristaTelefone;
+    private TextArea taMotorista;
 
     @FXML
     private TableView<Carona> caronas;
@@ -124,17 +86,7 @@ public class JanelaCaronaUsuario implements Initializable {
     @FXML
     private TableColumn<Carona, Integer> caronaVagas;
 
-    @FXML
-    private TableView<PontoParada> pontos;
-
-    @FXML 
-    private TableColumn<PontoParada, String> pontosDescricao;
-
     private ObservableList<Carona> listaCaronas = FXCollections.observableArrayList();
-    private ObservableList<PontoParada> listaPontos = FXCollections.observableArrayList();
-    private ObservableList<Carro> listaCarro = FXCollections.observableArrayList();
-    private ObservableList<Motorista> listaMotorista = FXCollections.observableArrayList();
-    private ObservableList<Usuario> listaPassageiros = FXCollections.observableArrayList();
 
     private MotoristaRepository repositorioMotorista;
     private UsuarioRepository repositorioUsuario;
@@ -232,7 +184,7 @@ public class JanelaCaronaUsuario implements Initializable {
         }
       }
 
-      int idM = (Integer) motoristaId.getCellObservableValue(0).getValue();;
+      int idM = cCarona.getId_motorista();
 
       SolicitacaoCarona solicitacao = new SolicitacaoCarona(0, repositorioUsuario.getUser().getId(), idM, cCarona.getId(), LocalDateTime.now(), "Pendente");
 
@@ -250,39 +202,22 @@ public class JanelaCaronaUsuario implements Initializable {
     @FXML
     private void carregarDados(){
 
-      Carona cCarona = caronas.getSelectionModel().getSelectedItem();
+      Carona carona = caronas.getSelectionModel().getSelectedItem();
 
-      if(cCarona == null){
+      if(carona == null){
         Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma carona");
         alert.showAndWait(); 
         return;
       }
 
-      pontosDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
       updateListaPontos();
-
-      pasCurso.setCellValueFactory(new PropertyValueFactory<>("curso"));
-      pasFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao_IFPR"));
-      pasIdade.setCellValueFactory(new PropertyValueFactory<>("idade"));
-      pasNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-      pasTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 
       updateListaPassageiros();
 
-      motoristaCurso.setCellValueFactory(new PropertyValueFactory<>("curso"));
-      motoristaFuncao.setCellValueFactory(new PropertyValueFactory<>("funcao_IFPR"));
-      motoristaIdade.setCellValueFactory(new PropertyValueFactory<>("idade"));
-      motoristaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-      motoristaTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-      motoristaId.setCellValueFactory(new PropertyValueFactory<>("id"));
-
       updateListaMotorista();
 
-      carCor.setCellValueFactory(new PropertyValueFactory<>("cor"));
-      carModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-      carPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
-
       updateListaCarro();
+
     }
 
 
@@ -290,7 +225,7 @@ public class JanelaCaronaUsuario implements Initializable {
     private void updateListaCarona() {
 
       listaCaronas.clear();
-      List<Carona> caronasList = new ArrayList<>(repositorioCarona.listAll());
+      List<Carona> caronasList = repositorioCarona.listAll();
         
       for(Carona c : caronasList) {
         if(c.getId_motorista() != repositorioUsuario.getUser().getId()){
@@ -307,54 +242,63 @@ public class JanelaCaronaUsuario implements Initializable {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
-      listaPontos.clear();
-      List<PontoParada> pontosList = new ArrayList<>(repositorioPonto.getByCarona(carona.getId()));
+      taPontos.clear();
+      List<PontoParada> pontosList = repositorioPonto.getByCarona(carona.getId());
         
       for(PontoParada p : pontosList) {
-        PontoParada ponto = new PontoParada(p.getId(), carona.getId(), p.getDescricao(), p.getAtivo());
-        listaPontos.add(ponto);
+        taPontos.appendText(p.getDescricao() + "\n");
       }
       
-      pontos.setItems(listaPontos);
-
     }
 
     private void updateListaMotorista() {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
-      listaMotorista.clear();
-      listaMotorista.add(repositorioMotorista.getById(carona.getId_motorista()));
-      
-      motorista.setItems(listaMotorista);
+      taMotorista.clear();
+
+      Motorista motorista = repositorioMotorista.getById(carona.getId_motorista());
+        
+      taMotorista.appendText(motorista.getNome() + ", " + motorista.getIdade() + " anos, " + motorista.getFuncao_IFPR());
+
+      if(!motorista.getCurso().isBlank()){
+        taMotorista.appendText(" de " + motorista.getCurso());
+      }
 
     }
 
     private void updateListaCarro() {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
+      Carro carro = repositorioCarro.getById(carona.getId_carro());
 
-      listaCarro.clear();
-      listaCarro.add(repositorioCarro.getById(carona.getId_carro()));
+      taCarro.clear();
+      taCarro.appendText(carro.getModelo() + " " + carro.getCor() + ", Placa: " + carro.getPlaca());
       
-      carro.setItems(listaCarro);
-
     }
 
     private void updateListaPassageiros() {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
-      listaPassageiros.clear();
+      taPassageiros.clear();
+
       List<SolicitacaoCarona> solicitacaoList = new ArrayList<>(repositorioSolicitacao.getAceitasByCarona(carona.getId()));
+      List<Usuario> passageirosList = new ArrayList<>();
         
       for(SolicitacaoCarona sc : solicitacaoList) {
-        Usuario passageiro = repositorioUsuario.getById(sc.getId_usuario());
-        listaPassageiros.add(passageiro);
+        passageirosList.add(repositorioUsuario.getById(sc.getId_usuario()));
+      }
+      for(Usuario u : passageirosList) {
+        taPassageiros.appendText(u.getNome() + ", " + u.getIdade() + " anos, " + u.getFuncao_IFPR());
+
+        if(!u.getCurso().isBlank()){
+          taPassageiros.appendText(" de " + u.getCurso());
+        }
+
+        taPassageiros.appendText("\n");
       }
       
-      passageiros.setItems(listaPassageiros);
-
     }
 
     @FXML

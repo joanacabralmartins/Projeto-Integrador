@@ -42,14 +42,10 @@ public class JanelaCaronaMotorista implements Initializable {
     private TextArea taPontos;
 
     @FXML
-    private TableView<Usuario> passageiros;
-
-    @FXML
     private TextArea taPassageiros;
 
     @FXML
     private TableView<Carona> caronas;
-
 
     @FXML 
     private TableColumn<Carona, Integer> caronaId;
@@ -192,7 +188,7 @@ public class JanelaCaronaMotorista implements Initializable {
     private void updateListaCarona() {
 
       listaCaronas.clear();
-      List<Carona> caronasList = new ArrayList<>(repositorioCarona.getByMotorista(repositorioMotorista.getUser().getId()));
+      List<Carona> caronasList = repositorioCarona.getByMotorista(repositorioMotorista.getUser().getId());
         
       for(Carona c : caronasList) {
         Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
@@ -208,7 +204,7 @@ public class JanelaCaronaMotorista implements Initializable {
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
       taPontos.clear();
-      List<PontoParada> pontosList = new ArrayList<>(repositorioPonto.getByCarona(carona.getId()));
+      List<PontoParada> pontosList = repositorioPonto.getByCarona(carona.getId());
         
       for(PontoParada p : pontosList) {
         taPontos.appendText(p.getDescricao() + "\n");
@@ -232,7 +228,7 @@ public class JanelaCaronaMotorista implements Initializable {
 
       taPassageiros.clear();
 
-      List<SolicitacaoCarona> solicitacaoList = new ArrayList<>(repositorioSolicitacao.getAceitasByCarona(carona.getId()));
+      List<SolicitacaoCarona> solicitacaoList = repositorioSolicitacao.getAceitasByCarona(carona.getId());
       List<Usuario> passageirosList = new ArrayList<>();
         
       for(SolicitacaoCarona sc : solicitacaoList) {

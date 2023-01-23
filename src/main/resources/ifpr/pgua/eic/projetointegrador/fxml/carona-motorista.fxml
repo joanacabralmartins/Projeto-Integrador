@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
+<GridPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0" />
@@ -69,7 +69,7 @@
                      <children>
 
                         <Label alignment="TOP_LEFT" text="Passageiros:" />
-                        <TextArea fx:id="taPassageiros" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="325.0" wrapText="true">
+                        <TextArea fx:id="taPassageiros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="325.0" editable="false" wrapText="true">
                         
                         <VBox.margin>
                            <Insets bottom="5.0" right="15.0" top="5.0" />
@@ -86,7 +86,7 @@
                      <children>
 
                         <Label text="Pontos de Parada:" />
-                        <TextArea fx:id="taPontos" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="245.0" wrapText="true">
+                        <TextArea fx:id="taPontos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="245.0" editable="false" wrapText="true">
                         
                         <VBox.margin>
                            <Insets left="20.0" top="5.0" />
@@ -111,7 +111,7 @@
                      <children>
 
                         <Label text="Carro:" />
-                        <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="234.0" wrapText="true">
+                        <TextArea fx:id="taCarro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="234.0" editable="false" wrapText="true">
                           
                         <VBox.margin>
                            <Insets />
