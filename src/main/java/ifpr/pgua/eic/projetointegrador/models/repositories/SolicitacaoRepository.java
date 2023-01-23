@@ -31,14 +31,14 @@ public class SolicitacaoRepository {
   }
 
   public Result cancelar(SolicitacaoCarona Solicitacao) {
-    if(Solicitacao.getStatus() == "recusada") {
+    if(Solicitacao.getStatus().matches("Recusada")) {
       return Result.fail("Essa solicitação já foi recusada!");
     }
-    if(Solicitacao.getStatus() == "cancelada") {
+    if(Solicitacao.getStatus().matches("Cancelada")) {
       return Result.fail("Essa solicitação já foi cancelada!");
     }
 
-    if(Solicitacao.getStatus() == "pendente") {
+    if(Solicitacao.getStatus().matches("Pendente")) {
       return dao.cancelarSolicitacaoPendente(Solicitacao);
     }
     
