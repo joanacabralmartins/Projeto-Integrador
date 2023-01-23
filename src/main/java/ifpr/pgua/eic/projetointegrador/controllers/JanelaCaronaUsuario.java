@@ -138,23 +138,18 @@ public class JanelaCaronaUsuario implements Initializable {
 
       List<Carona> caronaList = new ArrayList<>();
 
-      if(tfDestino.getText().isEmpty() && tfOrigem.getText().isBlank()){
-        Alert alert = new Alert(AlertType.INFORMATION, "Preencha um filtro");
-        alert.showAndWait(); 
-        return;
+
+      if(!tfDestino.getText().isBlank() && !tfOrigem.getText().isBlank()){
+        caronaList = repositorioCarona.getByOrigemAndDestino(tfOrigem.getText(), tfDestino.getText());
       }
       else{
-        if(!tfDestino.getText().isEmpty() && !tfOrigem.getText().isBlank()){
-          caronaList = repositorioCarona.getByOrigemAndDestino(tfOrigem.getText(), tfDestino.getText());
-        }
-        else{
-          if(!tfDestino.getText().isEmpty() && tfOrigem.getText().isBlank()){
-            caronaList = repositorioCarona.getByDestino(tfDestino.getText());
-          }else if(tfDestino.getText().isEmpty() && !tfOrigem.getText().isBlank()){
-            caronaList = repositorioCarona.getByOrigem(tfOrigem.getText());
-          }
+        if(!tfDestino.getText().isBlank() && tfOrigem.getText().isBlank()){
+          caronaList = repositorioCarona.getByDestino(tfDestino.getText());
+        }else if(tfDestino.getText().isBlank() && !tfOrigem.getText().isBlank()){
+          caronaList = repositorioCarona.getByOrigem(tfOrigem.getText());
         }
       }
+      
 
       for(Carona c : caronaList) {
         Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
