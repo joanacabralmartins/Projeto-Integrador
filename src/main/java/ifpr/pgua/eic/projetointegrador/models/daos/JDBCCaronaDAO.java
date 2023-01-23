@@ -36,7 +36,17 @@ public class JDBCCaronaDAO implements CaronaDAO{
       pstm.setTime(3, carona.getHorarioSaida());
       // pstm.setInt(4, carona.getQuantidadeLugares());
       pstm.setInt(4, carona.getLugaresDisponiveis());
-      pstm.setString(5, carona.getStatus());
+
+      if(carona.getStatus().matches("Cancelada")){
+        pstm.setInt(5, 0);
+      }else if(carona.getStatus().matches("Em curso")){
+        pstm.setInt(5, 1);
+      }else if(carona.getStatus().matches("Concluida")){
+        pstm.setInt(5, 2);
+      }else {
+        pstm.setInt(5, 3);
+      }
+
       // pstm.setInt(7, carona.getId_Origem());
       // pstm.setInt(8, carona.getId_Destino());
       pstm.setString(6, carona.getOrigem());

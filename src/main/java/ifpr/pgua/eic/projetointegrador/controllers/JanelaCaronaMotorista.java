@@ -75,6 +75,9 @@ public class JanelaCaronaMotorista implements Initializable {
     @FXML
     private TableColumn<Carona, Integer> caronaVagas;
 
+    @FXML
+    private TableColumn<Carona, String> caronaStatus;
+
     private ObservableList<Carona> listaCaronas = FXCollections.observableArrayList();
 
     private MotoristaRepository repositorioMotorista;
@@ -107,6 +110,7 @@ public class JanelaCaronaMotorista implements Initializable {
       caronaData.setCellValueFactory(new PropertyValueFactory<>("data"));
       caronaHorario.setCellValueFactory(new PropertyValueFactory<>("horarioSaida"));
       caronaVagas.setCellValueFactory(new PropertyValueFactory<>("lugaresDisponiveis"));
+      caronaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
       updateListaCarona();
     }
@@ -191,7 +195,7 @@ public class JanelaCaronaMotorista implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.getByMotorista(repositorioMotorista.getUser().getId()));
         
       for(Carona c : caronasList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
         listaCaronas.add(carona);
       }
       
