@@ -108,6 +108,26 @@ public class JanelaSolicitacaoMotorista implements Initializable {
     }
 
     @FXML
+    private void recusarSolicitacao(ActionEvent evento) {
+        SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
+
+        if(solicitacaoCarona == null) {
+            Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma solicitação!");
+            alert.showAndWait();
+            return;
+        }
+
+        Result resultado = repositorioS.recusar(solicitacaoCarona);
+
+        String msg = resultado.getMsg();
+        
+        Alert alert = new Alert(AlertType.INFORMATION,msg);
+        alert.showAndWait();
+
+        updateList();
+    }
+
+    @FXML
     private void aceitarSolicitacao(ActionEvent evento) {
         SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
 
@@ -115,7 +135,8 @@ public class JanelaSolicitacaoMotorista implements Initializable {
             Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma solicitação!");
             alert.showAndWait(); 
             return;
-        }else if(repositorioC.getById(solicitacaoCarona.getId_carona()).getLugaresDisponiveis() == 0){
+
+        } else if(repositorioC.getById(solicitacaoCarona.getId_carona()).getLugaresDisponiveis() == 0){
             Alert alert = new Alert(AlertType.INFORMATION, "Carona não possui lugares disponiveis!");
             alert.showAndWait(); 
             return;

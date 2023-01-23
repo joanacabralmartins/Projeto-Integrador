@@ -27,6 +27,13 @@ public class SolicitacaoRepository {
   }
 
   public Result recusar(SolicitacaoCarona Solicitacao) {
+    if(Solicitacao.getStatus().matches("Recusada")) {
+      return Result.fail("Essa solicitação já foi recusada!");
+    }
+    if(Solicitacao.getStatus().matches("Cancelada")) {
+      return Result.fail("Essa solicitação foi cancelada!");
+    }
+
     return dao.recusar(Solicitacao);
   }
 

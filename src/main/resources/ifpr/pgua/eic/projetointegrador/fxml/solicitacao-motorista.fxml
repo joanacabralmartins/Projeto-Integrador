@@ -51,7 +51,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
 
               <children>
-                <Button prefHeight="25.0" prefWidth="80.0" text="Recusar" textAlignment="CENTER" />
+                <Button onAction="#recusarSolicitacao" prefHeight="25.0" prefWidth="80.0" text="Recusar" textAlignment="CENTER" />
                 <Button onAction="#aceitarSolicitacao" prefHeight="25.0" prefWidth="80.0" text="Aceitar" textAlignment="CENTER" />
               </children>
 

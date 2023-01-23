@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
-import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -41,14 +39,11 @@ public class JanelaSolicitacoes implements Initializable {
     private ObservableList<SolicitacaoCarona> listaSolicitacaoCaronas = FXCollections.observableArrayList();
 
     private SolicitacaoRepository repositorioS;
-    private CaronaRepository repositorioC;
     private UsuarioRepository repositorioU;
     private Usuario usuario;
 
-    public JanelaSolicitacoes(SolicitacaoRepository repositorioS, CaronaRepository repositorioC,
-    UsuarioRepository repositorioU) {
+    public JanelaSolicitacoes(SolicitacaoRepository repositorioS, UsuarioRepository repositorioU) {
         this.repositorioS = repositorioS;
-        this.repositorioC = repositorioC;
         this.repositorioU = repositorioU;
     }
 
