@@ -138,7 +138,6 @@ public class JanelaCaronaUsuario implements Initializable {
 
       List<Carona> caronaList = new ArrayList<>();
 
-
       if(!tfDestino.getText().isBlank() && !tfOrigem.getText().isBlank()){
         caronaList = repositorioCarona.getByOrigemAndDestino(tfOrigem.getText(), tfDestino.getText());
       }
@@ -147,13 +146,16 @@ public class JanelaCaronaUsuario implements Initializable {
           caronaList = repositorioCarona.getByDestino(tfDestino.getText());
         }else if(tfDestino.getText().isBlank() && !tfOrigem.getText().isBlank()){
           caronaList = repositorioCarona.getByOrigem(tfOrigem.getText());
+        }else{
+          updateListaCarona();
+          return;
         }
       }
       
-
-      for(Carona c : caronaList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
-        listaCaronas.add(carona);
+      for(Carona c : caronaList){
+        if(c.getId_motorista() != repositorioUsuario.getUser().getId()){
+          listaCaronas.add(c);
+        }
       }
       
       caronas.setItems(listaCaronas);
@@ -191,8 +193,6 @@ public class JanelaCaronaUsuario implements Initializable {
       
       Alert alert = new Alert(AlertType.INFORMATION,msg);
       alert.showAndWait();
-
-      updateListaCarona();
 
     }
 
