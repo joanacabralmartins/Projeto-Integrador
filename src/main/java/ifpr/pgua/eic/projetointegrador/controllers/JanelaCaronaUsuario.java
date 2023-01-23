@@ -134,6 +134,8 @@ public class JanelaCaronaUsuario implements Initializable {
 
       listaCaronas.clear();
 
+      clearTAS();
+
       List<Carona> caronaList = new ArrayList<>();
 
       if(tfDestino.getText().isEmpty() && tfOrigem.getText().isBlank()){
@@ -210,6 +212,8 @@ public class JanelaCaronaUsuario implements Initializable {
         return;
       }
 
+      clearTAS();
+
       updateListaPontos();
 
       updateListaPassageiros();
@@ -220,7 +224,14 @@ public class JanelaCaronaUsuario implements Initializable {
 
     }
 
+    private void clearTAS(){
 
+      taCarro.clear();
+      taMotorista.clear();
+      taPassageiros.clear();
+      taPontos.clear();
+
+    }
 
     private void updateListaCarona() {
 
@@ -242,7 +253,6 @@ public class JanelaCaronaUsuario implements Initializable {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
 
-      taPontos.clear();
       List<PontoParada> pontosList = repositorioPonto.getByCarona(carona.getId());
         
       for(PontoParada p : pontosList) {
@@ -254,8 +264,6 @@ public class JanelaCaronaUsuario implements Initializable {
     private void updateListaMotorista() {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
-
-      taMotorista.clear();
 
       Motorista motorista = repositorioMotorista.getById(carona.getId_motorista());
         
@@ -272,7 +280,6 @@ public class JanelaCaronaUsuario implements Initializable {
       Carona carona = caronas.getSelectionModel().getSelectedItem();
       Carro carro = repositorioCarro.getById(carona.getId_carro());
 
-      taCarro.clear();
       taCarro.appendText(carro.getModelo() + " " + carro.getCor() + ", Placa: " + carro.getPlaca());
       
     }
@@ -280,8 +287,6 @@ public class JanelaCaronaUsuario implements Initializable {
     private void updateListaPassageiros() {
 
       Carona carona = caronas.getSelectionModel().getSelectedItem();
-
-      taPassageiros.clear();
 
       List<SolicitacaoCarona> solicitacaoList = new ArrayList<>(repositorioSolicitacao.getAceitasByCarona(carona.getId()));
       List<Usuario> passageirosList = new ArrayList<>();
