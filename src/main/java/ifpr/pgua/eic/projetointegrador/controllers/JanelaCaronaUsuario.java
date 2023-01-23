@@ -203,7 +203,7 @@ public class JanelaCaronaUsuario implements Initializable {
       }
 
       for(Carona c : caronaList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
         listaCaronas.add(carona);
       }
       
@@ -217,9 +217,19 @@ public class JanelaCaronaUsuario implements Initializable {
       Carona cCarona = caronas.getSelectionModel().getSelectedItem();
 
       if(cCarona == null){
-        Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma carona");
+        Alert alert = new Alert(AlertType.INFORMATION, "Selecione uma carona!");
         alert.showAndWait(); 
         return;
+      }
+      
+      List<SolicitacaoCarona> solicitacoes = repositorioSolicitacao.getByPassageiro(repositorioUsuario.getUser().getId());
+
+      for(SolicitacaoCarona sc : solicitacoes){
+        if(sc.getId_carona() == cCarona.getId()){
+          Alert alert = new Alert(AlertType.INFORMATION, "Solicitação já realizada!");
+          alert.showAndWait(); 
+          return;
+        }
       }
 
       int idM = (Integer) motoristaId.getCellObservableValue(0).getValue();;
@@ -284,7 +294,7 @@ public class JanelaCaronaUsuario implements Initializable {
         
       for(Carona c : caronasList) {
         if(c.getId_motorista() != repositorioUsuario.getUser().getId()){
-          Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
+          Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), c.getDataCancelamento());
           listaCaronas.add(carona);
         }
       }
