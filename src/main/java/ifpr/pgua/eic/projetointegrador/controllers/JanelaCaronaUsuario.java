@@ -203,7 +203,7 @@ public class JanelaCaronaUsuario implements Initializable {
       }
 
       for(Carona c : caronaList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
         listaCaronas.add(carona);
       }
       
@@ -284,7 +284,7 @@ public class JanelaCaronaUsuario implements Initializable {
         
       for(Carona c : caronasList) {
         if(c.getId_motorista() != repositorioUsuario.getUser().getId()){
-          Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData());
+          Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
           listaCaronas.add(carona);
         }
       }

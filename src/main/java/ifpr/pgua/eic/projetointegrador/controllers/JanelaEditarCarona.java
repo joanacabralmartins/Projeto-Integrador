@@ -124,7 +124,7 @@ public class JanelaEditarCarona implements Initializable {
     @FXML
     private void editarCarona() throws ParseException{
 
-        boolean ativo = true;
+        String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
         int id_carro = carroRepository.getByPlaca(cbCarros.getValue()).getId();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -138,9 +138,8 @@ public class JanelaEditarCarona implements Initializable {
         LocalDate data = LocalDate.now();
         data = dpData.getValue();
         Date dataCarona = Date.valueOf(data);
-
-
-        Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, dataCarona);
+        
+        Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, null);
 
         Result resultado  = caronaRepository.update(caronaa);
 

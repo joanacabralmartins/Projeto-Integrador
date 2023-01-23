@@ -29,14 +29,14 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection();
                               
-      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data) VALUES (?,?,?,?,?,?,?,?,?)");
+      PreparedStatement pstm = con.prepareStatement("INSERT INTO carona(id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, data, dataCancelamento) VALUES (?,?,?,?,?,?,?,?,?,?)");
       
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());
       // pstm.setInt(4, carona.getQuantidadeLugares());
       pstm.setInt(4, carona.getLugaresDisponiveis());
-      pstm.setBoolean(5, true);
+      pstm.setString(5, carona.getStatus());
       // pstm.setInt(7, carona.getId_Origem());
       // pstm.setInt(8, carona.getId_Destino());
       pstm.setString(6, carona.getOrigem());
@@ -44,7 +44,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
       pstm.setDate(8, carona.getDataCadastro());
       pstm.setDate(9, carona.getData());
       // pstm.setDate(10, carona.getDataRemocao());
-      // pstm.setDate(11, carona.getDataCancelamento());
+      pstm.setDate(10, carona.getDataCancelamento());
 
       pstm.execute();
 
@@ -63,22 +63,30 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, ativo=?, origem=?, destino=?, data=? WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set id_motorista=?, id_carro=?, horarioSaida=?, lugaresDisponiveis=?, status=?, origem=?, destino=?, data=?, dataCancelamento=? WHERE id=?");
       pstm.setInt(1, carona.getId_motorista());
       pstm.setInt(2, carona.getId_carro());
       pstm.setTime(3, carona.getHorarioSaida());
       // pstm.setInt(4, carona.getQuantidadeLugares());
       pstm.setInt(4, carona.getLugaresDisponiveis());
-      pstm.setBoolean(5, carona.isAtivo());
+      if(carona.getStatus().matches("Cancelada")){
+        pstm.setInt(5, 0);
+      }else if(carona.getStatus().matches("Em curso")){
+        pstm.setInt(5, 1);
+      }else if(carona.getStatus().matches("Concluida")){
+        pstm.setInt(5, 2);
+      }else {
+        pstm.setInt(5, 3);
+      }
       // pstm.setInt(7, carona.getId_Origem());
       // pstm.setInt(8, carona.getId_Destino());
       pstm.setString(6, carona.getOrigem());
       pstm.setString(7, carona.getDestino());
       pstm.setDate(8, carona.getData());
       // pstm.setDate(9, carona.getDataRemocao());
-      // pstm.setDate(10, carona.getDataCancelamento());
+      pstm.setDate(9, carona.getDataCancelamento());
 
-      pstm.setInt(9, carona.getId());
+      pstm.setInt(10, carona.getId());
 
       pstm.execute();
 
@@ -97,9 +105,10 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set ativo=0 WHERE id=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 and dataCancelamento=? WHERE id=?");
       
-      pstm.setInt(1, carona.getId());
+      pstm.setDate(1, carona.getDataCancelamento());
+      pstm.setInt(2, carona.getId());
 
       pstm.execute();
 
@@ -154,7 +163,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona WHERE id_motorista=? and ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona WHERE id_motorista=? and status=1"); 
 
       pstm.setInt(1, id_motorista);
 
@@ -183,7 +192,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set ativo=0 WHERE id_motorista=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 WHERE id_motorista=?");
       
       pstm.setInt(1, id_motorista);
 
@@ -254,7 +263,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and destino=? and ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and destino=? and status=1"); 
 
       pstm.setString(1, origem);
       pstm.setString(2, destino);
@@ -286,7 +295,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where destino=? and ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where destino=? and status=1"); 
 
       pstm.setString(1, destino);
 
@@ -317,7 +326,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where origem=? and status=1"); 
 
       pstm.setString(1, origem);
 
@@ -348,7 +357,7 @@ public class JDBCCaronaDAO implements CaronaDAO{
 
       Connection con = fabricaConexao.getConnection();
 
-      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where ativo=1"); 
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona where status=1"); 
 
       ResultSet rs = pstm.executeQuery();
 
@@ -378,7 +387,28 @@ public class JDBCCaronaDAO implements CaronaDAO{
     Time horarioSaida = rs.getTime("horarioSaida");
     // int quantidadeLugares = rs.getInt("quantidadeLugares");
     int lugaresDisponiveis = rs.getInt("lugaresDisponiveis");
-    boolean ativo = rs.getBoolean("ativo");
+
+    int intStatus = rs.getInt("status");
+    String status;
+
+    if(intStatus == 0){
+
+      status = "Cancelada";
+
+    }else if(intStatus == 1){
+
+      status = "Em curso";
+
+    }else if(intStatus == 2){
+
+      status = "Concluida";
+
+    }else{
+
+      status = "Não identificado";
+
+    }
+
     // int id_origem = rs.getInt("id_origem");
     // int id_destino = rs.getInt("id_destino");
     String origem = rs.getString("origem");
@@ -386,9 +416,9 @@ public class JDBCCaronaDAO implements CaronaDAO{
     Date dataCadastro = rs.getDate("dataCadastro");
     Date data = rs.getDate("data");
     // Date dataRemocao = rs.getDate("dataRemocao");
-    // Date dataCancelamento = rs.getDate("dataCancelamento");
+    Date dataCancelamento = rs.getDate("dataCancelamento");
 
-    Carona carona = new Carona(id, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, ativo, origem, destino, dataCadastro, data);
+    Carona carona = new Carona(id, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, data, dataCancelamento);
 
     return carona;
 

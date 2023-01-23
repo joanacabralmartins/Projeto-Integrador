@@ -11,16 +11,15 @@ public class Carona {
     private Time horarioSaida;
     // private int quantidadeLugares;
     private int lugaresDisponiveis;
-    private boolean ativo;//0=inativa 1=ativa 2=removida 3=cancelada
+    private String status;//0=Cancelada 1=Em curso 2=Concluida
     // private int id_origem;
     // private int id_destino;
     private String origem;
     private String destino;
     private Date dataCadastro;
     private Date data;
+    private Date dataCancelamento;
     // private Date dataRemocao;
-    // private Date dataCancelamento;
-
 
     // public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int quantidadeLugares,
     //         int lugaresDisponiveis, boolean ativo, int id_origem, int id_destino, String origem, String destino, Date dataCadastro, Date data,
@@ -61,18 +60,19 @@ public class Carona {
     //     this.dataCancelamento = dataCancelamento;
     // }
 
-    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int lugaresDisponiveis, boolean ativo,
-            String origem, String destino, Date dataCadastro, Date data) {
+    public Carona(int id, int id_motorista, int id_carro, Time horarioSaida, int lugaresDisponiveis, String status,
+            String origem, String destino, Date dataCadastro, Date data, Date dataCancelamento) {
         this.id = id;
         this.id_motorista = id_motorista;
         this.id_carro = id_carro;
         this.horarioSaida = horarioSaida;
         this.lugaresDisponiveis = lugaresDisponiveis;
-        this.ativo = ativo;
+        this.status = status;
         this.origem = origem;
         this.destino = destino;
         this.dataCadastro = dataCadastro;
         this.data = data;
+        this.dataCancelamento = dataCancelamento;
     }
 
     public int getId() {
@@ -123,12 +123,12 @@ public class Carona {
         this.lugaresDisponiveis = lugaresDisponiveis;
     }
 
-    public boolean isAtivo() {
-        return ativo;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void setStatus(String status) {
+        this.status = status;
     }
      
     // public int getId_Origem() {
@@ -183,11 +183,11 @@ public class Carona {
     //     this.dataRemocao = dataRemocao;
     // }
 
-    // public Date getDataCancelamento() {
-    //     return dataCancelamento;
-    // }
+    public Date getDataCancelamento() {
+        return dataCancelamento;
+    }
 
-    // public void setDataCancelamento(Date dataCancelamento) {
-    //     this.dataCancelamento = dataCancelamento;
-    // }
+    public void setDataCancelamento(Date dataCancelamento) {
+        this.dataCancelamento = dataCancelamento;
+    }
 }

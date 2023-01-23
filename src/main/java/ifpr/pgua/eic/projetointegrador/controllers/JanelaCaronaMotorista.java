@@ -3,6 +3,7 @@ package ifpr.pgua.eic.projetointegrador.controllers;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -149,7 +150,10 @@ public class JanelaCaronaMotorista implements Initializable {
 
       int idC = cCarona.getId();
 
-      Result resultado = repositorioCarona.inativar(repositorioCarona.getById(idC));
+      Carona carona = repositorioCarona.getById(idC);
+      carona.setDataCancelamento(Date.valueOf(LocalDate.now()));
+
+      Result resultado = repositorioCarona.inativar(carona);
 
       String msg = resultado.getMsg();
       
@@ -187,7 +191,7 @@ public class JanelaCaronaMotorista implements Initializable {
       List<Carona> caronasList = new ArrayList<>(repositorioCarona.getByMotorista(repositorioMotorista.getUser().getId()));
         
       for(Carona c : caronasList) {
-        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.isAtivo(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData());
+        Carona carona = new Carona(c.getId(), c.getId_motorista(), c.getId_carro(), c.getHorarioSaida(), c.getLugaresDisponiveis(), c.getStatus(), c.getOrigem(), c.getDestino(), c.getDataCadastro(), c.getData(), null);
         listaCaronas.add(carona);
       }
       
