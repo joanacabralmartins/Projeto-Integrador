@@ -16,7 +16,7 @@
 
     -fx-padding: 10 0 5 20;
 
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTER-LEFT;
 }
 
 #btHome:hover,
