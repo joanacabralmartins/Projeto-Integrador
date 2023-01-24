@@ -7,7 +7,6 @@ import ifpr.pgua.eic.projetointegrador.controllers.JanelaCadastroUsuario;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotorista;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaMotoristaInicial;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaCaronaUsuario;
-import ifpr.pgua.eic.projetointegrador.controllers.JanelaCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro;
 import ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarMotorista;
@@ -124,9 +123,6 @@ public class App extends BaseAppNavigator {
 
         registraTela("OPCAO CADASTRO",
                 new ScreenRegistryFXML(getClass(), "fxml/opcao-cadastro.fxml", (o) -> new JanelaOpcaoCadastro()));
-
-        registraTela("CARROS", new ScreenRegistryFXML(getClass(), "fxml/carro.fxml",
-                (o) -> new JanelaCarro()));
 
         registraTela("GERENCIAR CARROS", new ScreenRegistryFXML(getClass(), "fxml/gerenciar-carros.fxml",
                 (o) -> new JanelaGerenciarCarros(motoristaRepository, carroRepository)));  

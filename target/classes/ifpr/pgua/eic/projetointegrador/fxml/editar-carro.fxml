@@ -13,6 +13,7 @@
 <Pane stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarro">
 
    <children>
+
       <Button alignment="BASELINE_LEFT" onAction="#voltar" style="-fx-background-color: #f4f4f4;" text="Voltar">
          <graphic>
             <ImageView id="imgVoltar" fitHeight="150.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
@@ -21,10 +22,11 @@
             <Insets left="10.0" top="10.0" />
          </padding>
       </Button>
-      <VBox alignment="CENTER_LEFT" layoutX="95.0" prefHeight="294.0" prefWidth="420.0" spacing="5.0">
+
+      <VBox alignment="CENTER_LEFT" layoutX="297.0" prefHeight="458.0" prefWidth="420.0" spacing="5.0">
       
          <padding>
-            <Insets top="60.0" />
+            <Insets top="15.0" />
          </padding>
       
          <Label text="Placa" />
@@ -56,6 +58,7 @@
          </TextField>
       
          <HBox prefHeight="24.0" prefWidth="427.0">
+
             <Button onAction="#editarCarro" prefHeight="24.0" prefWidth="220.0" text="Editar">
                <font>
                   <Font size="12.0" />
@@ -64,9 +67,11 @@
                   <Insets />
                </HBox.margin>
             </Button>
+
             <VBox.margin>
                <Insets top="5.0" />
             </VBox.margin>
+
          </HBox>
       
       </VBox>
