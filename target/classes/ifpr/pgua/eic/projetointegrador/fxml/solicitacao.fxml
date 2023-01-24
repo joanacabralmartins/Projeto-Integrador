@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
+<GridPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaSolicitacoes">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -25,34 +26,39 @@
   </rowConstraints>
 
   <children>
-
-    <VBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-
-      <children>
-
-        <Label text="Solicitações" />
-
-        <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="450.0">
-
-          <columns>
-            <TableColumn fx:id="colDataHora" prefWidth="190.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
-            <TableColumn fx:id="colCarona" prefWidth="120.0" style="-fx-alignment: center;" text="Id da Carona" />
-            <TableColumn fx:id="colStatus" prefWidth="138.0" style="-fx-alignment: center;" text="Status" />
-          </columns>
-
-        </TableView>
-
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-
-          <children>
-            <Button onAction="#cancelarSolicitacao" text="Cancelar" textAlignment="CENTER" />
-          </children>
-          
-        </HBox>
-
-      </children>
-
-    </VBox>
+      <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+      
+          <VBox alignment="CENTER" spacing="5.0">
+      
+            <children>
+      
+              <Label text="Minhas Solicitações" />
+      
+              <TableView fx:id="tbSolicitacoes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exibirDetalhes" prefHeight="270.0" prefWidth="390.0">
+      
+                <columns>
+                  <TableColumn fx:id="colDataHora" prefWidth="190.0" style="-fx-alignment: center;" text="Data/Hora da Solicitaçao" />
+                  <TableColumn fx:id="colCarona" prefWidth="110.0" style="-fx-alignment: center;" text="Id da Carona" />
+                  <TableColumn fx:id="colStatus" prefWidth="88.0" style="-fx-alignment: center;" text="Status" />
+                </columns>
+      
+              </TableView>
+      
+              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      
+                <children>
+                  <Button onAction="#cancelarSolicitacao" text="Cancelar" textAlignment="CENTER" />
+                </children>
+                
+              </HBox>
+      
+            </children>
+      
+          </VBox>
+            <TextArea fx:id="taDetalhes" editable="false" maxHeight="-Infinity" prefHeight="293.0" prefWidth="305.0" wrapText="true" />
+         </children>
+      </HBox>
 
   </children>
 

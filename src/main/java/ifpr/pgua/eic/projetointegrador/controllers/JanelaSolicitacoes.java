@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -20,12 +21,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class JanelaSolicitacoes implements Initializable {
 
     @FXML
     private TableView<SolicitacaoCarona> tbSolicitacoes;
+
+    @FXML
+    private TextArea taDetalhes;
 
     @FXML 
     private TableColumn<SolicitacaoCarona, String> colDataHora;
@@ -40,11 +46,13 @@ public class JanelaSolicitacoes implements Initializable {
 
     private SolicitacaoRepository repositorioS;
     private UsuarioRepository repositorioU;
+    private CaronaRepository repositorioC;
     private Usuario usuario;
 
-    public JanelaSolicitacoes(SolicitacaoRepository repositorioS, UsuarioRepository repositorioU) {
+    public JanelaSolicitacoes(SolicitacaoRepository repositorioS, UsuarioRepository repositorioU, CaronaRepository repositorioC) {
         this.repositorioS = repositorioS;
         this.repositorioU = repositorioU;
+        this.repositorioC = repositorioC;
     }
 
     @Override
@@ -71,6 +79,20 @@ public class JanelaSolicitacoes implements Initializable {
         }
         
         tbSolicitacoes.setItems(listaSolicitacaoCaronas);
+    }
+
+    @FXML
+    private void exibirDetalhes(MouseEvent evento) {
+        SolicitacaoCarona solicitacaoCarona = tbSolicitacoes.getSelectionModel().getSelectedItem();
+        String origem = repositorioC.getById(solicitacaoCarona.getId_carona()).getOrigem();
+        String destino = repositorioC.getById(solicitacaoCarona.getId_carona()).getDestino();
+
+        if (solicitacaoCarona != null) {
+            taDetalhes.clear();
+            taDetalhes.appendText("-- DETALHES DA CARONA --\n\n");
+            taDetalhes.appendText("Origem: " + origem + "\n");
+            taDetalhes.appendText("Destino: " + destino + "\n");
+        }
     }
 
     @FXML
