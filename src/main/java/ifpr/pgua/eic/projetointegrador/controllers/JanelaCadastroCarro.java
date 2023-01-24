@@ -61,7 +61,7 @@ public class JanelaCadastroCarro {
 
     @FXML
     private void voltar() {
-        App.changeScreenRegion("CARROS", BorderPaneRegion.CENTER);
+        App.changeScreenRegion("GERENCIAR CARROS", BorderPaneRegion.CENTER);
     }
 
 }

@@ -9,11 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" 
-stylesheets="@../CSS/styles.css" 
-xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros">
    
    <children>
 
@@ -59,8 +55,9 @@ fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarCarros
             <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="800.0" spacing="15.0">
 
                <children>
-                  <Button onAction="#carregaTelaEditarCarro" text="Editar" />
-                  <Button onAction="#inativarCarro" text="Remover" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#carregaTelaCadastrarCarro" prefWidth="75.0" text="Cadastrar" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#carregaTelaEditarCarro" prefWidth="75.0" text="Editar" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#inativarCarro" prefWidth="75.0" text="Remover" />
                </children>
 
             </HBox>

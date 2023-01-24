@@ -89,6 +89,11 @@ public class JanelaGerenciarCarros implements Initializable {
     }
 
     @FXML
+    private void carregaTelaCadastrarCarro() {       
+        App.changeScreenRegion("CADASTRO CARROS", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
     private void carregaTelaEditarCarro() {
 
         Carro carro = tbCarros.getSelectionModel().getSelectedItem();
