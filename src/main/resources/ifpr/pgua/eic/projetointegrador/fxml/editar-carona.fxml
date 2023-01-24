@@ -127,7 +127,7 @@
                   <children>
          
                      <Button onAction="#editarCarona" text="Salvar" textAlignment="CENTER" />
-                     <Button text="Gerenciar Passageiros" />
+                     <Button onAction="#carregaTelaGerenciarPassageiros" text="Gerenciar Passageiros" />
 
                   </children>
 

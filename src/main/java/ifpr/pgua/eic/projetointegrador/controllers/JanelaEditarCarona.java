@@ -24,6 +24,7 @@ import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
 import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -223,6 +224,11 @@ public class JanelaEditarCarona implements Initializable {
         }
         
         pontos.setItems(listaPontos);
+    }
+
+    @FXML
+    private void carregaTelaGerenciarPassageiros(ActionEvent evento) {
+        App.changeScreenRegion("GERENCIAR PASSAGEIROS", BorderPaneRegion.CENTER);
     }
 
     @FXML

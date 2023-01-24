@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <GridPane prefHeight="400.0" prefWidth="600.0" 
-  xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+  xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaGerenciarPassageiros">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -29,14 +30,14 @@
 
         <children>
 
-          <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="430.0">
+          <TableView fx:id="tbPassageiros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="430.0">
 
             <columns>
-              <TableColumn prefWidth="120.0" text="Nome" />
-              <TableColumn prefWidth="75.0" text="Funcao" />
-                <TableColumn prefWidth="75.0" text="Curso" />
-                <TableColumn prefWidth="90.0" text="Telefone" />
-                <TableColumn prefWidth="70.0" text="Idade" />
+              <TableColumn fx:id="colNome" prefWidth="120.0" text="Nome" />
+              <TableColumn fx:id="colFuncao" prefWidth="75.0" text="Funcao" />
+                <TableColumn fx:id="colCurso" prefWidth="75.0" text="Curso" />
+                <TableColumn fx:id="colTelefone" prefWidth="90.0" text="Telefone" />
+                <TableColumn fx:id="colIdade" prefWidth="70.0" text="Idade" />
             </columns>
 
           </TableView>
