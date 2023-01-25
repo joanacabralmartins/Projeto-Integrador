@@ -55,7 +55,6 @@ public class JanelaEditarCarro implements Initializable {
     private void editarCarro() {
 
         String msg;
-        int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
 
         if(tfPlaca.getText().isBlank() || tfModelo.getText().isBlank() || tfQuantidadeLugares.getText().isBlank() || tfCor.getText().isBlank()){
           msg = "Preencha todos os campos!";
@@ -65,6 +64,9 @@ public class JanelaEditarCarro implements Initializable {
 
           return;
         }
+
+        int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
+
         if(lugares < 1 || lugares > 99){
           msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
 
