@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -233,9 +234,10 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 WHERE id_motorista=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 and dataCancelamento=? WHERE id_motorista=?");
       
-      pstm.setInt(1, id_motorista);
+      pstm.setDate(1, Date.valueOf(LocalDate.now()));
+      pstm.setInt(2, id_motorista);
 
       pstm.execute();
 
@@ -252,9 +254,10 @@ public class JDBCCaronaDAO implements CaronaDAO{
     try {
       Connection con = fabricaConexao.getConnection(); 
       
-      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 WHERE id_carro=?");
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 and dataCancelamento=? WHERE id_carro=?");
       
-      pstm.setInt(1, id_carro);
+      pstm.setDate(1, Date.valueOf(LocalDate.now()));
+      pstm.setInt(2, id_carro);
 
       pstm.execute();
 
