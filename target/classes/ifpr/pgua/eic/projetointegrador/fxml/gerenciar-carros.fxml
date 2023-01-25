@@ -30,9 +30,9 @@
             <HBox alignment="TOP_CENTER" prefHeight="24.0" prefWidth="800.0" spacing="15.0">
 
                <children>
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#carregaTelaCadastrarCarro" prefWidth="75.0" text="Cadastrar" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#carregaTelaCadastrarCarro" prefWidth="85.0" text="Cadastrar" />
                   <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#carregaTelaEditarCarro" prefWidth="75.0" text="Editar" />
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#inativarCarro" prefWidth="75.0" text="Remover" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" onAction="#inativarCarro" prefWidth="85.0" text="Remover" />
                </children>
 
             </HBox>

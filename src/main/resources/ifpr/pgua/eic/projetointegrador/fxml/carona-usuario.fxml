@@ -83,7 +83,7 @@
               <TableColumn fx:id="caronaDestino" prefWidth="120.0" style="-fx-alignment: center;" text="Destino" />
               <TableColumn fx:id="caronaData" prefWidth="120.0" style="-fx-alignment: center;" text="Data" />
               <TableColumn fx:id="caronaHorario" prefWidth="120.0" style="-fx-alignment: center;" text="Horário" />
-              <TableColumn fx:id="caronaVagas" prefWidth="118.0" style="-fx-alignment: center;" text="Vagas" />
+              <TableColumn fx:id="caronaVagas" prefWidth="113.0" style="-fx-alignment: center;" text="Vagas" />
           </columns>
 
         </TableView>
@@ -97,7 +97,7 @@
               <children>
 
                 <Label text="Passageiros:" />
-                <TextArea fx:id="taPassageiros" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="325.0" editable="false" wrapText="true" />
+                <TextArea fx:id="taPassageiros" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="325.0" wrapText="true" />
 
               </children>
 
@@ -108,7 +108,7 @@
               <children>
       
                 <Label text="Pontos de Parada:" />
-                <TextArea fx:id="taPontos" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="240.0" editable="false" wrapText="true" />
+                <TextArea fx:id="taPontos" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="240.0" wrapText="true" />
       
               </children>
       
@@ -127,7 +127,7 @@
               <children>
 
                 <Label text="Motorista:" />
-                <TextArea fx:id="taMotorista" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="325.0" editable="false" wrapText="true" />
+                <TextArea fx:id="taMotorista" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="325.0" wrapText="true" />
 
               </children>
 
@@ -138,7 +138,7 @@
               <children>
 
                 <Label text="Carro:" />
-                <TextArea fx:id="taCarro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="240.0" editable="false" wrapText="true"/>
+                <TextArea fx:id="taCarro" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="240.0" wrapText="true" />
 
               </children>
 
