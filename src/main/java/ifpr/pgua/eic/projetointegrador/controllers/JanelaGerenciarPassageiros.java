@@ -12,13 +12,16 @@ import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class JanelaGerenciarPassageiros implements Initializable {
@@ -87,6 +90,37 @@ public class JanelaGerenciarPassageiros implements Initializable {
         tbPassageiros.setItems(listaPassageiros);
 
     }
+
+    @FXML
+    private void removerPassageiro() {
+
+        Usuario usuario = tbPassageiros.getSelectionModel().getSelectedItem();
+        List<SolicitacaoCarona> solicitacoes = new ArrayList<>(repositorioS.getAceitasByCarona(carona.getId()));
+        SolicitacaoCarona solicitacao = new SolicitacaoCarona(0, 0, 0, 0, null, null, null, null, null);
+        
+        if(usuario == null){
+            Alert alert = new Alert(AlertType.INFORMATION, "Selecione um passageiro");
+            alert.showAndWait(); 
+            return;
+        }
+
+        for(SolicitacaoCarona s : solicitacoes) {
+            if(usuario.getId() == s.getId_usuario()) {
+                solicitacao = s;
+            }
+        }
+        
+        Result resultado = repositorioS.remover(solicitacao);
+        
+        String msg = resultado.getMsg();
+
+        Alert alert = new Alert(AlertType.INFORMATION,msg);
+        alert.showAndWait();
+
+        updateList();
+
+    }
+
 
     @FXML
     private void voltar() {

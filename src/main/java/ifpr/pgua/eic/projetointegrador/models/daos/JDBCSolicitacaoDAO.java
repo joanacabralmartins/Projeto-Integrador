@@ -160,11 +160,18 @@ public class JDBCSolicitacaoDAO implements SolicitacaoDAO {
             
             PreparedStatement pstm = con.prepareStatement("UPDATE solicitacao set status=4, dataHora_remocao=? WHERE id=?");
             
-            pstm.setString(1, String.valueOf(solicitacao.getDataHora_Remocao()));
+            pstm.setString(1, String.valueOf(LocalDateTime.now()));
             pstm.setInt(2, solicitacao.getId());
 
             pstm.execute();
+            pstm.close();
 
+            pstm = con.prepareStatement("UPDATE carona set lugaresDisponiveis=lugaresDisponiveis+1 WHERE id=?");
+
+            pstm.setInt(1, solicitacao.getId_carona());
+
+            pstm.execute();
+            
             pstm.close();
             con.close();
 

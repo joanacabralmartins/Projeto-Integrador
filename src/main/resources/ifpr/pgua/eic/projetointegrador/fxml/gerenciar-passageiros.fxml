@@ -42,7 +42,7 @@
 
           </TableView>
 
-          <Button text="Remover" textAlignment="CENTER" />
+          <Button onAction="#removerPassageiro" text="Remover" textAlignment="CENTER" />
 
         </children>
 
