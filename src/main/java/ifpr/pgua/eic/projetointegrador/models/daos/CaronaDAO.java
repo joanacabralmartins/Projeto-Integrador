@@ -12,6 +12,7 @@ public interface CaronaDAO {
     Result inativar(Carona carona);
     Carona getCarona();
     void selecionarCarona(Carona carona);
+    List<Carona> getByCarro(int id_carro);
     void adicionarLugarDisponivel(int id_carona);
     void subtrairLugarDisponivel(int id_carona);
     List<Carona> getByMotorista(int id_motorista);

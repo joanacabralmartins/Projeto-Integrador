@@ -198,6 +198,37 @@ public class JDBCCaronaDAO implements CaronaDAO{
   }
 
   @Override
+  public List<Carona> getByCarro(int id_carro) {
+
+    try {
+
+      Connection con = fabricaConexao.getConnection();
+
+      PreparedStatement pstm = con.prepareStatement("SELECT * FROM carona WHERE id_carro=? and status=1"); 
+
+      pstm.setInt(1, id_carro);
+
+      ResultSet rs = pstm.executeQuery();
+
+      ArrayList <Carona> caronas = new ArrayList<Carona>();
+
+      while (rs.next()) {
+        caronas.add(buildFrom(rs));
+      } 
+
+      rs.close();
+      pstm.close();
+      con.close();
+
+      return caronas;
+
+    } catch(SQLException e) {
+      System.out.println(e.getMessage());
+      return Collections.emptyList();
+    }   
+  }
+
+  @Override
   public void inativarByMotorista(int id_motorista) {
     try {
       Connection con = fabricaConexao.getConnection(); 

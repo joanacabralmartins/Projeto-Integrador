@@ -125,7 +125,7 @@ public class App extends BaseAppNavigator {
                 new ScreenRegistryFXML(getClass(), "fxml/opcao-cadastro.fxml", (o) -> new JanelaOpcaoCadastro()));
 
         registraTela("GERENCIAR CARROS", new ScreenRegistryFXML(getClass(), "fxml/gerenciar-carros.fxml",
-                (o) -> new JanelaGerenciarCarros(motoristaRepository, carroRepository)));  
+                (o) -> new JanelaGerenciarCarros(motoristaRepository, carroRepository, caronaRepository)));  
 
         registraTela("CADASTRO CARROS", new ScreenRegistryFXML(getClass(), "fxml/cadastro-carro.fxml",
                 (o) -> new JanelaCadastroCarro(motoristaRepository, carroRepository)));

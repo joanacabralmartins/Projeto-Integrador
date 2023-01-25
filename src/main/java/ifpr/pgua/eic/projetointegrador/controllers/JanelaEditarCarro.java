@@ -31,15 +31,15 @@ public class JanelaEditarCarro implements Initializable {
     @FXML
     private TextField tfCor;
 
-    private MotoristaRepository repositorioM;
-    private CarroRepository repositorioC;
+    private MotoristaRepository repositorioMotorista;
+    private CarroRepository repositorioCarro;
     private Carro carro;
 
     
-    public JanelaEditarCarro(MotoristaRepository repositorioM, CarroRepository repositorioC) {
-        this.repositorioM = repositorioM;
-        this.repositorioC = repositorioC;
-        carro = repositorioC.getCarro();
+    public JanelaEditarCarro(MotoristaRepository repositorioMotorista, CarroRepository repositorioCarro) {
+        this.repositorioMotorista = repositorioMotorista;
+        this.repositorioCarro = repositorioCarro;
+        carro = repositorioCarro.getCarro();
     }
 
     @Override
@@ -76,9 +76,9 @@ public class JanelaEditarCarro implements Initializable {
           return;
         }
 
-        carro = new Carro(repositorioC.getCarro().getId(), tfPlaca.getText(), tfModelo.getText(), lugares ,tfCor.getText(), repositorioM.getUser().getId(), true);
+        carro = new Carro(repositorioCarro.getCarro().getId(), tfPlaca.getText(), tfModelo.getText(), lugares ,tfCor.getText(), repositorioMotorista.getUser().getId(), true);
         
-        Result resultado = repositorioC.update(carro);
+        Result resultado = repositorioCarro.update(carro);
         
         msg = resultado.getMsg();
 

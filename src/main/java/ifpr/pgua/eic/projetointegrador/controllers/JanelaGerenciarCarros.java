@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
+import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
+import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -43,12 +45,14 @@ public class JanelaGerenciarCarros implements Initializable {
 
     private ObservableList<Carro> listaCarros = FXCollections.observableArrayList();
 
-    private MotoristaRepository repositorioM;
-    private CarroRepository repositorioC;
+    private MotoristaRepository repositorioMotorista;
+    private CarroRepository repositorioCarro;
+    private CaronaRepository repositorioCarona;
 
-    public JanelaGerenciarCarros(MotoristaRepository repositorioM, CarroRepository repositorioC) {
-        this.repositorioM = repositorioM;
-        this.repositorioC = repositorioC;
+    public JanelaGerenciarCarros(MotoristaRepository repositorioMotorista, CarroRepository repositorioCarro, CaronaRepository repositorioCarona) {
+        this.repositorioMotorista = repositorioMotorista;
+        this.repositorioCarro = repositorioCarro;
+        this.repositorioCarona = repositorioCarona;
     }
 
     @Override
@@ -77,7 +81,7 @@ public class JanelaGerenciarCarros implements Initializable {
             return;
         }
         
-        Result resultado = repositorioC.inativar(carro);
+        Result resultado = repositorioCarro.inativar(carro);
         
         String msg = resultado.getMsg();
 
@@ -103,8 +107,18 @@ public class JanelaGerenciarCarros implements Initializable {
             alert.showAndWait(); 
             return;
         }
+        
+        List<Carona> caronas = repositorioCarona.getByCarro(carro.getId());
 
-        repositorioC.selecionarCarro(carro);
+        if(!caronas.isEmpty()){
+
+          Alert alert = new Alert(AlertType.INFORMATION, "Carro não pode ser modificado pois já está sendo utilizado em carona(s)!");
+          alert.showAndWait();
+
+          return;
+        }
+
+        repositorioCarro.selecionarCarro(carro);
         
         App.changeScreenRegion("EDITAR CARRO", BorderPaneRegion.CENTER);
 
@@ -113,7 +127,7 @@ public class JanelaGerenciarCarros implements Initializable {
     private void updateList() {
 
         listaCarros.clear();
-        List<Carro> carros = new ArrayList<>(repositorioC.listar(repositorioM.getUser().getId()));
+        List<Carro> carros = new ArrayList<>(repositorioCarro.listar(repositorioMotorista.getUser().getId()));
         
         for(Carro c : carros) {
             Carro carro = new Carro(c.getId(), c.getPlaca(), c.getModelo(), c.getQuantidadeLugares(), c.getCor(), c.getId__motorista(), c.isAtivo());

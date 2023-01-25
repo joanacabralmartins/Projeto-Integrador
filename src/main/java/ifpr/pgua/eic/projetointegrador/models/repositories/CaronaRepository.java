@@ -34,6 +34,10 @@ public class CaronaRepository {
     dao.selecionarCarona(carona);
   }
 
+  public List<Carona> getByCarro(int id_carro){
+    return dao.getByCarro(id_carro);
+  }
+
   public void adicionarLugarDisponivel(int id_carona) {
     dao.adicionarLugarDisponivel(id_carona);
   }
