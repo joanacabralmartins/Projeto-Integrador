@@ -82,6 +82,7 @@ public class JanelaGerenciarCarros implements Initializable {
         }
         
         Result resultado = repositorioCarro.inativar(carro);
+        repositorioCarona.inativarByCarro(carro.getId());
         
         String msg = resultado.getMsg();
 
@@ -107,7 +108,7 @@ public class JanelaGerenciarCarros implements Initializable {
             alert.showAndWait(); 
             return;
         }
-        
+
         List<Carona> caronas = repositorioCarona.getByCarro(carro.getId());
 
         if(!caronas.isEmpty()){

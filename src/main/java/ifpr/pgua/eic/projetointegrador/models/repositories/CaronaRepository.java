@@ -54,6 +54,10 @@ public class CaronaRepository {
     dao.inativarByMotorista(id_motorista);
   }
 
+  public void inativarByCarro(int id_carro){
+    dao.inativarByCarro(id_carro);
+  }
+
   public List<Carona> getByDestino(String destino){
     return dao.getByDestino(destino);
   }

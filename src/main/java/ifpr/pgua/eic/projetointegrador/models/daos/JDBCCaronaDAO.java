@@ -247,6 +247,25 @@ public class JDBCCaronaDAO implements CaronaDAO{
     }
   }
 
+  @Override
+  public void inativarByCarro(int id_carro) {
+    try {
+      Connection con = fabricaConexao.getConnection(); 
+      
+      PreparedStatement pstm = con.prepareStatement("UPDATE carona set status=0 WHERE id_carro=?");
+      
+      pstm.setInt(1, id_carro);
+
+      pstm.execute();
+
+      pstm.close();
+      con.close();
+
+    } catch(SQLException e){
+      System.out.println(e.getMessage());
+    }
+  }
+
   @Override 
   public Carona getCarona(){
     return carona;

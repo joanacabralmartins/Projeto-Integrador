@@ -17,6 +17,7 @@ public interface CaronaDAO {
     void subtrairLugarDisponivel(int id_carona);
     List<Carona> getByMotorista(int id_motorista);
     void inativarByMotorista(int id_motorista);
+    void inativarByCarro(int id_carro);
     List<Carona> getByOrigem(String origem);
     List<Carona> getByDestino(String destino);
     List<Carona> getByOrigemAndDestino(String origem, String destino);
