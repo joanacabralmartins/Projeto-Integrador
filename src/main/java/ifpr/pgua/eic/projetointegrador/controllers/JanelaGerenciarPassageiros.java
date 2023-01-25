@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
+import ifpr.pgua.eic.projetointegrador.utils.BorderPaneRegion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -84,5 +86,10 @@ public class JanelaGerenciarPassageiros implements Initializable {
         
         tbPassageiros.setItems(listaPassageiros);
 
+    }
+
+    @FXML
+    private void voltar() {
+      App.changeScreenRegion("EDITAR CARONA", BorderPaneRegion.CENTER);
     }
 }
