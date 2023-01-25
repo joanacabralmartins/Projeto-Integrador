@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 
 public class JanelaEditarCarro implements Initializable {
     
@@ -47,18 +48,37 @@ public class JanelaEditarCarro implements Initializable {
       tfModelo.setText(carro.getModelo());
       tfQuantidadeLugares.setText(String.valueOf(carro.getQuantidadeLugares()));
       tfCor.setText(carro.getCor()); 
+      tfQuantidadeLugares.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
     }
 
     @FXML
     private void editarCarro() {
 
+        String msg;
         int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
+
+        if(tfPlaca.getText().isBlank() || tfModelo.getText().isBlank() || tfQuantidadeLugares.getText().isBlank() || tfCor.getText().isBlank()){
+          msg = "Preencha todos os campos!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
+        if(lugares < 1 || lugares > 99){
+          msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
 
         carro = new Carro(repositorioC.getCarro().getId(), tfPlaca.getText(), tfModelo.getText(), lugares ,tfCor.getText(), repositorioM.getUser().getId(), true);
         
         Result resultado = repositorioC.update(carro);
         
-        String msg = resultado.getMsg();
+        msg = resultado.getMsg();
 
         Alert alert = new Alert(AlertType.INFORMATION,msg);
         alert.showAndWait();
