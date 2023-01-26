@@ -56,7 +56,7 @@
 
                            <children>
                               <Label text="Data" />
-                              <DatePicker fx:id="dpData" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
+                              <DatePicker fx:id="dpData" editable="false" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
                            </children>
 
                         </VBox>

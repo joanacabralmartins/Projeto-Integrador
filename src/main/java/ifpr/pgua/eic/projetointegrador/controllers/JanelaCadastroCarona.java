@@ -27,12 +27,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 
 public class JanelaCadastroCarona implements Initializable {
-
-    @FXML
-    private TextField tfDescricao;
     
     @FXML
     private TextField tfHorarioSaida;
@@ -48,12 +46,6 @@ public class JanelaCadastroCarona implements Initializable {
 
     @FXML
     private DatePicker dpData;
-
-    @FXML
-    private Date dRemocao;
-
-    @FXML
-    private Date dCancelamento;
 
     @FXML
     private ComboBox<String> cbCarros;
@@ -88,10 +80,42 @@ public class JanelaCadastroCarona implements Initializable {
         }        
 
         cbCarros.setItems(listaCarros);
+        cbCarros.setValue(listaCarros.get(0));
+
+        dpData.setValue(LocalDate.now());
+
+        tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
     }
 
     @FXML
     private void cadastrarCarona() throws ParseException{
+
+        String msg;
+
+        if(tfDestino.getText().isBlank() || tfHorarioSaida.getText().isBlank() || tfLugaresDisponiveis.getText().isBlank() || tfOrigem.getText().isBlank()) {
+          msg = "Preencha todos os campos!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
+        if(dpData.getValue().isBefore(LocalDate.now())){
+          msg = "Data não válida!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
+        if(!validarHorario(tfHorarioSaida.getText())){
+          msg = "Horário não válido!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
 
         String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
@@ -115,7 +139,7 @@ public class JanelaCadastroCarona implements Initializable {
 
         Result resultado  = caronaRepository.create(carona);
 
-        String msg = resultado.getMsg();
+        msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
@@ -129,6 +153,15 @@ public class JanelaCadastroCarona implements Initializable {
             alert.showAndWait();
         }
 
+    }
+
+    public static boolean validarHorario(String horario) {
+        try {
+            String[] hora = horario.split(":");
+            return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @FXML
