@@ -1,15 +1,18 @@
 package ifpr.pgua.eic.projetointegrador.controllers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Motorista;
+import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Usuario;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
@@ -31,36 +34,38 @@ public class JanelaUsuario implements Initializable {
     @FXML
     private TextField tfFuncao;
 
-    private MotoristaRepository repositorioM;
-    private UsuarioRepository repositorioU;
-    private CarroRepository repositorioC;
+    private MotoristaRepository repositorioMotorista;
+    private UsuarioRepository repositorioUsuario;
+    private CarroRepository repositorioCarro;
     private CaronaRepository repositorioCarona;
+    private SolicitacaoRepository repositorioSolicitacao;
 
     private Usuario usuario;
     private Motorista motorista;
 
-    public JanelaUsuario(MotoristaRepository repositorioMotorista, UsuarioRepository repositorioUsuario, CarroRepository repositorioCarro, CaronaRepository repositorioCarona) {
-        repositorioM = repositorioMotorista;
-        repositorioU = repositorioUsuario;
-        repositorioC = repositorioCarro;
+    public JanelaUsuario(MotoristaRepository repositorioMotorista, UsuarioRepository repositorioUsuario, CarroRepository repositorioCarro, CaronaRepository repositorioCarona, SolicitacaoRepository repositorioSolicitacao) {
+        this.repositorioMotorista = repositorioMotorista;
+        this.repositorioUsuario = repositorioUsuario;
+        this.repositorioCarro = repositorioCarro;
         this.repositorioCarona = repositorioCarona;
+        this.repositorioSolicitacao = repositorioSolicitacao;
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         String nome = null, funcao = null;
 
-        if(repositorioU.getUser() != null) {
-            nome = repositorioU.getUser().getNome();
-            funcao = repositorioU.getUser().getFuncao_IFPR();
+        if(repositorioUsuario.getUser() != null) {
+            nome = repositorioUsuario.getUser().getNome();
+            funcao = repositorioUsuario.getUser().getFuncao_IFPR();
 
-            usuario = repositorioU.getUser();
+            usuario = repositorioUsuario.getUser();
         } 
-        if (repositorioM.getUser() != null) {
-            nome = repositorioM.getUser().getNome();
-            funcao = repositorioM.getUser().getFuncao_IFPR();
+        if (repositorioMotorista.getUser() != null) {
+            nome = repositorioMotorista.getUser().getNome();
+            funcao = repositorioMotorista.getUser().getFuncao_IFPR();
 
-            motorista = repositorioM.getUser();
+            motorista = repositorioMotorista.getUser();
         }
         
         tfNome.setText(nome);
@@ -69,7 +74,7 @@ public class JanelaUsuario implements Initializable {
 
     @FXML
     private void carregaTelaEditarUsuario(ActionEvent evento) {
-        if (repositorioM.getUser() == null) {
+        if (repositorioMotorista.getUser() == null) {
             App.changeScreenRegion("EDITAR USUARIO", BorderPaneRegion.CENTER);
         } else {
             App.changeScreenRegion("EDITAR MOTORISTA", BorderPaneRegion.CENTER);
@@ -85,16 +90,22 @@ public class JanelaUsuario implements Initializable {
         String msg = null;
 
         if (result.get() == ButtonType.OK) {
+
             if(motorista != null) {
-                resultado = repositorioM.inativar(motorista);
-                resultado = repositorioU.inativar(usuario);
-                repositorioC.inativarByMotorista(motorista.getId());
+                repositorioMotorista.inativar(motorista);
+                repositorioCarro.inativarByMotorista(motorista.getId());
                 repositorioCarona.inativarByMotorista(motorista.getId());
-                msg = resultado.getMsg();
-            }else if (usuario != null) {
-                resultado = repositorioU.inativar(usuario);
-                msg = resultado.getMsg();
             }
+
+            List<SolicitacaoCarona> solicitacoes = repositorioSolicitacao.getByPassageiro(usuario.getId());
+
+            for(SolicitacaoCarona sc : solicitacoes){
+                repositorioSolicitacao.cancelar(sc);
+            }
+
+            resultado = repositorioUsuario.inativar(usuario);
+            msg = resultado.getMsg();
+
         } else {
             return;
         }
