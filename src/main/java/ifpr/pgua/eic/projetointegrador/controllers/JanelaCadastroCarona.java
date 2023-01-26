@@ -117,6 +117,17 @@ public class JanelaCadastroCarona implements Initializable {
           return;
         }
 
+        int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
+        
+        if(lugares < 1 || lugares > 99){
+          msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+
+          Alert alert = new Alert(AlertType.INFORMATION,msg);
+          alert.showAndWait();
+
+          return;
+        }
+
         String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
         int id_carro = carroRepository.getByPlaca(cbCarros.getValue()).getId();
