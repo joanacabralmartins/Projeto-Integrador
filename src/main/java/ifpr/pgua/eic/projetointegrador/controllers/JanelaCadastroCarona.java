@@ -84,7 +84,7 @@ public class JanelaCadastroCarona implements Initializable {
 
         dpData.setValue(LocalDate.now());
 
-        tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+        tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("[0-9]*")) ? change : null));
     }
 
     @FXML

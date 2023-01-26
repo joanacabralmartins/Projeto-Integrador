@@ -44,7 +44,7 @@ public class JanelaCadastroCarro implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        tfQuantidadeLugares.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+        tfQuantidadeLugares.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("[0-9]*")) ? change : null));
     }
 
     @FXML
