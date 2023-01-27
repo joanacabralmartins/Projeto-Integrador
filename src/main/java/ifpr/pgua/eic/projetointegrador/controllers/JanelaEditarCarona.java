@@ -33,6 +33,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -93,6 +94,8 @@ public class JanelaEditarCarona implements Initializable {
 
         this.carona = caronaRepository.getCarona();
 
+        tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("[0-9]*")) ? change : null));
+
         List<Carro> carros = carroRepository.listar(motoristaRepository.getUser().getId());
 
         listaCarros.clear();
@@ -125,13 +128,50 @@ public class JanelaEditarCarona implements Initializable {
     @FXML
     private void editarCarona() throws ParseException{
 
+        String msg;
+
+        if(tfDestino.getText().isBlank() || tfHorarioSaida.getText().isBlank() || tfLugaresDisponiveis.getText().isBlank() || tfOrigem.getText().isBlank()) {
+            msg = "Preencha todos os campos!";
+  
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+  
+            return;
+          }
+          if(dpData.getValue().isBefore(LocalDate.now())){
+            msg = "Data não válida!";
+  
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+  
+            return;
+          }
+          if(!validarHorario(tfHorarioSaida.getText())){
+            msg = "Horário não válido!";
+  
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+  
+            return;
+          }
+  
+          int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
+          
+          if(lugares < 1 || lugares > 99){
+            msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+  
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+  
+            return;
+          }
+
         String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
         int id_carro = carroRepository.getByPlaca(cbCarros.getValue()).getId();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         long l = sdf.parse(tfHorarioSaida.getText()).getTime();
         Time horarioSaida = new Time(l);
-        int lugaresDisponiveis = Integer.parseInt(tfLugaresDisponiveis.getText());
         String origem = tfOrigem.getText();
         String destino = tfDestino.getText();
         Date dataCadastro = Date.valueOf(LocalDate.now());
@@ -140,11 +180,11 @@ public class JanelaEditarCarona implements Initializable {
         data = dpData.getValue();
         Date dataCarona = Date.valueOf(data);
         
-        Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, dataCarona, null);
+        Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugares, status, origem, destino, dataCadastro, dataCarona, null);
 
         Result resultado  = caronaRepository.update(caronaa);
 
-        String msg = resultado.getMsg();
+        msg = resultado.getMsg();
 
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
@@ -224,6 +264,15 @@ public class JanelaEditarCarona implements Initializable {
         }
         
         pontos.setItems(listaPontos);
+    }
+
+    private boolean validarHorario(String horario) {
+        try {
+            String[] hora = horario.split(":");
+            return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @FXML

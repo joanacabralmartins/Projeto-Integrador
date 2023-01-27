@@ -134,7 +134,6 @@ public class JanelaCadastroCarona implements Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         long l = sdf.parse(tfHorarioSaida.getText()).getTime();
         Time horarioSaida = new Time(l);
-        int lugaresDisponiveis = Integer.parseInt(tfLugaresDisponiveis.getText());
         String origem = tfOrigem.getText();
         String destino = tfDestino.getText();
         Date dataCadastro = Date.valueOf(LocalDate.now());
@@ -146,7 +145,7 @@ public class JanelaCadastroCarona implements Initializable {
         Date diaCarona = Date.valueOf(data);
 
 
-        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugaresDisponiveis, status, origem, destino, dataCadastro, diaCarona, null);
+        Carona carona = new Carona(0, id_motorista, id_carro, horarioSaida, lugares, status, origem, destino, dataCadastro, diaCarona, null);
 
         Result resultado  = caronaRepository.create(carona);
 
@@ -166,7 +165,7 @@ public class JanelaCadastroCarona implements Initializable {
 
     }
 
-    public static boolean validarHorario(String horario) {
+    private boolean validarHorario(String horario) {
         try {
             String[] hora = horario.split(":");
             return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60;
