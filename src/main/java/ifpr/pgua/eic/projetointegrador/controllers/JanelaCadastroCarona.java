@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.google.protobuf.Value;
+
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
@@ -85,6 +87,7 @@ public class JanelaCadastroCarona implements Initializable {
         dpData.setValue(LocalDate.now());
 
         tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("[0-9]*")) ? change : null));
+        tfLugaresDisponiveis.setText(String.valueOf(carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()-1));
     }
 
     @FXML
@@ -126,6 +129,14 @@ public class JanelaCadastroCarona implements Initializable {
           alert.showAndWait();
 
           return;
+        }
+        if(lugares >= carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()){
+            msg = "O veiculo selecionado não suporta a quantidade de passageiros!";
+
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+
+            return;
         }
 
         String status = "Em curso";
@@ -172,6 +183,11 @@ public class JanelaCadastroCarona implements Initializable {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @FXML
+    private void atualizarLugares() {
+        tfLugaresDisponiveis.setText(String.valueOf(carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()-1));
     }
 
     @FXML

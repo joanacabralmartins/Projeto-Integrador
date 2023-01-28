@@ -132,39 +132,47 @@ public class JanelaEditarCarona implements Initializable {
 
         if(tfDestino.getText().isBlank() || tfHorarioSaida.getText().isBlank() || tfLugaresDisponiveis.getText().isBlank() || tfOrigem.getText().isBlank()) {
             msg = "Preencha todos os campos!";
-  
+
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-  
+
             return;
-          }
-          if(dpData.getValue().isBefore(LocalDate.now())){
+        }
+        if(dpData.getValue().isBefore(LocalDate.now())){
             msg = "Data não válida!";
-  
+
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-  
+
             return;
-          }
-          if(!validarHorario(tfHorarioSaida.getText())){
+        }
+        if(!validarHorario(tfHorarioSaida.getText())){
             msg = "Horário não válido!";
-  
+
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-  
+
             return;
-          }
-  
-          int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
-          
-          if(lugares < 1 || lugares > 99){
+        }
+
+        int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
+        
+        if(lugares < 1 || lugares > 99){
             msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
-  
+
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-  
+
             return;
-          }
+        }
+        if(lugares >= carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()){
+            msg = "O veiculo selecionado não suporta a quantidade de passageiros!";
+
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+
+            return;
+        }
 
         String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
@@ -278,6 +286,11 @@ public class JanelaEditarCarona implements Initializable {
     @FXML
     private void carregaTelaGerenciarPassageiros(ActionEvent evento) {
         App.changeScreenRegion("GERENCIAR PASSAGEIROS", BorderPaneRegion.CENTER);
+    }
+
+    @FXML
+    private void atualizarLugares() {
+        tfLugaresDisponiveis.setText(String.valueOf(carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()-1));
     }
 
     @FXML
