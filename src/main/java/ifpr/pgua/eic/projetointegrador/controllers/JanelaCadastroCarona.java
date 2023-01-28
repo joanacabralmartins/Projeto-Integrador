@@ -9,8 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.google.protobuf.Value;
-
 import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
