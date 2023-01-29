@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.projetointegrador.controllers.JanelaEditarCarona">
 
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
@@ -101,7 +101,7 @@
                         <children>
 
                            <Label text="Horário de saída" />
-                           <TextField fx:id="tfHorarioSaida" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" />
+                           <TextField fx:id="tfHorarioSaida" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" prefHeight="23.0" prefWidth="150.0" promptText="HH:MM:SS / HH:MM" />
                         
                         </children>
 
