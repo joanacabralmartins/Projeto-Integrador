@@ -14,10 +14,12 @@ import ifpr.pgua.eic.projetointegrador.App;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carona;
 import ifpr.pgua.eic.projetointegrador.models.entities.Carro;
 import ifpr.pgua.eic.projetointegrador.models.entities.PontoParada;
+import ifpr.pgua.eic.projetointegrador.models.entities.SolicitacaoCarona;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CaronaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.CarroRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.MotoristaRepository;
 import ifpr.pgua.eic.projetointegrador.models.repositories.PontoRepository;
+import ifpr.pgua.eic.projetointegrador.models.repositories.SolicitacaoRepository;
 import ifpr.pgua.eic.projetointegrador.models.results.FailResult;
 import ifpr.pgua.eic.projetointegrador.models.results.Result;
 import ifpr.pgua.eic.projetointegrador.models.results.SuccessResult;
@@ -78,15 +80,18 @@ public class JanelaEditarCarona implements Initializable {
 
     private PontoRepository pontoRepository;
 
+    private SolicitacaoRepository solicitacaoRepository;
+
     private Carona carona;
 
     public JanelaEditarCarona(CaronaRepository caronaRepository, CarroRepository carroRepository,
-            MotoristaRepository motoristaRepository, PontoRepository pontoRepository) {
+            MotoristaRepository motoristaRepository, PontoRepository pontoRepository, SolicitacaoRepository solicitacaoRepository) {
 
         this.caronaRepository = caronaRepository;
         this.carroRepository = carroRepository;
         this.motoristaRepository = motoristaRepository;
         this.pontoRepository = pontoRepository;
+        this.solicitacaoRepository = solicitacaoRepository;
     }
 
     @Override
@@ -166,7 +171,20 @@ public class JanelaEditarCarona implements Initializable {
             return;
         }
         if(lugares >= carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()){
-            msg = "O veiculo selecionado não suporta a quantidade de passageiros!";
+            msg = "O veiculo selecionado não suporta a quantidade de lugares disponiveis!";
+
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+
+            return;
+        }
+
+        List<SolicitacaoCarona> scAceitas = solicitacaoRepository.getAceitasByCarona(caronaRepository.getCarona().getId());
+
+        lugares = lugares - scAceitas.size();
+
+        if(lugares < 0){
+            msg = "A quantidade de lugares disponiveis nao suporta a atual quantidade de passageiros!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
