@@ -6,6 +6,8 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -143,6 +145,7 @@ public class JanelaEditarCarona implements Initializable {
 
             return;
         }
+        
         if(dpData.getValue().isBefore(LocalDate.now())){
             msg = "Data não válida!";
 
@@ -151,7 +154,22 @@ public class JanelaEditarCarona implements Initializable {
 
             return;
         }
+
         if(!validarHorario(tfHorarioSaida.getText())){
+            msg = "Horário não válido!";
+
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+
+            return;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        long l = sdf.parse(tfHorarioSaida.getText()).getTime();
+        Time horarioSaida = new Time(l);
+        LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + tfHorarioSaida.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+
+        if(ldt.isBefore(LocalDateTime.now())){
             msg = "Horário não válido!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
@@ -195,9 +213,7 @@ public class JanelaEditarCarona implements Initializable {
         String status = "Em curso";
         int id_motorista = motoristaRepository.getUser().getId();
         int id_carro = carroRepository.getByPlaca(cbCarros.getValue()).getId();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        long l = sdf.parse(tfHorarioSaida.getText()).getTime();
-        Time horarioSaida = new Time(l);
+
         String origem = tfOrigem.getText();
         String destino = tfDestino.getText();
         Date dataCadastro = Date.valueOf(LocalDate.now());
