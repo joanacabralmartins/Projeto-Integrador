@@ -71,7 +71,7 @@
                      <Insets bottom="-2.0" top="6.0" />
                   </VBox.margin>
                </Label>
-               <DatePicker fx:id="dpDataNascimento" prefHeight="24.0" prefWidth="306.0">
+               <DatePicker fx:id="dpDataNascimento" editable="false" prefHeight="24.0" prefWidth="306.0">
                   <VBox.margin>
                      <Insets right="200.0" />
                   </VBox.margin>
