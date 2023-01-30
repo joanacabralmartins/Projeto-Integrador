@@ -202,8 +202,7 @@ public class JanelaEditarCarona implements Initializable {
         String destino = tfDestino.getText();
         Date dataCadastro = Date.valueOf(LocalDate.now());
 
-        LocalDate data = LocalDate.now();
-        data = dpData.getValue();
+        LocalDate data = dpData.getValue();
         Date dataCarona = Date.valueOf(data);
         
         Carona caronaa = new Carona(carona.getId(), id_motorista, id_carro, horarioSaida, lugares, status, origem, destino, dataCadastro, dataCarona, null);

@@ -149,8 +149,7 @@ public class JanelaCadastroCarona implements Initializable {
         // Date dataRemocao = null;
         // Date dataCacelamento = null;
 
-        LocalDate data = LocalDate.now();
-        data = dpData.getValue();
+        LocalDate data = dpData.getValue();
         Date diaCarona = Date.valueOf(data);
 
 
@@ -163,7 +162,8 @@ public class JanelaCadastroCarona implements Initializable {
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-            App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
+            caronaRepository.selecionarCarona(carona);
+            App.changeScreenRegion("EDITAR CARONA", BorderPaneRegion.CENTER);
 
         }
 

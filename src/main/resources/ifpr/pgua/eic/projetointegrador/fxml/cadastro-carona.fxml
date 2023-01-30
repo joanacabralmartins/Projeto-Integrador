@@ -50,7 +50,7 @@
                     </rowConstraints>
 
                      <children>
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="1">
+                        <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="1">
 
                            <children>
                               <Label text="Data" />
@@ -59,7 +59,7 @@
 
                         </VBox>
 
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="2">
+                        <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="262.0" spacing="5.0" GridPane.rowIndex="2">
 
                            <children>
                               <Label text="Carro" />
@@ -68,7 +68,7 @@
 
                         </VBox>
 
-                        <VBox alignment="CENTER" maxWidth="260.0" minWidth="260.0" prefHeight="100.0" prefWidth="260.0" spacing="5.0">
+                        <VBox alignment="TOP_CENTER" maxWidth="260.0" minWidth="260.0" prefHeight="100.0" prefWidth="260.0" spacing="5.0">
 
                            <children>
                               <Label text="Origem" />
@@ -77,14 +77,14 @@
 
                         </VBox>
 
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="60.0" maxWidth="260.0" minWidth="260.0" prefHeight="99.0" prefWidth="260.0" spacing="5.0" GridPane.columnIndex="1">
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" maxWidth="260.0" minWidth="260.0" prefHeight="99.0" prefWidth="260.0" spacing="5.0" GridPane.columnIndex="1">
                            <children>
                               <Label text="Destino" />
                               <TextField fx:id="tfDestino" maxHeight="23.0" maxWidth="150.0" minHeight="23.0" minWidth="150.0" prefHeight="23.0" prefWidth="150.0" />
                            </children>
                         </VBox>
 
-                        <VBox alignment="CENTER" layoutX="270.0" layoutY="10.0" prefHeight="98.0" prefWidth="219.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <VBox alignment="TOP_CENTER" layoutX="270.0" layoutY="10.0" prefHeight="98.0" prefWidth="219.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
                            <children>
                               <Label text="Horário de saída" />
@@ -93,7 +93,7 @@
 
                         </VBox>
 
-                        <VBox alignment="CENTER" layoutX="270.0" layoutY="109.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <VBox alignment="TOP_CENTER" layoutX="270.0" layoutY="109.0" prefHeight="100.0" prefWidth="258.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
 
                            <children>
 

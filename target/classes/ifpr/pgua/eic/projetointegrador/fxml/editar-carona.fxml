@@ -53,7 +53,7 @@
 
                   <children>
 
-                     <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="1">
+                     <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="1">
 
                         <children>
 
@@ -64,7 +64,7 @@
 
                      </VBox>
 
-                     <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="2">
+                     <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.rowIndex="2">
 
                         <children>
 
@@ -75,7 +75,7 @@
 
                      </VBox>
 
-                     <VBox alignment="CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0">
+                     <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="180.0" spacing="5.0">
 
                         <children>
 
@@ -86,7 +86,7 @@
 
                      </VBox>
 
-                     <VBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1">
+                     <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1">
 
                         <children>
                         
@@ -96,7 +96,7 @@
                         </children>
                      </VBox>
 
-                     <VBox alignment="CENTER" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <VBox alignment="TOP_CENTER" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
                         <children>
 
@@ -107,7 +107,7 @@
 
                      </VBox>
 
-                     <VBox alignment="CENTER" layoutX="270.0" layoutY="109.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <VBox alignment="TOP_CENTER" layoutX="270.0" layoutY="109.0" prefHeight="100.0" prefWidth="180.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         
                         <children>
 
@@ -122,7 +122,7 @@
 
                </GridPane>
 
-               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
 
                   <children>
          
@@ -137,13 +137,13 @@
    
          </VBox>
 
-         <VBox alignment="CENTER" prefHeight="330.0" prefWidth="150.0" spacing="10.0">
+         <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="150.0" spacing="10.0">
 
             <children>
 
                <Label text="Pontos de Parada:" />
 
-               <TableView fx:id="pontos" prefHeight="200.0" prefWidth="200.0">
+               <TableView fx:id="pontos" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="183.0" prefWidth="200.0">
 
                   <columns>
                      <TableColumn fx:id="pontoDescricao" minWidth="150.0" prefWidth="-1.0" text="Descricao" />
