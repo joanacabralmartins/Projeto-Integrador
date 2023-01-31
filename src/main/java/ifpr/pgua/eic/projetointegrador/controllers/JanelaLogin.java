@@ -30,6 +30,7 @@ public class JanelaLogin extends BaseController {
 
     @FXML
     private void logar(ActionEvent evento) {
+
         if (tfUsuario.getText().isEmpty()) {
             Alert alert = new Alert(AlertType.ERROR, "Preencha os campos necessários!");
             alert.showAndWait();
@@ -44,26 +45,33 @@ public class JanelaLogin extends BaseController {
         String cpf = tfUsuario.getText();
         String senha = pfSenha.getText();
 
-        Result resultadoMotorista = repositorioM.validarLogin(cpf, senha);
-        String msgM = resultadoMotorista.getMsg();
-        Result resultadoUsuario = repositorioU.validarLogin(cpf, senha);
-        String msgU = resultadoUsuario.getMsg();
+        if(repositorioU.getByCpf(cpf) == null){
+            Alert alert = new Alert(AlertType.ERROR, "Usuario não cadastrado");
+            alert.showAndWait();
+        }else {
+            Result resultadoMotorista = repositorioM.validarLogin(cpf, senha);
+            String msgM = resultadoMotorista.getMsg();
+            Result resultadoUsuario = repositorioU.validarLogin(cpf, senha);
+            String msgU = resultadoUsuario.getMsg();
 
-        if (resultadoMotorista instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION, msgM);
-            alert.showAndWait();
-            App.pushScreen("PRINCIPAL MOTORISTA");
-            return;
-        }else if (resultadoUsuario instanceof SuccessResult) {
-            Alert alert = new Alert(AlertType.INFORMATION, msgU);
-            alert.showAndWait();
-            App.pushScreen("PRINCIPAL CARONEIRO");
-            return;
+            if (resultadoMotorista instanceof SuccessResult) {
+                Alert alert = new Alert(AlertType.INFORMATION, msgM);
+                alert.showAndWait();
+                App.pushScreen("PRINCIPAL MOTORISTA");
+                return;
+            }else if (resultadoUsuario instanceof SuccessResult) {
+                Alert alert = new Alert(AlertType.INFORMATION, msgU);
+                alert.showAndWait();
+                App.pushScreen("PRINCIPAL CARONEIRO");
+                return;
+            }
+            else {
+                Alert alert = new Alert(AlertType.ERROR, "Senha incorreta!");
+                alert.showAndWait();
+            }
+            
         }
-        else {
-            Alert alert = new Alert(AlertType.ERROR, "Usuário não cadastrado!");
-            alert.showAndWait();
-        }
+
     }
 
     @FXML
