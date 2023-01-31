@@ -7,12 +7,12 @@ import ifpr.pgua.eic.projetointegrador.models.results.Result;
 
 public interface SolicitacaoDAO {
 
-  Result create(SolicitacaoCarona Solicitacao);
-  Result aceitar(SolicitacaoCarona Solicitacao);
-  Result recusar(SolicitacaoCarona Solicitacao);
-  Result cancelarSolicitacaoPendente(SolicitacaoCarona Solicitacao);
-  Result cancelarSolicitacaoAceita(SolicitacaoCarona Solicitacao);
-  Result remover(SolicitacaoCarona Solicitacao);
+  Result create(SolicitacaoCarona solicitacao);
+  Result aceitar(SolicitacaoCarona solicitacao);
+  Result recusar(SolicitacaoCarona solicitacao);
+  Result cancelarSolicitacaoPendente(SolicitacaoCarona solicitacao);
+  Result cancelarSolicitacaoAceita(SolicitacaoCarona solicitacao);
+  Result remover(SolicitacaoCarona solicitacao);
   List<SolicitacaoCarona> listAll();
   List<SolicitacaoCarona> getByMotorista(int id_motorista);//para tela solicitacao-motorista
   List<SolicitacaoCarona> getByPassageiro(int id_passageiro);//para tela solicitacao-usuario
