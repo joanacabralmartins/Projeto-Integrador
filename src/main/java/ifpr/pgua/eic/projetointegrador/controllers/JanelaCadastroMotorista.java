@@ -95,37 +95,28 @@ public class JanelaCadastroMotorista implements Initializable {
         int idade = Period.between(data, LocalDate.now()).getYears();
         Date dataNascimento = Date.valueOf(data);
 
-        String msg = new String();
+        Result resultado = repositorioU.adicionarUsuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+        String msg = resultado.getMsg();
 
-        if(carteiraMotorista.length() != 11){
-            msg = "O número da carteira de motorista inserida não possui 11 caracteres!";
-        } else if(carteiraMotorista.matches("[a-z]*")) {
-            msg = "Insira um número de CNH válido! [*Apenas Números*]";
-        } else if(carteiraMotorista.matches("[A-Z]*")){
-            msg = "Insira um número de CNH válido! [*Apenas Números*]";
-        }
+        if(resultado instanceof SuccessResult) {
 
-        if(msg.isEmpty()){
-            Result resultado = repositorioU.adicionarUsuario(ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco);
+            resultado = repositorioM.adicionarMotorista(repositorioU.getByCpf(cpf).getId(), ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
 
             if(resultado instanceof SuccessResult) {
 
-                resultado = repositorioM.adicionarMotorista(repositorioU.getByCpf(cpf).getId(), ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteiraMotorista);
-                msg = resultado.getMsg();
-    
-                if(resultado instanceof SuccessResult) {
-    
-                    App.popScreen();
-    
-                }
-    
-            }else{
-                msg = resultado.getMsg();
-            }
-        }
+                Alert alert = new Alert(AlertType.INFORMATION,msg);
+                alert.showAndWait();
 
-        Alert alert = new Alert(AlertType.INFORMATION,msg);
-        alert.showAndWait();
+                App.popScreen();
+
+            }
+
+        }else{
+            msg = resultado.getMsg();
+
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+        }
         
     }
 

@@ -16,6 +16,22 @@ public class MotoristaRepository {
     public Result adicionarMotorista(int id, boolean ativo, String cpf, String nome, String funcao, String senha, Date dataNascimento,
     int idade, String curso, String telefone, String endereco, String carteira_motorista) {
 
+        if (cpf.length() != 11) {
+            return Result.fail("Um CPF deve conter 11 caracteres!");
+        }
+        if (cpf.matches("[a-z]*")) {
+            return Result.fail("Insira um CPF válido!");
+        }
+        if(cpf.matches("[A-Z]*")){
+            return Result.fail("Insira um CPF válido!");
+        }
+        if (idade < 18) {
+            return Result.fail("É necessário ter pelo menos 18 anos para se cadastrar!");
+        }
+        if (getByCpf(cpf) != null) {
+            return Result.fail("Usuário já cadastrado!");
+        }
+
         Motorista motorista = new Motorista(id, ativo, cpf, nome, funcao, senha, dataNascimento, idade, curso, telefone, endereco, carteira_motorista);
 
         return dao.create(motorista);
