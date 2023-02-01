@@ -113,6 +113,7 @@ public class JanelaCadastroCarona implements Initializable {
         }
         
         int validacao = validarHorario(tfHorarioSaida.getText());
+        
         SimpleDateFormat sdf;
 
         if(validacao == 0){
@@ -144,12 +145,12 @@ public class JanelaCadastroCarona implements Initializable {
         int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
         
         if(lugares < 1 || lugares > 10){
-          msg = "A quantidade de lugares deve ser um número entre 1 e 10!";
+            msg = "A quantidade de lugares deve ser um número entre 1 e 10!";
 
-          Alert alert = new Alert(AlertType.INFORMATION,msg);
-          alert.showAndWait();
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
 
-          return;
+            return;
         }
         
         if(lugares >= carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()){
