@@ -156,10 +156,8 @@ public class JanelaEditarCarona implements Initializable {
         }
 
         int validacao = validarHorario(tfHorarioSaida.getText());
+        
         SimpleDateFormat sdf;
-        long l;
-        Time horarioSaida;
-        LocalDateTime ldt;
 
         if(validacao == 0){
             msg = "Horário inválido!";
@@ -170,15 +168,13 @@ public class JanelaEditarCarona implements Initializable {
             return;
         }else if(validacao == 1){
             sdf = new SimpleDateFormat("HH:mm");
-            l = sdf.parse(tfHorarioSaida.getText()).getTime();
-            horarioSaida = new Time(l);
-            ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
         }else{
             sdf = new SimpleDateFormat("HH:mm:ss");
-            l = sdf.parse(tfHorarioSaida.getText()).getTime();
-            horarioSaida = new Time(l);
-            ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
         }
+
+        long l = sdf.parse(tfHorarioSaida.getText()).getTime();
+        Time horarioSaida = new Time(l);
+        LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
 
         if(ldt.isBefore(LocalDateTime.now())){
             msg = "Horário inválido!";
