@@ -147,7 +147,7 @@ public class JanelaEditarCarona implements Initializable {
         }
         
         if(dpData.getValue().isBefore(LocalDate.now())){
-            msg = "Data não válida!";
+            msg = "Data inválida!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
@@ -156,7 +156,7 @@ public class JanelaEditarCarona implements Initializable {
         }
 
         if(!validarHorario(tfHorarioSaida.getText())){
-            msg = "Horário não válido!";
+            msg = "Horário inválido!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
@@ -167,10 +167,10 @@ public class JanelaEditarCarona implements Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         long l = sdf.parse(tfHorarioSaida.getText()).getTime();
         Time horarioSaida = new Time(l);
-        LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + tfHorarioSaida.getText(), DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+        LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
 
         if(ldt.isBefore(LocalDateTime.now())){
-            msg = "Horário não válido!";
+            msg = "Horário inválido!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
@@ -180,8 +180,8 @@ public class JanelaEditarCarona implements Initializable {
 
         int lugares = Integer.parseInt(tfLugaresDisponiveis.getText());
         
-        if(lugares < 1 || lugares > 99){
-            msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+        if(lugares < 1 || lugares > 10){
+            msg = "A quantidade de lugares deve ser um número entre 1 e 10!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
