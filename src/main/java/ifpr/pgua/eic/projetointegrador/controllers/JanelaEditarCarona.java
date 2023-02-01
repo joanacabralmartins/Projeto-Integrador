@@ -164,7 +164,7 @@ public class JanelaEditarCarona implements Initializable {
             return;
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         long l = sdf.parse(tfHorarioSaida.getText()).getTime();
         Time horarioSaida = new Time(l);
         LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
@@ -310,6 +310,9 @@ public class JanelaEditarCarona implements Initializable {
     private boolean validarHorario(String horario) {
         try {
             String[] hora = horario.split(":");
+            if(hora[2].toString() != null){
+                return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60 && Integer.parseInt(hora[2]) < 60;
+            }
             return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60;
         } catch (Exception e) {
             return false;
