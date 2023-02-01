@@ -155,19 +155,30 @@ public class JanelaEditarCarona implements Initializable {
             return;
         }
 
-        if(!validarHorario(tfHorarioSaida.getText())){
+        int validacao = validarHorario(tfHorarioSaida.getText());
+        SimpleDateFormat sdf;
+        long l;
+        Time horarioSaida;
+        LocalDateTime ldt;
+
+        if(validacao == 0){
             msg = "Horário inválido!";
 
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
 
             return;
+        }else if(validacao == 1){
+            sdf = new SimpleDateFormat("HH:mm");
+            l = sdf.parse(tfHorarioSaida.getText()).getTime();
+            horarioSaida = new Time(l);
+            ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
+        }else{
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            l = sdf.parse(tfHorarioSaida.getText()).getTime();
+            horarioSaida = new Time(l);
+            ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
         }
-
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        long l = sdf.parse(tfHorarioSaida.getText()).getTime();
-        Time horarioSaida = new Time(l);
-        LocalDateTime ldt = LocalDateTime.parse(dpData.getValue() + horarioSaida.toString(), DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm:ss"));
 
         if(ldt.isBefore(LocalDateTime.now())){
             msg = "Horário inválido!";
@@ -307,15 +318,35 @@ public class JanelaEditarCarona implements Initializable {
         pontos.setItems(listaPontos);
     }
 
-    private boolean validarHorario(String horario) {
+    private int validarHorario(String horario) {
         try {
-            String[] hora = horario.split(":");
-            if(hora[2].toString() != null){
-                return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60 && Integer.parseInt(hora[2]) < 60;
+
+            int contagem = 0;
+
+            for (int i = 0; i < horario.length(); i++) {
+                if (horario.charAt(i) == ':') {
+                    contagem++;
+                }
             }
-            return  Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60;
+
+            String[] hora = horario.split(":");
+
+            if(contagem > 2 || contagem == 0){
+                return 0;
+            }else if(contagem == 2){
+
+                if(Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60 && Integer.parseInt(hora[2]) < 60){
+                    return 2;
+                }
+
+            }else if(Integer.parseInt(hora[0]) < 24 && Integer.parseInt(hora[1]) < 60){
+                return 1;
+            }
+
+            return 0;
+
         } catch (Exception e) {
-            return false;
+            return 0;
         }
     }
 
