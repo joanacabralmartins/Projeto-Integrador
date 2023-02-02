@@ -82,12 +82,18 @@ public class JanelaCadastroCarona implements Initializable {
         }        
 
         cbCarros.setItems(listaCarros);
-        cbCarros.setValue(listaCarros.get(0));
-
-        dpData.setValue(LocalDate.now());
 
         tfLugaresDisponiveis.setTextFormatter(new TextFormatter<>(change -> (change.getControlNewText().matches("[0-9]*")) ? change : null));
-        tfLugaresDisponiveis.setText(String.valueOf(carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()-1));
+
+        if(listaCarros.size() != 0){
+
+            cbCarros.setValue(listaCarros.get(0));
+            tfLugaresDisponiveis.setText(String.valueOf(carroRepository.getByPlaca(cbCarros.getValue()).getQuantidadeLugares()-1));
+            
+        }
+
+        dpData.setValue(LocalDate.now());
+        
     }
 
     @FXML
@@ -95,7 +101,7 @@ public class JanelaCadastroCarona implements Initializable {
 
         String msg;
 
-        if(tfDestino.getText().isBlank() || tfHorarioSaida.getText().isBlank() || tfLugaresDisponiveis.getText().isBlank() || tfOrigem.getText().isBlank()) {
+        if(tfDestino.getText().isBlank() || tfHorarioSaida.getText().isBlank() || tfLugaresDisponiveis.getText().isBlank() || tfOrigem.getText().isBlank() || cbCarros.getItems().size() == 0 ) {
           msg = "Preencha todos os campos!";
 
           Alert alert = new Alert(AlertType.INFORMATION,msg);
