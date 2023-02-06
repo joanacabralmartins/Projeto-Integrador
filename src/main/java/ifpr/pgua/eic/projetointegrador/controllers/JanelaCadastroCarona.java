@@ -191,8 +191,7 @@ public class JanelaCadastroCarona implements Initializable {
         if(resultado instanceof SuccessResult) {
             Alert alert = new Alert(AlertType.INFORMATION,msg);
             alert.showAndWait();
-            caronaRepository.selecionarCarona(carona);
-            App.changeScreenRegion("EDITAR CARONA", BorderPaneRegion.CENTER);
+            App.changeScreenRegion("CARONA MOTORISTA", BorderPaneRegion.CENTER);
 
         }
 
