@@ -75,6 +75,13 @@ public class JanelaLogin extends BaseController {
     }
 
     @FXML
+    private void verificar() {
+        if (tfUsuario.getText().length() > 10) {
+            tfUsuario.setText(tfUsuario.getText().substring(0, 10));
+        }
+    }
+
+    @FXML
     private void carregaTelaOpcaoCadastro(ActionEvent evento) {
         App.pushScreen("OPCAO CADASTRO");
     }
