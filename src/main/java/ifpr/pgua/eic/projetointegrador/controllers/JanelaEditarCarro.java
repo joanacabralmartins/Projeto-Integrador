@@ -67,8 +67,8 @@ public class JanelaEditarCarro implements Initializable {
 
         int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
 
-        if(lugares < 1 || lugares > 99){
-          msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+        if(lugares < 1 || lugares > 10){
+          msg = "A quantidade de lugares deve ser um número entre 1 e 10!";
 
           Alert alert = new Alert(AlertType.INFORMATION,msg);
           alert.showAndWait();

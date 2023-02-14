@@ -63,13 +63,13 @@ public class JanelaCadastroCarro implements Initializable {
 
         int lugares = Integer.parseInt(tfQuantidadeLugares.getText());
         
-        if(lugares < 1 || lugares > 99){
-          msg = "A quantidade de lugares deve ser um número entre 1 e 99!";
+        if(lugares < 1 || lugares > 10){
+            msg = "A quantidade de lugares deve ser um número entre 1 e 10!";
 
-          Alert alert = new Alert(AlertType.INFORMATION,msg);
-          alert.showAndWait();
+            Alert alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
 
-          return;
+            return;
         }
 
         Carro carro = new Carro(1, tfPlaca.getText(), tfModelo.getText(), lugares, tfCor.getText(), repositorioM.getUser().getId(), true);
